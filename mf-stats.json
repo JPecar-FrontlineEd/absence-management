@@ -1,0 +1,50 @@
+{
+  "id": "aesop_frontend",
+  "name": "aesop_frontend",
+  "metaData": {
+    "name": "aesop_frontend",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.0.1",
+      "buildName": "Aesop"
+    },
+    "remoteEntry": {
+      "name": "remoteEntry.js",
+      "path": "",
+      "type": "module"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "aesop_frontend",
+    "pluginVersion": "2.9.2",
+    "publicPath": "auto"
+  },
+  "shared": [],
+  "remotes": [],
+  "exposes": [
+    {
+      "path": "./bootstrap",
+      "id": "aesop_frontend:bootstrap",
+      "name": "bootstrap",
+      "requires": [],
+      "file": "app/bootstrap.js",
+      "assets": {
+        "js": {
+          "sync": [
+            "vendors-node_modules_uirouter_angularjs_release_angular-ui-router_js-node_modules_angular-cha-228553.js",
+            "__federation_expose_bootstrap.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      }
+    }
+  ]
+}
