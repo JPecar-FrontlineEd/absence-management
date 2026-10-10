@@ -17,7 +17,7 @@ RUN echo "always-auth=true\nregistry=\"https://${npmUri}/\"\n//${npmUri}/:_authT
 # RUN cp -R node_modules prod_node_modules
 RUN yarn install --frozen-lockfile --silent
 RUN rm ./.npmrc
-
+RUN yarn run grunt 
 RUN yarn run webpack
 
 FROM nginx AS release

@@ -77,7 +77,6 @@ grunt.registerTask("default", function (target) {
 		'concat:vendor',
 		'html2js:preload',
 		'clean:temp',
-		"webpack"
 	])
 });
 
