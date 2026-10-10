@@ -1,0 +1,90 @@
+@import "common-var"
+.route-user-user-profile {
+	.profile-content {
+		padding: 0px;
+		background: backGroundColor;
+	}
+
+	.profile-header {
+		background: gradient-blueBar-backGroundColor;
+		background-image: gradient-blueBar;
+		border-bottom: 1px solid gradient-blueBar-borderColor;
+		color: gradient-blueBar-color;
+		padding: 20px 0 0 20px;
+	}
+
+	h3 {
+		margin-top: 0;
+		font-weight: bold;
+	}
+
+	.profile-sub-header {
+		background: gradient-greenBar-backGroundColor;
+		background: gradient-greenBar;
+		border-bottom: 1px solid gradient-greenBar-borderColor;
+		color: gradient-greenBar-color;
+		font-weight: bold;
+		padding: 5px 0px 5px 20px;
+		font-size: 14px;
+	}
+
+	.profile-settings {
+		background-color: backGroundColor;
+		font-size: 13px;
+
+		div {
+			width: 100%;
+			padding: 10px;
+
+			span {
+				display: inline-block;
+			}
+
+			& .invalid.ng-dirty {
+				background: none repeat scroll 0% 0% ap-light-red;
+					border-color: ap-red;
+			}
+
+			& .label {
+				width: 20%;
+				text-align: right;
+				font-weight: bold;
+				font-size: 14px;
+				padding-right: 10px;
+			}
+
+			.language-select {
+				width: 120px;
+			}
+
+			.language-display {
+				display: inline;
+				width: 220px;
+
+				.idm-settings-link {
+					padding-left: 15px;
+				}
+			}
+		}
+	}
+
+	.profile-actions {
+		background-color: greyBar-backGroundColor;
+		border-top: 1px solid borderColor-medium
+		color: subTitle-color-darkest;
+		padding: 10px 12px;
+		text-align: right;
+	}
+
+	.input-name {
+		width: 250px;
+	}
+
+	.input-middle-name {
+		width: 100px
+	}
+
+	.input-email {
+		width: 355px;
+	}
+}

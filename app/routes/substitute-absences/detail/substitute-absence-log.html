@@ -1,0 +1,10 @@
+<div class="route-substitute-absences-detail-substitute-absence-log" ng-controller="SubstituteAbsenceLogCtrl as route">
+	<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+	<cmpt-ui-grid class="log-grid"
+		columns="route.vm.cols"
+		dataset="route.vm.data"
+		track-by="id" default-sort="id"
+		is-loading="route.vm.isLoading">
+		{{route.strings['AbsenceLog.text.NoRecordFound']}}
+	</cmpt-ui-grid>
+</div>

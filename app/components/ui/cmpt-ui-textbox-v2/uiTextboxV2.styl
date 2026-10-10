@@ -1,0 +1,19 @@
+.cmpt-ui-textbox-v2{
+	.input{
+		.read-only{
+			line-height: 34px;
+		}
+		div{
+			font-size: 12px;
+		}
+
+		// display: none is not sufficient, also need to set height and width to 0
+		// http://stackoverflow.com/questions/20473413/remove-ie11s-clear-field-x-button-on-windows-8
+
+		.fl-input::-ms-clear {
+  			height: 0;
+  			width: 0;
+		}
+	}
+
+}

@@ -1,0 +1,66 @@
+@import "common-var"
+.cmpt-ui-file-upload {
+	margin-right: 5px;
+
+	label {
+		margin-bottom: 12px;
+		font-size: 13px;
+		font-weight: bold;
+	}
+
+	.drop-box {
+		background: fileUpload-backGroundColor;
+		border: 2px dashed fileUpload-borderColor;
+		padding: 40px;
+		text-align: center;
+		color: fileUpload-color;
+		font-size: 12px;
+		border-radius: 5px;
+		font-weight: bold;
+		margin: 5px 0 10px;
+		line-height: 150%;
+		width: 100%;
+	}
+
+	.dragover {
+		border-color: fileUpload-dragOver-borderColor;
+		background: fileUpload-dragOver-backGroundColor;
+		color: fileUpload-dragOver-color;
+	}
+
+	.error-message {
+		background: ap-red;
+		color: fileUpload-backGroundColor;
+		padding: 5px;
+		font-size: 11px;
+		text-align: left;
+		line-height: 135%;
+	}
+
+	.dragover-err {
+		background: none repeat scroll 0% 0% fileUpload-backGroundColor;
+		border-color: ap-red;
+	}
+
+	.progress-bar {
+		background: progressBar-backGroundColor;
+		color: subTitle-color-light;
+		height: 12px;
+		margin-top: 5px;
+		border: 1px solid borderColor-medium;
+		margin-bottom: 10px;
+		transition: all 200ms;
+		&.hide {
+			height: 0;
+			opacity: 0;
+		}
+
+		.inner {
+			background: ap-blue;
+			overflow: hidden;
+			transition: width 1s;
+			height: 12px;
+		}
+	}
+
+}

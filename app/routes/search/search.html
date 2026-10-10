@@ -1,0 +1,27 @@
+<div class="fixed-width route-search-search" ng-controller="SearchCtrl as route">
+	<div id="content" ng-if="vm.canViewPage">
+		<h1 ng-if="!vm.isGlobalSearchEnabled">{{ vm.strings['Search'] }}</h1>
+		<div ng-if="vm.isGlobalSearchEnabled" class="globalSearchTitle">
+			<h1 class="searchTitle">{{ vm.strings['Search'] }}</h1>
+			<div class="searchSubTitle">{{ vm.strings['GlobalSearch.Filters.SearchTypes'] }}
+				<span qtip my="top right" at="bottom left" qtip-class="qtip qtip-large"
+					mnemonic="GlobalSearch.Filters.SearchTypes.Tooltip">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+				</span>
+			</div>
+		</div>
+		<div id="addOptionsDropdown" ng-if="vm.isGlobalSearchEnabled && isAddOptionsDropdownVisible">
+			<div class="dropdown">
+				<button class="dropbtn">Add <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#20242B" class="bi bi-chevron-down arrow-color dropdown-arrow" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
+				</svg></button>
+				
+				
+				<div id="addOptionsDropdownContent" class="dropdown-content">
+					<a ng-repeat="item in addOptions" ng-if="item.isAllowed()" ng-href="{{item.route}}">{{item.value}}</a>
+				  </div>
+		  </div>
+        </div>
+		<cmpt-search-search-container initial-result="vm.initialSearchSvcObj"></cmpt-search-search-container>
+	</div>
+</div>

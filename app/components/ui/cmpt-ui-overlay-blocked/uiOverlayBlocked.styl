@@ -1,0 +1,40 @@
+@import "common-var"
+.cmpt-ui-overlay-blocked {
+	&.fill-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		.cover {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			top: 0;
+			right: 0;
+			background-color: backGroundColor;
+			opacity: 0.85;
+			z-index: 2;
+		}
+
+		.loading-container {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			top: 150px;
+			right: 0;
+			height: 50px;
+			z-index: 5;
+		}
+	}
+	.status {
+		position: relative;
+		color: ap-blue;
+		padding-right: 10px;
+		font-weight: bold;
+		font-size: 12px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}

@@ -1,0 +1,46 @@
+@import "common-var"
+.route-detail {
+	.content-panel {
+		border: 5px solid content-panel-borderColor;
+		padding: 0px;
+		background: backGroundColor;
+		width: 100%;
+		clear: both;
+	}
+
+	.cmpt-template-approval {
+		.icon {
+			display: none;
+		}
+	}
+
+	.cmpt-template-absence-request-status {
+		display: inline-block;
+	}
+	.back-button{
+		text-align: right;
+		margin-bottom: 10px;
+	}
+	.cmpt-ui-tabs{
+		.tabs {
+			.wide{
+				width: 250px;
+			}
+			a {
+				&.locked:before{
+					content: '\f023';
+					margin-right: 10px;
+				    vertical-align: middle;
+				    font-size: 14px;
+				    color: subTitle-color-darkest;
+				}
+				&.active:before{
+				    color: grid-group-title-color;
+				}
+			}
+		}
+	}
+	.cmpt-ui-tabs .tabs a {
+		width: 140px;	
+	}
+}

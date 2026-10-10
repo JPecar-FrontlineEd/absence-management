@@ -1,0 +1,20 @@
+<div class="cmpt-substitute-absence-search-results">
+	<div class="loader-container" ng-show="vm.loading">
+	   <cmpt-ui-loader
+	   		fill
+	   		is-loading="vm.loading">
+	   	</cmpt-ui-loader>
+	</div>
+	<cmpt-ui-grid
+		columns="vm.columns"
+		dataset="vm.results"
+		group-by="'group'"
+		track-by="id"
+		default-row-height="69"
+		default-sort="lastName">
+		<span ng-hide="vm.loading">{{strings['Absence.Create.Select.Text.NoRecordFound']}}</span>
+	</cmpt-ui-grid>
+	<div class="below-grid" ng-show="vm.moreRowsAvailable">
+		<button class="fl-button" ng-click="go.fetchData()">{{strings['Absence.Create.Select.LoadMore']}}</button>
+	</div>
+</div>

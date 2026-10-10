@@ -1,0 +1,10 @@
+<div class="route-absences-detail-substitute-notification-logs" ng-controller="SubstitutePushNotificationLogCtrl as route">
+    <div class="notificationCountContainer">{{route.vm.notificationLabel}}
+        <div class="notificationCount">{{route.vm.data.length}}</div>
+    </div>
+    <cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+	<cmpt-ui-sortable-grid class="log-grid" columns="route.vm.cols" dataset="route.vm.data" is-loading="route.vm.isLoading">
+        {{route.strings['CallhistoryLog.text.NoRecordFound']}}
+    </cmpt-ui-sortable-grid>
+    
+</div>

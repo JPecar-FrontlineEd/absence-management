@@ -1,0 +1,89 @@
+<div class="cmpt-feedback-feedback-response" ng-class="{expanded: vm.expanded}">
+	<li class="-g grid-header">
+		<span class="-u-5-24 grid-header-content">Date</span>
+		<span class="-u-6-24 grid-header-content">Reason</span>
+		<span class="-u-6-24 grid-header-content">Location</span>
+		<span class="-u-{{ isVacancy ? 3 : 2 }}-24 grid-header-content">Duration</span>
+		<span class="-u-4-24 grid-header-content">Time</span>
+		<span class="-u-1-24 grid-header-content center toggle-handle"
+			ng-click="go.toggle()" ng-if="!isVacancy"
+		><i class="fa fa-angle-right" ng-if="vm.absences.length > 1"></i></span>
+	</li>
+	<ul ng-show="vm.expanded">
+		<li class="-g grid-row" ng-repeat="absence in vm.absences">
+			<span class="-u-5-24 grid-cell top-padding date">{{ absence.date }}</span>
+			<span class="-u-6-24 grid-cell">{{ absence.entitlement }}</span>
+			<span class="-u-6-24 grid-cell"><cmpt-template-institution-link inst-id="{{ absence.institution.id }}" inst-name="{{ absence.institution.name }}" show-name-as-link="true"></cmpt-template-institution-link></span>
+			<span class="-u-{{ isVacancy ? 3 : 2 }}-24 grid-cell duration">
+				<cmpt-template-shift-types absences="[absence]"></cmpt-template-shift-types>
+				<span ng-if="absence.shiftType === 4">
+					{{ absence.absenceDuration }}
+				</span>
+			</span>
+			<span class="-u-4-24 grid-cell">
+				{{ absence.absenceTime}}
+			</span>
+			<span class="-u-1-24 grid-cell"  ng-if="!isVacancy">
+				<i class="fa fa-user" qtip my="left center" at="right center" qtip-class="substitutte-times" content="{{ absence.substituteHtml }}"></i>
+			</span>
+		</li>
+	</ul>
+	<ul ng-show="!vm.expanded">
+		<li class="-g grid-row" ng-repeat="absence in vm.absenceVariation">
+			<span class="-u-5-24 grid-cell top-padding">
+				<div class="varition-title" ng-if="vm.absenceVariation.length > 1">{{ absence.variationTitle }}</div>
+				<div class="date">{{ absence.dateStr }}</div>
+			</span>
+			<span class="-u-6-24 grid-cell">{{ absence.entitlement }}</span>
+			<span class="-u-6-24 grid-cell"><cmpt-template-institution-link inst-id="{{ absence.institution.id }}" inst-name="{{ absence.institution.name }}" show-name-as-link="true"></cmpt-template-institution-link></span>
+			<span class="-u-{{ isVacancy ? 3 : 2 }}-24 grid-cell">
+				<cmpt-template-shift-types absences="[absence]"></cmpt-template-shift-types>
+			</span>
+			<span class="-u-4-24 grid-cell">
+				{{ absence.absenceTime}}
+			</span>
+			<span class="-u-1-24 grid-cell"  ng-if="!isVacancy">
+				<i class="fa fa-user" qtip my="left center" at="right 	center" qtip-class="substitutte-times" content="{{ absence.substituteHtml }}"></i>
+			</span>
+		</li>
+	</ul>
+	<div class="reponse-body" ng-show="vm.feedbackExists || editMode">
+		<div class="note instructions" ng-show="vm.servey && editMode">
+			<div class="message">
+				{{strings['AnswerTheFollowingQuestions']}}
+			</div>
+			<div class="required" ng-bind-html="vm.requiredText"></div>
+		</div>
+		<div id="item-0" ng-show="vm.canViewRating && vm.servey">
+			<div class="note">
+				<span class="message" ng-class="{error: vm.servey.ratingError}">
+				 	{{vm.instructionText}}
+				</span>
+				<span class="astrek">
+				 	*
+				</span>
+			</div>
+			<div class="rating">
+				<cmpt-feedback-feedback-rating
+					ng-if="vm.servey.rating != null"
+					rating="vm.servey.rating"
+					edit-mode="editMode"
+					feedback-about-substitute="feedbackAboutSubstitute"
+				>
+				</cmpt-feedback-feedback-rating>
+			</div>
+		</div>
+		<div id="item-{{ $index }}" class="servey" ng-repeat="item in vm.servey.response">
+			<label>
+				{{ item.question }}
+				<span class="astrek" ng-if="item.required">*</span>
+			</label>
+			<cmpt-ui-textarea characters="8000" class="" text-model="item.answer" ng-show="editMode" error-messages="item.errors">
+			</cmpt-ui-textarea>
+			<div class="response-label" ng-show="!editMode">{{item.answer.length > 0 ? item.answer : strings['NoResponse'] }}</div>
+		</div>
+	</div>
+	<div class="no-feedback" ng-show="!vm.feedbackExists && !editMode">
+		{{strings['NoFeedbackLeft']}}
+	</div>
+</div>

@@ -1,0 +1,149 @@
+@import "common-var"
+.route-absences-reconcile-details {
+	.header {
+		width: content-width;
+
+		h3 {
+			display: inline-block;
+		}
+		.day-stepper {
+			display: inline-block;
+			padding-left: 10px;
+
+			button {
+				padding-top: 3px;
+			}
+		}
+
+		.prev-button {
+			margin: 19.2px 5px 0 21px;
+			float: right;
+		}
+	}
+
+	.bottom-results {
+		position: relative;
+		margin-top: 20px;
+		border: 5px solid content-panel-borderColor;
+		padding: 0px;
+		background: backGroundColor;
+		min-height: 300px;
+
+.pagination {
+			margin-top: 1%;
+			display: inline-flex;
+			justify-content: center;
+		}
+
+
+
+		.long-and-truncated {
+			flex: 1;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.pagination a {
+			color: black;
+			float: left;
+			padding: 0px 5px;
+			text-decoration: none;
+			transition: background-color .3s;
+			border: 1px solid #ddd;
+		}
+
+		.pagination .paginationNavButton{
+			height: 27px;
+    		margin: -1px 5px 0px 5px;
+    		padding: 5px 13px 4px 13px;
+    		font-weight: bold;
+			font-size: 16px;
+			line-height: 1;
+			color: #414c56;
+			background-color: #f1f3f5;
+			border: 1px solid #c0c8cf;
+			border-radius: 3px;
+		}
+
+		.pagination .paginationButtons{
+			border:none;
+			border-right: 1px solid darkslategray;
+			padding: 1px 13px;
+		}
+
+		.btnFirstPage {
+			border:none;
+		}
+	
+		.pagination a.btnLastPage {
+    		border-right: none;
+		}
+
+		.pagination span.active {
+			background-color: white;
+			color: black;
+			font-weight:bold;
+		}
+
+		.pagination a.active {
+			background-color: white;
+			font-weight:bold;
+		}
+
+
+		.pagination a:hover:not(.dots) {background-color: #ddd;}
+
+		.result-header {
+			border-bottom: 0;
+			padding: 5px 10px;
+			min-height: 40px;
+			position:relative;
+			.bar {
+				background-color: backGroundColor-dark;
+				animation-name: height-change-blue;
+			}
+
+			.count {
+				font-weight: bold;
+  				margin-right: 5px;
+  				display: inline-block;
+			}
+
+			.cmpt-ui-loader {
+				.report-loader {
+					.logo-spinner {
+						top: 10px;
+					}
+				}
+			}
+
+			.title-item-count {
+				float: left;
+			}
+
+			.btn-reconcile-all {
+				float: right;
+			}
+		}
+
+		.no-data {
+			padding: 90px;
+			text-align: center;
+			font-size: 18px;
+			font-weight: bold;
+			color: grid-transclude-color;
+		}
+	}
+	.dots{
+		padding: 0px !important;
+		border: none !important;
+		margin-top: 3px;
+	}
+	.prevDotElement{
+		border: none !important;
+	}
+	.disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}

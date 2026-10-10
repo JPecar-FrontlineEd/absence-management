@@ -1,0 +1,67 @@
+@import "common-var"
+.cmpt-absr-variation-header {
+	.section-header {
+		background: gradient-greenBar-backGroundColor;
+		border-bottom: 1px solid gradient-greenBar-borderColor;
+		background: gradient-greenBar;
+		zoom: 1;
+		color: gradient-greenBar-color;
+		font-weight: bold;
+		padding: 9px 10px;
+		padding-right: 55px;
+		position: relative;
+		font-size: 14px;
+		width: 100%;
+
+		.days-reconciled{
+			font-size: 12px;
+			font-weight: 400;
+			font-style: italic;
+			border-left: 0px;
+    		position: relative;
+		}
+
+		.variation-toggler {
+			border-left: 1px solid gradient-greenBar-borderColor;
+			position: absolute;
+			top: 0px;
+			right: 1px;
+			bottom: 0px;
+			width: 45px;
+			z-index: 1;
+			text-align: center;
+			font-size: 26px;
+			cursor: pointer;
+
+			&.expanded {
+				background: gradient-greenBar-backGroundColor;
+				background: gradient-greenBar-reverse;
+			}
+			 
+			&:focus{
+				border: 1px solid #bbbbbb;
+				box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+				outline: none;
+			}
+		}
+
+		.locked {
+			position: absolute;
+			font-weight: normal;
+			right: 55px;
+			top: 9px;
+		}
+	}
+
+	div.cmpt-template-institution-link {
+		display: inline-block;
+		position: inherit;
+		font-size: inherit;
+		border-left: none;
+		width: auto;
+	}
+
+	span.marginLeftMinus4{
+		margin-left: -4px;
+	}
+}

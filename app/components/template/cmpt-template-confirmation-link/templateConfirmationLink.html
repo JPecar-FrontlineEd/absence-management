@@ -1,0 +1,4 @@
+<div class="cmpt-template-confirmation-link">
+	<a ng-class="{'dailyReportHyperlink' : isDailyReport}" href="/v1/absences/detail/{{ absrid }}/view" ng-if="vm.isValid" ng-context-menu="ConfirmationNumber">{{absrid}}</a>
+	<div ng-if="!vm.isValid">{{invalidText}}</div>
+</div>

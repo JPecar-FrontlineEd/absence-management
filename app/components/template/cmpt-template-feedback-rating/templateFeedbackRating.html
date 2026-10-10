@@ -1,0 +1,19 @@
+<div class="cmpt-template-feedback-rating">
+	<!-- <ng-rate-it
+		title="{{:: vm.title}}"
+		readonly="true"
+		ispreset="true"
+		ng-model="averageScore"
+		ng-if="averageScore > 0"
+	></ng-rate-it> -->
+
+	<ap-rate-it
+  		title="{{:: vm.title}}"
+  		readonly="true"
+ 		ng-model="averageScore"
+ 		ispreset="true"
+ 		size="'small'"
+ 		color="'blue'"
+ 		ng-if="averageScore > 0"
+ 	></ap-rate-it>
+</div>

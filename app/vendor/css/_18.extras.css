@@ -1,0 +1,292 @@
+/* MIXINS
+ * --------------------------------------------- */
+/* user-select */
+/* VARIABLES
+ * --------------------------------------------- */
+/* Sizes */
+/* Colors */
+/* Colors v2 */
+/* Typography */
+/* SYSTEM MESSAGES - Incomplete!
+ * --------------------------------------------- */
+.fl-system-message {
+  border-radius: 4px;
+  background-color: #ddeeff;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ddeeff), to(#ccddee));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#ddeeff, #ccddee);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#ddeeff, #ccddee);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddeeff), color-stop(100%, #ccddee));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#ddeeff, #ccddee);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#ddeeff, #ccddee);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #ddeeff 0%, #ccddee 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#ddeeff, #ccddee);
+  /* the standard */
+  border: 1px solid #88AABB;
+  color: #003355;
+  font-size: 14px;
+  padding: 15px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.fl-system-message.success {
+  background-color: #ddfadd;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ddffdd), to(#cceecc));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#ddffdd, #cceecc);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#ddffdd, #cceecc);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddffdd), color-stop(100%, #cceecc));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#ddffdd, #cceecc);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#ddffdd, #cceecc);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #ddffdd 0%, #cceecc 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#ddffdd, #cceecc);
+  /* the standard */
+  border-color: #88BBAA;
+  color: #005533;
+}
+.fl-system-message.warning {
+  background-color: #ffee99;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffee99), to(#ffdd88));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#ffee99, #ffdd88);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#ffee99, #ffdd88);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffee99), color-stop(100%, #ffdd88));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#ffee99, #ffdd88);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#ffee99, #ffdd88);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #ffee99 0%, #ffdd88 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#ffee99, #ffdd88);
+  /* the standard */
+  border-color: #CC9900;
+  color: #663300;
+}
+.fl-system-message.error {
+  background-color: #ffdddd;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffdddd), to(#ffbbbb));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#ffdddd, #ffbbbb);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#ffdddd, #ffbbbb);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffdddd), color-stop(100%, #ffbbbb));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#ffdddd, #ffbbbb);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#ffdddd, #ffbbbb);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #ffdddd 0%, #ffbbbb 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#ffdddd, #ffbbbb);
+  /* the standard */
+  border-color: #BB8888;
+  color: #550000;
+}
+.fl-system-message .message {
+  margin-right: 80px;
+}
+.fl-system-message .dismiss {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.fl-system-message a {
+  color: #003355;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.fl-system-message.success a {
+  color: #005533;
+}
+.fl-system-message.warning a {
+  color: #663300;
+}
+.fl-system-message.error a {
+  color: #550000;
+}
+.fl-hint {
+  border-radius: 5px;
+  background: #FCFCFC;
+  border: 1px dashed #CCCCCC;
+  font-size: 11px/125%;
+  color: #757575;
+  padding: 10px;
+  display: inline-block;
+  max-width: 250px;
+}
+.fl-hint label {
+  display: block;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 5px;
+}
+/* USER VOICE TAB
+ * --------------------------------------------- */
+.fl-user-voice a {
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  background-color: #eeeeee;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#eeeeee));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#ffffff, #eeeeee);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#ffffff, #eeeeee);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #eeeeee));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#ffffff, #eeeeee);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#ffffff, #eeeeee);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#ffffff, #eeeeee);
+  /* the standard */
+  color: #444;
+  text-decoration: none;
+  border: 2px solid #444444;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  padding: 10px;
+  font-size: 12px/100%;
+  font-weight: bold;
+  display: inline-block;
+}
+.fl-user-voice a:active {
+  background-color: #dddddd;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#dddddd), to(#eeeeee));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#dddddd, #eeeeee);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#dddddd, #eeeeee);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #eeeeee));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#dddddd, #eeeeee);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#dddddd, #eeeeee);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #dddddd 0%, #eeeeee 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#dddddd, #eeeeee);
+  /* the standard */
+}
+/* LIVE CHAT CALL-TO-ACTION
+ * --------------------------------------------- */
+.fl-live-chat {
+  -webkit-box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #bbd991;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#d0ea9c), to(#82ac73));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#d0ea9c, #82ac73);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#d0ea9c, #82ac73);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d0ea9c), color-stop(100%, #82ac73));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#d0ea9c, #82ac73);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#d0ea9c, #82ac73);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #d0ea9c 0%, #82ac73 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#d0ea9c, #82ac73);
+  /* the standard */
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: top;
+  padding: 0 10px;
+}
+.fl-live-chat .group {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  padding: 5px 5px 0 0;
+}
+.fl-live-chat .group label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #446655;
+  line-height: 12px;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+.fl-live-chat .group .fl-button-sm {
+  padding: 0 12px;
+  line-height: 18px;
+}
+.fl-live-chat::before,
+.fl-live-chat::after {
+  content: "";
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: top;
+  background-color: #eeeeee;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#eeeeee), to(#c6c6c6));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#eeeeee, #c6c6c6);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#eeeeee, #c6c6c6);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #c6c6c6));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#eeeeee, #c6c6c6);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#eeeeee, #c6c6c6);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #eeeeee 0%, #c6c6c6 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#eeeeee, #c6c6c6);
+  /* the standard */
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#eeeeee', endColorstr='#c6c6c6');
+  background-color: transparent;
+  height: 45px;
+  width: 8px;
+}
+.fl-live-chat::before {
+  margin-right: 8px;
+  border-radius: 0 8px 8px 0;
+  margin-left: -12px;
+  -webkit-box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.1);
+}
+.fl-live-chat::after {
+  margin-left: 8px;
+  border-radius: 8px 0 0 8px;
+  margin-right: -12px;
+  -webkit-box-shadow: -1px 0px 2px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -1px 0px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: -1px 0px 2px 0px rgba(0, 0, 0, 0.1);
+}

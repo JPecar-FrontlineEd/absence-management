@@ -1,0 +1,73 @@
+<div class="fixed-width route-substitute-absences-create-substitute-absence-review" ng-controller="CreateSubstituteAbsenceReviewCtrl as route">
+	<div class="title"><h3>{{ route.strings['Substitute.Absence'] }}: {{ route.strings['SubstituteAbsence.Create.Text'] }}</h3></div>
+	<cmpt-step-progress steps="route.vm.steps" current-step="2"></cmpt-step-progress>
+	<div class="content-panel">
+		<cmpt-current-step enable-next="true" steps="route.vm.steps" current-step="2" class="top">{{ route.strings['SubstituteAbsence.Create.Text.Step'] }} 3:
+		{{ route.strings['Absence.Create.Text.ReviewAndConfirmDetailsFor'] }} 
+			<!--<span class="bold">&nbsp;{{ route.substituteAbsenceVal.substitute.name }}</span>-->
+			&nbsp;<cmpt-template-substitute-link substitute-id="{{ route.substituteAbsenceVal.substitute.id }}" substitute-name="{{ route.substituteAbsenceVal.substitute.name }}" show-name-as-link="true"></cmpt-template-substitute-link>
+		</cmpt-current-step>
+			<div class="section-header">
+				<span>{{ route.vm.titleDate }}</span>
+                <span ng-if="route.substituteAbsenceVal.institution"> at&nbsp;</span>
+				<cmpt-template-institution-link ng-if="route.substituteAbsenceVal.institution" inst-id="{{ route.substituteAbsenceVal.institution.id }}" inst-name="{{ route.substituteAbsenceVal.institution.value }}" show-name-as-link="true"></cmpt-template-institution-link>
+			</div>
+			<div class="details">
+				<div class="row institution">
+					<label>
+						<span class="text">{{ route.strings['School'] }}</span>
+					</label>
+					<div class="element">
+						{{ route.substituteAbsenceVal.institution.value }}
+					</div>
+				</div>
+				<div class="row date">
+					<label>
+						<span class="text">{{ route.strings['Date'] }}</span>
+					</label>
+					<div class="element">
+						{{ route.substituteAbsenceVal.date }}
+					</div>
+				</div>
+				<div class="row entitlementType">
+					<label>
+						<span class="text">{{ route.strings['AbsenceReason'] }}</span>
+					</label>
+					<div class="element">
+						{{ route.substituteAbsenceVal.entitlementType.value }}
+					</div>
+				</div>
+				<div class="row report-times">
+					<label>
+						<span class="text">{{ route.strings['Time'] }}</span>
+					</label>
+					<div class="element">
+						<span class="field">
+							{{ route.substituteAbsenceVal.startTime }}
+						</span>
+						<span class="text">to</span>
+						<span class="field">
+							{{ route.substituteAbsenceVal.endTime }}
+						</span>
+					</div>
+				</div>
+				<div class="row accountingCode" ng-if="$root.havePermission('SUBABS.DTLSACCD')">
+					<label>
+						<span class="text">{{ route.strings['AccountingCode'] }}</span>
+					</label>
+					<div class="element">
+						<div ng-if="route.substituteAbsenceVal.accountingCode">
+							{{ route.substituteAbsenceVal.accountingCode.value }}
+							<span ng-if="route.substituteAbsenceVal.accountingCode.id === 0">&nbsp;-&nbsp;
+							{{ route.substituteAbsenceVal.customAccountingCode }}</span>
+						</div>
+						<div ng-if="!route.substituteAbsenceVal.accountingCode">
+							{{ route.strings['NoneSelected'] }}
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<cmpt-current-step enable-next="true" steps="route.vm.steps" current-step="2" class="bottom"></cmpt-current-step>
+	</div>
+</div>

@@ -1,0 +1,105 @@
+@import "common-var"
+.cmpt-absr-details-attachments {
+	clearfix();
+	margin: 10px 10px 20px 15px;
+
+	.upload-component {
+		float: left;
+		width: 220px;
+		padding: 0 10px 0 0;
+	}
+
+	.attachments-header {
+		label {
+			margin-bottom: 12px;
+			font-size: 13px;
+			font-weight: bold;
+		}
+	}
+
+	.uploaded-files {
+		padding: 0 0.5rem 0 0;
+
+		.item {
+			border-bottom: 1px solid borderColor-medium;
+			padding: 5px 0;
+		}
+
+		.item:only-of-type {
+			border-bottom: 0;
+		}
+
+		a {
+			font-size: 12px;
+			vertical-align: text-top;
+
+			&:before {
+				font-size: 14px;
+			}
+		}
+
+		.actions {
+			margin-top: -5px;
+		}
+
+		.actions a:before {
+			font-size: 12px;
+		}
+
+		label {
+			margin-bottom: 12px;
+			font-size: 13px;
+			font-weight: bold;
+		}
+
+		.fl-button-sm {
+			padding: 0 8px;
+		}
+
+		.caption {
+			color: subTitle-color-light;
+			font-style: italic;
+			font-size: 11px;
+
+			input {
+				width: 100%;
+			}
+
+			div {
+				width: 100%;
+				overflow: ellipsis;
+			}
+		}
+
+		span {
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	.related-files {
+		@extend .cmpt-absr-details-attachments .uploaded-files;
+		padding: 0 0 0 0.5rem;
+	}
+
+	.no-files {
+		font-size: 0.8rem;
+		margin-top: 2px;
+		color: subTitle-color-light;
+	}
+
+	.file-attachment {
+		.file {
+			width: 100%;
+			font-size: 12px;
+			display: block;
+			padding-left: 1px;
+			overflow: ellipsis;
+
+			&:before {
+				font-size: 14px;
+			}
+		}
+	}
+}

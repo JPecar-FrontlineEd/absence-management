@@ -1,0 +1,29 @@
+<div class="report-standards cmpt-approve-bottom-result">
+	<div id="report-lock-header" class="lock-header-fill"></div>
+	<div class="header">
+		<div class="header-content">
+			<span class="count">{{ vm.count }}</span>
+			<span class="label">{{ strings['ApprovalList.Label.Text.AbsenceApprovals'] }}</span>
+			<cmpt-ui-loader cls="report-loader" is-loading="vm.loading"></cmpt-ui-loader>
+			<span class="header-buttons" ng-show="!vm.loading">
+				<a class="fl-button fl-positive" ng-class="{'fl-disabled':!vm.approveAllCount>0}" ng-click="go.approveDenyAll(true)">{{ strings['ts.approver.label.approveSelected'] }}</a>
+				<a class="fl-button fl-negative" ng-class="{'fl-disabled':!vm.denyAllCount>0}" ng-click="go.approveDenyAll(false)">{{ strings['Approval.Button.Text.DenySelected'] }}</a>
+			</span>
+		</div>
+	</div>
+	<div class="content-panel loaded">
+		<cmpt-ui-multiselect-sortable-grid
+			columns="vm.columns"
+			dataset="vm.data"
+			actions="go"
+			selected="vm.selected"
+			boxes-on-left="true"
+			disable-inview-plugin ="true"
+		>
+		<span ng-show="vm.dataLoaded">
+			<span class="no-absences"></span>
+			{{ strings['ApprovalList.Message.NoAbsencesRequiringApproval'] }}.
+		</span>
+		</cmpt-ui-multiselect-sortable-grid>
+	</div>
+</div>

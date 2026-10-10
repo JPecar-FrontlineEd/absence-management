@@ -1,0 +1,12 @@
+<div class="cmpt-template-approval">
+	<div ng-if="requiresApproval">
+		<div class="{{vm.cssClass}} icon" title="{{vm.tooltip}}" ng-bind-html="vm.iconContent"></div>
+		<div class="{{vm.cssClass}} text" title="{{vm.tooltip}}">
+			<span ng-class="{'wrap-words' : wrapTextInLine, deletedAbsrText : isDeleted}">{{vm.approvalText}}</span>
+		</div>
+	</div>
+	<div ng-if="!requiresApproval">
+		<div class="no-approval-required icon">NA</div>
+		<div ng-class="{'wrap-words' : wrapTextInLine}" class="no-approval-required text">{{strings['NoApprovalRequired']}}</div>
+	</div>
+</div>

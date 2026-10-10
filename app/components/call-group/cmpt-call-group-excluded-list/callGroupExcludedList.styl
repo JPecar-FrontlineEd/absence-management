@@ -1,0 +1,69 @@
+@import "common-var"
+.cmpt-call-group-excluded-list {
+	position:relative;
+	.grid-header {
+		.grid-header-content {
+			height:auto;
+		}
+	}
+	.grid-rows{
+		font-size:12px;
+	}
+
+	.fl-button.fa:empty {
+		width: 36px;
+		white-space: normal;
+		-o-text-overflow: clip;
+		text-overflow: clip;
+		margin-right: 5px;
+	}
+
+	.select-th,.select-cell{
+		text-align: center;
+	}
+
+	.no-data{
+		text-align:center;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+
+		.image{
+			  background: url(../images/No-Data-Initial.png);
+			  background-repeat: no-repeat;
+			  width: 150px;
+			  height: 135px;
+			  display: inline-block;
+			  background-position-x: 50%;
+		}
+		.caption{
+			font-size: 14px;
+		  	color: subTitle-color-light;
+		  	font-weight: bold;
+		  	text-align: center;
+		}
+	}
+
+	.cmpt-ui-textarea-v2 textarea {
+		font-size: 12px;
+		max-height: 100px;
+		line-height: 1.5;
+	}
+
+	.comments-cell{
+		// Overrides grid-cell.* which breaks .validation-messages from showing properly
+		* {
+			overflow: visible;
+		}
+		span{
+			white-space:normal;
+			display: inline-block;
+			word-wrap: break-word;
+			word-break: break-all;
+		}
+	}
+
+	.required-field{
+		color:ap-red
+		padding-left:3px;
+	}
+}

@@ -1,0 +1,128 @@
+@import "common-var"
+
+.report-locked{
+	.report-standards{
+		&.route-reports-absence-absentee{
+			&> .header{
+				.header-content{
+					.cmpt-ui-print-button{
+						display: none !important;
+					}
+					.print-pdf{
+						display: inline-block;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}
+
+.route-reports-absence-absentee {
+	.action-section {
+		.print { display: none;}
+		.print-pdf {display: inline-block;}
+	}
+	.header{
+		.header-content{
+			.print-pdf {display: none;}
+		}
+	}
+	.content-panel .cmpt-ui-grid {
+		.dateFormatted-cell {
+			padding-left: 0;
+			padding-right: 0;
+			text-align: center;
+
+			span {
+				white-space: normal;
+			}
+		}
+
+		.institution-cell {
+
+			.emp-time, .sub-time {
+				font-size: 10px;
+				color: subTitle-color-darkest;
+
+				span {
+					font-weight: bold;
+				}
+			}
+		}
+
+		.duration-cell {
+			padding-left: 0;
+			padding-right: 0;
+			text-align: center;
+
+			div {
+				margin-bottom: 5px;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+			.hide-print{
+				div{
+					line-height:25px;
+				}
+			}
+
+			.duration-Icon {
+				font-size: 22px;
+				color: ap-blue;
+			}
+
+			.FullDay:before {
+				content: '\e60c';
+			}
+
+			.HalfDayAM:before {
+				content: '\e606';
+			}
+
+			.HalfDayPM:before {
+				content:'\e60b';
+			}
+
+			.CustomDay:before {
+				content: '\e608';
+			}
+		}
+
+		.reason-cell{
+			.budget-code,.pay-code{
+				font-size:11px;
+				label{
+					font-size:10px;
+					font-weight:bold;
+				}
+			}
+		}
+
+		.substitute-cell{
+			.held{
+				color: ap-red;
+				font-weight: bold;
+			}
+		}
+		.summary-footer {
+			background-color: report-footer-background;
+			padding: 10px 0 10px 10px;
+			line-height: 15px;
+			border-top: 0;
+			font-weight: bold;
+			color: report-footer-color;
+		}
+	}
+
+	@media print {
+		.cmpt-reports-filter-panel {
+			.print-summary {
+				.orderByTitle, .orderBy {
+					display: none !important;
+				}
+			}
+		}
+	}
+}

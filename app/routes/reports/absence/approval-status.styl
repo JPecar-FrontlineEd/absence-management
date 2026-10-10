@@ -1,0 +1,53 @@
+@import "common-var"
+
+.route-reports-absence-approval-status {
+	.content-panel .cmpt-ui-sortable-grid {
+		.dateRange-cell {
+			span {
+				white-space: normal;
+			}
+		}
+		.cmpt-template-approval {
+			text-align: center;
+			padding-right: 10px;
+
+			.icon {
+				display: none;
+			}
+
+			.text {
+				white-space: normal;
+			}
+
+			.approved {
+				color: ap-green;
+			}
+
+			.partial {
+				color: ap-yellow;
+			}
+
+			.denied {
+				color: ap-red;
+			}
+
+			.unapproved {
+				color: subTitle-color-lightest;
+			}
+		}
+
+		.approvals-cell {
+			.name {
+				font-size: 12px;
+				font-weight: bold;
+				white-space: normal;
+			}
+		}
+	}
+
+	.filter-section {
+		.absence-type {
+			display: none;
+		}
+	}
+}

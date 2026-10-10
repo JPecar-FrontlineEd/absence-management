@@ -1,0 +1,75 @@
+@import "common-var"
+.route-index {
+	topSectionHeight = 222px;
+
+	.top-section {
+
+		height: topSectionHeight;
+
+		.row {
+			margin-bottom: 9px;
+		}
+
+		.action-panel {
+			background: backGroundColor;
+			padding: 15px;
+			box-shadow: 1px 2px 3px 0px boxShadow;
+			height: 100%;
+			border-radius: 5px;
+		}
+
+		.left-column {
+			height: 100%;
+			width: 65%;
+			padding-right: 15px;
+			display: inline-block;
+			float: left;
+		}
+
+		.right-column {
+			height: 100%;
+			width: 35%;
+			display: inline-block;
+			float: left;
+		}
+	}
+
+
+	.dashboard-locked & {
+
+		.top-section {
+			position: fixed;
+			width: content-width;
+			top: topbar-height;
+			padding: 10px 0 10px;
+			height: 120px;
+			background-color: body-backGroundColor;
+			z-index: 3;
+
+			.left-column {
+				width: 75%;
+			}
+
+			.right-column {
+				width: 25%;
+			}
+
+			.action-panel {
+				padding: 10px;
+
+				.filter {
+					height: 35px;
+					margin-right: -3px;
+					line-height: 14px;
+				}
+			}
+		}
+		.bottom-section{
+			padding-bottom: 122px;
+		}
+
+		.lock-header-fill {
+			height: topSectionHeight + 44;
+		}
+	}
+}

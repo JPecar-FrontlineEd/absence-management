@@ -1,0 +1,17 @@
+<div class="cmpt-feedback-buttons">
+	<a ng-repeat="button in vm.buttons"
+	   ng-click="!vm.hasSubstitute || !vm.afterAbsenceStart ? '' : button.action()"
+	   class="fl-button {{button.cls}}
+				{{ !vm.hasSubstitute || !vm.afterAbsenceStart ? 'fl-disabled': '' }}"
+	   ng-show="button.isVisible()">
+		<div class="fl-label {{ button.loading ? 'fl-disabled': '' }}">
+			<i class="fa pull-left {{button.loading ? 'fa-spinner fa-spin' : button.icon}}"></i>{{ strings.bind(button.title) }}
+		</div>
+	</a>
+	<span class="feedback-error" ng-hide="vm.afterAbsenceStart || !vm.showErrors">
+		{{strings['Feedback.Error.FutureAbsence']}}
+	</span>
+	<span class="feedback-error" ng-hide="!vm.afterAbsenceStart || vm.hasSubstitute || !vm.showErrors">
+		{{strings['Feedback.Error.NoSub']}}
+	</span>
+</div>

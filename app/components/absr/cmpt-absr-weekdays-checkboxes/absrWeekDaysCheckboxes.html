@@ -1,0 +1,17 @@
+<div class="cmpt-absr-weekdays-checkboxes">
+   <div class="-u-24-24">
+      <div class="-u-3-24" ng-repeat="checkbox in dragSelectDow track by $index">
+         <div>
+            <label for="{{weekdayArray[$index]}}">{{weekdayArray[$index]}}</label>
+         </div>
+         <div>
+            <span>
+               <input id="{{weekdayArray[$index]}}" type="checkbox" ng-click="onClick($index)" ng-checked="dragSelectDow[$index]"
+               ng-if = "isAllowedOnNoAbsenceDays">
+               <input id="{{weekdayArray[$index]}}" type="checkbox" ng-click="onClick($index)" ng-checked="dragSelectDow[$index]"
+               ng-if = "!isAllowedOnNoAbsenceDays" ng-disabled = "!enabledCheckboxes[$index]">
+            </span>
+         </div>
+      </div>
+   </div>
+</div>

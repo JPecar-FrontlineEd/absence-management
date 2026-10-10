@@ -1,0 +1,25 @@
+@import "common-var"
+.cmpt-reference-data-action-cell {
+	.actions{
+		opacity: 0.5;
+		text-align:right;
+		span{
+			user-select: none;
+			cursor: pointer;
+		    text-align: center;
+		    width: 40px;
+		    float: right;
+		    line-height: 40px;
+		    &:hover{
+		    	background: referenceData-action-hover;
+		    }
+		    .fa-pencil{
+		    	position: relative;
+    			left: 2px;
+		    }
+			.fa-check {
+				color: ap-green;
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+<div class="cmpt-ui-textarea">
+	<ng-transclude></ng-transclude>
+	<div>
+		<textarea aria-label="{{labeltext}}" ng-show="!readOnly" ng-model="textModel" ng-trim="false" maxlength="{{ characters }}"  ng-class="{'error': errorMessages.length > 0}" 
+			ng-disabled = "isDisabled"></textarea>
+		<div class="label" ng-show="readOnly">{{ label }}</div>
+	</div>
+	<div ng-show="!readOnly" class="notes-characters-left" ng-class="{ 'over-limit': characters - textModel.length < 0 }">{{ characters - textModel.length }} character(s) left</div>
+	<div class="error-message" ng-repeat="value in errorMessages">
+		{{ value }}
+	</div>
+</div>

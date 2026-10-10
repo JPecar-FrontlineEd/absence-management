@@ -1,0 +1,55 @@
+<div class="route-absences-detail-split" ng-controller="SplitCtrl as route" ng-value="true">
+	<div class="top section-heading" ng-init="route.vm.splitIndividual=true">
+		<div>
+			<span class="splitAtOptions">
+				<label>
+					<input type="radio" name="order-by" ng-model="route.vm.splitIndividual" ng-value="true">
+					{{ strings["SplitAbsence.IndividualDays"] }}
+				</label>
+				<label>
+					<input type="radio" name="order-by" ng-model="route.vm.splitIndividual" ng-value="false">
+					{{ strings["SplitAbsence.AtDate"] }}
+				</label>
+			</span>
+			<span class="splitIntoOptions" ng-if="route.vm.splitIndividual && route.angularSplitAbsences">
+				<label>
+					<input type="radio" name="split-into" ng-model="route.vm.isSingleAbsence" ng-value="true">
+					{{ mnemonic["splitIntoSingle"] }}
+				</label>
+				<label>
+					<input type="radio" name="split-into" ng-disabled="route.vm.selectedIndividual.length <= 1" ng-model="route.vm.isSingleAbsence" ng-value="false">
+					{{ mnemonic["splitIntoSeparate"] }}
+				</label>
+			</span>
+		</div>
+		<span class="splitButtons">
+			<a class="fl-button {{ button.cls }}" ng-click="button.action()" ng-repeat="button in route.vm.buttons">
+				<i class="fa {{ button.icon }}" ng-show="button.icon"></i>
+				{{ route.strings[button.title] }}
+			</a>
+		</span>
+	</div>
+	<div class="container" ng-show="route.vm.splitIndividual">
+		<cmpt-ui-multiselect-sortable-grid columns="route.vm.columnsMultiSelect" dataset="route.vm.datasetMultiselect"
+			actions="route.go" selected="route.vm.selectedIndividual" boxes-on-left="true"
+			id-prefix="route.vm.multiSelectIdPrefix">
+		</cmpt-ui-multiselect-sortable-grid>
+	</div>
+	<div class="container" ng-show="!route.vm.splitIndividual">
+		<cmpt-ui-singleselect-sortable-grid columns="route.vm.columnsSingleSelect"
+			dataset="route.vm.datasetSingleSelect" actions="route.go" selected-row="route.vm.selectedSplitAt"
+			boxes-on-left="true" id-prefix="route.vm.singleSelectIdPrefix">
+		</cmpt-ui-singleselect-sortable-grid>
+	</div>
+	<div class="bottom section-footer">
+		<span class="label" ng-if="route.absrState.substitute != null">
+			<label for="removeSub" ng-if="route.vm.isSingleAbsence" once-text="route.vm.strings[mnemonic.splitRemoveSub]"></label>
+			<label for="removeSub" ng-if="!route.vm.isSingleAbsence" once-text="route.vm.strings[mnemonic.splitRemoveSubs]"></label>
+			<input id="removeSub" type="checkbox" ng-model="route.vm.removeSub" />
+		</span>
+		<a class="fl-button {{ button.cls }}" ng-click="button.action()" ng-repeat="button in route.vm.buttons">
+			<i class="fa {{ button.icon }}" ng-show="button.icon"></i>
+			{{ route.strings[button.title] }}
+		</a>
+	</div>
+</div>

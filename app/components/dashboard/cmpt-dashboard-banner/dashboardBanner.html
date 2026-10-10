@@ -1,0 +1,21 @@
+<div class="cmpt-dashboard-banner">
+    <div class="fl-system-message" ng-hide="vm.dismissBanner">
+        <div class="left-section -u-2-24">
+            <div class="aesop-icon"></div>
+        </div>
+        <div class="right-section -u-20-24">
+            <h1>{{strings['AdminHome.Welcome.Headline']}}</h1>
+            <div class="message">{{ strings['AdminHome.Welcome.IntroText'] }}</div>
+            <div class="message">
+                <strong>{{strings['AdminHome.Welcome.InstructionText']}}</strong>
+            </div>
+            <div class="actions" ng-show="vm.canOptOutOfNewSite">
+                <a class="fl-button fa fa-rotate-left-before">{{strings['AdminHome.Welcome.Button.Revert']}}</a>
+                <a class="fl-button fl-positive">{{ strings['AdminHome.Welcome.Button.Continue'] }}</a>
+            </div>
+        </div>
+        <span class="dismiss" ng-click="go.hideBanner()">
+            <a class="fa fa-times-before">{{ strings['Dismiss'] }}</a>
+        </span>
+    </div>
+</div>

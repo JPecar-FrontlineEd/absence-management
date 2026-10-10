@@ -1,0 +1,77 @@
+<div class="cmpt-absr-create-new-absence-by-day">
+    <form name="newAbsenceByDayForm" novalidate>
+        <div ng-if="absrState.absr == null || absrState.absr.absences.length == 0">
+            <div class="cmpt-absr-variation-header width100pc">
+                <div class="section-header height100pc">
+                    <span class="fontBold">
+                        {{strings['ViewingByDay']}}
+                    </span>
+                    <div class="variation-toggler" ng-class="{expanded: isExpanded}" tabindex="0" 
+                        aria-label="isExpanded ? strings['Expanded'] : strings['Collapsed']"
+                        ng-keyup="$event.keyCode == 13 ? isExpanded = !isExpanded : null"
+                        ng-click="isExpanded = !isExpanded">
+                        <span>
+                            <i class="fa fa-angle-double-{{isExpanded ? 'up' : 'down'}}"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div ap-show-slide="isExpanded">
+                <div class="-u-24-24"></div>
+                <div class="-u-24-24"></div>
+                <div class="-u-24-24">
+                    <div class="-u-8-24"></div>
+                    <div class="-u-8-24"><label
+                            class="fontBold marginLeft29 font15">{{absrState.worker.isVacancy == false? strings['NoAbsenceDaysAddedYet'] : strings['NoVacancyDaysAddedYet']}}.</label>
+                    </div>
+                    <div class="-u-8-24"></div>
+                </div>
+                <div class="-u-24-24">
+                    <div class="-u-10-24"></div>
+                    <div class="-u-4-24">
+                        <a ng-click="go.showAddDaysDialog()" class="fl-button width100pc">
+                            <span class="fl-label font15 fontWeightNormal">{{ strings['AddDay'] }}</span>
+                        </a>
+                    </div>
+                    <div class="-u-10-24"></div>
+                </div>
+                <div class="-u-24-24 marginTop10" ng-class="{hide: !showNoDaysAlert}" id="noDaysAlertRow">
+                    <div class="-u-8-24"></div>
+                    <div class="-u-8-24 noDaysAddedDiv">
+                        <div class="triangle-up"></div>
+                        <label
+                            class="noDaysAddedLabel">{{ absrState.worker.isVacancy == false? strings['AddAtleastOneAbsence'] : strings['AddAtleastOneVacancy']}}.</label>
+                    </div>
+                    <div class="-u-8-24"></div>
+                </div>
+                <div class="-u-24-24"></div>
+            </div>
+        </div>
+
+        <div ng-if="absrState.absr != null && absrState.absr.absences.length > 0">
+            <div class="cmpt-absr-variation-header width100pc">
+                <div class="section-header height100pc">
+                    <span class="fontBold">
+                        {{strings['ViewingByDay']}}
+                    </span>
+                    <a ng-click="go.showAddDaysDialog()" class="fl-button leftMargin10">
+                        <span class="fl-label font15 fontWeightNormal">{{ strings['AddDay'] }}</span>
+                    </a>
+                    <div class="variation-toggler" ng-class="{expanded: isExpanded}" tabindex="0" 
+                        aria-label="isExpanded ? strings['Expanded'] : strings['Collapsed']"
+                        ng-keyup="$event.keyCode == 13 ? isExpanded = !isExpanded : null"
+                        ng-click="isExpanded = !isExpanded">
+                        <span>
+                            <i class="fa fa-angle-double-{{isExpanded ? 'up' : 'down'}}"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <cmpt-absr-edit-by-day apshowslide="isExpanded" ng-repeat="absence in absrState.absr.absences"
+                absence-data="absence"  detect-conflict="go.detectConflict" check-Last-Absence="go.checkLastAbsence">
+            </cmpt-absr-edit-by-day>
+        </div>
+        <cmpt-absr-details-notes></cmpt-absr-details-notes>
+    </form>
+</div>

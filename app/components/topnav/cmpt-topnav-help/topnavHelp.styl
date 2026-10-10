@@ -1,0 +1,47 @@
+@import "common-var"
+.cmpt-topnav-help {
+	.dropdown {
+		i {
+			display: inline-block;
+			width: 15px;
+			text-align: center;
+		}
+
+		.contact-info-expanded {
+			min-width: 300px;
+
+			.contact-title {
+				font-size: 13px;
+				font-weight: bold;
+				color: subTitle-color-dark;
+				background-color: topbar-help-titleBackGroundColor;
+				//so the background color stretches all the way across
+				margin: -4px -18px 4px -13px;
+				padding: 4px 18px 4px 13px;
+			}
+			.contact-details {
+				user-select(text); //so user can copy any contact info out.
+				padding-bottom: 7px;
+			}
+			.contact-heading {
+				font-size: 11px;
+				font-weight: bold;
+				color: subTitle-color-dark;
+			}
+			.contact-element {
+				font-size: 14px;
+				line-height: 20px;
+				font-weight: normal;
+			}
+			.element-emphasis {
+				font-weight: 600;
+			}
+			.element-email {
+				text-decoration: underline;
+			}
+			.element-comments {
+				padding-top: 4px;
+			}
+		}
+	}
+}

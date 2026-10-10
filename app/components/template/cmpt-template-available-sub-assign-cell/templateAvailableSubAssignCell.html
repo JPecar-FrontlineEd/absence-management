@@ -1,0 +1,39 @@
+<div class="cmpt-template-available-sub-assign-cell">
+	<div ng-if="vm.canAssignSub || vm.canRemoveSub">
+		<!--<a class="fl-button negative"
+			ng-if="vm.isSubAssigned && vm.canRemoveSub"
+			qtip
+			my="bottom center"
+			at="top center"
+			on="click"
+			qtip-class="qtip remove-sub"
+			content="<cmpt-template-available-sub-remove-options></cmpt-template-available-sub-remove-options>">
+			<span class="fl-label">
+				<i class="fa fa-times pull-left"></i>{{ strings['AbsenceForm.Button.RemoveSub'] }}
+			</span>
+		</a>-->
+		<a class="fl-button fl-negative"
+			ng-class="{'fl-disabled': absrState.absr.isLocked }"
+	  		ng-if="vm.isSubAssigned && vm.canRemoveSub"
+	  		ng-click="go.showRemoveSubDialog()"
+			title="{{ strings['AbsenceForm.Button.RemoveSub'] }}"
+			>
+                <span class="fl-label">
+				<i class="fa fa-times pull-left"></i>{{ strings['AbsenceForm.Button.RemoveSub'] }}
+			</span>
+            </a>
+		<a class="fl-button fl-positive {{ vm.cssClass }}"
+			ng-class="{'fl-disabled': absrState.absr.isLocked }"
+			ng-if="!vm.isSubAssigned && vm.canAssignSub"
+			ng-click="go.assign()"
+			title="{{ vm.actionText }}">
+			<span class="fl-label">
+				<i class="fa fa-check pull-left"></i>
+				<span>{{ vm.actionText }}</span>
+			</span>
+		</a>
+	</div>
+	<div ng-if="!vm.canAssignSub">
+		N/A
+	</div>
+</div>

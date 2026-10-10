@@ -1,0 +1,66 @@
+<div class="fixed-width route-absences-reconcile" ng-controller="ReconcileCtrl as route">
+	<h3>{{route.strings['Reconciliation.Page.Header.Title']}}</h3>
+	<div class="report-standards">
+		<cmpt-reports-filter-panel class="panel" filters="route.vm.filters" extra-validators="route.vm.validation" action="route.go.callToServer" show-print-button="false"></cmpt-reports-filter-panel>
+	</div>
+	<div class="hint">
+		<div class="fl-hint">
+			<label>{{route.strings['Reconciliation.Hint.Header']}}:</label>
+			<span>{{route.strings['Reconciliaiton.Hint.Details.Text.Part1']}}<span class="italic">{{route.strings['Reconciliaiton.Hint.Details.Text.Details']}}</span> {{route.strings['Reconciliation.Hint.Details.Text.Part2']}}.</span>
+			<span>{{route.strings['Reconciliation.Hint.Details.Text.Part3']}} <span class="bold">{{route.strings['Reconciliation.Hint.Details.Text.Reconciliation']}}</span>, <span class="bold">{{route.strings['Reconciliation.Hint.Details.Text.Unreconcile']}}</span> {{route.strings['And']}} <span class="bold">{{route.strings['Reconciliation.Hint.Details.Text.Modify']}}</span> {{route.strings['Reconciliation.Hint.Detials.Text.Part4']}}.</span>
+		</div>
+	</div>
+
+	<div class="content-panel">
+		<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+		<div class="-g grid-header">
+			<span class="-u-8-24 grid-header-content">{{route.strings['Date']}}</span>
+			<span class="-u-10-24 grid-header-content center">{{route.strings['Reconciliation.Header.Text.ReconciledSummary']}}</span>
+			<span class="-u-5-24 grid-header-content center">{{route.strings['Reconciliation.Header.Text.NotReconcilied']}}</span>
+			<span class="-u-1-24 grid-header-content">&nbsp;</span>
+		</div>
+
+		<ul class="week" ng-repeat="week in route.vm.dataset" ng-class="{expanded: week.expanded}">
+			<li class="-g grid-header">
+				<span class="-u-8-24 grid-header-content">{{ week.start | date : 'MMMM d' }} - {{ week.end | date : 'MMMM d, y' }}</span>
+				<span class="-u-7-24 grid-header-content">
+					<div class="progress-bar">
+						<div class="progress-fill" ng-style="week.progressStyles"></div>
+					</div>
+				</span>
+				<span class="-u-3-24 grid-header-content center">{{ week.reconciled }}/{{ week.total }}</span>
+				<span class="-u-5-24 grid-header-content center">{{ week.total - week.reconciled }}</span>
+				<span class="-u-1-24 grid-header-content center toggle-handle"
+					ng-click="week.expanded = !week.expanded"
+				><i class="fa fa-angle-right"></i></span>
+			</li>
+			<ul ap-show-slide="week.expanded" duration="200">
+				<li class="-g grid-row" ng-repeat="day in week.dates">
+					<span class="-u-8-24 grid-cell top-padding">{{ day.date }}</span>
+					<span class="-u-7-24 grid-cell">&nbsp;</span>
+					<span class="-u-3-24 grid-cell center top-padding">
+						<a class="lnk-reconcile" ng-click="route.go.details(day.date, true)">
+							{{ day.reconciled }}/{{ day.total }}
+						</a>
+					</span>
+					<span class="-u-5-24 grid-cell center">
+						<a class="fl-button btn-reconcile" ng-if="day.total - day.reconciled > 0" ng-click="route.go.details(day.date)">
+							<span>{{route.strings['Reconcile']}}</span>
+							<span class="badge">{{ day.total - day.reconciled }}</span>
+						</a>
+						<span class="day-no-items" ng-if="day.total - day.reconciled === 0">{{ day.total - day.reconciled }}</span>
+					</span>
+					<span class="-u-1-24 grid-cell">&nbsp;</span>
+				</li>
+			</ul>
+		</ul>
+
+		<div class="-g grid-header footer" ng-show="route.vm.dataset.length > 0">
+			<span class="-u-8-24 grid-header-content">{{route.strings['Reconciliation.Footer.Text.TotalEvents']}}</span>
+			<span class="-u-7-24 grid-header-content">&nbsp;</span>
+			<span class="-u-3-24 grid-header-content center">{{route.vm.summary.reconciled}}/{{route.vm.summary.total}}</span>
+			<span class="-u-5-24 grid-header-content center">{{route.vm.summary.total - route.vm.summary.reconciled}}</span>
+			<span class="-u-1-24 grid-header-content">&nbsp;</span>
+		</div>
+	</div>
+</div>

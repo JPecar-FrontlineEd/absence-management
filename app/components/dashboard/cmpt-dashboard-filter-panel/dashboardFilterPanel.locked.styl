@@ -1,0 +1,130 @@
+.dashboard-locked .cmpt-dashboard-filter-panel {
+	position: relative;
+
+	.row {
+		width: 310px;
+	}
+
+	.data-gauge.row {
+		position: absolute;
+		margin: 0;
+		top: 0;
+		right: 0;
+		width: 438px;
+		z-index: 4;
+
+		.circle {
+			transform: scale(0.7);
+			margin: 5px -12px;
+			z-index: 5;
+
+			&.active {
+				margin: 5px -2px;
+				transform: scale(1)!important;
+			}
+		}
+	}
+
+	.section-arrow {
+		top: 90px;
+		margin-left: 250px;
+	}
+
+	.cmpt-ui-date-selector {
+		ng-transclude {
+			display: none;
+		}
+
+		margin-top: -1px;
+
+		input {
+			height: 25px;
+			font-size: 12px;
+			width: 100px;
+		}
+
+		.ui-datepicker-trigger {
+			top: 1px;
+		}
+	}
+
+	.cmpt-ui-date-navigation {
+		a {
+			margin-top: 1px;
+			height: 26px;
+			width: 25px;
+			line-height: 26px;
+		}
+
+		.today {
+			width: 55px;
+			line-height: 25px;
+		}
+	}
+
+	.mini-absence-vacancy {
+		float: right;
+		display: inline-block;
+
+		select{
+			font-size:12px;
+		}
+	}
+
+	.absence-vacancy {
+		display: none;
+	}
+
+	.cmpt-ui-multiselect {
+		position: relative;
+		border-radius: 0;
+
+		.label {
+			display: inline-block;
+			width: 100%;
+			padding-top: 5px;
+			padding-right: 30px;
+			overflow: ellipsis;
+			padding-right: 28px !important;
+		}
+
+		.selector {
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+
+			.trigger-button {
+				top: 3px;
+				padding-right: 16px;
+				height: 19px;
+
+				.filter {
+					height: 27px;
+				}
+
+				.ui-icon {
+					top: 8px;
+				}
+			}
+			.type-label {
+				display: inline-block;
+				width: 0;
+				height: 27px;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+		}
+	}
+
+	.cmpt-ui-calendar-button {
+		margin-right: 0;
+
+		.month span {
+			display: inline;
+		}
+		.calender-date .date .number {
+			display: none;
+		}
+	}
+}

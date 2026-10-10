@@ -1,0 +1,9 @@
+<div class="cmpt-template-reconcile-state">
+	<ng-transclude></ng-transclude>
+	<span >
+		<label ng-repeat="item in items">
+			<input type="radio" name="state" ng-value="item.value" ng-model="iscope.selected" >
+			{{ item.title }}
+		</label>
+	</span>
+</div>

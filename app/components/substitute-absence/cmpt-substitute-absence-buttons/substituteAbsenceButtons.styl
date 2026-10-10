@@ -1,0 +1,24 @@
+@import "common-var"
+.cmpt-substitute-absence-buttons {
+	a{
+		margin:0 5px;
+		&.right{
+			float:right;
+		}
+		&.green-color{
+			color: ap-green;
+		}
+		&:first-child{
+			margin-left:0;
+		}
+		&:last-child{
+			margin-right:0;
+		}
+	}
+	&.disable-save-btn{
+		.fl-positive{
+			opacity: .6;
+		    cursor: not-allowed;
+	    }
+	}
+}

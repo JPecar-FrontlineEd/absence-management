@@ -1,0 +1,16 @@
+<div class="fixed-width route-substitute-absences-create-substitute-absence-details" ng-controller="CreateSubstituteAbsenceDetailsCtrl as route">
+	<div class="title"><h3>{{ route.strings['Substitute.Absence'] }}: {{ route.strings['SubstituteAbsence.Create.Text'] }}</h3></div>
+	<cmpt-step-progress steps="route.vm.steps" current-step="1"></cmpt-step-progress>
+	<div class="content-panel">
+		<ng-form name="substituteAbsenceForm">
+			<cmpt-current-step enable-next="substituteAbsenceForm.$valid" steps="route.vm.steps" current-step="1" class="top">{{ route.strings['SubstituteAbsence.Create.Text.Step'] }} 2: {{ route.strings['Absence.Create.Text.FillOut'] }} {{ route.strings['Absence'] }} {{ route.strings['Absence.Create.Text.DetailsFor'] }} 
+				<!--<span class="bold">&nbsp;{{ route.substituteAbsenceVal.substitute.name }}</span>-->
+				&nbsp;<cmpt-template-substitute-link substitute-id="{{ route.substituteAbsenceVal.substitute.id }}" substitute-name="{{ route.substituteAbsenceVal.substitute.name }}" show-name-as-link="true" show-link-following-name="false"></cmpt-template-substitute-link>
+			</cmpt-current-step>
+
+				<cmpt-substitute-absence-detail></cmpt-substitute-absence-detail>
+
+			<cmpt-current-step enable-next="substituteAbsenceForm.$valid" steps="route.vm.steps" current-step="1" class="bottom"></cmpt-current-step>
+		</ng-form>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="cmpt-ui-loader loader" ng-class="{'fill-container': fill}" ng-show="isLoading">
+	<div ng-class="cls" class="loading-container">
+		<div class="status" ng-if="statusText != null">{{ statusText }}</div>
+		<div class="logo-spinner">
+			<span class="bar bar-1"></span>
+			<span class="bar bar-2"></span>
+			<span class="bar bar-3"></span>
+			<span class="bar bar-4"></span>
+			<span class="bar bar-5"></span>
+			<span class="bar bar-6"></span>
+		</div>
+	</div>
+	<div class="cover" ng-if="fill"></div>
+</div>

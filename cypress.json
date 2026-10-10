@@ -1,0 +1,13 @@
+{
+  "projectId": "ko1qv8",
+  "baseUrl": "http://localhost.fldev.net:3000",
+  "numTestsKeptInMemory": 50,
+  "port": 3002,
+  "reporter": "spec",
+  "reporterOptions": null,
+  "screenshotOnHeadlessFailure": true,
+  "watchForFileChanges": true,
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "requestTimeout": 7000
+}

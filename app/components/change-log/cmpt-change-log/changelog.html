@@ -1,0 +1,8 @@
+<div class="cmpt-change-log">
+	<div ng-if="vm.row.impersonatorUserName" class="cmpt-inline"><strong>{{vm.row.impersonatorUserName}} </strong></div> &nbsp;
+		<span class="qtip-on-click-cursor" qtip content="{{vm.changeLogHtml}}" ng-if="vm.row.showFlidDetails" on="click" ng-click="go.getChangeLogDetails()">
+			<i class="fa fa-info-circle" aria-hidden="true"></i>
+		</span>
+	<div ng-if="vm.row.impersonatorUserName && vm.row.who"> signed in as </div>
+	{{vm.row.who}}
+</div>

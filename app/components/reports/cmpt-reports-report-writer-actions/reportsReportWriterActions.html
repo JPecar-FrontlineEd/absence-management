@@ -1,0 +1,9 @@
+<div class="cmpt-reports-report-writer-actions">
+	<div class="use-as-template" ng-if="!vm.reportConfig.canEdit && vm.reportConfig.type.canCreate"><a class="fl-button" href="{{ vm.reportConfig.editReportUrl }}" target="_self">{{strings['UseAsTemplate']}}</a></div>
+	<div class="edit-report" ng-if="vm.reportConfig.canEdit"><a class="fl-button" href="{{ vm.reportConfig.editReportUrl }}" target="_self">{{strings['Edit']}}</a></div>
+
+	<div class="delete-report" ng-if="vm.reportConfig.isOwner"><a class="fl-button" href="">{{strings['Delete']}}</a></div>
+
+	<div class="run-new-filters"><a class="fl-button-sm action" href="{{ vm.reportConfig.runWithNewFiltersUrl }}" target="_self">{{strings['RunWithNewFilters']}}</a></div>
+    <div class="run-saved-filters"><a class="fl-button-sm action" href="{{ vm.reportConfig.runWithSavedFiltersUrl }}" target="_self">{{strings['RunWithSavedFilters']}}</a></div>
+</div>

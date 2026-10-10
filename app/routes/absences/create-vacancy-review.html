@@ -1,0 +1,26 @@
+<div class="fixed-width route-absences-create-vacancy-review" ng-controller="CreateVacancyReviewCtrl as route">
+	<div class="title"><h3>{{ strings['Vacancy'] }}: {{ strings['Absence.Create.Text.CreateVacancy'] }}</h3></div>
+	<cmpt-step-progress steps="vm.steps" current-step="2"></cmpt-step-progress>
+	<div class="content-panel">
+		<cmpt-current-step enable-next="true" steps="vm.steps" current-step="2" class="top">{{ strings['Absence.Create.Text.Step'] }} 3: {{ strings['Absence.Create.Text.ReviewAndConfirmDetailsFor'] }}
+			<!--<span class="bold">&nbsp;{{ absrState.worker.name }}</span>-->
+			&nbsp;<cmpt-template-worker-link worker-id="{{ absrState.worker.id }}" worker-name="{{ absrState.worker.name }}" show-name-as-link="true" is-vacancy="true"></cmpt-template-worker-link>
+		</cmpt-current-step>
+		<div class="-g">
+			<div class="-u-17-24">
+				<cmpt-absr-review ng-repeat="variation in absrState.absrVariations" variation = "variation" class="-u-24-24" ng-if= "selectedView != 'btnDay'" ></cmpt-absr-review>
+				<div class="cmpt-absr-variation-header width100pc" ng-if= "selectedView == 'btnDay'">
+					<div class="section-header height100pc">
+						<span class="fontBold">
+							{{strings['ViewingByDay']}}
+						</span>						
+					</div>
+				</div>
+				<cmpt-absr-details-by-day ng-repeat = "absence in absrState.absr.absences" absence = "absence" apshowslide="isExpanded" class="-u-24-24" ng-if= "selectedView == 'btnDay'"></cmpt-absr-details-by-day>
+				<cmpt-absr-notes-and-attachments class="-u-24-24"></cmpt-absr-notes-and-attachments>
+			</div>
+			<cmpt-absr-details-summary-section class="-u-7-24" review-mode="true" edit-mode="true"></cmpt-absr-details-summary-section>
+		</div>
+		<cmpt-current-step enable-next="true" steps="vm.steps" current-step="2" class="bottom"></cmpt-current-step>
+	</div>
+</div>

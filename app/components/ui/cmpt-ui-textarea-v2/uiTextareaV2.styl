@@ -1,0 +1,59 @@
+@import "common-var"
+.cmpt-ui-textarea-v2 {
+	vertical-align:top;
+	font-size:12px;
+	margin-bottom:10px;
+
+
+	label {
+		margin-right: 35px;
+		margin-bottom: 10px;
+		display: inline-block;
+		font-size: 13px;
+		font-weight: bold;
+		vertical-align: top;
+
+		.caption {
+			color: subTitle-color-dark;
+			font-size: 11px;
+			font-weight: normal;
+			line-height: 135%;
+			margin-top: 5px;
+		}
+	}
+
+	div {
+		font-size:14px;
+		word-wrap: break-word;
+	}
+
+	textarea {
+		background: backGroundColor;
+		border: 1px solid borderColor-medium;
+		box-shadow: inset 0 0 6px boxShadow;
+		padding: 5px;
+		font-size: 14px;
+		color: subTitle-color-darkest;
+		height: 100px;
+		margin: 0;
+		width:100%;
+		max-width: 100%;
+		//DE10958 - Text Wrapping
+		//Puting is back to normal becasue "pre" was not doing what it suppose to do,
+		//"pre" is not keeping the carriage and return becasue this is a textarea not the texteditor.
+		white-space:normal;
+	}
+
+	.notes-characters-left {
+		color: subTitle-color-dark;
+		font-size: 11px;
+		font-weight: normal;
+		line-height: 135%;
+		text-align: right;
+	}
+
+	.over-limit {
+		color: ap-dark-red;
+	}
+
+}

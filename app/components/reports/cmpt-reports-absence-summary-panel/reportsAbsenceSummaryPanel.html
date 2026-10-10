@@ -1,0 +1,37 @@
+<div class="-g cmpt-reports-absence-summary-panel">
+	<div class="-u-11-24 chart-wrap">
+		<div class="graph-content">
+			<cmpt-ui-bar-chart
+				ng-if="vm.hasData"
+				data="vm.graphData"
+				labels="vm.labels"
+				colors="vm.colors"
+				options="vm.options"
+				width="420"
+				height="175"
+			></cmpt-ui-bar-chart>
+			<div class="no-chart-container" ng-if="!vm.hasData">
+				<div class="no-Chart">
+					{{strings['DR.Summary.Graph.Text.NoAbsencesOrVacancies']}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="-u-6-24 graph-summary">
+		<ng-transclude></ng-transclude>
+	</div>
+	<div class="-u-7-24">
+		<div class="legend fl-hint">
+			<div class="legend-header">{{strings['DR.Summar.Legend.Header.ReadingTheReport']}}:</div>
+			<div class="legend-item">
+				<span class="box green"></span><label>{{ strings['DR.Summary.Legend.Text.Filled'] }}</label>
+			</div>
+			<div class="legend-item">
+				<span class="box yellow"></span><label>{{ strings['Unfilled'] }}</label>
+			</div>
+			<div class="legend-item">
+				<span class="box grey"></span><label>{{ strings['DR.Summary.Legend.Text.NoFillNeeded'] }}</label>
+			</div>
+		</div>
+	</div>
+</div>

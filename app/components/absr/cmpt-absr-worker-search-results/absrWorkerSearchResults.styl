@@ -1,0 +1,86 @@
+@import "common-var"
+.cmpt-absr-worker-search-results {
+	position: relative;
+	min-height: 360px;
+
+
+
+
+	.name-cell {
+		font-weight: bold;
+		.cmpt-template-worker-link{
+			.content{
+				max-width: 175px;
+			}
+		}
+	}
+	.grid-row {
+		.row-item {
+			cursor: pointer;
+		}
+	}
+
+	&.spinner-bottom {
+		.loader-container {
+			.cmpt-ui-loader {
+				.loading-container {
+					top: initial;
+				 	bottom: 100px;
+			 	}
+		 	}
+	 	}
+	}
+
+	.no-data {
+		text-align: center;
+		padding: 160px;
+		background: backGroundColor;
+		font-size: 18px;
+		font-weight: bold;
+		color: grid-transclude-color;
+	}
+
+	.school-cell {
+		span:not(.more){
+			max-width: 195px;
+			float: left;
+		}
+		span.more {
+			color: ap-blue;
+			font-weight: bold;
+			margin-left: 5px;
+		}
+	}
+
+	.below-grid {
+		text-align: center;
+		border-top: 1px solid borderColor-light;
+
+		button.fl-button {
+			margin: 10px;
+		}
+	}
+
+	.cmpt-template-institution-link {
+		display: inline;
+	}
+
+	.cmpt-template-worker-link {
+		display: inline;
+	}
+	.cmpt-template-worker-link div{
+		display: inline;
+		margin-left: 4px;
+
+	}
+}
+
+.qtip.more{
+	ul{
+		li{
+			white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis
+		}
+	}
+}

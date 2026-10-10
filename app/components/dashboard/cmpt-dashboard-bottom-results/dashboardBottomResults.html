@@ -1,0 +1,24 @@
+<div class="cmpt-dashboard-bottom-results">
+	<div class="header">
+		<div class="header-content">
+			<span class="count">{{ dash.counts[dash.activeSection] }}</span>
+			<span class="label">{{ strings[vm.sectionLabel[dash.activeSection]] }}</span>
+			<div class="report-loader" ng-show="vm.loading">
+				<div class="logo-spinner">
+					<span class="bar bar-1"></span>
+					<span class="bar bar-2"></span>
+					<span class="bar bar-3"></span>
+					<span class="bar bar-4"></span>
+					<span class="bar bar-5"></span>
+					<span class="bar bar-6"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content-panel">
+		<cmpt-ui-grid
+			columns="vm.columns[dash.activeSection]"
+			dataset="vm.data[dash.activeSection]"
+		>{{ strings[vm.noDataLabel[dash.activeSection]] }}</cmpt-ui-grid>
+	</div>
+</div>

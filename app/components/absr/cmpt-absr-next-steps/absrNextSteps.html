@@ -1,0 +1,71 @@
+<div class="cmpt-absr-next-steps">
+	<div class="-g section-header" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+		<span>{{strings['Absence.Label.Text.NextSteps']}}</span>
+		<div class="toggle-summary"
+			ng-class="{expanded: vm.expanded, deletedAbsrBackground : absrState.absr.isDeleted}"
+			ng-click="vm.expanded = !vm.expanded"
+		>
+			<span><i class="fa fa-angle-{{vm.expanded ? 'up' : 'down'}}"></i></span>
+		</div>
+	</div>
+	<div class="next-steps" ng-class="{deletedAbsrNextPanelBackground : absrState.absr.isDeleted}"  ap-show-slide="vm.expanded">
+		<div class="status">
+			<label>{{strings['Status']}}:&nbsp;</label>
+			<cmpt-template-absence-request-status></cmpt-template-absence-request-status>
+			<cmpt-template-feedback-rating ng-show="absrState.substitute !== null" average-score="vm.subFeedback.avgScore" total-number-of-rating="vm.subFeedback.numberOfRatings"></cmpt-template-feedback-rating>
+		</div>
+		<div ng-if="!absrState.editMode">
+		  	<button class="fl-button-sm"
+		  		ng-class="{'fl-disabled': absrState.absr.isLocked || absrState.absr.isDeleted, 'deletedAbsrButton' : absrState.absr.isDeleted }"
+		  		ng-if="absrState.context.canRemoveSub"
+				ng-click="go.showRemoveSubDialog()"
+				ng-disabled = "absrState.absr.isDeleted"
+			>
+                <span class="fl-label">
+                    <i class="fa-times pull-left"></i>
+                    {{strings['AbsenceForm.Button.RemoveSub']}}
+                </span>
+            </button>
+			<a class="fl-button-sm fl-positive" ng-class="{'fl-disabled': absrState.absr.isLocked }" ng-if="absrState.context.canAssignSub"  ng-click="go.assignSub()">
+                <span class="fl-label">
+                    <i class="fa pull-left" ng-class="{'fa-spinner fa-spin': vm.isAvaiableSubLoading, 'fa-check': !vm.isAvaiableSubLoading}"></i>
+                    <span ng-show="absrState.substitute === null">
+                    	{{ strings['Absence.Button.Text.AssignSub'] }}
+                    </span>
+                    <span ng-show="absrState.substitute !== null">
+                    	{{ strings['Absecne.Button.Text.ReassignSub'] }}
+                    </span>
+                </span>
+			</a>
+		</div>
+		<div ng-if="vm.shouldShowCreateAnotherAbsenceLink" class="create-another-absence-link">
+			<a ng-href="{{vm.createAnotherAbsenceLink}}">{{ strings[vm.createAnotherAbsenceLinkMnemonic] }}</a>
+		</div>
+		<div class="feedback" ng-if="absrState.substitute != null && vm.afterAbsenceStart && (vm.canSeeWorkerFeedbackLink || vm.canSeeSubFeedbackLink)">
+			<div>{{strings['Feedback']}}</div>
+			<div ng-if="vm.canSeeWorkerFeedbackLink">
+				<a ng-if = "!absrState.absr.isDeleted" ng-click="go.feedbackAboutSubstitute()"> {{ strings[vm.strAboutSubstitute] }} </a>
+				<span ng-class="{deletedAbsrNextPanelBackground: absrState.absr.isDeleted}" ng-if = "absrState.absr.isDeleted"> {{ strings[vm.strAboutSubstitute] }} </span>
+			</div>
+			<div ng-if="vm.canSeeSubFeedbackLink">
+				<a ng-if = "!absrState.absr.isDeleted" ng-click="go.feedbackFromSubstitute()"> {{ strings[vm.strFromSubstitute] }} </a>
+				<span ng-class="{deletedAbsrNextPanelBackground: absrState.absr.isDeleted}" ng-if = "absrState.absr.isDeleted"> {{ strings[vm.strFromSubstitute] }} </span>
+			</div>
+		</div>
+		<div ng-if="absrState.absr.requiresApproval && $root.havePermission('ABSRAPPRVL.ApproveDeny')">
+			<cmpt-template-approve-action
+				absr="absrState.absr"
+				comment="vm.comment"
+				read-only="absrState.absr.isLocked">
+					<div ng-show="vm.processingApproval" class="processing">
+						<i class="fa fa-spinner fa-spin"></i> Processing
+					</div>
+					<div ng-show="!vm.processingApproval">
+						<button ng-if="absrState.absr.canApprove" class="fl-button-sm fl-positive" ng-class="{'fl-disabled': absrState.absr.isLocked || absrState.absr.isDeleted, 'deletedAbsrButton' : absrState.absr.isDeleted }" ng-click="go.approve()" ng-disabled = "absrState.absr.isDeleted"><span class="fl-label"><i class="fa fa-check pull-left"></i>{{ strings['Absence.Button.Text.Approve'] }}</span></button>
+						<button ng-if="absrState.absr.canDeny" class="fl-button-sm fl-negative" ng-class="{'fl-disabled': absrState.absr.isLocked || absrState.absr.isDeleted, 'deletedAbsrButton' : absrState.absr.isDeleted }" ng-click="go.deny()" ng-disabled = "absrState.absr.isDeleted">{{ strings['Absence.Button.Text.Deny'] }}</button>
+						<button ng-if="absrState.absr.canDenyPart && vm.canDenyPart" ng-click="go.denyPart()" class="fl-button-sm deny-part" ng-class="{'fl-disabled': absrState.absr.isLocked || absrState.absr.isDeleted, 'deletedAbsrButton' : absrState.absr.isDeleted }" ng-disabled = "absrState.absr.isDeleted">{{ strings['Absence.Button.Text.DenyPart'] }}</button>
+					</div>
+			</cmpt-template-approve-action>
+		</div>
+	</div>
+</div>

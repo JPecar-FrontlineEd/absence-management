@@ -1,0 +1,9 @@
+<div class="cmpt-approval-comment-log">
+	<strong>-&nbsp;<div ng-if="vm.row.ImpersonatorUserName" class="cmpt-inline">{{vm.row.ImpersonatorUserName}} &nbsp;</div>
+	<span class="qtip-on-click-cursor" qtip content="{{vm.commentHtml}}" ng-if="vm.row.ShowFlidDetails" on="click" ng-click="go.getCommentDetails()"> 
+		<i class="fa fa-info-circle" aria-hidden="true"></i>
+	</span>
+	<div ng-if="vm.row.ImpersonatorUserName && vm.row.By" class="cmpt-inline"> signed in as &nbsp;</div> {{vm.row.By}} </strong>
+	<div class="cmpt-approval-comment-log-datetime">{{vm.row.CommentDateTime}}</div>
+	<div class="cmpt-approval-comment-log-comment">{{vm.row.Comments}}</div>
+</div>

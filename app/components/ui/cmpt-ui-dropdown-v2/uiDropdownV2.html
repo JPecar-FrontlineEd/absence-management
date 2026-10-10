@@ -1,0 +1,17 @@
+<div class="cmpt-ui-dropdown-v2">
+	<div class="input">
+		<cmpt-ui-dropdown
+			options-array="optionsArray"
+			value-selected="valueSelected"
+			read-only="readOnly"
+			error-messages="[]"
+			enabled="enabled"
+			sort-by="sortBy"
+			required="required"
+			allow-blank="allowBlank"
+			name="{{ name }}"></cmpt-ui-dropdown>
+		<div ng-messages="formValue.$touched && formValue.$error" class="validation-messages">
+			<ng-transclude></ng-transclude>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,990 @@
+{
+  "data": [
+    {
+      "category": "ABSR",
+      "items": [
+        {
+          "type": "DISPLAY"
+        },
+        {
+          "type": "CREATE"
+        },
+        {
+          "type": "ADDDTLS"
+        },
+        {
+          "type": "DELDTLS"
+        },
+        {
+          "type": "DELETE"
+        },
+        {
+          "type": "APPROVE"
+        },
+        {
+          "type": "ASSIGNSUB"
+        },
+        {
+          "type": "REMOVESUB"
+        },
+        {
+          "type": "EXCEEDMAXENTT"
+        },
+        {
+          "type": "SPLIT"
+        },
+        {
+          "type": "DTLSBDCD"
+        },
+        {
+          "type": "DTLSPYCD"
+        },
+        {
+          "type": "VACANCY"
+        },
+        {
+          "type": "VACANCYEDIT"
+        },
+        {
+          "type": "NOABSDOW"
+        },
+        {
+          "type": "OVERRIDENOSUB"
+        },
+        {
+          "type": "DTLSACCD"
+        },
+        {
+          "type": "EDITDTLSDATE"
+        },
+        {
+          "type": "EDITDTLSINST"
+        },
+        {
+          "type": "EDITDTLSENTT"
+        },
+        {
+          "type": "EDITDTLSTIME"
+        },
+        {
+          "type": "EDITDTLSBDCD"
+        },
+        {
+          "type": "EDITDTLSPYCD"
+        },
+        {
+          "type": "EDITDTLSACCD"
+        },
+        {
+          "type": "EDITDTLSSUBHRS"
+        },
+        {
+          "type": "EDITDTLSNOTES"
+        },
+        {
+          "type": "EDITDTLSSUBREQ"
+        },
+        {
+          "type": "OVERRIDEUNQUAL"
+        },
+        {
+          "type": "EDITDTLSWORKADMNOTES"
+        },
+        {
+          "type": "EDITDTLSADMINNOTES"
+        },
+        {
+          "type": "EDITDTLSDURABSENT"
+        },
+        {
+          "type": "EXCEEDWORKENTS"
+        },
+        {
+          "type": "OVERRIDEEXCLUDED"
+        },
+        {
+          "type": "EXCEEDCONSECABSDAYS"
+        },
+        {
+          "type": "RESENDADVEMAILS"
+        },
+        {
+          "type": "DTLSACCDPRIVATE"
+        },
+        {
+          "type": "CUSTOMAG"
+        },
+        {
+          "type": "OVRDSUBNOT"
+        },
+        {
+          "type": "RMVSUBPRVNTWORK"
+        },
+        {
+          "type": "VIEWDTLSADMINNOTES"
+        },
+        {
+          "type": "VIEWTTLASSIGNPAYOUT"
+        },
+        {
+          "type": "EXCEEDMAXABSDURATION"
+        },
+        {
+          "type": "RECONCILEALL"
+        },
+        {
+          "type": "OVERRIDESUBPREF"
+        },
+        {
+          "type": "VIEWSUBTIMES"
+        },
+        {
+          "type": "EDITSUBTIMES"
+        },
+        {
+          "type": "ASSIGNOVERWORKEDSUB"
+        },
+        {
+          "type": "VACPRIVATEEDIT"
+        },
+        {
+          "type": "ASSIGNWHENHELD"
+        },
+        {
+          "type": "ASSIGNAFTERCUTOFF"
+        },
+        {
+          "type": "SHOWPRIVATEENTT"
+        },
+        {
+          "type": "SHOWEXCLUDEDSUBS"
+        },
+        {
+          "type": "CREATEAFTERCUTOFF"
+        },
+        {
+          "type": "OVERRIDESUBNONWORKDAYS"
+        }
+      ]
+    },
+    {
+      "category": "ABSR_TS",
+      "items": [
+        {
+          "type": "DELETEABSR"
+        },
+        {
+          "type": "DELETEABS"
+        },
+        {
+          "type": "REMOVESUB"
+        },
+        {
+          "type": "EDITABS"
+        },
+        {
+          "type": "EDITABSR"
+        },
+        {
+          "type": "DELABSR_APP"
+        },
+        {
+          "type": "DELABS_APP"
+        },
+        {
+          "type": "REMSUB_APP"
+        },
+        {
+          "type": "EDITABS_APP"
+        },
+        {
+          "type": "EDITABSR_APP"
+        }
+      ]
+    },
+    {
+      "category": "ABSRAPPRD",
+      "items": [
+        {
+          "type": "DELETE"
+        },
+        {
+          "type": "EDITABSR"
+        }
+      ]
+    },
+    {
+      "category": "ABSRAPPRVL",
+      "items": [
+        {
+          "type": "APPROVEDENY"
+        },
+        {
+          "type": "DENYITEMS"
+        },
+        {
+          "type": "DENYASSIGNED"
+        },
+        {
+          "type": "DENYPASTCUTOFF"
+        }
+      ]
+    },
+    {
+      "category": "ABSREXTD",
+      "items": [
+        {
+          "type": "ASSIGNSUB"
+        },
+        {
+          "type": "DELETE"
+        },
+        {
+          "type": "EDITABSR"
+        },
+        {
+          "type": "RECONCILE"
+        },
+        {
+          "type": "REMOVESUB"
+        }
+      ]
+    },
+    {
+      "category": "ABSRFEEDBK",
+      "items": [
+        {
+          "type": "VIEWFEEDBACK"
+        },
+        {
+          "type": "ADDFEEDBACK"
+        },
+        {
+          "type": "EDITFEEDBACK"
+        },
+        {
+          "type": "ADDSUBEXPFEEDBACK"
+        },
+        {
+          "type": "VIEWSUBEXPFEEDBACK"
+        },
+        {
+          "type": "EDITSUBEXPFEEDBACK"
+        },
+        {
+          "type": "VIEWSUBPERFSCORE"
+        }
+      ]
+    },
+    {
+      "category": "ABSRMLOC",
+      "items": [
+        {
+          "type": "APPROVE"
+        },
+        {
+          "type": "ASSIGNSUB"
+        },
+        {
+          "type": "DELETE"
+        },
+        {
+          "type": "REMOVESUB"
+        },
+        {
+          "type": "HOLDPROCESSING"
+        },
+        {
+          "type": "MULTISCHOOLABSENCES"
+        }
+      ]
+    },
+    {
+      "category": "ABSRPAST",
+      "items": [
+        {
+          "type": "APPROVE"
+        },
+        {
+          "type": "ASSIGNSUB"
+        },
+        {
+          "type": "DELETE"
+        },
+        {
+          "type": "REMOVESUB"
+        },
+        {
+          "type": "EDITABSR"
+        },
+        {
+          "type": "EDITABS"
+        }
+      ]
+    },
+    {
+      "category": "ABSRPROC",
+      "items": [
+        {
+          "type": "PAUSECALL"
+        },
+        {
+          "type": "ABSENCELOG"
+        },
+        {
+          "type": "CALLHISTORY"
+        },
+        {
+          "type": "HOLDPROCESSING"
+        },
+        {
+          "type": "FORCEABSRCALL"
+        },
+        {
+          "type": "BLOCKSUB"
+        }
+      ]
+    },
+    {
+      "category": "ADMIN",
+      "items": [
+        {
+          "type": "RECORDEMPNAME"
+        }
+      ]
+    },
+    {
+      "category": "EMP",
+      "items": [
+        {
+          "type": "EMPREGISTER"
+        },
+        {
+          "type": "EMPABSENCESCHED"
+        },
+        {
+          "type": "EMPVIEWCONFIG"
+        }
+      ]
+    },
+    {
+      "category": "MISC",
+      "items": [
+        {
+          "type": "HELP"
+        }
+      ]
+    },
+    {
+      "category": "PREFLIST",
+      "items": [
+        {
+          "type": "VIEW"
+        },
+        {
+          "type": "EDIT"
+        },
+        {
+          "type": "EXCLUDE"
+        },
+        {
+          "type": "COMMENTVIEW"
+        },
+        {
+          "type": "COMMENTEDIT"
+        }
+      ]
+    },
+    {
+      "category": "RPTABS",
+      "items": [
+        {
+          "type": "ABSEXTRACT"
+        },
+        {
+          "type": "SUBSIGNIN"
+        },
+        {
+          "type": "ABSSUMMARY"
+        },
+        {
+          "type": "ABSABSENTEE"
+        },
+        {
+          "type": "APPROVALSTATUS"
+        },
+        {
+          "type": "ABSDOWANAL"
+        },
+        {
+          "type": "FEEDBACK"
+        },
+        {
+          "type": "ABSDAILY"
+        },
+        {
+          "type": "ABSCALLHIST"
+        },
+        {
+          "type": "ABSINTERACTIVE"
+        }
+      ]
+    },
+    {
+      "category": "RPTEMP",
+      "items": [
+        {
+          "type": "EMPREG"
+        }
+      ]
+    },
+    {
+      "category": "RPTSUB",
+      "items": [
+        {
+          "type": "SUBAVAILABILITY"
+        },
+        {
+          "type": "SUBHISTBYDATE"
+        },
+        {
+          "type": "SUBEXCLUDED"
+        }
+      ]
+    },
+    {
+      "category": "RPTTS",
+      "items": [
+        {
+          "type": "MARKPAPER"
+        },
+        {
+          "type": "SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "RPTWACCESS",
+      "items": [
+        {
+          "type": "VIEWPUBLIC"
+        },
+        {
+          "type": "VIEWPUBLISHED"
+        },
+        {
+          "type": "VIEWLOCKED"
+        }
+      ]
+    },
+    {
+      "category": "RPTWTYPES",
+      "items": [
+        {
+          "type": "ABSENCE"
+        },
+        {
+          "type": "ENTT"
+        },
+        {
+          "type": "SUB"
+        },
+        {
+          "type": "WORK"
+        },
+        {
+          "type": "INST"
+        },
+        {
+          "type": "ENTTREF"
+        },
+        {
+          "type": "WKT"
+        },
+        {
+          "type": "ORGUSER"
+        }
+      ]
+    },
+    {
+      "category": "SECURITY",
+      "items": [
+        {
+          "type": "LASTLOGIN"
+        }
+      ]
+    },
+    {
+      "category": "SUB",
+      "items": [
+        {
+          "type": "SUBSCHED"
+        },
+        {
+          "type": "SUBVIEWGENERAL"
+        },
+        {
+          "type": "VIEWPHONE"
+        }
+      ]
+    },
+    {
+      "category": "SUBABS",
+      "items": [
+        {
+          "type": "DISPLAY"
+        },
+        {
+          "type": "CREATE"
+        },
+        {
+          "type": "EDIT"
+        },
+        {
+          "type": "DELETE"
+        },
+        {
+          "type": "EDITDTLSENTT"
+        },
+        {
+          "type": "EDITDTLSDATE"
+        },
+        {
+          "type": "DTLSACCD"
+        },
+        {
+          "type": "EDITDTLSACCD"
+        },
+        {
+          "type": "EDITPAST"
+        },
+        {
+          "type": "EXCEEDMAXYEARLYUSAGE"
+        },
+        {
+          "type": "EXCEEDMINABSDURATION"
+        }
+      ]
+    },
+    {
+      "category": "UPLOAD",
+      "items": [
+        {
+          "type": "ABSR"
+        }
+      ]
+    },
+    {
+      "category": "VACPROF",
+      "items": [
+        {
+          "type": "VACPROFILEPRIVEDIT"
+        }
+      ]
+    },
+    {
+      "category": "VTOPTIONS",
+      "items": [
+        {
+          "type": "PAYROLL_LOCK"
+        },
+        {
+          "type": "TIMESHEET_VIEW"
+        },
+        {
+          "type": "TIMESHEET_REVIEW_VIE"
+        },
+        {
+          "type": "PEOPLE_VIEW"
+        },
+        {
+          "type": "CHANGE_LOG_VIEW"
+        },
+        {
+          "type": "VIEW_IP_RANGES"
+        },
+        {
+          "type": "VIEW_KIOSK_ADMIN"
+        },
+        {
+          "type": "VIEW_BARCODE"
+        },
+        {
+          "type": "VIEW_CLOCK_LOG"
+        },
+        {
+          "type": "VIEW_CLOCK_EXCEPT"
+        },
+        {
+          "type": "VIEW_WORK_SUM"
+        },
+        {
+          "type": "VIEW_WORK_DET"
+        },
+        {
+          "type": "VIEW_SCHEDULES"
+        },
+        {
+          "type": "VIEW_ACCOUNTCODE"
+        },
+        {
+          "type": "VIEW_CHANGELOGLINK"
+        },
+        {
+          "type": "VIEW_TAG_ADMIN"
+        },
+        {
+          "type": "VIEW_VISIBLITY"
+        },
+        {
+          "type": "VIEW_VIS_HIERARCHY"
+        },
+        {
+          "type": "VIEW_TS_REJECT_REASO"
+        },
+        {
+          "type": "VIEW_GENERALSEARCH"
+        },
+        {
+          "type": "VIEW_ORGSETTINGS"
+        },
+        {
+          "type": "VIEW_EVENTTYPES"
+        },
+        {
+          "type": "VIEW_JOBTYPES"
+        },
+        {
+          "type": "CAN_APPROVE_ALL"
+        },
+        {
+          "type": "CAN_REJECT_ALL"
+        },
+        {
+          "type": "CAN_RESET_ALL_PENDIN"
+        },
+        {
+          "type": "CAN_RESET_ALL_SUBMIT"
+        },
+        {
+          "type": "VIEW_SYSTEM_ACTIVITY"
+        },
+        {
+          "type": "VIEW_WORK_SCHEDULES"
+        },
+        {
+          "type": "VIEW_POSITIONS"
+        },
+        {
+          "type": "VIEW_STAFF_GROUPS"
+        },
+        {
+          "type": "VIEW_MASTER_CAL"
+        },
+        {
+          "type": "VIEW_PAYROLL_REVIEW"
+        },
+        {
+          "type": "VIEW_WAGE_CODE_ASSN"
+        },
+        {
+          "type": "VIEW_SCHEDULE_SUMMAR"
+        },
+        {
+          "type": "VIEW_WAGE_OPTIONS"
+        },
+        {
+          "type": "VIEW_USER_SETTINGS"
+        },
+        {
+          "type": "VIEW_BALANCE_HISTORY"
+        },
+        {
+          "type": "VIEW_BALANCE_SUMMARY"
+        },
+        {
+          "type": "CAN_UPDATE_BALANCE"
+        },
+        {
+          "type": "VIEW_HBQ_REPORT"
+        },
+        {
+          "type": "VIEW_VACANCYASSN"
+        },
+        {
+          "type": "VIEW_ADMINSETTINGS"
+        },
+        {
+          "type": "V_ACCOUNTCODE"
+        },
+        {
+          "type": "V_ADMINSETTINGS"
+        },
+        {
+          "type": "V_EVENTTYPES"
+        },
+        {
+          "type": "V_IP_RANGES"
+        },
+        {
+          "type": "V_JOBTYPES"
+        },
+        {
+          "type": "V_KIOSK_ADMIN"
+        },
+        {
+          "type": "V_MASTER_CAL"
+        },
+        {
+          "type": "V_ORGSETTINGS"
+        },
+        {
+          "type": "V_POSITIONS"
+        },
+        {
+          "type": "V_STAFF_GROUPS"
+        },
+        {
+          "type": "V_TAG_ADMIN"
+        },
+        {
+          "type": "V_TS_REJECT_REASO"
+        },
+        {
+          "type": "V_USER_SETTINGS"
+        },
+        {
+          "type": "V_VACANCYASSN"
+        },
+        {
+          "type": "V_VIS_HIERARCHY"
+        },
+        {
+          "type": "V_VISIBLITY"
+        },
+        {
+          "type": "V_WAGE_CODE_ASSN"
+        },
+        {
+          "type": "V_WAGE_OPTIONS"
+        },
+        {
+          "type": "V_WORK_SCHEDULES"
+        },
+        {
+          "type": "APPROVE_SELECT_TS"
+        },
+        {
+          "type": "REJECT_SELECT_TS"
+        },
+        {
+          "type": "RESET_SEL_TS_2_SUBM"
+        },
+        {
+          "type": "RESET_SEL_TS_2_PEND"
+        },
+        {
+          "type": "V_TIMESHEET"
+        },
+        {
+          "type": "USERPROFILE_VIEW"
+        },
+        {
+          "type": "USERPROFILE_EDIT"
+        },
+        {
+          "type": "E_ROUNDING_RULES"
+        },
+        {
+          "type": "V_ROUNDING_RULES"
+        },
+        {
+          "type": "V_ACCOUNTALLOCATION"
+        },
+        {
+          "type": "E_ACCOUNTALLOCATION"
+        },
+        {
+          "type": "V_ADMIN_VISIBILITIES"
+        },
+        {
+          "type": "VIEWAPPROVALCHAIN"
+        },
+        {
+          "type": "VIEWVPROFILESUMMARY"
+        },
+        {
+          "type": "V_PAY_PERIOD_GROUPS"
+        },
+        {
+          "type": "C_PAY_PERIOD_GROUPS"
+        },
+        {
+          "type": "E_PAY_PERIOD_GROUPS"
+        },
+        {
+          "type": "D_PAY_PERIOD_GROUPS"
+        },
+        {
+          "type": "V_MY_USERS_REPORT"
+        },
+        {
+          "type": "V_USERS_GRID"
+        },
+        {
+          "type": "V_MISSINGAPPROVERS"
+        },
+        {
+          "type": "V_ORPHANED_TIMESHEET"
+        },
+        {
+          "type": "V_TCE_COMMENT"
+        },
+        {
+          "type": "E_TCE_COMMENT"
+        },
+        {
+          "type": "CREATE_ONDEMAND_AC"
+        },
+        {
+          "type": "OVERRIDE_AA_FILTER"
+        },
+        {
+          "type": "E_CALENDAR_GROUPS"
+        },
+        {
+          "type": "V_CALENDAR_GROUPS"
+        },
+        {
+          "type": "E_ACCRUAL_PROFILES"
+        },
+        {
+          "type": "V_ACCRUAL_PROFILES"
+        },
+        {
+          "type": "E_APPROVAL_PERIODS"
+        },
+        {
+          "type": "V_APPROVAL_PERIODS"
+        },
+        {
+          "type": "D_APPROVAL_PERIODS"
+        },
+        {
+          "type": "C_APPROVAL_PERIODS"
+        },
+        {
+          "type": "E_ACCRUAL_PERIODS"
+        },
+        {
+          "type": "V_ACCRUAL_PERIODS"
+        },
+        {
+          "type": "D_ACCRUAL_PERIODS"
+        },
+        {
+          "type": "C_ACCRUAL_PERIODS"
+        },
+        {
+          "type": "V_LRBLOGDETAILS"
+        },
+        {
+          "type": "E_ACCRUAL_ELIG_DT"
+        }
+      ]
+    },
+    {
+      "category": "WEBFUNC",
+      "items": [
+        {
+          "type": "ABSCREATE"
+        },
+        {
+          "type": "ABSMODIFY"
+        },
+        {
+          "type": "RPTDAILY"
+        },
+        {
+          "type": "RPTUNFILLED"
+        },
+        {
+          "type": "RPTDOWABSANAL"
+        },
+        {
+          "type": "RPTABSHISTORY"
+        },
+        {
+          "type": "RPTABSENTEE"
+        },
+        {
+          "type": "RPTCALLHIST"
+        },
+        {
+          "type": "RPTSUBAVAIL"
+        },
+        {
+          "type": "RPTEMPREG"
+        },
+        {
+          "type": "RPTVOICEREC"
+        },
+        {
+          "type": "MISCCHANGEPIN"
+        },
+        {
+          "type": "MISCQUICKSTART"
+        },
+        {
+          "type": "MISCPOLLQUESTION"
+        },
+        {
+          "type": "RPTSUBHISTBYDATE"
+        },
+        {
+          "type": "RPTSUBEXCLUSION"
+        },
+        {
+          "type": "RPTSIGNIN"
+        },
+        {
+          "type": "VIEWAPPROVERS"
+        },
+        {
+          "type": "EDITAPPROVERS"
+        },
+        {
+          "type": "PERSONALINFO"
+        },
+        {
+          "type": "APPROVEABSR"
+        },
+        {
+          "type": "APPROVALSTATUSRPT"
+        },
+        {
+          "type": "UPABSR"
+        },
+        {
+          "type": "ABSINTERACTIVE"
+        },
+        {
+          "type": "VIEWSUMMARY"
+        },
+        {
+          "type": "VIEWRWREPORTS"
+        },
+        {
+          "type": "FEEDBACKRPT"
+        }
+      ]
+    }
+  ],
+  "messages": [
+    
+  ],
+  "success": true,
+  "modelState": {
+    
+  }
+}

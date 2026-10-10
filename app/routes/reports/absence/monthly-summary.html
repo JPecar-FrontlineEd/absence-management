@@ -1,0 +1,26 @@
+<div class="fixed-width report-standards route-reports-absence-monthly-summary" ng-controller="MonthlySummaryCtrl as route">
+	<cmpt-reports-switcher></cmpt-reports-switcher>
+
+	<h3>{{route.strings['Reports.Title.AbsenceMonthlySummary']}}</h3>
+	<div class="panel">
+		<cmpt-reports-filter-panel filters="route.vm.filters" extraValidators="route.vm.validation" action="route.go.callToServer"></cmpt-reports-filter-panel>
+	</div>
+
+	<div id="report-lock-header" class="lock-header-fill"></div>
+	<div class="header">
+		<div class="header-content">
+			<div class="count" ng-class="{loaded: route.vm.dataLoaded}">{{route.vm.dataSet.length}}</div>
+			<div class="label" ng-class="{loaded: route.vm.dataLoaded}">
+				{{route.strings['Reports.Title.AbsenceMonthlySummary']}}
+				<span ng-if="route.vm.monthString !== ''"> - {{ route.vm.monthString }} {{ route.vm.yearString }}</span>
+			</div>
+			<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<cmpt-ui-print-button></cmpt-ui-print-button>
+		</div>
+	</div>
+	<div class="content-panel" ng-class="{loaded: route.vm.dataLoaded}">
+		<cmpt-reports-monthly-summary dataset="route.vm.dataSet" search-performed="route.vm.dataLoaded" month="route.vm.filters.monthYear.month" year="route.vm.filters.monthYear.year">
+			{{route.strings['Reports.Results.Label.InitialInstructions']}}.
+		</cmpt-reports-monthly-summary>
+	</div>
+</div>

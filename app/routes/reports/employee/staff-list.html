@@ -1,0 +1,94 @@
+<div class="fixed-width report-standards route-reports-employee-staff-list" ng-controller="StaffListCtrl as route">
+	<cmpt-reports-switcher section="Employee"></cmpt-reports-switcher>
+
+	<h3>{{ route.strings['Reports.Title.StaffList'] }}</h3>
+	<div class="panel">
+		<cmpt-reports-filter-panel filters="route.vm.filters" action="route.go.callToServer"></cmpt-reports-filter-panel>
+
+		<div class="summary-panel" ng-show="route.vm.dataLoaded" ng-class="{expanded: route.vm.expanded}">
+			<!-- <div class="bar" ng-if="route.vm.dataLoaded">
+				<div>Summary</div>
+			</div> -->
+			<div class="bar -g">
+				<div class="title -u-23-24">{{route.strings['Summary']}}</div>
+				<div class="collapsable -u-1-24" ng-click="route.go.toggleCollapse()">
+					<i class="fa fa-angle-right"></i>
+				</div>
+			</div>
+
+			<div class="summary-content"  ng-show="route.vm.expanded">
+				<cmpt-reports-staff-list-summary-panel
+					employee-data="route.vm.employeeChartData"
+					vacancy-data="route.vm.vacancyProfileChartData"
+					ng-if="route.vm.dataLoaded"
+				></cmpt-reports-staff-list-summary-panel>
+			</div>
+		</div>
+	</div>
+
+	<div id="report-lock-header" class="lock-header-fill"></div>
+
+	<div class="header">
+		<div class="header-content">
+			<div class="label" ng-class="{loaded: route.vm.dataLoaded}">{{ route.strings['Reports.Title.StaffList'] }}</div>
+			<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<!-- <cmpt-ui-print-button></cmpt-ui-print-button> -->
+		</div>
+	</div>
+	<div class="content-panel" ng-class="{loaded: route.vm.dataLoaded}">
+		<div class="table-header" ng-show="route.vm.dataLoaded">
+			<div class="data-col">
+				<div ng-repeat="col in route.vm.columns"
+					ng-style="{'width' : col.width}">
+					{{ route.strings[col.name] }}
+				</div>
+			</div>
+		</div>
+		<div class="data-set" ng-class="{'not-ready-for-print': !route.vm.printing}">
+			<div class="dataset-{{ $index }}"
+				ng-repeat="item in route.vm.dataSet"
+				ng-style="{'min-height': (route.vm.printing ? 0 : item.$height || item.estimatedHeight) + 'px'}"
+				in-view="(item.isInView = $inview) && item.$height == null && route.go.itemInView(item)"
+				ng-init="item.$index = $index"
+			>
+				<div class="dataset-container"
+					ng-if="item.isInView || route.vm.printing"
+				>
+					<div class="group-heading">
+						{{ item.name }}
+					</div>
+					<cmpt-ui-grouped-grid
+						columns="route.vm.dataCols"
+						dataset="item.workers"
+						group-by="'group'"
+						show-header="false"
+						default-row-height="{{route.vm.estimatedRowHeight}}"
+						printing="route.vm.printing"
+					></cmpt-ui-grouped-grid>
+					<div class="footer-heading">
+						{{ item.name }} Statistics
+					</div>
+					<div class="footer">
+						<div class="-u-12-24">
+							<div>{{ route.strings['Reports.GroupSummary.Label.Emps'] }}: {{ item.summary.totalWorkers }}</div>
+							<div>{{ route.strings['Reports.GroupSummary.Label.ActiveEmps'] }}: {{ item.summary.activeWorkers }}</div>
+							<div>{{ route.strings['Reports.GroupSummary.Label.EmpsNeedingSubs'] }}: {{ item.summary.requiringSubWorkers }}</div>
+							<div>{{ route.strings['Reports.GroupSummary.Label.ItinerantEmps'] }}: {{ item.summary.itinerantWorkers }}</div>
+						</div>
+						<div class="-u-12-24">
+							<div>{{ route.strings['Reports.GroupSummary.Label.VacProfs'] }}: {{ item.summary.totalVacancyProfiles }}</div>
+							<div>{{ route.strings['Reports.GroupSummary.Label.ActiveVacProfs'] }}: {{ item.summary.activeVacancyProfiles }}</div>
+							<div>{{ route.strings['Reports.GroupSummary.Label.VacProfsNeedingSubs'] }}: {{ item.summary.requiringSubVacancyProfiles }}</div>
+							<div>{{ route.strings['Reports.GroupSummary.Label.ItinerantVacProfs'] }}: {{ item.summary.itinerantVacancyProfiles }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="no-data" ng-show="route.vm.dataSet.length === 0">
+				{{route.vm.dataLoaded ? route.strings['NoRecordsFound'] : route.strings['Reports.Results.Label.InitialInstructions']}}.
+			</div>
+		</div>
+	</div>
+
+
+</div>

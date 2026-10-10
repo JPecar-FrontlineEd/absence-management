@@ -1,0 +1,11 @@
+<div class="cmpt-substitute-absence-buttons" ng-class="{'disable-save-btn': formValue.$invalid}">
+	<a 	ng-repeat="button in vm.buttons"
+			ng-click="button.action()"
+			class="fl-button {{button.cls}}"
+			>
+		<div class="fl-label">
+			<i class="fa pull-left {{button.loading ? 'fa-spinner fa-spin' : button.icon}}"></i>{{ button.title }}
+		</div>
+	</a>
+	<cmpt-ui-loader is-loading="vm.isLoading" status-text="vm.statusText" fill></cmpt-ui-loader>
+</div>

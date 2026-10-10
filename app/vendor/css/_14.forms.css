@@ -1,0 +1,290 @@
+/* MIXINS
+ * --------------------------------------------- */
+/* user-select */
+/* VARIABLES
+ * --------------------------------------------- */
+/* Sizes */
+/* Colors */
+/* Colors v2 */
+/* Typography */
+/* FORM INPUTS
+ * --------------------------------------------- */
+input::-ms-clear,
+input::-ms-reveal {
+  height: 16px;
+}
+.fl-input {
+  font-size: 13px;
+  line-height: 20px;
+  padding: 4px 10px;
+  border: 1px solid #bbbbbb;
+  outline: none;
+  background: #ffffff;
+  -webkit-box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  /* Input Error */
+  /* Disabled Input */
+}
+.fl-input:focus {
+  border-color: #90B7DD;
+  -webkit-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+.fl-input.error {
+  border-color: #DAA2A7;
+  background: #FFF4F4;
+}
+.fl-input.error:focus {
+  border-color: #ef7681;
+  -webkit-box-shadow: 0 0 3px 0 rgba(234, 118, 129, 0.45), inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 3px 0 rgba(234, 118, 129, 0.45), inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px 0 rgba(234, 118, 129, 0.45), inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+.fl-input.fl-disabled {
+  border: 1px solid #cccccc;
+  background: #eeeeee;
+  -webkit-box-shadow: inset 0 0 rgba(0, 0, 0, 0);
+  -moz-box-shadow: inset 0 0 rgba(0, 0, 0, 0);
+  box-shadow: inset 0 0 rgba(0, 0, 0, 0);
+}
+.fl-input::-webkit-input-placeholder {
+  padding-top: 1px;
+}
+.fl-input:-moz-placeholder {
+  padding-top: 1px;
+}
+.fl-input::-moz-placeholder {
+  padding-top: 1px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #90B7DD !important;
+  -webkit-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06) !important;
+  -moz-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Search Input */
+.fl-search {
+  position: relative;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.fl-search .fa-search {
+  font-size: 14px;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  left: 9px;
+  color: #aaaaaa;
+}
+.fl-search .fa-spinner {
+  font-size: 15px;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  left: 9px;
+  color: #aaaaaa;
+}
+.fl-search .fa-times-circle {
+  font-size: 16px;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  right: 9px;
+  cursor: pointer;
+  transition: color .1s;
+  color: #aaaaaa;
+}
+.fl-search .fa-times-circle:hover {
+  color: #666666;
+}
+.fl-search .fl-input {
+  padding-left: 30px;
+  border-radius: 20px;
+}
+/* Search Box Input */
+.fl-box-search {
+  display: inline-block;
+}
+.fl-box-search .fl-search {
+  vertical-align: top;
+}
+.fl-box-search .fl-search .fl-input {
+  border-radius: 20px 0 0 20px;
+}
+.fl-box-search .fl-button {
+  font-size: 12px;
+  margin-left: -5px;
+  color: #666666;
+  border-radius: 0 20px 20px 0;
+}
+/* Date Input */
+.fl-date {
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.fl-date .fl-input {
+  width: 110px;
+  padding-right: 30px;
+}
+.fl-date .fa-calendar {
+  font-size: 15px;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  right: 9px;
+  cursor: pointer;
+  transition: color .1s;
+  color: #aaaaaa;
+}
+.fl-date .fa-calendar:hover {
+  color: #666666;
+}
+/* Multi-Select Box */
+.fl-multiselect {
+  font-size: 11px;
+  overflow: hidden;
+  width: initial !important;
+  min-width: 175px;
+  max-width: 190px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.fl-multiselect ul {
+  overflow: auto;
+  overflow-x: hidden;
+  height: 160px;
+  list-style-type: none;
+  border: 1px solid #bbbbbb;
+  background: #ffffff;
+  -webkit-box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+.fl-multiselect li {
+  border-bottom: 1px solid #eeeeee;
+}
+.fl-multiselect li:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+.fl-multiselect li:last-child {
+  border-bottom: none;
+}
+.fl-multiselect .select-all {
+  font-weight: bold;
+  border: 1px solid #bbbbbb;
+  border-bottom: none;
+  background: #e9edf0;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+.fl-multiselect label {
+  display: block;
+  margin: 0 !important;
+  padding: 6px 7px 6px 24px;
+  cursor: pointer;
+  text-indent: -17px;
+  color: #444444;
+}
+.fl-multiselect input {
+  margin-right: 5px;
+}
+.fl-multiselect .select-none {
+  margin-top: 5px;
+  text-align: right;
+}
+.fl-multiselect .select-none span {
+  margin-right: 5px;
+  color: #888888;
+}
+/* Drop-down Menu */
+.fl-select label {
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.fl-select .select-content {
+  font-size: 12px;
+  position: relative;
+  width: 100px;
+  padding: 5px 8px 6px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #444444;
+  border: 1px solid #bbbbbb;
+  border-bottom-color: #999999;
+  border-radius: 4px;
+  text-shadow: 1px 1px #ffffff;
+  background-color: #f8f8f8;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#eeeeee));
+  /* Konqueror */
+  background-image: -moz-linear-gradient(#ffffff, #eeeeee);
+  /* FF 3.6+ */
+  background-image: -ms-linear-gradient(#ffffff, #eeeeee);
+  /* IE10 */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #eeeeee));
+  /* Safari 4+, Chrome 2+ */
+  background-image: -webkit-linear-gradient(#ffffff, #eeeeee);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(#ffffff, #eeeeee);
+  /* Opera 11.10 */
+  background-image: -ms-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+  /* IE10+ */
+  background-image: linear-gradient(#ffffff, #eeeeee);
+  /* the standard */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.fl-select .select-content #selected {
+  margin-right: 3px;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.fl-select .select-content #selected.empty {
+  color: #999999;
+}
+.fl-select .select-content select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 0;
+  background: #ffffff;
+}
+
+select:focus {
+  outline: none;
+  border-color: #90B7DD;
+  -webkit-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+input[type='radio']:focus, input[type='checkbox']:focus, {
+  outline: none;
+  border-color: #90B7DD;
+  -webkit-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 3px 0 #90b7dd, inset 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+}

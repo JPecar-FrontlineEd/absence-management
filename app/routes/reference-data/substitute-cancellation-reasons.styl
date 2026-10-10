@@ -1,0 +1,54 @@
+@import "common-var"
+.route-reference-data-substitute-cancellation-reasons {
+	.cmpt-ui-grid{
+		.grid-header-content {
+			line-height:1.5;
+		}
+		.grid-rows{
+			.row-container{
+				height: 40px;
+
+				.row-content{
+					.grid-row > div{
+						line-height:20px;
+					}
+					.grid-row{
+						.description-cell {
+							padding:0;
+					        & .editing {
+					            padding: 5px 5px 5px  5px;
+					            border-left: 2px solid ap-blue;
+					            border-bottom: none;
+					        }
+					        & .readonly{
+					        	padding-left:10px;
+					        	line-height:40px;
+					        }
+					        input {
+					            border: 1px solid referenceData-borderColor;
+					            border-radius: 2px;
+					            width:100%;
+					            height:30px;
+					            padding:5px 5px 5px 10px;
+					        }
+					    }
+
+					    .entitlementType-cell {
+					    	padding:0;
+					        .cmpt-ui-dropdown{
+				            	padding: 5px 5px 5px 10px;
+					        	line-height:30px;
+						        select {
+						        	height:30px;
+						            padding:5px;
+						            width:100%;
+						            vertical-align:top;
+						        }
+					        }
+					    }
+					}
+				}
+			}
+		}
+	}
+}

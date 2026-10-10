@@ -1,0 +1,84 @@
+@import "common-var"
+.cmpt-template-available-sub-assign-cell {
+	margin-top: 20px;
+
+	.negative {
+		color: ap-red;
+	}
+}
+
+.assign-sub-popup {
+	.title {
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+
+	.subOverworked {
+		color: ap-yellow;
+	}
+
+	.ngdialog-message .header.subOverworked {
+		background-color:ap-yellow;
+		color: backGroundColor;
+	}
+
+	.subInfo {
+		padding: 10px 0px;
+		border-bottom: 1px solid borderColor-medium;
+		border-top: 1px solid borderColor-medium;
+
+		.left {
+			display: inline-block;
+			width: 300px;
+
+			.name {
+				font-size: 18px;
+				font-weight: bold;
+				color: subTitle-color-dark;
+			}
+
+			.phone {
+				font-style: italic;
+				font-size: 12px;
+				color: subTitle-color-darkest;
+				margin-top: 5px;
+			}
+		}
+
+		.right {
+			display: inline-block;
+		}
+
+		p {
+			font-size: 14px;
+			padding-top: 10px;
+		}
+	}
+
+	.ngdialog-buttons {
+		.fl-positive {
+			margin-left: 5px;
+		}
+
+		.fl-disabled {
+			margin-left: 5px;
+		}
+
+		&.disabled {
+			a.normal-btn {
+				opacity: 0.6;
+				cursor: not-allowed;
+			}
+		}
+	}
+}
+
+.qtip {
+	&.remove-sub {
+		max-width: 400px;
+
+		.qtip-content {
+			max-width: 400px;
+		}
+	}
+}

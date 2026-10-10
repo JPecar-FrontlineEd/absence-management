@@ -1,0 +1,74 @@
+<div class="cmpt-absr-time-field" ng-class="{enabled: enabled}">
+	<ng-transclude></ng-transclude>
+	<div class="element" ng-class="{hide: showByDay}">
+		<cmpt-ui-dropdown ng-hide = "removeShiftTypeDropdown"
+			options-array="shiftTypeList"
+			value-selected="shiftType"
+			read-only="readOnly || shiftTypeList.length === 1"
+			sort-by="'id'"
+			allow-blank="false"
+			enabled="enabled"
+			label="shiftTypeId"></cmpt-ui-dropdown>
+
+		<div class="time-container">
+			<div class="time-box">
+				<cmpt-ui-textbox
+					hide-error-message = "removeShiftTypeDropdown"
+					value-text="startTime"
+					error-messages="startTimeErrors"
+					read-only="readOnly"
+					enabled="enabled && vm.customShift != null"
+					filter="time"
+					label="vm.FromTime"></cmpt-ui-textbox>
+			</div>
+			<div class="label">to</div>
+			<div class="time-box">
+				<cmpt-ui-textbox
+					hide-error-message = "removeShiftTypeDropdown"
+					value-text="endTime"
+					error-messages="endTimeErrors"
+					read-only="readOnly"
+					enabled="enabled && vm.customShift != null"
+					filter="time"
+					label="vm.ToTime"></cmpt-ui-textbox>
+			</div>
+		</div>
+	</div>
+
+	<div class="-u-9-24" ng-class="{hide: !showByDay}">
+		<div class="element ">
+			<cmpt-ui-dropdown ng-hide = "removeShiftTypeDropdown"
+			options-array="shiftTypeList" 
+			value-selected="shiftType"
+			read-only="readOnly || shiftTypeList.length === 1" 
+			sort-by="'id'"
+			allow-blank="false" 
+			enabled="enabled"
+			label="shiftTypeId"
+			unique-id="vm.uniqueId"
+			></cmpt-ui-dropdown>
+		</div>
+	</div>
+	<div class="-u-5-24 leftPadding10 width30" ng-class="{hide: !showByDay}">
+		<cmpt-ui-textbox 
+		hide-error-message = "removeShiftTypeDropdown"
+		value-text="startTime" 
+		error-messages="startTimeErrors"
+		read-only="readOnly"
+		enabled="enabled && vm.customShift != null"
+		filter="time"
+		label="vm.FromTime"></cmpt-ui-textbox>
+	</div>
+	<div class="-u-5-24 leftPadding10 width30" ng-class="{hide: !showByDay}">
+		<cmpt-ui-textbox value-text="endTime"
+		 hide-error-message = "removeShiftTypeDropdown"
+		 error-messages="endTimeErrors"
+		 read-only="readOnly"
+		 enabled="enabled && vm.customShift != null"
+		 filter="time"
+		 label="vm.ToTime"></cmpt-ui-textbox>
+	</div>
+
+	
+
+</div>

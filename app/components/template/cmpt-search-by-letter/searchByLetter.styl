@@ -1,0 +1,58 @@
+@import "common-var"
+.cmpt-search-by-letter {
+	clearfix();
+
+	.letter-header {
+		background: gradientBar;
+		border-bottom: 1px solid grid-borderColor;
+		padding: 10px;
+		font-weight: bold;
+		color: subTitle-color-darkest;
+		font-size: 12px;
+	}
+
+	.letter-table {
+		width: 88%;
+		margin: 0 auto;
+		padding-top: 15px;
+		padding-bottom:15px;
+		div {
+			width: 35px;
+			height: 35px;
+			cursor: pointer;
+			color: subTitle-color-light;
+			background: none repeat scroll 0% 0% backGroundColor;
+			margin: 4px;
+			text-align: center;
+			display: inline-block;
+			font-size: 15px;
+			border-radius: 50px;
+			box-shadow: 1px 1px boxShadow;
+			line-height: 43px;
+			border: 1px solid borderColor-light;
+			padding-left: 1px;
+
+			userSelect(none);
+
+			&:hover {
+				opacity: 1;
+				color: subTitle-color-dark;
+				box-shadow: 2px 2px 1px boxShadow;
+			}
+
+			&:active {
+				box-shadow: 1px 1px boxShadow inset;
+				color: subTitle-color-lightest;
+			}
+
+			span {
+				position: relative;
+				top: -6px;
+
+				&.blackFont{
+					color: black;
+				}
+			}
+		}
+	}
+}

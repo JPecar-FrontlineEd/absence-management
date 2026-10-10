@@ -1,0 +1,68 @@
+@import "common-var"
+.cmpt-reports-staff-list-summary-panel {
+	.chart-wrap {
+		position: relative;
+		height: 210px;
+	}
+
+	.graph-content {
+		position: absolute;
+		padding: 20px 50px;
+		top: 0;
+		bottom: 30px;
+		left: 0;
+		right: 0;
+
+		.no-Chart {
+			padding-top: 70px;
+			text-align: center;
+			font-weight: bold;
+			color: subTitle-color-lightest;
+		}
+	}
+	.graph-title {
+		font-size: 12px;
+		position: absolute;
+		padding: 5px 0 10px;
+		bottom: 0;
+		left: 20px;
+		right: 20px;
+		border-top: 1px solid borderColor-medium;
+		text-align: center;
+	}
+
+	.graph-summary {
+		div {
+			margin: 10px 0;
+			box-sizing:content-box;
+		}
+
+		.graph-summary-content {
+			padding: 20px 10px 20px 38px;
+			border-left: 1px solid borderColor-medium;
+			div {
+				line-height: 14px;
+			}
+
+			.header {
+				font-size: 18px;
+				font-weight: bold;
+				line-height: 18px;
+			}
+
+			label {
+				font-weight: bold;
+			}
+
+			span {
+				font-size: 25px;
+				font-weight: bold;
+				line-height: 25px;
+			}
+
+			.fill-rate span {
+				color: ap-green;
+			}
+		}
+	}
+}

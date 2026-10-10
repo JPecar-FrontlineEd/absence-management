@@ -1,0 +1,9 @@
+<div class="cmpt-reports-report-writer-output-files">
+	<div ng-if="vm.fileIcons.length > 0" ng-class="{ 'dialog-format': vm.showText }">
+		<div ng-repeat="icon in vm.fileIcons" class="output-file">
+			<a ng-if="icon.enabled" href="{{ icon.linkUrl }}" target="{{ icon.linkTarget }}"><div class="file-icon {{ icon.cssClass }}" title="{{ icon.title }}"><div></a>
+			<div ng-if="!icon.enabled" class="file-icon {{ icon.cssClass }} disabled" title="{{ icon.title }}"></div>
+			<div ng-if="vm.showText" class="filetype-name" title="{{ icon.title }}" ng-class="{ disabled: !icon.enabled }" ng-bind-html="icon.text"></div>
+		</div>
+	</div>
+</div>

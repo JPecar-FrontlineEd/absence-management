@@ -1,0 +1,48 @@
+<div class="cmpt-current-step">
+	<div class="left-section -u-12-24">
+		<div class="label"><ng-transclude></ng-transclude></div>
+		<span class="button-section">
+			<div class="label">{{ strings['absrItenerant.Step2.Footer.label.PreviousStep'] }}:</div>
+			<a class="fl-button"
+				ng-repeat="pStep in vm.prevSteps"
+				ng-click="go.toPreviousStep(pStep.route)"
+				tabindex="0"
+				ng-keyup="$event.keyCode == 13 ? go.toPreviousStep(pStep.route) : null"
+			>
+				<div class="fl-label">
+					<i class="fa-chevron-left pull-left"></i>{{ strings[pStep.title] }}
+				</div>
+			</a>
+		</span>
+	</div>
+	<div class="-u-6-24" ng-if="vm.showDayVariationSwitch">
+		<span ng-repeat="button in vm.buttons">
+			<a ng-click="button.action()" class="fl-button left auto-edit-absence "
+				ng-if="button.isVisible() && button.type == 'button'" 
+				ng-class="{activeSwitchButton: (selectedView == button.id)}"
+				tabindex="0"
+				ng-keyup="$event.keyCode == 13 ? button.action() : null">
+				<div class="fl-label {{ button.loading ? 'fl-disabled': '' }}">
+					<i
+						class="fa pull-left {{button.loading ? 'fa-spinner fa-spin' : button.icon}}"></i>{{ strings.bind(button.title) }}
+				</div>
+			</a>
+			<label ng-if="button.isVisible() && button.type == 'label'" class='labelViewBy'>{{ strings['ViewBy'] }} </label>
+		</span>
+	</div>
+	<div class="right-section vm.rightSectionColumnClass">
+		<div class="label">{{ strings['Absence.Create.Text.NextStep'] }}:</div>
+		<span class="button-section">
+			<a 	ng-repeat="nStep in vm.nextSteps"
+				ng-class="{ 'fl-disabled': !enableNext}"
+				ng-click="go.toNextStep(nStep.route,enableNext)"
+				class="fl-button {{nStep.cls}}"
+				tabindex="0"
+				ng-keyup="$event.keyCode == 13 ? go.toNextStep(nStep.route,enableNext) : null"> 
+				<div class="fl-label">
+					<i class="fa-check pull-left"></i>{{ strings[nStep.title] }}
+				</div>
+			</a>
+		</span>
+	</div>
+</div>

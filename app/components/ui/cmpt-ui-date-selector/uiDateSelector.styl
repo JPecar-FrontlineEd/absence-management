@@ -1,0 +1,53 @@
+.cmpt-ui-date-selector {
+
+	input {
+		font-size: 14px;
+		width: 114px;
+		padding: 2px 20px 3px 6px;
+	}
+
+	ng-transclude {
+		margin-right: 5px;
+	}
+
+	.ui-datepicker-trigger {
+		position: relative;
+		display: inline-block;
+		margin-left: -30px;
+		border: 0px;
+		background: transparent;
+		height: 26px;
+		width: 30px;
+		font-size: 14px;
+		cursor: pointer;
+
+		font-family: 'FL-Icons';
+		font-weight: normal;
+		font-style: normal;
+		font-variant: normal;
+		line-height: 1;
+		text-align: center;
+		text-transform: none;
+		speak: none;
+		-webkit-font-smoothing: antialiased;
+
+		opacity: 0.8;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.ui-datepicker-trigger:before {
+		content: '\f073';
+	}
+
+	&.error {
+		background: none repeat scroll 0% 0% ap-light-red;
+		border: 1px solid ap-red;
+	}
+}

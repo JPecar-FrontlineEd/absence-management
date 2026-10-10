@@ -1,0 +1,32 @@
+<div class="fixed-width route-substitute-absences-substitute-absences-detail" ng-controller="SubstituteAbsencesDetailCtrl as route">
+
+	<div class="summary-header">
+		<div class="-u-10-24 left-section">
+			{{ route.vm.pageLabel }}
+			<span class="bold">#{{ route.substituteAbsenceVal.id }} - </span>
+			<span class="bold">{{ route.vm.substituteName }}</span>
+		</div>
+		<div class="-u-14-24 right-section">
+			<span class="details">
+				 {{ route.strings['HoursPerDay'] }}:
+				<span class="bold">{{ route.vm.hoursPerDay }}</span>
+			</span> |
+			<span class="details">
+				 {{ route.strings['Created'] }}:
+				<span class="bold">{{ route.vm.created }}</span>
+			</span> |
+			<span class="details">
+				{{ route.strings['LastUpdate'] }}:
+				<span class="bold">{{ route.vm.lastUpdated }}</span>
+			</span>
+		</div>
+		<div class="date bold">{{ route.vm.date }}</div>
+	</div>
+	<cmpt-ui-tabs tabs="route.vm.tabs"></cmpt-ui-tabs>
+
+	<div class="content-panel">
+		<ui-view></ui-view>
+	</div>
+
+
+</div>

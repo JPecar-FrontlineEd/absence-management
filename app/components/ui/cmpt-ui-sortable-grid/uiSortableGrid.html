@@ -1,0 +1,53 @@
+<div class="cmpt-ui-sortable-grid" ng-class="{'not-ready-for-print': !vm.printing}">
+	<div class="grid-header -g">
+		<div class="grid-header-content {{ vm.colClasses[col.key] + ' ' + col.key + '-th' + ' ' + col.cls }}"
+			ng-repeat="col in columns"
+			ng-click="go.sortCol($index)"
+			ng-style="vm.colStyles[col.key]"
+			ng-class="{sortable: col.sortable, sorted: sort.byColumn === col.key}"
+		>
+			<span ap-bind-html="col.headerTemplate"></span>
+			<i class="fa sort-icon" ng-class="go.getSortClass(col.key)" ng-show="col.sortable"></i>
+		</div>
+	</div>
+	<div class="loading" ng-show="isLoading"></div>
+	<ul class="grid-rows">
+		<li ng-if = "!disableInviewPlugin" class="row-container row-{{ $index }}"
+			ng-repeat="row in vm.rowData track by (vm.trackBy && row[vm.trackBy] || $id(row))"
+			ng-if="row.hidden !== true"
+			ng-style="{'min-height': (vm.printing ? 0 : row.$height || vm.avgRowHeight || 50) + 'px'}"
+			in-view="(row.isInView = $inview) && row.$height == null && go.rowInView(row)"
+			in-view-options="{offsetTop: -300, offsetBottom: 200}"
+			ng-init="row.$index = $index"
+		>
+			<div class="-g grid-row {{ row.cls }}"
+				ap-bind-html="vm.rowTemplate"
+				ng-if="(row.isInView || vm.printing) && !isSubAvailabilityReport"
+			></div>
+			<div class="-g grid-row {{ row.cls }}" 
+				ap-bind-html="vm.rowTemplate"
+				ng-if="(row.isInView || vm.printing) && isSubAvailabilityReport"
+				ng-click="go.selectRow($event)"
+			></div>
+		</li>
+		<li  ng-if = "disableInviewPlugin" class="row-container row-{{ $index }}"
+			ng-repeat="row in vm.rowData track by (vm.trackBy && row[vm.trackBy] || $id(row))"
+			ng-if="row.hidden !== true"
+			ng-style="{'min-height': (vm.printing ? 0 : row.$height || vm.avgRowHeight || 50) + 'px'}"
+			ng-init="row.$index = $index"
+		>
+			<div class="-g grid-row {{ row.cls }}"
+				ap-bind-html="vm.rowTemplate"
+				ng-if = "!isSubAvailabilityReport"
+			></div>
+			<div class="-g grid-row {{ row.cls }}"
+				ap-bind-html="vm.rowTemplate"
+				ng-click="go.selectRow($event)"
+				ng-if = "isSubAvailabilityReport"
+			></div>
+		</li>
+	</ul>
+	<div class="no-data" ng-show="vm.showNoData && !isLoading">
+		<ng-transclude></ng-transclude>
+	</div>
+</div>

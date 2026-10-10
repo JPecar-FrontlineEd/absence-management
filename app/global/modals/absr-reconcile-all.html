@@ -1,0 +1,25 @@
+<div class="dialog-popup absr-reconcile-all">
+	<div class="absr-with-changes" ng-show="ngDialogData.hasWarning.warning">
+		<div class="ngdialog-message">
+			<div class="header">{{ngDialogData.warningObj.header}}</div>
+			<div class="content">
+				{{ ngDialogData.strings['Reconciliation.Label.Text.YouAreAttemtingTo'] + ' ' + ngDialogData.action  +' ' + ngDialogData.strings['Reconciliation.Label.Text.MultipleRecordsNotSaved']}}.
+			</div>
+		</div>
+		<div class="ngdialog-buttons">
+			<a class="fl-button {{ button.cls }}" ng-click="button.action()"  ng-repeat="button in ngDialogData.warningObj.buttons" ><i class="fa {{ button.icon }}"></i>
+			{{ button.title }}</a>
+		</div>
+	</div>
+	<div class="absr-reconciliation-all" ng-show="!ngDialogData.hasWarning.warning">
+		<div class="ngdialog-message">
+			<!-- {{ ngDialogData.processObj.preloader }} -->
+			<div class="header">{{ngDialogData.header}}</div>
+			<div class="content">
+				<cmpt-ui-progress-bar preloader="ngDialogData.processObj.preloader"
+				>
+				</cmpt-ui-progress-bar>
+			</div>
+		</div>
+	</div>
+</div>

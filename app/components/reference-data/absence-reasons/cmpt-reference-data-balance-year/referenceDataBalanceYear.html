@@ -1,0 +1,12 @@
+<div class="cmpt-reference-data-balance-year">
+	<div ng-show="!vm.loading">
+		<div class="-g">
+			<div class="-u-18-24">{{ strings['balanceYear.label.BalanceYearStart'] }}</div>
+			<div class="-u-6-24" ng-if="vm.canEdit">
+				<a ng-click="go.balanceYearDialog()">{{ strings['Edit'] }}</a>
+			</div>
+		</div>
+		<div class="org-setting">{{ vm.label }}</div>
+	</div>
+	<cmpt-ui-loader is-loading="vm.loading"></cmpt-ui-loader>
+</div>

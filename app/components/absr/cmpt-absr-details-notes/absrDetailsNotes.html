@@ -1,0 +1,40 @@
+<div class="cmpt-absr-details-notes">
+	<div class="section-header" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+			<span>{{ strings['NotesAndAttachments'] }}</span>
+			<div class="notes-toggler" tabindex="0" 
+				ng-keyup="$event.keyCode == 13 ? absrState.expanded = !absrState.expanded : null"
+				aria-label="absrState.expanded ? strings['Expanded'] : strings['Collapsed']"
+				ng-class="{expanded: absrState.expanded, deletedAbsrBackground : absrState.absr.isDeleted}"
+				ng-click="absrState.expanded = !absrState.expanded"
+			>
+				<span>
+					<i class="fa fa-angle-double-{{absrState.expanded ? 'up' : 'down'}}"></i>
+				</span>
+			</div>
+	</div>
+	<div ap-show-slide="absrState.expanded">
+		<cmpt-ui-textarea labeltext="strings['MentionNotesToAdministrator']" characters="255" id="strings['MentionNotesToAdministrator']" class="admin-notes section-notes" text-model="absrState.administratorNotes"  read-only="!vm.editable.notesToAdmin" error-messages="absrState.stateValErrors.administratorNotes" ng-show="absrState.context.showNotesToAdmin">
+			<label>
+				{{ strings['NotesToAdmin'] }}<br>
+				<span class="caption">({{ strings['NotesToAdminDescription'] }})</span>
+			</label>
+		</cmpt-ui-textarea>
+		<cmpt-ui-textarea labeltext="strings['MentionNotesToSubstitute']" characters="255" id="strings['MentionNotesToSubstitute']" class="substitute-notes section-notes" text-model="absrState.substituteNotes"  read-only="!vm.editable.notes" error-messages="[]" ng-show="absrState.needSub">
+			<label>
+				<span ng-show="absrState.context.showNotesToAdmin">{{ strings['NotesToSub'] }}</span>
+				<span ng-show="!absrState.context.showNotesToAdmin">{{ strings['Notes'] }}</span>
+				<br>
+				<span class="caption">({{ strings['NotesToSubDescription'] }})</span>
+			</label>
+		</cmpt-ui-textarea>
+		<cmpt-ui-textarea labeltext="strings['MentionAdminOnlyNotes']" characters="255" id="strings['MentionAdminOnlyNotes']" class="admin-only-notes section-notes" text-model="absrState.adminOnlyNotes"  read-only="!vm.editable.adminOnlyNotes" error-messages="[]" ng-if="absrState.context.showNotesToAdminOnly">
+			<label>
+				{{ strings['NotesToAdminOnly'] }}<br>
+				<span class="caption">({{ strings['NotesToAdminOnlyDescription'] }})</span>
+			</label>
+		</cmpt-ui-textarea>
+		<div class="section-divider"></div>
+		<cmpt-absr-details-attachments></cmpt-absr-details-attachments>
+	</div>
+
+</div>

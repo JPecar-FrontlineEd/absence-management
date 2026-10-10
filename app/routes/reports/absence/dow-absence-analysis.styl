@@ -1,0 +1,92 @@
+@import "common-var"
+
+.report-standards.route-reports-dow-absence-analysis {
+	.header {
+		.count.loaded {
+			display: none;
+		}
+	}
+
+	.summary-panel {
+		.no-chart-container {
+			font-weight: bold;
+			color: backGroundColor;
+			padding: 40px;
+			text-align: center;
+		}
+
+		.graph-content {
+			position: relative;
+			height: 420px;
+			padding: 25px 15px 50px;
+		}
+
+		.graph-day-labels {
+			position: absolute;
+			bottom: 15px;
+			left: 15px;
+			right: 15px;
+
+			li {
+				width: 14.28%;
+				font-size: 12px;
+				display: inline-block;
+				text-align: center;
+			}
+		}
+
+		.legend {
+			height: 420px;
+		}
+	}
+
+	@media print {
+		.summary-panel {
+			display: block !important;
+		}
+
+		.summary-panel .summary-content{
+			display: flex !important;
+		}
+
+		.summary-panel .summary-content .graph {
+			display: inline-block !important;
+		}
+
+		.summary-panel .summary-content .legend {
+			display: inline-block !important;
+		}
+
+		ul.bar-graph-bar-items > li {
+			//background-color: black !important;
+			-webkit-print-color-adjust: exact;
+		}
+
+		div.fl-hint > div.legend-item > span{
+			//background-color: black !important;
+			-webkit-print-color-adjust: exact;
+		}
+	}
+
+	.cmpt-ui-bar-graph-legend {
+
+		.legend-item {
+			margin-bottom: 0px;
+			line-height: normal;
+
+			span {
+				height: 15px;
+				width: 15px;
+			}
+		}
+	}
+
+	.cmpt-ui-grouped-grid {
+		.grid-rows {
+			.grid-footer {
+				color: report-footer-color;
+				background-color: report-footer-background;
+			}
+		}
+	}
+}

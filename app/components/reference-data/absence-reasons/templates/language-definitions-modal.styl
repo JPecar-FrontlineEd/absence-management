@@ -1,0 +1,22 @@
+.absence-reason-language-definitions-modal {
+	.content > div {
+		margin-top: 1rem;
+	}
+	.label {
+    	padding-bottom: 5px;
+	}
+	.field {
+		font-size: 14px;
+	}
+
+	&.view-mode {
+		.label {
+			//when in edit-mode, we have a textbox and don't need a border separator.
+			border-bottom: 1px solid referenceData-borderColor;
+		}
+		.field {
+			//only wrap the field when in view mode. edit mode has an input box
+			word-break: break-word;
+		}
+	}
+}

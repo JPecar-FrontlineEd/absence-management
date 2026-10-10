@@ -1,0 +1,17 @@
+require("./absrStateVal");
+require("./absrStepProgressStateVal");
+require("./allPermissionsVal.dev");
+require("./allStringsVal");
+require("./config");
+require("./contextMenuDataVal");
+require("./jQuery");
+require("./menuDataVal");
+require("./referenceDataVal");
+require("./regexExpressionsVal");
+require("./reportQueryFilterMapsVal");
+require("./routePermissionVal");
+require("./schoolDetailsVal");
+require("./subDetailsVal");
+require("./substituteAbsenceVal");
+require("./userDataVal");
+require("./userType");

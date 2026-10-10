@@ -1,0 +1,284 @@
+@import "common-var"
+.cmpt-call-group-pref-list {
+	position:relative;
+	.loader-container {
+
+	}
+	.grid-header {
+		.grid-header-content {
+			height:auto;
+		}
+	}
+
+	.no-data {
+		text-align:center;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+
+		.image{
+			  background: url(../images/No-Data-Initial.png);
+			  background-repeat: no-repeat;
+			  width: 150px;
+			  height: 135px;
+			  display: inline-block;
+			  background-position-x: 50%;
+		}
+		.caption{
+			font-size: 14px;
+		  	color: subTitle-color-light;
+		  	font-weight: bold;
+		  	text-align: center;
+		}
+	}
+
+	.order-cell {
+		padding: 10px 5px;
+  		padding-left: 28px;
+	}
+
+	.drag-handle {
+		font-size: 18px;
+		width: 20px;
+		display: block;
+		text-align: center;
+		position: absolute;
+		left: 5px;
+		top: 8px;
+		cursor: pointer;
+	}
+
+	.no-order {
+		.order-cell{
+			display:none;
+		}
+		.select-cell{
+			display:none;
+		}
+	}
+	.grid-rows {
+		font-size:12px;
+	}
+
+	.cmpt-ui-textbox div {
+		font-size:12px;
+	}
+
+	.fl-input {
+		font-size:12px;
+	}
+
+	.fl-button.fa:empty {
+		width: 36px;
+		white-space: normal;
+		text-overflow: clip;
+		margin-right: 5px;
+	}
+
+	.cmpt-ui-textarea textarea {
+		font-size: 12px;
+		max-height: 140px;
+		line-height: 1.5;
+	}
+
+	.error-message-area {
+		width: 100%;
+		display: block;
+	}
+	.error-message{
+		display:none;
+	}
+	.select-th,.select-cell{
+		width:6%;
+		text-align: center;
+		padding:10px 5px;
+	}
+	.minVisibility-cell,.maxVisibility-cell {
+		width: 11%;
+		padding: 10px 5px;
+
+		.sub-cell {
+			width: 47%;
+			margin-right: 3%;
+			display: inline-block;
+			text-align: center;
+
+			&:first-child {
+				border-right: 1px solid borderColor-medium;
+			}
+		}
+	}
+
+	.fl-system-message{
+		&.error{
+			div{
+				span{
+					margin-right:2px;
+				}
+			}
+			ul{
+				list-style:initial;
+				margin-left:35px;
+			}
+		}
+	}
+
+	.minVisibility-th,.maxVisibility-th{
+		width:11%;
+		padding-bottom:0px !important;
+	}
+
+	.order-th,.order-cell{
+		width: 6%;
+	}
+	.name-th,.name-cell{
+		width:20.17% ;
+		&.no-order{
+			width:26.13%;
+			&.no-comments{
+				width:51.17%;
+				&.no-edit{
+					width:65.5%;
+				}
+			}
+			&.no-edit{
+				width:40.5%;
+			}
+			&.hrs-visibility-mode{
+				width:43.3%;
+				&.edit-mode{
+					width:37.3%;
+				}
+				&.no-comments{
+					width:77.3%;
+					&.no-edit{
+						width:89%;
+					}
+				}
+				&.no-edit{
+					width:57.7%;
+				}
+				&.no-order{
+					width:43.35%;
+					&.no-edit{
+						width:57.7%;
+					}
+					&.no-comments{
+						width:89%;
+						&.no-order{
+							width:74.65%;
+							&.no-edit{
+								width:89%;
+							}
+						}
+						&.edit-mode{
+							width:76.5%;
+						}
+					}
+					&.edit-mode{
+						width:37.3%;
+					}
+				}
+			}
+		}
+		&.edit-mode{
+			width:28%;
+			&.no-comments{
+				width:53%;
+			}
+		}
+		&.no-comments{
+			width:45.17%;
+			&.no-edit{
+				width:59.5%;
+			}
+		}
+		&.hrs-visibility-mode{
+			width:37.35%;
+			&.no-comments{
+				width:68.63%;
+				&.edit-mode{
+					width:76.5%;
+				}
+				&.no-edit{
+					width:83%;
+				}
+			}
+			&.no-edit{
+				width:51.7%;
+			}
+			&.edit-mode{
+				width:37.3%;
+			}
+		}
+		&.no-edit{
+			width:34.5%;
+		}
+
+	}
+
+	.comments-th,.comments-cell{
+		&.hrs-visibility-mode{
+			width:31.3%;
+			&.edit-mode{
+				width:39.169%;
+			}
+		}
+	}
+	.comments-cell{
+		overflow:hidden;
+		-o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+
+		span{
+			white-space:normal;
+		}
+	}
+	.col-title{
+		height:32px;
+	}
+	.sub-header{
+		margin-left:-10px;
+		width:108px;
+		border-top:  1px solid grid-borderColor;
+		div{
+			display:inline-block;
+			background: grid-subHeading-backGroundColor !important;
+			font-size: 10px !important;
+			font-weight: bold !important;
+			padding: 5px 10px !important;
+			text-shadow: none !important;
+			border-left: none !important;
+			border-right: 0 !important;
+			text-transform: uppercase !important;
+			color: subTitle-color-light !important;
+			width:50%;
+			text-align: center;
+		}
+	}
+
+	.hrsVisibility-th{
+		width: 11%;
+		padding-bottom:0px !important;
+
+		.sub-header {
+			width:108px;
+		}
+	}
+
+	.hrsVisibility-cell,.hrsVisibility-cell{
+		width: 11%;
+		padding: 10px 5px;
+
+		.sub-cell{
+			width:47%;
+			display:inline-block;
+			text-align: center;
+			margin-right: 3%;
+
+			&:first-child{
+				border-right:1px solid borderColor-medium;
+			}
+		}
+	}
+
+}

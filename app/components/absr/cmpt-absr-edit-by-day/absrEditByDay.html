@@ -1,0 +1,278 @@
+<form name="editByDayForm">
+<div class="cmpt-absr-edit-day">
+    <div class="-u-24-24 column-details" ap-show-slide="apshowslide"
+        ng-show="absenceData.institution && vm.instDependantDataReady">
+        <div class="-u-24-24 rowDivider font13">
+            
+            <div class="-u-23-24" ng-class="{inServiceDayLeftBorder: (absenceData.closedDay != null && absenceData.closedDay.closedDayType == 2),
+                    closedDayLeftBorder: (absenceData.closedDay != null && absenceData.closedDay.closedDayType == 1),
+                    overlappingAbsenceLeftBorder: (absenceData.errors.dates.length > 0)}">
+                <fieldset ng-disabled="!showTrashIcon" class="removeBorder" ng-class="{'grayOutAbsence':!showTrashIcon}">
+                <div class="-u-24-24 leftPadding10">
+                    <div class="-u-5-24 leftPadding10 absence-date-picker-label">
+                        <span class="text fontBold">{{ strings['Date'] }}</span>
+                    </div>
+                    <div class="-u-19-24 leftPadding10">
+                    <div class="-u-8-24 leftPadding10">
+                        <span class="text fontBold">{{ strings['School'] }}</span>
+                    </div>
+                    <div class="-u-3-24 rightPadding5"></div>
+                    <div class="-u-13-24 floatrightdiv">
+                    <div class="-u-9-24">
+                        <span class="text fontBold">{{ strings[mnemonic.typeTitle] }}</span>
+                    </div>
+                    <div class="-u-6-24 leftPadding10 width30p">
+                        <span class="text fontBold">{{ strings['StartTime'] }}</span>
+                    </div>
+                    <div class="-u-6-24 leftPadding27WithAutowidth">
+                        <span class="text fontBold">{{ strings['EndTime'] }}</span>
+                    </div>
+                </div>
+                </div>
+                <div class="-u-5-24 leftPadding10 absence-date-picker">
+                    <div ng-if="vm.editable.date">
+                        <cmpt-ui-date-selector class="item date-picker" got-error="absenceData.errors.dates[0]"
+                        date-model="absenceData.date" label="strings['SelectDate']" selected-location= "absenceData.institution.id">
+                        <label>
+                            {{ strings['Date'] }}
+                        </label>
+                    </cmpt-ui-date-selector>
+                    </div>
+                    <div ng-if="!vm.editable.date">
+                        <span class="text fontBold font13 ">{{ go.parseTime(absenceData.date) | date: 'MM/dd/yy' }}</span>
+                    </div>
+                    
+                    <div ng-if="absenceData.errors.dates.length > 0" class="leftPadding32 floatright ">
+                        <div ng-if="absenceData.errors.dates[0].includes('conflict')" class="overlappingAlreadyAbsenceLabel">
+                            {{ strings[mnemonic.errorTitle] }}</div>                      
+                        <div ng-if="!absenceData.errors.dates[0].includes('conflict')" class="overlappingAlreadyAbsenceLabel">
+                            {{ absenceData.errors.dates[0] }}</div>
+                    </div>
+
+                    <div ng-if="(absenceData.errors.dates == null || absenceData.errors.dates.length == 0)" class="width100pc">
+                        <span class="text floatright">{{go.getDay(absenceData.date)}}</span>
+                    </div>
+
+                    <div ng-if="(absenceData.errors.dates == null || absenceData.errors.dates.length == 0) && absenceData.closedDay != null"
+                        class="floatrightdiv width94pc ">
+
+                        <span ng-if="absenceData.closedDay.closedDayType == 2"
+                            class="text floatright inServiceDayLabel">{{strings['InServiceDay']}}</span>
+
+                            <span ng-if="absenceData.closedDay.closedDayType == 1"
+                            class="text floatright closedDayLabel">{{strings['ClosedDay']}}</span>
+                    </div>
+                    <div ng-if="(absenceData.errors.dates == null || absenceData.errors.dates.length == 0)" class="floatrightdiv width94pc">
+                        <div ng-if="!absenceData.isReconciled" class="UnreconciledIcon verticalAlignTextTop ">
+                            <span class="UnreconciledText ">U</span></div>
+                        <div ng-if="absenceData.isReconciled" class="ReconciledIcon verticalAlignTextTop ">
+                            <span class="ReconciledText ">R</span></div>
+                    </div>
+                </div>
+                <div class="-u-19-24 leftPadding10  ">
+                <div class="-u-8-24 leftPadding10  ">
+                    <div ng-if="vm.isOnlyInstitute && absrState.context.showInstitution">
+                        <cmpt-ui-dropdown options-array="vm.institutionList" value-selected="absenceData.institution"
+                            enabled="true" allow-blank="false" class="element" sort-by="'id'"
+                            read-only="!vm.editable.institution"
+                            error-messages="absenceData.errors.institution" 
+                            label="strings['Report.Label.SelectSchool']"></cmpt-ui-dropdown>
+                    </div>
+                    <div class="wordWrap" ng-if="!vm.isOnlyInstitute">
+                        <span class="text fontBold font13 ">{{ absenceData.institution.value }}</span>
+                    </div>
+                    <div ng-if="!vm.isVacancy || (vm.isVacancy && vm.entitlementTypeList != undefined && vm.entitlementTypeList.length > 0)">
+                        <div ng-class="{topMargin8: !vm.isOnlyInstitute}">
+                            <span class="text fontBold">{{ strings[mnemonic.reasonTitle] }}</span>
+                        </div>
+                        <div ng-if="absrState.context.showEntitlementType">
+                            <cmpt-ui-dropdown label="strings[mnemonic.reasonLabel]" options-array="vm.entitlementTypeList"
+                                value-selected="absenceData.entitlement" read-only="!vm.editable.entitlement"
+                                enabled="absenceData.institution" class="element"
+                                can-select-hidden-absence-reasons="vm.canSelectHiddenAbsenceReasons"
+                                error-messages="absenceData.errors.entitlementType"></cmpt-ui-dropdown>
+                        </div>                  
+                    </div>    
+                    <div ng-if="absrState.context.showBudgetCode && vm.bugdetCodeList.length > 0">
+                        <div>
+                            <span class="text fontBold">{{ strings['BudgetCode'] }}</span>
+                        </div>
+
+                        <div>
+                            <cmpt-ui-dropdown options-array="vm.bugdetCodeList" value-selected="absenceData.budgetCode" read-only="!vm.editable.budgetCode"
+                            label="strings['SelectBudgetCode']" enabled="true" class="element" error-messages="[]">
+                            </cmpt-ui-dropdown>
+                        </div>
+                    </div>
+
+                    <div ng-if="absrState.context.showAccountingCode">
+                        <div>
+                            <span class="text fontBold">{{ strings['AccountingCode'] }}</span>
+                        </div>
+
+                        <div ng-if="vm.editable.accountingCode">
+                            <cmpt-ui-dropdown options-array="vm.accountingCodeList"
+                                value-selected="absenceData.accountingCode" error-messages="absrState.errorMessages"
+                                sort-by="go.sortByNameWithCustomAtBottom" 
+                                class="element" read-only="!vm.editable.accountingCode"
+                                enabled="absenceData.institution" label="strings['SelectAccountingCode']"></cmpt-ui-dropdown>
+                            <div class="topMargin10" ng-show="absenceData.accountingCode.id === 0">
+                                <input aria-label="{{strings['EnterCustomAccountingCode']}}" class="input" type="text" maxlength="50" placeholder="None"
+                                    ng-model="absenceData.customAccountingCode">
+                            </div>
+                        </div>
+                        <div class="element" ng-if="!vm.editable.accountingCode">
+                            <span ng-if="absenceData.accountingCode === null">{{strings['NoneSelected']}}</span>
+                            {{ absenceData.accountingCode.value }}
+                            <span ng-if="absenceData.accountingCode.id === 0">- {{ absenceData.customAccountingCode }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="-u-3-24 rightPadding5 " ng-show="vm.shouldShowSubTimeFields">
+                    <cmpt-ui-linking enabled="absenceData.institution != null && vm.editable.vacancyTime"
+                        linked="absenceData.timesAreLinked" from-edit="true"
+                        expand-linking-chain = 'canViewOrEditBreakTime'>
+                    </cmpt-ui-linking>
+                </div>
+
+                <div class="-u-13-24 floatrightdiv">
+                    <cmpt-absr-time-field enabled="absenceData.institution != null" inst-settings="vm.instSettings"
+                        shift-type-list="absrState.context.absenceShiftTypes" shift-type="absenceData.shiftType"
+                        start-time="absenceData.absenceStartTime" end-time="absenceData.absenceEndTime"
+                        start-time-errors="absenceData.errors.absenceStartTime"
+                        end-time-errors="absenceData.errors.absenceEndTime" show-by-day="vm.showByDay"
+                        read-only="!vm.editable.absenceTime"
+                        shift-type-id="strings['SelectShiftType']"
+						shift-from-time="strings['EnterShiftFromTime']"
+						shift-to-time="strings['EnterShiftToTime']"
+                        class="-u-24-24 ">
+                        <span ng-if="canViewAbsenceDuration" class="absenceDuration">
+                            <span>{{vm.absenceDuration}} hr</span>
+                        </span>
+                    </cmpt-absr-time-field>
+                    <div class="-u-24-24 deductBreakTimeDivMargin" ng-if = 'canViewOrEditBreakTime'>
+                        <div class="font12">
+                            <span class="deductBreakPosition">
+                                <input type="checkbox" class="verticalAlignMiddle" 
+                                    ng-checked='absenceData.doesBreakTimeOverlapAbsenceTimes && absenceData.deductCustomBreakTime' 
+                                    ng-disabled='!absenceData.doesBreakTimeOverlapAbsenceTimes || !absrState.context.CanEditBreakTime'
+                                    ng-click="go.enableDisableCustomBreakTime()" >
+                                <span class="marginRight30 fontBold">{{strings['DeductBreak']}}</span>
+                            </span>
+                            <span>{{customBreakType}}</span> 
+                        </div>
+                        <div>
+                            <cmpt-absr-time-field enabled="absenceData.institution != null" inst-settings="vm.instSettings"
+                                shift-type-list="absrState.context.absenceShiftTypes" shift-type="absenceData.shiftType"
+                                start-time="absenceData.breakStartTime"
+						        end-time="absenceData.breakEndTime"
+                                start-time-errors="absenceData.errors.absenceStartTime"
+                                end-time-errors="absenceData.errors.absenceEndTime" show-by-day="vm.showByDay"
+                                read-only="(!absrState.context.CanEditBreakTime && absrState.context.CanViewBreakTime) 
+                                            || !absenceData.deductCustomBreakTime
+                                            || !absenceData.doesBreakTimeOverlapAbsenceTimes"
+                                shift-type-id="strings['SelectShiftType']"
+                                shift-from-time="strings['EnterShiftFromTime']"
+                                shift-to-time="strings['EnterShiftToTime']"
+                                class="-u-24-24 "
+                                remove-shift-type-dropdown = "true">
+                                <div ng-if="showResetIcon && absrState.context.CanEditBreakTime" class="resetBreakTime">
+                                       <a ng-click="go.resetBreakTime()">
+                                          <i class="fa-rotate-left"></i> 
+                                       </a>
+                                    </div>                               
+                            </cmpt-absr-time-field>
+                        </div>
+                    </div>
+                    <div ng-show="vm.shouldShowSubTimeFields">
+                        <span class=" text fontBold">{{ strings['SubTimes'] }}</span>
+
+                        <span class="leftPadding55 text fontBold">{{ strings['StartTime'] }}</span>
+
+                        <span class="leftPadding27 text fontBold">{{ strings['EndTime'] }}</span>
+
+                        <div>
+                            <cmpt-absr-time-field read-only="!vm.editable.vacancyTime"
+                                enabled="!absenceData.timesAreLinked" is-sub-time="true" inst-settings="vm.instSettings"
+                                shift-type-list="absrState.context.vacancyShiftTypes"
+                                shift-type="absenceData.substituteShiftType"
+                                start-time="absenceData.substituteStartTime" end-time="absenceData.substituteEndTime"
+                                start-time-errors="absenceData.errors.vacancyStartTime"
+                                end-time-errors="absenceData.errors.vacancyEndTime" show-by-day="vm.showByDay"
+                                shift-type-id="strings['SelectSubShiftType']"
+								shift-sub-from-time="strings['EnterSubShiftFromTime']"
+								shift-sub-to-time="strings['EnterSubShiftToTime']"
+                                class="-u-24-24 ">
+                        </div>
+                    </div>
+                    <div class="width70pc" ng-if="absrState.context.showPayCode && vm.payCodeList.length > 0">
+                        <label>
+                            <span class="text fontBold">{{ strings['PayCode'] }}</span>
+                        </label>
+                        <div class="element">
+                            <cmpt-ui-dropdown options-array="vm.payCodeList" value-selected="absenceData.payCode" read-only="!vm.editable.payCode"
+                                enabled="true" error-messages="absenceData.errors.payCode" label="strings['SelectPayCode']"></cmpt-ui-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="-u-24-24 leftPadding10 ">
+                    
+                    <div class="-u-8-24" ng-if="absrState.context.showNonPayTime">
+                        <label>
+                            <span class="text fontBold">{{ strings['NonPayTime'] }}</span>
+                        </label>
+                        <div class="element">
+                            <cmpt-ui-textbox value-text="absenceData.nonPayTime" read-only="!vm.editable.nonPayTime"
+                                label="strings['EnterNonPayTime']" error-messages="absenceData.errors.nonPayTime" enabled="true" filter="time HH:mm 15">
+                            </cmpt-ui-textbox>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="-u-8-24 leftPadding10" ng-if="absrState.context.showHoursSubWorked">
+                        <label>
+                            <span class="text fontBold">{{ strings['HoursSubWorked'] }}</span>
+                        </label>
+                        <div class="element  ">
+                            <cmpt-ui-textbox value-text="absenceData.hoursSubWorked" read-only="!vm.editable.hoursSubWorked"
+                            label="strings['EnterSubWorkedHours']" error-messages="absenceData.errors.subHourWorked" enabled="true"></cmpt-ui-textbox>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="-u-8-24 leftPadding10" ng-if="absrState.context.showAbsenceTime">
+                        <label>
+                            <span class="text fontBold">{{ strings['TimeAbsent'] }}</span>
+                        </label>
+                        <div class="element">
+                            <cmpt-ui-textbox value-text="absenceData.userSpecifiedAbsenceDuration" read-only="!vm.editable.userSpecifiedAbsenceDuration"
+                                label="strings['EnterAbsentTime']" error-messages="absenceData.errors.timeAbsent" enabled="true" filter="time HH:mm">
+                            </cmpt-ui-textbox>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+                
+
+               </fieldset>
+            </div>
+            <div class="-u-1-24 leftPadding10 topMargin56 leftMargin1pc">
+                <div class="trash undo-delete" ng-show="absenceData.isDeletable && currentAbsrState.absences.length > 1 && !absenceData.lastAbsence">
+                    <a ng-if="!showUndoDiv" ng-click="toggleUndoDelete()" ng-mouseover = "onMouseOver()" >
+                        <i ng-class="{'fa fa-trash-o':showTrashIcon,'fa-rotate-left':!showTrashIcon}"></i>
+                    </a>
+                    <div ng-if="showUndoDiv"  ng-mouseleave ="onMouseLeave()">
+                        <span >Undo Delete</span>
+                        <a ng-click="toggleUndoDelete()">
+                            <i ng-class="{'fa-rotate-left':!showTrashIcon}"></i>
+                        </a>
+                    </div>
+                </div>
+            
+            </div>
+          </div>
+        
+    </div>
+</div>
+</form>

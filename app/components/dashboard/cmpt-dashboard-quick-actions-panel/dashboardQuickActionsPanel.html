@@ -1,0 +1,65 @@
+<div class="cmpt-dashboard-quick-actions-panel">
+ 	<div class="title">
+       {{ strings['Dashboard.Header.QuickActions.Label'] }}
+    </div>
+
+	<div class="search-panel">
+	    <div class="fl-search">
+	        <i class="fa" ng-class="{'fa-search': !vm.isSearching, 'fa-spinner fa-spin' : vm.isSearching}"></i>
+	        <input class="fl-input" type="text" placeholder="{{ strings['Dashboard.ConfirmationNumber.Input.Placeholder'] }}"
+	        ng-class="{'error': vm.searchErrors.length > 0}"
+	        ng-model="vm.searchText"
+	        ng-keyup="$event.keyCode == 13 ? go.search() : null">
+	    </div>
+    	<a class="fl-button full" ng-click="go.search()" ng-class="{'fl-disabled': vm.isSearching}">{{strings['Dashboard.Header.Button.Search']}}</a>
+    	<a class="fl-button fixed"  ng-click="go.search()" ><i class="fa" ng-class="{'fa-search': !vm.isSearching, 'fa-spinner fa-spin' : vm.isSearching}"></i></a>
+	    <span qtip
+	    	my="top right"
+			at="bottom left"
+			qtip-class="qtip qtip-large"
+	    	mnemonic="Dashboard.SearchDialog.FAQ.Message"
+    	><i class="fa fa-question-circle"></i></span>
+	</div>
+
+	<div class="quick-action-dropdown" ap-menu-toggler="dropdown" click-toggler>
+		<div class="fl-button">
+	    	<i class="fa-gear"></i>
+			{{ strings['Dashboard.Header.QuickActions.Label'] }}
+			<span class="ui-icon ui-icon-triangle-1-s"></span>
+		</div>
+		<ul class="dropdown">
+			<li ng-show="havePermission('ABSR.Create')"><a href="/v1/absences/create-absence">{{ strings['Dashboard.Header.Button.CreateAbsence'] }}</a></li>
+			<li ng-show="havePermission('ABSR.VACANCY') && havePermission('ABSR.VACANCYEDIT')">
+				<a href="/v1/absences/create-vacancy">{{ strings['Dashboard.Header.Button.CreateVacancy'] }}</a>
+			</li>
+			<li><a href="/v1/absences/approve">{{ strings['Dashboard.Header.Button.Approve'] }}</a></li>
+			<li><a href="/v1/absences/reconcile">{{ strings['Dashboard.Header.Button.Reconcile'] }}</a></li>
+		</ul>
+    </div>
+
+	<div>
+		<a ng-if="havePermission('ABSR.Create')" class="quick-button fl-button-lg" href="/v1/absences/create-absence">{{ strings['Dashboard.Header.Button.CreateAbsence'] }}</a>
+		<a class="quick-button fl-button-lg" ng-if="havePermission('ABSR.CREATE') && havePermission('ABSR.VACANCY') && havePermission('ABSR.VACANCYEDIT')" href="/v1/absences/create-vacancy">{{ strings['Dashboard.Header.Button.CreateVacancy'] }}</a>
+	</div>
+
+	<div>
+		<a class="quick-button fl-button-badge" ng-show="havePermission('ABSRAPPRVL.ApproveDeny')" href="/v1/absences/approve">
+	        <div class="label">{{ strings['Dashboard.Header.Button.Approve'] }}</div>
+		    <div class="badge">
+			    <span class="data-spinner" ng-show="vm.loadingApprovalCount"></span>
+			    <span ng-hide="vm.loadingApprovalCount">{{ vm.approvalCount }}</span>
+		    </div>
+		    <div class="badge-caption" ng-bind-html="vm.approvalBadgeCaption"></div>
+		</a>
+
+		<a class="quick-button fl-button-badge" ng-show="havePermission('ABSR.Approve')" href="/v1/absences/reconcile">
+			<div class="label">{{ strings['Dashboard.Header.Button.Reconcile'] }}</div>
+			<div class="badge">
+				<span class="data-spinner" ng-show="vm.loadingReconciliationCount"></span>
+				<span ng-hide="vm.loadingReconciliationCount || vm.reconciliationLoadError">{{vm.reconciliationCount}}</span>
+				<span ng-hide="vm.loadingReconciliationCount" ng-class="{'fa fa-times-circle load-error': vm.reconciliationLoadError}"></span>
+			</div>
+			<div class="badge-caption" ng-bind-html="vm.reconcileBadgeCaption"></div>
+		</a>
+	</div>
+</div>

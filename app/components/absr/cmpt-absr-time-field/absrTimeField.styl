@@ -1,0 +1,46 @@
+@import "common-var"
+.cmpt-absr-time-field {
+	opacity: 0.5;
+	&.enabled {
+		opacity: 1;
+	}
+	div.hide{
+		display:none;
+	}
+	div.leftPadding10{
+		padding-left:10px;
+	}
+	div.width30{
+		width:30%;
+	}
+
+
+	.time-container{
+		margin-top:5px;
+		.time-box{
+			display: inline-block;
+			input{
+				width:80px;
+				&[disabled]{
+					opacity:0.3;
+				}
+			}
+			.error-message{
+				width:80px;
+			}
+		}
+		.label{
+			display: inline-block;
+			width:26px;
+			text-align:center;
+			font-weight:bold;
+			font-size:14px;
+		}
+		& > div {
+			vertical-align: top;
+		}
+		.cmpt-ui-textbox .error-message {
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,350 @@
+@import "common-var"
+.cmpt-search-search-container {
+	#contentWrapper {
+		border: 0.0625rem solid #ccc;
+		width: 100%;
+		 background-color: #ffffff;
+	
+		div#searchFilters {
+			width: 100%;
+			top: 0rem;
+			background-color: #f5f5f5;
+			border-bottom: 0.0625rem solid #ccc;
+			padding-bottom: 1rem;
+    		padding-top: 1rem;
+			div.filterWrapper {
+				padding-left: 1rem; 
+				display: inline-block;
+
+				div.fl-search {
+					display: inline-block;
+					width: 18.125rem; /* 290px converted to rem */
+					position: relative;
+
+					label.hide {
+						display: none;
+					}
+
+					.fl-input {
+						border-radius: 1.25rem; /* 20px converted to rem */
+						padding-left: 1.875rem; /* 30px converted to rem */
+						padding-right: 1.875rem; /* 30px converted to rem */
+					}
+
+					.fa-search {
+					    font-size: 0.875rem; /* 14px converted to rem */
+    					position: absolute;
+    					left: 0.5625rem; /* 9px converted to rem */
+	    				top: 0;
+    					line-height: 1.875rem; /* 30px converted to rem */
+    					color: #aaa;
+					}
+
+					#search {
+						width: 12.5rem; /* 200px converted to rem */
+						box-sizing: border-box;
+					}
+
+					#searchButton {
+						box-sizing: border-box;
+						text-align: center;
+						margin-left: 0.3125rem; /* 5px converted to rem */
+
+						a.fl-primary {
+							color: #ffffff;
+						}
+
+					}
+				}
+			}
+			div.displayInline {
+				display:inline-flex;
+				div.globalSearchMultiSelectDropdown{
+					width:15rem; /* 240px converted to rem */
+				}
+			}
+			div.searchError {
+				display: inline-block;
+				text-align: left;
+				font-size: 1rem; /* 16px converted to rem */
+				color: red;
+				font-weight: normal;
+				width: auto;
+				padding-left: 0.625rem; /* 10px converted to rem */			
+			}
+
+			div.searchSummary {
+				display: inline-block;
+				text-align: right;
+				font-size: 0.9375rem; /* 15px converted to rem */
+				color: #444;
+				font-weight: normal;
+				width: 64%;
+				padding-right: 0.625rem; /* 10px converted to rem */
+			}
+		}
+
+		div#searchResultsContainer{
+			margin-left: 1.25rem; /* 20px converted to rem */
+			width: 95%;
+			padding-bottom: 1rem;
+
+			#searching {
+				width: 100%;
+				margin-top: 1.875rem; /* 30px converted to rem */
+				text-align: center;
+				margin-bottom: 1.875rem; /* 30px converted to rem */
+			}
+
+
+			#searchWarning {
+				width: auto;
+			    margin: 0.9375rem 0 0 0; /* 15px converted to rem */
+			    padding: 0 0.3125rem; /* 5px converted to rem */
+			    width: auto;
+			    height: 1.5rem; /* 24px converted to rem */
+			    line-height: 1.5rem; /* 24px converted to rem */
+			    color: #003355;
+			    font-size: 0.6875rem; /* 11px converted to rem */
+			    box-sizing: border-box;
+			    background-color: #ddeeff;
+    			border: 0.0625rem solid #418eb4; /* 1px converted to rem */
+
+    			em {
+    				font-weight: bold;
+    			}
+			}
+
+			#searchError {
+				width: auto;
+				font-size: 1rem; /* 16px converted to rem */
+				color: red;
+			}
+
+			#searchResultsData {
+				margin-top: 0.625rem; /* 10px converted to rem */	
+
+				#searchResults {
+					list-style: none;
+
+
+					em {
+						font-weight: bold;
+						font-style: normal;
+					}
+
+					li:first-of-type {
+						margin-top: 0.9375rem; /* 15px converted to rem */
+						border-top-width: 0rem;
+					}
+					li:last-of-type {
+						padding-bottom: 0.9375rem; /* 15px converted to rem */
+					}
+
+					li {
+						display: block;
+						border-top: 0.0625rem solid #e5e0ec; /* 1px converted to rem */
+						padding: 0.75rem 0rem 0.75rem 0rem; /* 12px converted to rem */
+						color: #444;
+
+						div.flex {
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+						}
+
+						div.entity {
+							width: 70%;
+						}
+
+						div.objectType {
+							margin: 0;
+							padding: 0;
+							font-size: 0.625rem; /* 10px converted to rem */
+							color: #737373;
+							text-transform: uppercase;
+							line-height: 1;
+						}
+						div.objectDetails {
+							margin: 0;
+							padding: 0;
+
+							a {
+								font-size: 0.875rem; /* 14px converted to rem */
+								color: #335599;
+
+								em {
+									font-weight: bold;
+									font-style: normal;
+								}
+
+								span {
+									margin-left: 0rem;
+								}
+
+								span.hide
+								{
+									display: none;
+								}
+							}
+
+							div.objectName {
+								display: inline-block;
+
+								span {
+									margin-left: 0rem;
+								}
+							}
+
+							a.inactiveObj, div.inactiveObj span {
+								background-color: gainsboro;
+							}
+
+							span {
+								margin-left: 0.3125rem; /* 5px converted to rem */
+								font-size: 0.875rem; /* 14px converted to rem */
+
+								span {
+									margin-left: 0rem;
+								}
+							}
+
+							span.objectLabel {
+								margin-left: 0rem;
+							}
+
+							div.extraDetails {
+								font-size: 0.75rem; /* 12px converted to rem */
+								line-height: 1.4;
+
+								span:first-of-type {
+									margin-left: 0rem;
+								}
+								
+								span {
+									font-size: 0.75rem; /* 12px converted to rem */
+									margin-left: 0.625rem; /* 10px converted to rem */
+								}
+							}
+						}
+						div.extra {
+							width: 30%;
+							text-align: right;
+						}
+					}			
+				}
+			}
+
+			cmpt-ui-nothing-found {
+				margin-top: 1.25rem; /* 20px converted to rem */
+			}
+		}
+
+
+	}	
+	
+	#rawResult {
+		position: relative;
+		float: left;
+		margin-top: 0.3125rem; /* 5px converted to rem */
+	}
+
+	.ui-multiselect {
+		width: 14rem;
+		height: 2.2rem;
+		font-size: 0.875rem; /* 14px converted to rem */
+	}
+	select {
+		width: 14rem;
+		height: 2.2rem;
+		font-size: 0.875rem; /* 14px converted to rem */
+	}
+	div.cmpt-ui-multiselect .selector .trigger-button{
+		position:absolute;
+		height:2rem;
+	}
+	.cmpt-ui-multiselect .selector .trigger-button .dropdown{
+		position: inherit;
+		margin-top: 2rem;
+		width: 13.875rem; /* 222px converted to rem */
+		left: 0%;
+	}
+	.cmpt-ui-multiselect .selector .trigger-button .dropdown ul.items li {
+		border-top: none;
+	}
+	.cmpt-ui-multiselect .selector .trigger-button .dropdown ul.items li label{
+		font-size: 0.8125rem; /* 13px converted to rem */
+	}
+	.cmpt-ui-multiselect .selector .trigger-button span{
+		font-size: 0.8125rem; /* 13px converted to rem */
+	}
+	.cmpt-ui-dropdown select{
+		height:2rem;
+		padding:0.25rem;
+		border-radius: 0.25rem; /* 4px converted to rem */
+		padding-top: 0.0625rem; /* 1px converted to rem */
+	}
+	.cmpt-ui-dropdown select option{
+		padding: 0.3125rem; /* 5px converted to rem */
+		font-size: 0.8125rem; /* 13px converted to rem */
+		padding-bottom: 0.625rem; /* 10px converted to rem */
+	}
+
+	.filterLabels{
+		padding-left: 1rem;
+    	font-weight: 600;
+		font-size: 0.8125rem; /* 13px converted to rem */
+	}
+	.cmpt-ui-multiselect .selector{
+		float: left;
+	}
+	.activeInactiveOptions{
+		width:10rem; /* 160px converted to rem */
+		margin-left:0.5rem; /* 8px converted to rem */
+	}
+	.summaryWrapper{
+		width:100%;
+	}
+	.selectedFiltersSection {
+		margin-left:0.6875rem; /* 11px converted to rem */
+		margin-top:0.3125rem; /* 5px converted to rem */
+		max-height: 6.875rem; /* 110px converted to rem */
+		width: 14.5rem; /* 228px converted to rem */
+		overflow-y: auto;
+		margin-bottom: 0.3125rem; /* 5px converted to rem */
+		display: inline-flex;
+    	flex-wrap: wrap-reverse;
+	}
+	.selectedFiltersSection .selectedFilter {
+		box-shadow: rgba(60, 64, 67, 0.3) 0rem 0.0625rem 0.125rem 0rem, rgba(60, 64, 67, 0.15) 0rem 0.0625rem 0.1875rem 0.0625rem;
+		background: #402b56;
+		color: white;
+		padding: 0.1875rem 0.25rem 0.1875rem 0.375rem; /* 3px 4px 3px 6px converted to rem */
+		border-radius: 0.375rem; /* 6px converted to rem */
+		font-size:0.8125rem; /* 13px converted to rem */
+		margin-left: 0.3125rem; /* 5px converted to rem */
+	}
+	.cmpt-ui-multiselect .label{
+		    position: relative;
+		z-index: 1;
+		padding: 0.625rem;
+		font-size: 0.8125rem; /* 13px converted to rem */
+	}
+	.globalSearchSummary{
+		width: fit-content;
+		max-width: 18.75rem; /* 300px converted to rem */
+		margin-left:-2.5rem; /* 40px converted to rem */
+	}
+	.btnGlobalSearch{
+		margin-left: 1.25rem; /* 20px converted to rem */
+		.globalSearchInput {
+			border-radius: 0.25rem !important; /* 4px converted to rem */
+		}
+	}
+	.below-grid{
+		.btnLoadMore{
+			margin-left:50%; 
+			transform: translateX(-50%);
+		}
+	}
+}

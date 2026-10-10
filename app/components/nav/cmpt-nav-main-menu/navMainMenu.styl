@@ -1,0 +1,370 @@
+@import "common-var"
+.cmpt-nav-main-menu {
+	position: fixed;
+	top: topbar-height;
+	left: 0;
+	bottom: 0;
+	width: sidebar-width-collapsed;
+	z-index: z-index-nav + 4;
+	color: sidenav-text;
+	white-space: nowrap;
+
+	.back-drop {
+		position: absolute;
+		width: sidebar-width;
+		border-right: 1px solid sidenav-borderColor;
+		height: 100%;
+		background-color: sidenav-bg;
+		transform: translateX(-(sidebar-width - sidebar-width-collapsed));
+		transition: transform sidebar-collapse-time 50ms;
+		z-index: 1;
+		box-shadow: 0px 0px 4px 0px sidenav-borderShadowColor;
+		background-image: url('../images/sidebar-pattern.png');
+		background-size: contain;
+	  background-repeat: no-repeat;
+	  background-position: left bottom;
+	}
+
+	.content-dimmer {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		background: sidenav-contentDimmer;
+		opacity: 0.8;
+		z-index: 0;
+
+			.toggle-buffer {
+				position:absolute;
+				height: 100vh;
+				top:0;
+			}
+
+			.toggle-close {
+				position: absolute;
+				top:0;
+				left:200px;
+				height:100vh;
+				width: 100vw;
+			}
+
+			&.dim-transition {
+				-webkit-transition: opacity 200ms 50ms;
+				-moz-transition: opacity 200ms 50ms;
+				-o-transition: opacity 200ms 50ms;
+				-ms-transition: opacity 200ms 50ms;
+				transition: opacity 200ms 50ms;
+
+				&.ng-hide-add, &.ng-hide-remove {
+					display: block !important;
+				}
+
+				&.ng-hide {
+					opacity: 0;
+				}
+
+				&.dim-transition-disable{
+					-webkit-transition: opacity 0ms !important;
+					-moz-transition: opacity 0ms !important;
+					-o-transition: opacity 0ms !important;
+					-ms-transition: opacity 0ms !important;
+					transition: opacity 0ms !important;
+				}
+			}
+
+	 		.zone {
+				position: absolute;
+				top:0;
+				right:0;
+				height: 100vh;
+			 }
+	}
+
+	.nav-expanded & {
+		width: sidebar-width;
+
+		.back-drop {
+			transform: translateX(0);
+		}
+	}
+
+	.nav-title {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 10px 0 10px 16px;
+		width: sidebar-width - 50;
+		height: sidenav-title-height;
+		font-size: 12px;
+		font-weight: 600;
+		cursor: default;
+		opacity: 1;
+		text-transform: uppercase;
+		color: lighten(sidenav-text, 40%);
+
+		transition: opacity sidebar-collapse-time 50ms;
+		z-index: 1;
+
+		&.ng-hide-add, &.ng-hide-remove {
+			display: block !important;
+		}
+
+		&.ng-hide {
+			opacity: 0;
+		}
+	}
+
+	.top-section {
+		position: absolute;
+		left: 0;
+		top: sidenav-title-height;
+		bottom: bottom-section-small-height;
+		z-index: 1;
+
+
+		.main-menu-item-container {
+			position: relative;
+			white-space: nowrap;
+			font-size: 15px;
+			width: sidebar-width-collapsed;
+			padding: 7px 0;
+			cursor: default;
+			height: 40px;
+			z-index: 1;
+			font-weight:600;
+
+			.nav-expanded & {
+				width: sidebar-width;
+			}
+
+			&.menu-action {
+				cursor: pointer;
+
+				.more-items {
+					display: none;
+				}
+			}
+
+			&.menu-no-action {
+				.more-items {
+					position: absolute;
+					display: inline-block;
+					color: lighten(sidenav-text, 35%);
+					right: 22px;
+					opacity: 0;
+					z-index: 2;
+
+					.nav-expanded & {
+						transition: transform 100ms, opacity 200ms sidebar-collapse-time;
+						opacity: 1
+					}
+				}
+			}
+		}
+	}
+
+	.main-menu-item {
+		.hover-elem {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: sidebar-width;
+			transform: translateX( -(sidebar-width - sidebar-width-collapsed) );
+			transition: transform sidebar-collapse-time 50ms;
+
+			.nav-expanded & {
+				transform: translateX(0);
+			}
+		}
+
+		&.highlight {
+			color: nav-highLightColor;
+
+			.fa.more-items, .nav-icon {
+				color: nav-highLightColor;
+			}
+
+			// .hover-elem {
+			// 	background-color: nav-highlight;
+			// 	border-top: 1px solid sidenav-borderColor;
+			// 	border-bottom: 1px solid sidenav-borderColor;
+			// }
+		}
+
+		&:hover {
+			color: sidenav-text;
+
+			.fa.more-items {
+				color: sidenav-text;
+			}
+
+			.nav-icon {
+				color: nav-icon-color;
+			}
+
+			.hover-elem {
+				background-color: lighten(sidenav-bg, color-adjust-amt);
+				border-top: 1px solid sidenav-borderColor;
+ 				border-bottom: 1px solid sidenav-borderColor;
+			}
+		}
+
+		&.submenu-active {
+			.more-items {
+				transform: translateX(3px);
+			}
+
+			.nav-icon {
+				color: darken(nav-icon-color, 15%);
+				&.fa-times{
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.nav-icon {
+		position: relative;
+		display: inline-block;
+		width: 40px;
+		padding-left: 10px;
+		text-align: center;
+		z-index: 5;
+		color: nav-icon-color;
+	}
+
+	.main-menu-title {
+		position: relative;
+		opacity: 1;
+		z-index: 2;
+		transition: opacity (sidebar-collapse-time/2) 50ms;
+
+		&.ng-hide-add, &.ng-hide-remove {
+			display: inline-block !important;
+		}
+
+		&.ng-hide {
+			opacity: 0;
+		}
+	}
+
+
+	.fa-arrow-circle-left, .fa-arrow-circle-right {
+		position: absolute;
+		right: 0;
+		top: 0;
+		padding: 5px 0 4px 4px;
+		cursor: pointer;
+		font-size: 18px;
+		width: 50px;
+		text-align: center;
+		color: lighten(sidenav-text, 35%);
+		z-index: z-index-nav + 5;
+
+		&:hover {
+			background: darken(sidenav-bg, 4%);
+		}
+	}
+
+	.bottom-section {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		// .background-elem {
+		// 	position: absolute;
+			// left: 20px;
+			// width: 10px;
+			// bottom: 0;
+			// height: 76px;
+			//
+			// border-top: 1px solid darken(sidenav-bg, 5%);
+			// transition: width sidebar-collapse-time 50ms;
+			// z-index: 1;
+
+
+			// .nav-expanded & {
+			// 	width: 210px;
+			// }
+		//}
+
+
+		.frontline-branding {
+			width: 100%;
+			height: 76px;
+			line-height: 76px;
+			text-align: center;
+			position: absolute;
+			bottom: 0;
+			z-index: 2;
+			// background-image: url('../images/sidebar-pattern.png');
+			// background-size: 240px;
+  	  // background-repeat: no-repeat;
+		  // background-position: left bottom;
+			// &:hover {
+			// 	width: sidebar-width;
+			// }
+			.logo-container {
+				height:100%;
+				width: 100%;
+				transition: opacity 200ms;
+				position: absolute;
+				top: 0;
+				.frontline-logo {
+					display: block;
+					width: 100%;
+					color: nav-frontlineLogoColor;
+				}
+				.copyright-info {
+					display: block;
+					width: 100%;
+					height: auto;
+					font-size: 10px;
+					line-height: normal;
+					margin-top: 5px;
+					color: nav-copyRighTextColor;
+
+					.info-link {
+						color: nav-frontlineLogoColor;
+					}
+				}
+				a{
+					text-decoration: none;
+				}
+			}
+
+			// animation for branding
+			.logo-container {
+				opacity: 1;
+
+				&.ng-hide-add, &.ng-hide-remove { display: block !important; }
+				&.ng-hide-add {
+					opacity: 0;
+					transition: opacity (sidebar-collapse-time/2);
+				}
+				&.ng-hide-remove { transition: opacity sidebar-collapse-time (sidebar-collapse-time/2); }
+				&.ng-hide { opacity: 0; }
+			}
+
+			.full-logo {
+				.frontline-logo {
+					font-size: 35px;
+					line-height: 60px;
+					overflow: hidden;
+					height: 50px;
+					display: block;
+				}
+			}
+
+			.small-logo {
+				.frontline-logo {
+					font-size: 25px;
+					line-height: 60px;
+					overflow: hidden;
+					height: 50px;
+					display: block;
+				}
+			}
+		}
+	}
+}

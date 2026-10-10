@@ -1,0 +1,162 @@
+@import "common-var"
+
+.cmpt-absr-details-summary-section {
+	background: absence-summarySection-backGroundColor;
+	border-left: 1px solid borderColor-medium;
+	.section-header {
+		background: gradient-lightBlueBar-backGroundColor;
+		background-image: gradient-lightBlueBar;
+		zoom: 1;
+		border-bottom: 1px solid gradient-lightBlueBar-borderColor ;
+		font-size: 12px;
+		padding: 0;
+		text-shadow: 1px 1px textShadow;
+		font-weight: bold;
+		padding: 11px 10px 10px 10px;
+		position:relative;
+		color: gradient-lightBlueBar-color;
+		text-transform: uppercase;
+
+		div {
+			border-left: 1px solid gradient-lightBlueBar-borderColor;
+			position: absolute;
+			top: 0;
+			right: 0px;
+			bottom: 0;
+			width: 45px;
+			z-index: 1;
+			text-align: center;
+			font-size: 21px;
+		}
+
+		.toggle-summary {
+			cursor: pointer;
+
+			span {
+				vertical-align: middle;
+			}
+
+			&.expanded {
+				background: gradient-blueBar-backGroundColor;
+				background: gradient-lightBlueBar-reverse;
+			}
+		}
+	}
+
+	.summary-details {
+		border-bottom: 1px solid gradient-lightBlueBar-borderColor;
+		padding: 15px
+		float: left;
+		width: 100%;
+
+		label {
+			padding-bottom: 5px;
+			font-weight: bold;
+			font-size: 12px;
+		}
+
+		.toggle-switch {
+			float: left;
+			width: 100%;
+			padding-bottom: 5px;
+		}
+
+		.hold-until {
+			float: left;
+			width: 100%;
+
+			label {
+				padding-bottom: 5px;
+				font-weight: bold;
+				font-size: 12px;
+			}
+		}
+		
+		select{
+			font-size: 12px;
+			border: 1px solid borderColor-medium;
+		}
+
+		.gross-payout {
+			position: relative;
+
+			div.label {
+				position: absolute;
+				right: 31px;
+  				top: 8px;
+			}
+		}
+	}
+	.variations-summary {
+		font-size: 12px;
+		padding: 15px;
+		float: left;
+		width: 100%;
+
+		.item {
+			border-bottom: 1px dashed gradient-lightBlueBar-borderColor;
+			padding-bottom: 0.8rem;
+			margin-bottom: 1rem;
+
+			div {
+				margin-left: 1rem;
+			}
+		}
+
+		.summary-header {
+			font-weight: bold;
+			margin-top: 0;
+			margin-bottom: 0.5rem;
+		}
+
+		.absence-dates {
+			&.none {
+				color: ap-red;
+			}
+		}
+
+		.reconciled-symbol,
+		.unreconciled-symbol
+		{
+			height: 16px;
+			width: 16px;
+			display: inline-block;
+			border-radius: 8px;
+			text-align: center;
+			font-size: 10px;
+			margin-right: 2px;
+		}
+		.reconciled-symbol{
+			background-color: ap-green;
+			color: white;
+		}
+		.unreconciled-symbol{
+			background-color: ap-light-grey-1;
+		}
+
+		.hr {
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+
+		.school-name {
+			font-weight: 600;
+		}
+
+		.absence-reason.none {
+			color: ap-red;
+		}
+
+		.absence-reason {
+			overflow-wrap: break-word;
+			word-break: initial;
+			word-wrap: break-word;
+		}
+
+	}
+
+
+	.schoolDefaultInfo-content{
+		line-height:1.5;
+	}	
+}

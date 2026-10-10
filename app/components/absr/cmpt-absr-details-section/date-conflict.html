@@ -1,0 +1,20 @@
+<div class="dialog-popup conflicting-dates-popup">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content">{{ngDialogData.title}}</div class="content">
+		<div class="conflicting-dates">{{ ngDialogData.conflictingDates }}</div>
+		<div class="resolve-options">
+			<cmpt-ui-dropdown
+				options-array="ngDialogData.resolveOptions"
+				value-selected="ngDialogData.selectedId"
+				sort-by="'id'"
+				allow-blank="false"
+				read-only="false"
+				enabled="true"
+				error-messages="[]"></cmpt-ui-dropdown>
+		</div>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="{{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons">{{ button.title }}</a>
+	</div>
+</div>

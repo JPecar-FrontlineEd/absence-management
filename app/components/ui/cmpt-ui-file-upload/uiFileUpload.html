@@ -1,0 +1,16 @@
+<div class="cmpt-ui-file-upload" ng-show="enabled">
+	<ng-transclude></ng-transclude>
+	<div ng-file-drop ng-model="vm.files" class="drop-box"
+	    drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+	    multiple="true" allow-dir="true">
+	           <div>DRAG AND DROP</div>
+	           <div>FILES HERE</div>
+	</div>
+	<div class="error-message" ng-repeat="value in vm.errorMessage">
+		{{ value }}
+	</div>
+	<div class="progress-bar">
+		 <div class="inner" ng-style="{ 'width': vm.progress + '%' }"></div>
+	</div>
+	<button ng-file-select input-label="{{strings['SelectFile']}}" ng-model="vm.files" class="fl-button" multiple="true" accept="{{vm.mimeTypes}}">Choose a file</button>
+</div>

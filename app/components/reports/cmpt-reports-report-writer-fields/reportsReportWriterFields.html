@@ -1,0 +1,26 @@
+<div class="cmpt-reports-report-writer-fields" ng-show="vm.fieldCnt > 0">
+	<div class="field-collapse">
+		<span class="count">{{vm.fieldCnt}}</span>
+		<span class="group-label">{{vm.headerText}}</span>
+		<span class="fields-toggler" ng-click="vm.expanded = !vm.expanded" ng-class="{expanded: vm.expanded}">
+			<i class="fa fa-angle-{{vm.expanded ? 'down' : 'right'}}"></i>
+		</span>
+	</div>
+	<div class="field-list" ap-show-slide="vm.expanded">
+		<div ng-hide="vm.showfixedText">
+			<ul>
+				<li class="fields" ng-repeat="field in vm.dataset">{{field.displayName}}</li>
+			</ul>
+		</div>
+
+		<div ng-if="vm.allowFixedText" class="fixed-text" ng-show="vm.showfixedText">
+			<cmpt-ui-sortable-grid columns="vm.columns" dataset="vm.dataset"></cmpt-ui-sortable-grid>
+		</div>
+		<div ng-if="vm.allowFixedText" class="format-switcher">
+			<label>
+				<input type="checkbox" class="checkbox" ng-model="vm.showfixedText" name="fixed-text">
+				{{ strings['ShowFixedTextFormat'] }}
+			</label>
+		</div>
+	</div>
+</div>

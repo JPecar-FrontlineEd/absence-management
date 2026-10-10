@@ -1,0 +1,336 @@
+<div class="reference-data-details route-reference-data-absence-reasons-absence-reason-view" ng-controller="AbsenceReasonViewCtrl as route">
+
+	<ng-form name="referenceDataForm" ng-class="{'cannot-edit': !route.vm.canEdit}">
+		<cmpt-ui-loader
+			fill
+			status-text="route.strings['Referencedata.AbsenceReason.Text.ProcessingRequest']"
+	   		is-loading="route.vm.isProcessing || $root.loader.loading">
+	   	</cmpt-ui-loader>
+		<div class="header-section"  ng-init="route.go.initilizeForm(referenceDataForm)">
+			<div class="-u-14-24 title">
+				<div>
+					<span ng-show="route.vm.absenceReason.name === null || route.vm.absenceReason.name.length === 0">{{ route.vm.absenceReason.placeHolderName }}</span>
+					<span ng-show="route.vm.absenceReason.name !== null || route.vm.absenceReason.name.length > 0">{{ route.vm.absenceReason.name }}
+					</span>
+					<i class="fa fa-folder-open-o" ng-if="route.vm.absenceReason.isBucket"></i>
+				</div>
+			</div>
+			<div class="-u-10-24 button-section">
+				<span class="plain-icon" ng-if="route.vm.canDelete && !route.vm.isLastChild && route.vm.absenceReason.id > 0" ng-click="route.go.deleteItem()" >
+					<i class="fa fa-trash-o"></i>
+				</span>
+				<span class="fl-button" ng-click="route.go.back()">
+					<div class="fl-label">{{ route.strings['Cancel'] }}</div>
+				</span>
+				<span class="fl-button {{ route.vm.cssClassSave }}" ng-if="route.vm.canEdit" ng-click="route.go.save()">
+					<div class="fl-label">{{ route.strings['Save'] }}</div>
+				</span>
+			</div>
+		</div>
+		<div class="field-section">
+			<div class="-g">
+				<div class="-u-14-24">
+					<div class="element name">
+						<label>
+							{{ route.strings['Name'] }}
+							<span class="required-field" ng-if="route.vm.canEdit">*</span>
+						</label>
+						<a href="" ng-click="route.go.openLanguageDefinitionsModal(route.vm.absenceReason)">{{ route.vm.canEdit ? route.strings['Referencedata.AbsenceReason.Text.EditLanguageDefinitions'] : route.strings['Referencedata.AbsenceReason.Text.ViewLanguageDefinitions'] }}</a>
+						<div class="field">
+							<cmpt-ui-textbox-v2
+								name="name"
+								value-text="route.vm.absenceReason.name"
+								form-value="referenceDataForm.name"
+								max-length="route.vm.nameMaxLength"
+								required="true"
+								read-only="!route.vm.canEdit"
+								placeholder="{{ route.strings['Referencedata.AbsenceReason.Text.EnterNameHere'] }}"
+								read-only-placeholder="-"
+								update-on-blur>
+								<div ng-message="required">{{ route.strings['Referencedata.AbsenceReason.Validation.FieldIsRequired'].replace('{0}', route.strings['Name']) }}</div>
+								<div ng-message="maxlength">{{ route.strings['Referencedata.AbsenceReason.Validation.MaxLength'].replace('{0}', route.strings['Name'] ).replace('{1}', route.vm.nameMaxLength) }}</div>
+							</cmpt-ui-textbox-v2>
+						</div>
+					</div>
+				</div>
+				<div class="-u-10-24">
+					<div class="element school" ng-if="route.vm.absenceReason.parentId === null">
+						<label>
+							{{ route.strings['School'] }}
+							<span class="required-field" ng-if="route.vm.canEdit">*</span>
+						</label>
+						<div class="field">
+							<!-- <cmpt-ui-dropdown-v2
+								options-array="route.vm.institutionList"
+								value-selected="route.vm.absenceReason.institution"
+								read-only="!route.vm.canEdit"
+								required="true"
+								form-value="referenceDataForm.institution"
+								name="institution"
+								enabled="true">
+									<div ng-message="required">{{ route.strings['Referencedata.AbsenceReason.Validation.FieldIsRequired'].replace('{0}', route.strings['School']) }}</div>
+							</cmpt-ui-dropdown-v2> -->
+
+							<cmpt-ui-multiselect-v2
+								type="Schools"
+								label-all="NoneSelected"
+								items="route.vm.instList"
+								name="institution"
+								multiple="false"
+								required="true"
+								form-value="referenceDataForm.institution"
+								selected="route.vm.absenceReason.institution"
+								enable="route.vm.canEdit",
+								read-only-placeholder="{{ route.strings['NoneSelected'] }}"
+							>
+								<div ng-message="required">{{ route.strings['Referencedata.AbsenceReason.Validation.FieldIsRequired'].replace('{0}', route.strings['School']) }}</div>
+							</cmpt-ui-multiselect-v2>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="-g">
+				<div class="-u-14-24">
+					<div class="-u-12-24 element externalIdOne">
+						<label>{{ route.strings['Referencedata.AbsenceReason.Text.ExternalId'] }}</label>
+						<div class="field">
+							<cmpt-ui-textbox-v2
+								name="externalIdOne"
+								value-text="route.vm.absenceReason.externalIdOne"
+								form-value="referenceDataForm.externalIdOne"
+								max-length="route.vm.externalIdMaxLength"
+								read-only="!route.vm.canEdit"
+								read-only-placeholder="-"
+								placeholder="">
+								<div ng-message="maxlength">{{ route.strings['Referencedata.AbsenceReason.Validation.MaxLength'].replace('{1}', route.vm.externalIdMaxLength).replace('{0}', route.strings['Referencedata.AbsenceReason.Text.ExternalId']) }}</div>
+							</cmpt-ui-textbox-v2>
+						</div>
+					</div>
+					<div class="-u-12-24 element externalIdTwo">
+						<label>{{ route.strings['Referencedata.AbsenceReason.Text.ExternalId2'] }}</label>
+						<div class="field">
+							<cmpt-ui-textbox-v2
+								name="externalIdTwo"
+								value-text="route.vm.absenceReason.externalIdTwo"
+								form-value="referenceDataForm.externalIdTwo"
+								max-length="route.vm.externalIdMaxLength"
+								read-only="!route.vm.canEdit"
+								read-only-placeholder="-"
+								placeholder="">
+								<div ng-message="maxlength">{{ route.strings['Referencedata.AbsenceReason.Validation.MaxLength'].replace('{1}', route.vm.externalIdMaxLength).replace('{0}', route.strings['Referencedata.AbsenceReason.Text.ExternalId']) }}</div>
+							</cmpt-ui-textbox-v2>
+						</div>
+					</div>
+				</div>
+				<div class="-u-10-24">
+					<div class="element data-analysis" ng-if="route.vm.absenceReason.parentId === null">
+						<label>
+							{{ route.strings['Referencedata.AbsenceReason.Text.DataAnalysisCategory'] }}
+							<span class="required-field" ng-if="route.vm.canEdit">*</span>
+						</label>
+						<div class="field">
+							<cmpt-ui-dropdown-v2
+								options-array="route.vm.dataAnalysisCategory"
+								value-selected="route.vm.absenceReason.dataAnalysisCategory"
+								read-only="!route.vm.canEdit"
+								required="true"
+								sort-by="route.go.sortByNameWithOtherAtBottom"
+								form-value="referenceDataForm.dataAnalysisCategory"
+								name="dataAnalysisCategory"
+								enabled="true">
+									<div ng-message="required">{{ route.strings['Referencedata.AbsenceReason.Validation.FieldIsRequired'].replace('{0}', route.strings['Referencedata.AbsenceReason.Text.DataAnalysisCategory']) }}</div>
+							</cmpt-ui-dropdown-v2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="-g">
+				<div class="-u-14-24">
+					<div class="-u-12-24 element phone-menu" ng-if="!route.vm.absenceReason.isBucket">
+						<label>{{ route.strings['Referencedata.AbsenceReason.Text.PhoneMenu'] }}#</label>
+						<div class="field">
+							<cmpt-ui-textbox-v2
+								name="phoneMenu"
+								value-text="route.vm.absenceReason.phoneMenu"
+								form-value="referenceDataForm.phoneMenu"
+								max-length="route.vm.phoneMenuMaxLength"
+								read-only="!route.vm.canEdit"
+								validations="decoratorinteger, decoratornegativeintegeroptional"
+								read-only-placeholder="-"
+								placeholder=""
+								update-on-blur>
+								<div ng-message="maxlength">{{ route.strings['Referencedata.AbsenceReason.Validation.MaxLength'].replace('{1}', route.vm.phoneMenuMaxLength + 1).replace('{0}', route.strings['Referencedata.AbsenceReason.Text.PhoneMenu']) }}</div>
+								<div ng-message="decoratorinteger">{{ route.strings['Referencedata.AbsenceReason.Validation.ValueShouldBeInteger'] }}</div>
+								<div ng-message="decoratornegativeintegeroptional">{{ route.strings['Referencedata.AbsenceReason.Validation.PhoneMenuCannotBeNegative'] }}</div>
+							</cmpt-ui-textbox-v2>
+						</div>
+					</div>
+				</div>
+				<div class="-u-10-24">
+					<div class="element employee-types" ng-if="route.vm.absenceReason.parentId === null">
+						<label>{{ route.strings['EmployeeTypes'] }}</label>
+						<div class="field">
+							<cmpt-ui-multiselect-v2
+								type="EmployeeTypes"
+								width="100%"
+								label-all="All"
+								items="route.vm.workerTypeList"
+								name="workerType"
+								multiple="true"
+								selected="route.vm.absenceReason.workerTypes"
+								enable="route.vm.canEdit",
+								read-only-placeholder="{{ route.strings['All'] }}"
+							></cmpt-ui-multiselect-v2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="time-usage">
+				<div class="sub-title">{{ route.strings['Referencedata.AbsenceReason.Text.TimeUsage'] }}</div>
+				<div class="-u-12-24">
+					<div  class="time-usage-field minimum-usage" ng-if="!route.vm.absenceReason.isBucket">
+						<label>
+				        	<input type="checkbox" ng-disabled="!route.vm.canEdit" class="checkbox" ng-model="route.vm.absenceReason.timeUsage.minimumUsage.allowed">
+				        	<span class="label">
+				        		{{ route.strings['Referencedata.AbsenceReason.Text.MinimumUsage'] }}
+				      			<span ng-show="route.vm.absenceReason.timeUsage.minimumUsage.allowed" class="required-field">*</span>
+				        	</span>
+				        </label>
+				        <cmpt-ui-textbox-v2
+							name="minimumUsage"
+							value-text="route.vm.absenceReason.timeUsage.minimumUsage.value"
+							form-value="referenceDataForm.minimumUsage"
+							read-only="!route.vm.canEdit"
+							required="route.vm.absenceReason.timeUsage.minimumUsage.allowed"
+							enabled="route.vm.absenceReason.timeUsage.minimumUsage.allowed"
+							validations="decoratordecimaltwoplaces"
+							read-only-placeholder="n/a"
+							on-blur="route.go.minimumUsage"
+							update-on-blur>
+								<div ng-message="required">{{ route.strings['Referencedata.AbsenceReason.Validation.FieldIsRequired'].replace('{0}', route.strings['Referencedata.AbsenceReason.Text.MinimumUsage']) }}</div>
+								<div ng-message="invalidrange">{{ route.strings['Referencedata.AbsenceReason.Validation.MinimumUsage.InvalidTimeRange'].replace('{0}', route.vm.minUsage).replace('{1}', route.vm.maxUsage + 0.01) }}</div>
+								<div ng-message="decoratordecimaltwoplaces">Value up to 2 decimal places are allowed.</div>
+						</cmpt-ui-textbox-v2>
+						<span class="postfix-label">{{ route.strings['Hours'] }}</span>
+					</div>
+					<div class="time-usage-field max-yearly-usage" ng-if="$root.havePermission('PSEUDO.IsVeritimeEnabled')">
+						<label>
+				        	<input type="checkbox" ng-disabled="!route.vm.canEdit"  class="checkbox" ng-model="route.vm.absenceReason.timeUsage.maxYearlyUsage.allowed">
+				        	<span class="label">
+				        		{{ route.strings['Referencedata.AbsenceReason.Text.MaxYearlyUsage'] }}
+				        		<span ng-show="route.vm.absenceReason.timeUsage.maxYearlyUsage.allowed" class="required-field">*</span>
+				        	</span>
+				        </label>
+				        <cmpt-ui-textbox-v2
+							name="maxYearlyUsage"
+							value-text="route.vm.absenceReason.timeUsage.maxYearlyUsage.value"
+							form-value="referenceDataForm.maxYearlyUsage"
+							read-only="!route.vm.canEdit"
+							validations="decoratorinteger"
+							required="route.vm.absenceReason.timeUsage.maxYearlyUsage.allowed"
+							enabled="route.vm.absenceReason.timeUsage.maxYearlyUsage.allowed"
+							read-only-placeholder="n/a"
+							on-blur="route.go.maxYearlyUsage"
+							update-on-blur>
+								<div ng-message="required">{{ route.strings['Referencedata.AbsenceReason.Validation.FieldIsRequired'].replace('{0}', route.strings['Referencedata.AbsenceReason.Text.MaxYearlyUsage']) }}</div>
+								<div ng-message="invalidrange">{{ route.strings['Referencedata.AbsenceReason.Validation.MaxYearlyUsage.InvalidTimeRange'].replace('{0}', route.vm.minMaxYearly).replace('{1}', route.vm.maxMaxYearly) }}</div>
+								<div ng-message="decoratorinteger">{{ route.strings['Referencedata.AbsenceReason.Validation.ValueShouldBeInteger'] }}</div>
+						</cmpt-ui-textbox-v2>
+						<span class="postfix-label">{{ route.strings['Hours'] }}</span>
+					</div>
+				</div>
+				<div class="-u-12-24">
+					<div class="time-usage-field minimum-balance">
+						<label>
+				        	<input type="checkbox" ng-disabled="!route.vm.canEdit"  class="checkbox" ng-model="route.vm.absenceReason.timeUsage.minimumBalance.allowed">
+				        	<span class="label">
+				        		{{ route.strings['Referencedata.AbsenceReason.Text.MinimumBalance'] }}
+				       			 <span ng-show="route.vm.absenceReason.timeUsage.minimumBalance.allowed" class="required-field">*</span>
+				        	</span>
+				        </label>
+		        		<cmpt-ui-textbox-v2
+							name="minimumBalance"
+							value-text="route.vm.absenceReason.timeUsage.minimumBalance.value"
+							form-value="referenceDataForm.minimumBalance"
+							read-only="!route.vm.canEdit"
+							validations="decoratorinteger"
+							required="route.vm.absenceReason.timeUsage.minimumBalance.allowed"
+							enabled="route.vm.absenceReason.timeUsage.minimumBalance.allowed"
+							read-only-placeholder="n/a"
+							on-blur="route.go.minimumBalance"
+							update-on-blur>
+								<div ng-message="required">{{ route.strings['Referencedata.AbsenceReason.Validation.FieldIsRequired'].replace('{0}', route.strings['Referencedata.AbsenceReason.Text.MinimumBalance']) }}</div>
+								<div ng-message="invalidrange">{{ route.strings['Referencedata.AbsenceReason.Validation.MinBalance.InvalidTimeRange'].replace('{0}', route.vm.minBalance).replace('{1}', route.vm.maxBalance) }}</div>
+								<div ng-message="decoratorinteger">{{ route.strings['Referencedata.AbsenceReason.Validation.ValueShouldBeInteger'] }}</div>
+						</cmpt-ui-textbox-v2>
+						<span class="postfix-label">{{ route.strings['Hours'] }}</span>
+					</div>
+				</div>
+			</div>
+			<div class="settings">
+				<div class="sub-title">{{ route.strings['nav.label.settings'] }}</div>
+				<div class="setting-fields">
+					<div class="is-public" ng-if="!route.vm.absenceReason.isBucket">
+						<label>
+							<i class="fa" ng-if="!route.vm.canEdit" ng-class="{'fa-check': route.vm.absenceReason.settings.isPublic, 'fa-times': !route.vm.absenceReason.settings.isPublic}"></i>
+				        	<input ng-if="route.vm.canEdit" type="checkbox" ng-disabled="!route.vm.canEdit" class="checkbox" ng-model="route.vm.absenceReason.settings.isPublic">
+				        	<span>{{ route.strings['Referencedata.AbsenceReason.Text.PublicToEmployee'] }}</span>
+				        </label>
+					</div>
+					<div class="enforce-balances">
+						<label>
+							<i class="fa" ng-if="!route.vm.canEdit" ng-class="{'fa-check': route.vm.absenceReason.settings.enforceBalances, 'fa-times': !route.vm.absenceReason.settings.enforceBalances}"></i>
+				        	<input ng-if="route.vm.canEdit" type="checkbox" ng-disabled="!route.vm.canEdit" class="checkbox" ng-model="route.vm.absenceReason.settings.enforceBalances">
+				        	<span>{{ route.strings['Referencedata.AbsenceReason.Text.EnforceBalances'] }}</span>
+				        </label>
+					</div>
+					<div class="need-approval" ng-if="!route.vm.absenceReason.isBucket">
+						<label>
+							<i class="fa" ng-if="!route.vm.canEdit" ng-class="{'fa-check': route.vm.absenceReason.settings.needApproval, 'fa-times': !route.vm.absenceReason.settings.needApproval}"></i>
+				        	<input ng-if="route.vm.canEdit" type="checkbox" ng-disabled="!route.vm.canEdit" class="checkbox" ng-model="route.vm.absenceReason.settings.needApproval">
+				        	<span>{{ route.strings['Referencedata.AbsenceReason.Text.NeedApproval'] }}</span>
+				        </label>
+					</div>
+					<div class="require-notes" ng-if="!route.vm.absenceReason.isBucket">
+						<label>
+							<i class="fa" ng-if="!route.vm.canEdit" ng-class="{'fa-check': route.vm.absenceReason.settings.requireNotes, 'fa-times': !route.vm.absenceReason.settings.requireNotes}"></i>
+				        	<input ng-if="route.vm.canEdit" type="checkbox" ng-disabled="!route.vm.canEdit" class="checkbox" ng-model="route.vm.absenceReason.settings.requireNotes">
+				        	<span>{{ route.strings['Referencedata.AbsenceReason.Text.EnforceNotesToAdministrator'] }}</span>
+				        </label>
+					</div>
+					<div class="hold-unitl-approved" ng-if="!route.vm.absenceReason.isBucket">
+						<label>
+							<i class="fa" ng-if="!route.vm.canEdit" ng-class="{'fa-check': route.vm.absenceReason.settings.holdUntilApproved, 'fa-times': !route.vm.absenceReason.settings.holdUntilApproved}"></i>
+				        	<input ng-if="route.vm.canEdit" type="checkbox" ng-disabled="!route.vm.canEdit" class="checkbox" ng-model="route.vm.absenceReason.settings.holdUntilApproved">
+				        	{{ route.strings['Referencedata.AbsenceReason.Text.HoldUntilApproved'] }}
+				        </label>
+					</div>
+				</div>
+			</div>
+			<div class="children-in-bucket" ng-if="route.vm.absenceReason.id > 0 && route.vm.absenceReason.isBucket">
+				<div class="-u-16-24 title">
+				<div class="sub-title">Absence Reasons in this Bucket</div>
+				</div>
+				<div class="-u-8-24 addReasonToBucket">
+				<div class="actions" ng-if="$root.havePermission('REFDATA.REFDATAADD')">
+					<span class="add-link" ng-click="route.go.addAbsenceReasonToBucket()">
+						<i class="fa fa-plus"></i>
+						<span class="bucket-reason-add-link">{{ route.strings['referenceData.absenceReason.AddAbsenceReasonToBucket'] }}</span>
+					</span>
+				</div>
+				</div>
+				<cmpt-ui-grid
+					columns="route.vm.columns"
+					dataset="route.vm.dataset"
+					default-sort="name"
+					track-by="id"
+					default-row-height="40"
+					use-in-view="false">
+					{{  route.strings['NoRecordsFound'] }}
+				</cmpt-ui-grid>
+			</div>
+		</div>
+	</ng-form>
+</div>

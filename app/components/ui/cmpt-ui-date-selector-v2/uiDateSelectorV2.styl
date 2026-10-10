@@ -1,0 +1,171 @@
+@import "common-var"
+
+.ui-datepicker
+{
+
+	.ui-datepicker-calendar
+	{
+			td{
+				padding: 0px 1px 1px 0px;
+				a, span{
+					width: 36px;
+					font-size: 14px;
+					padding: 2px 0px 16px 0px;
+    				margin-top: 3px;
+					text-align: center;
+					background: #f3f3f3;
+				}
+				.ie_dot
+				{
+					width:auto;
+				}
+				.dotcontainer
+				{
+					all: unset;
+					position: absolute;
+					display: inline-flex;
+
+					.legendParent{
+						margin: -18px 0px 0px 10px;
+					}
+					.marginLeft50P{
+						margin-left: 0.094rem;
+					}
+					.marginLeft0P{
+						margin-left: 0.094rem;
+					}
+				}
+				.ie_dotcontainer
+				{
+					position: relative;
+					top: -24px;
+					display: flex;
+					justify-content: center;
+				}
+				&.tablemargin{
+					padding: 0px 1px 1px 0px;
+					margin-right:2px;
+				}
+				&.ie_tablemargin
+				{
+					padding: 0px 1px 1px 0px;
+					display:table;
+					width:34.14px;
+					height:30.34px;
+					margin-right:1px;
+				}
+			}
+
+			.ui-state-default {
+					width: 36px;
+					font-size: 12px;
+					padding: 2px 0px 16px 0px;
+    				margin-top: 3px;
+					text-align: center;
+				}
+				.ui-state-highlight{
+					border: 1px solid #363636;				
+			}
+	}
+}
+
+	.dotlabel{
+		text-align: left;
+    	font-size: 12px;
+    	padding-top: 9px;
+    	padding-left: 3px;
+    	padding-bottom: 5px;
+    	font-weight: 600;
+	}
+
+	.dot{
+		margin-left: 5%;
+		margin-top: 4%;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	.absencedot{
+		width: 16px !important;
+		height: 16px;
+		font-weight: 700;
+		font-size:10px !important;
+		background: #B8E1FF !important;
+		border-radius: 50%;
+		color: #205586;
+		padding: 0px !important;
+	}
+
+	.inservicedot{
+		width: 16px !important;
+		height: 16px;
+		font-weight: 700;
+		font-size:10px !important;
+		background: #F6DC6B !important;
+		border-radius: 50%;
+		color: #593900;
+		padding: 0px !important;
+	}
+
+	.closeddot{
+		width: 16px !important;
+		height: 16px;
+		font-weight: 700;
+		font-size:10px !important;
+		background: #FAAFB1 !important;
+		border-radius: 50%;
+		color: #991525;
+		padding: 0px !important;
+	}
+
+	.dotTextContainer{
+		display:flex;
+	}
+
+ui-state-default ui-state-highlight ui-state-active{
+		height:32px;
+	}
+	
+.cmpt-ui-date-selector-v2 {
+
+	.ui-datepicker-trigger {
+		position: relative;
+		display: inline-block;
+		margin-left: -30px;
+		border: 0px;
+		background: transparent;
+		height: 26px;
+		width: 30px;
+		font-size: 14px;
+		cursor: pointer;
+
+		font-family: 'FL-Icons';
+		font-weight: normal;
+		font-style: normal;
+		font-variant: normal;
+		line-height: 1;
+		text-align: center;
+		text-transform: none;
+		speak: none;
+		-webkit-font-smoothing: antialiased;
+
+		opacity: 0.8;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&:focus {
+			border-color: ap-blue;			
+		}
+	}
+	.ui-datepicker-trigger:before {
+		content: '\f073';
+	}
+}
+	
+.conflictMessage {
+	text-align: center; 
+	margin-top: -3%;
+	font-size: small;
+}

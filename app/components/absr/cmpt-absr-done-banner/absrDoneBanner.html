@@ -1,0 +1,13 @@
+<div class="cmpt-absr-done-banner">
+	<span class="success"><i class="fa fa-check-circle"></i></span>
+    <div class="message">
+        <ng-transclude></ng-transclude>
+        <div class="sub-message">
+            {{ strings['Absence.Create.Text.YourConfirmationNumberIs'] }}
+            <cmpt-template-confirmation-link absrid="{{ absrState.id }}" ></cmpt-template-confirmation-link>.
+            <div ng-if="absrState.substitute">
+                <span ng-bind-html="vm.substituteLink"></span>
+            </div>
+        </div>
+    </div>
+</div>

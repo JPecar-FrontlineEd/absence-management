@@ -1,0 +1,290 @@
+<div class="cmpt-search-search-container">
+	<h4 class="searchCount" ng-if="vm.qsShowCounts">
+		<span class="searchTotalSearchesLabel">Total Searches: </span>&nbsp;<span class="searchTotalSearches">{{ vm.searchCounts.totalSearches }}</span>&nbsp;
+		<span class="searchTotalMatchesLabel">Total Matches: </span>&nbsp;<span class="searchTotalMatches">{{ vm.searchCounts.totalMatches }}</span>&nbsp;
+		<span class="searchThisMatchesLabel">Matches this Search: </span>&nbsp;<span class="searchThisMatches">{{ vm.searchCounts.thisMatches }}</span>&nbsp;
+	</h4>
+
+	<div id='contentWrapper'>
+		<div class="-u-24-24" id='searchFilters' ng-if="isGlobalSearchEnabled">
+			<div class="-u-20-24 filterLabels">
+				<label class="-u-7-24">{{ vm.strings['GlobalSearch.Label.SearchTypeFilter'] }}</label>
+				<label class="-u-5-24">{{ vm.strings['GlobalSearch.Label.ActiveInactiveFilter'] }}</label>
+				<label class="-u-5-24">{{ vm.strings['Search'] }}</label>
+			</div>
+			<div class='-u-18-24 margins filterWrapper' ng-class="{'displayInline': isGlobalSearchEnabled}">
+				<div ng-class="{'globalSearchMultiSelectDropdown' : isGlobalSearchEnabled}" ng-if="isGlobalSearchEnabled" >
+					<cmpt-ui-multiselect class=""
+						type="All"
+						label-all="All"
+						items="vm.searchTypes"
+						width="100%"
+						name="Search types"
+						multiple="true"
+						selected="filters.selectedEmployeeTypes"
+						is-global-search="isGlobalSearchEnabled"
+					></cmpt-ui-multiselect>
+				</div>
+				<div class="activeInactiveOptions" ng-if="isGlobalSearchEnabled" >
+					<cmpt-ui-dropdown class="dropDown"  
+						options-array="vm.activeInactiveOptions" 
+						enabled="true" 
+						allow-blank="false" 
+						sort-by="'!'"
+						value-selected="filters.activeInactiveVal">
+					</cmpt-ui-dropdown>
+				</div>
+				<div class="fl-search btnGlobalSearch">
+					<label for="search" class="hide">{{ vm.strings['Search'] }}</label>
+					<input type="text"  aria-labelledby="search" ap-focus-bind="vm.searchFocused" class="fl-input" ng-class="{'globalSearchInput' : isGlobalSearchEnabled}" id="search" placeholder="{{ vm.strings['Search'] }}" 
+						ng-model="vm.searchFor" 
+						ng-keyup="$event.keyCode == 13 ? go.doSearch() : null">
+					<i class="fa fa-search"></i>
+					<a class="fl-button fl-primary" id="searchButton" ng-click='go.doSearch()'>
+						{{ vm.strings['Search'] }}
+					</a>
+				</div>
+			</div>
+			<div class="-u-5-24 searchSummary globalSearchSummary"  ng-if="vm.results.showSummary">
+				<span ng-if="vm.results.matchCt == 1">
+					{{ vm.strings['Search.SearchResultFound'].replace("{0}", vm.results.matchCt).replace("{1}", vm.results.searchFor) }}
+				</span>
+				<span ng-if="vm.results.matchCt != 1">
+					{{ vm.strings['Search.SearchResultsFound'].replace("{0}", vm.results.matchCt).replace("{1}", vm.results.searchFor) }}
+				</span>
+			</div>
+			<div class="summaryWrapper">
+				<div ng-if="filteredList.length > 0 && isGlobalSearchEnabled" class="selectedFiltersSection -u-5-24">
+					<div class="selectedFilteredValues" ng-repeat = "filter in filteredList">
+						<label class="selectedFilter">{{filter.value}} <i ng-click="removeFilter(filter)" class="fa fa-times" aria-hidden="true"></i></label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id='searchFilters' ng-if="!isGlobalSearchEnabled">
+			<div class='filterWrapper'>
+				<div class="fl-search">
+					<label for="search" class="hide">{{ vm.strings['Search'] }}</label>
+					<input type="text" aria-labelledby="search"  class="fl-input" id="search" placeholder="{{ vm.strings['Search'] }}" 
+						ng-model="vm.searchFor" 
+						ng-keyup="$event.keyCode == 13 ? go.doSearch() : null">
+					<i class="fa fa-search"></i>
+					<a class="fl-button fl-primary" id="searchButton" ng-click='go.doSearch()'>
+						{{ vm.strings['Search'] }}
+					</a>
+				</div>
+			</div>
+			<div class="searchSummary" ng-if="vm.results.showSummary">
+				<span ng-if="vm.results.matchCt == 1">
+					{{ vm.strings['Search.SearchResultFound'].replace("{0}", vm.results.matchCt).replace("{1}", vm.results.searchFor) }}
+				</span>
+				<span ng-if="vm.results.matchCt != 1">
+					{{ vm.strings['Search.SearchResultsFound'].replace("{0}", vm.results.matchCt).replace("{1}", vm.results.searchFor) }}
+				</spam>
+			</div>
+		</div>
+
+		<div id='searchResultsContainer'>
+			<h1 id="searching" ng-if="vm.results.showSearching">{{ vm.strings['Search.Searching'] }}: <i class="fa fa-spinner fa-spin"></i></h1>
+			<cmpt-ui-nothing-found 
+					ng-if="vm.results.showError"
+					show-error="vm.results.showError"
+					nothing-found-explanation-text="vm.strings['Search.SearchFieldErrorMessage']">
+			</cmpt-ui-nothing-found>
+            <h2 id="searchWarning" ng-if="vm.results.showWarning && !isGlobalSearchEnabled" class="warning" style="">
+				<i class="fa fa-info-circle"></i> 
+				<em>{{ vm.strings['absrItenerant.Step1.text.note'] }}:</em> 
+				<span>{{ vm.strings['Search.RefineYourSearch'].replace("{0}", "50") }}</span>
+			</h2>
+			<div id='searchResultsData'>
+				<!-- NOTHING FOUND -->
+				<cmpt-ui-nothing-found 
+					ng-if="vm.results.showNothingFound"
+					nothing-found-text="vm.strings['NoRecordsFound']"
+					nothing-found-explanation-text="vm.strings['Search.NoRecordsFoundExplanation']"></cmpt-ui-nothing-found>
+
+				<!-- SOMETHING FOUND -->
+				<ul id="searchResults">
+					<!-- ABSR -->
+					<li ng-if="vm.results.hasAbsr && !vm.results.isNavigatingNow">
+						<div class="entity">
+							<div class="objectType">{{ vm.strings["Absence"] }}</div>
+							<div class="objectDetails">
+								<a ng-href='/v1/absences/detail/{{vm.results.svcObj.absr.Id}}/view' class=" ">
+									<span class="objectLabel">{{ vm.strings["ConfirmationPoundShortCamelCase"] }}</span>
+									<em>{{ vm.results.svcObj.absr.Id }}</em>
+								</a>
+								<span>for {{ vm.results.svcObj.absr.WorkerName }} on {{ vm.results.svcObj.absr.Name }}</span>
+							</div>
+						</div>
+					</li>
+
+					<!-- VACANCY -->
+					<li ng-if="vm.results.hasVacancy && !vm.results.isNavigatingNow">
+						<div class="entity">
+							<div class="objectType">{{ vm.strings["Vacancy"] }}</div>
+							<div class="objectDetails">
+								<a href='/v1/absences/detail/{{vm.results.svcObj.vacancy.Id}}/view' class=" ">
+									<span class="objectLabel">{{ vm.strings["ConfirmationPoundShortCamelCase"] }}</span>
+									<em>{{ vm.results.svcObj.vacancy.Id }}</em>
+								</a>
+								<span>on {{ vm.results.svcObj.vacancy.Name }}</span>
+							</div>
+						</div>
+					</li>
+
+					<!-- WORKERS -->
+					<li class=""
+						ng-repeat="person in vm.results.svcObj.workers"
+						ng-if="vm.results.hasWorkers">
+						<div class="flex">
+							<div class="entity">
+								<div class="objectType">{{ vm.strings["Employee"] }}</div>
+								<div class="objectDetails">
+									<div ng-if="!vm.empNameAsLink" ng-class="{'inactiveObj': !person.Active}" class="objectName">
+										<span ng-bind-html="person.FullName"></span>
+									</div>
+									<a 	ng-href='{{ go.buildLink(vm.hrefs.emp, "{personid}", person.Id) }}'
+										ng-class="{'inactiveObj': !person.Active}"
+										ng-if="vm.empNameAsLink"
+										class=" ">
+										<span ng-bind-html="person.FullName"></span>
+									</a>
+									<span class="info-qtip" 
+										ng-if="person.tooltipData" 
+										qtip 
+										content="<cmpt-template-general-info-tooltip qtip-data='person.tooltipData' name-link=''></cmpt-template-general-info-tooltip>">
+										<i class="fa fa-li-ellipsis"></i>
+									</span>
+									<span ng-if="person.Identifier">(<span ng-bind-html="person.Identifier"></span>)</span>
+									<div class="extraDetails" x-ms-format-detection="none">
+										<span ng-if="person.Phone" ng-bind-html="person.Phone"></span>
+										<span ng-if="person.Email" ng-bind-html="person.Email" class="personEmail"></span>
+									</div>
+								</div>
+							</div>
+							<div class="extra" ng-if="person.Active">
+								<a 	class="fl-button-sm" 
+									ng-href='/v1/absences/create-absence-details?workerId={{person.Id}}'
+									ng-if="vm.permissions.canCreateAbsence">
+									{{ vm.strings["Absence.Button.Text.CreateAbsence"] }}
+								</a>
+							</div>
+						</div>
+					</li>
+
+					<!-- SUBS -->
+					<li class=""
+						ng-repeat="person in vm.results.svcObj.subs"
+						ng-if="vm.results.hasSubs">
+						<div class="flex">
+							<div class="entity">
+								<div class="objectType">{{ vm.strings["Substitute"] }}</div>
+								<div class="objectDetails">
+									<div ng-if="!vm.subNameAsLink" ng-class="{'inactiveObj': !person.Active}" class="objectName">
+										<span ng-bind-html="person.FullName"></span>
+									</div>
+									<a 	ng-href='{{ go.buildLink(vm.hrefs.sub, "{personid}", person.Id) }}'
+										ng-class="{'inactiveObj': !person.Active}"
+										ng-if="vm.subNameAsLink"
+										class=" ">
+										<span ng-bind-html="person.FullName"></span>
+									</a>
+									<span ng-if="person.Identifier">(<span ng-bind-html="person.Identifier"></span>)</span>
+									<div class="extraDetails" x-ms-format-detection="none">
+										<span ng-if="person.Phone" ng-bind-html="person.Phone"></span>
+										<span ng-if="person.Email" ng-bind-html="person.Email" class="personEmail"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<!-- VACANCY PROFILES -->
+					<li class=""
+						ng-repeat="profile in vm.results.svcObj.vacancyProfiles"
+						ng-if="vm.results.hasVacancyProfiles">
+						<div class="flex">
+							<div class="entity">
+								<div class="objectType">{{ vm.strings["VacancyProfile"] }}</div>
+								<div class="objectDetails">
+									<div ng-if="!vm.vacProfNameAsLink" ng-class="{'inactiveObj': !profile.Active}" class="objectName">
+										<span ng-bind-html="profile.Name"></span>
+									</div>
+									<a 	ng-href='{{ go.buildLink(vm.hrefs.vacancyProfile, "{profileid}", profile.Id) }}'
+										ng-class="{'inactiveObj': !profile.Active}"
+										ng-if="vm.vacProfNameAsLink"
+										class=" ">
+										<span ng-bind-html="profile.Name"></span>
+									</a>
+									<span class="info-qtip" 
+										ng-if="profile.tooltipData" 
+										qtip 
+										content="<cmpt-template-general-info-tooltip qtip-data='profile.tooltipData' name-link=''></cmpt-template-general-info-tooltip>">
+										<i class="fa fa-li-ellipsis"></i>
+									</span>
+									<span ng-if="profile.Identifier">(<span ng-bind-html="profile.Identifier"></span>)</span>
+									<div class="extraDetails" x-ms-format-detection="none">
+										<span ng-if="profile.PCN" ng-bind-html="profile.PCN"></span>
+										<span ng-if="profile.IsPrivate" >({{vm.strings["Private"]}})</span>
+									</div>
+								</div>
+							</div>
+							<div class="extra" ng-if="profile.Active">
+								<a 	class="fl-button-sm" 
+									ng-href='/v1/absences/create-vacancy-details?workerId={{profile.Id}}'
+									ng-if="(profile.IsPrivate && vm.permissions.canCreateVacancyPrivate) || (!profile.IsPrivate && vm.permissions.canCreateVacancy)">
+									{{ vm.strings["Absence.Button.Text.CreateVacancy"] }}
+								</a>
+							</div>
+						</div>
+					</li>
+
+					<!-- SCHOOLS -->
+					<li class=""
+						ng-repeat="school in vm.results.svcObj.schools"
+						ng-if="vm.results.hasSchools">
+						<div class="entity">
+							<div class="objectType">{{ vm.strings["School"] }}</div>
+							<div class="objectDetails">
+								<div ng-if="!vm.schoolNameAsLink" ng-class="{'inactiveObj': !school.Active}" class="objectName">
+									<span ng-bind-html="school.Name"></span>
+								</div>
+								<a 	ng-href='{{ go.buildLink(vm.hrefs.school, "{instid}", school.Id) }}' 
+								 	ng-class="{'inactiveObj': !school.Active}"
+									class=" "
+									ng-if="vm.schoolNameAsLink">
+									<span ng-bind-html="school.Name"></span>
+								</a>
+								<span ng-if="school.ExternalId">(<span ng-bind-html="school.ExternalId"></span>)</span>
+								<span ng-if="!school.ParentName">
+									<a ng-href="{{ vm.hrefs.schoolHierarchy }}" 
+										ng-if="vm.permissions.canViewSchool && vm.showSchoolHierarchyLink"
+										title="{{ vm.strings['Search.InstHierarchy'] }}">
+										<span class='hide'>{{ vm.strings['Search.InstHierarchy'] }}</span>
+										<i class="fa fa-institution"></i>
+									</a>
+								</span>
+								<div class="extraDetails" ng-if="school.ParentName">
+									<span>Parent {{ vm.strings["School"] }}: {{ school.ParentName }}</span>
+									<a ng-href="{{ vm.hrefs.schoolHierarchy }}" 
+										ng-if="vm.permissions.canViewSchool  && vm.showSchoolHierarchyLink"
+										title="{{ vm.strings['Search.InstHierarchy'] }}">
+										<span class='hide'>{{ vm.strings['Search.InstHierarchy'] }}</span>
+										<i class="fa fa-institution"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="below-grid" ng-if="vm.moreRowsAvailable && isGlobalSearchEnabled">
+		<button class="fl-button btnLoadMore" ng-click="go.fetchData()">Load More</button>
+	</div>
+	<div id='rawResult' ng-if="vm.qsShowRaw">{{ vm.results.toString() }}</div>
+</div>

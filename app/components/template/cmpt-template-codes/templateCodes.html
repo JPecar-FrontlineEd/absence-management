@@ -1,0 +1,16 @@
+<div class="cmpt-template-codes">
+
+	<div class="abs multi-value" ng-repeat="abs in vm.absenceList" ng-class="{'not-available': !abs.isAvailable}">
+		<div class="budget-code" ng-if="$root.havePermission('ABSR.DTLSBDCD') && vm.orgShowDailyReportBudgetCode">
+			<label>Budget Code:</label>
+			<div ng-class="{'wrap-words' : wrapTextInLine}" ng-if="abs.budgetCode">{{ abs.budgetCode.description }}</div>
+			<div ng-if="!abs.budgetCode">None</div>
+		</div>
+		<div class="pay-code" ng-if="$root.havePermission('ABSR.DTLSPYCD') && vm.orgShowDailyReportPayCode">
+			<label>Pay Code:</label>
+			<div ng-class="{'wrap-words' : wrapTextInLine}" ng-if="abs.payCode">{{ abs.payCode.description }}</div>
+			<div ng-if="!abs.payCode">None</div>
+		</div>
+	</div>
+
+</div>

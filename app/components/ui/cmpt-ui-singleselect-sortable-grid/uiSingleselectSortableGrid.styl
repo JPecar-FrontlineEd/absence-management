@@ -1,0 +1,33 @@
+@import "common-var"
+.cmpt-ui-singleselect-sortable-grid {
+	$column-size = 40px;
+	.cmpt-ui-sortable-grid {
+		.grid-header, .grid-row {
+			padding-right: $column-size;
+
+			.uicheckcol-th, .uicheckcol-cell {
+				position: absolute;
+				width: $column-size;
+				height: 100%;
+				padding-right: 0 !important;
+				padding-left: 0 !important;
+				text-align: center;
+			}
+		}
+		.grid-row.selected {
+			background-color: grid-row-selected-color;
+		}
+	}
+
+	&.boxes-on-left {
+		.grid-header, .grid-row {
+			padding-right: 0;
+			padding-left: $column-size;
+
+			.uicheckcol-th, .uicheckcol-cell {
+				width: $column-size;
+				left: 0;
+			}
+		}
+	}
+}

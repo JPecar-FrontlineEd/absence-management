@@ -1,0 +1,50 @@
+<div class="cmpt-nav-sub-menu sub-level-{{level}}" ng-style="{width: vm.menuWidth}">
+	<!-- MEGA MENU! -->
+	<div class="mega-menu" ng-if="vm.isMega">
+		<ul class="menu-group"
+			ng-repeat="menuGroup in vm.menuItems"
+			ng-init="groupIndex = $index * 100"
+		>
+			<li class="group-title">
+				<span class="text" once-text="menuGroup.title"></span>
+				<span class="line"></span>
+			</li>
+			<li class="sub-menu-item menu-action"
+				ng-repeat="menu in menuGroup.children"
+				ng-class="{highlight: vm.highlightedMenu === ($index + groupIndex)}"
+				ng-style="{width: vm.menuItemWidth}"
+				ng-mouseenter="vm.activeMenu = ($index + groupIndex)"
+ 
+			>
+				<div ng-if="!menu.useTitle" once-id="menu.id" class="sub-menu-item-container"
+					ng-click="go.navigate(menu, $index)"
+					once-text="menu.title"></div>
+				<div ng-if="menu.useTitle" once-id="menu.id" class="sub-menu-item-container"
+					ng-click="go.navigate(menu, $index)"
+					once-text="menu.title"
+					once-title="menu.title"></div>
+			</li>
+		</ul>
+	</div>
+
+	<!-- NO MEGA MENU :-( -->
+	<div class="no-mega" ng-if="!vm.isMega">
+		<ul>
+			<li class="sub-menu-item"
+				ng-repeat="menu in vm.menuItems"
+				ng-class="{'menu-action': !menu.children.length, highlight: vm.highlightedMenu === $index}"
+				ng-mouseenter="go.setActiveMenu($index)"
+			>
+				<div class="sub-menu-item-container" ng-click="go.navigate(menu, $index)">
+					<span ng-if="!menu.useTitle" once-id="menu.id" once-text="menu.title"></span>
+					<span ng-if="menu.useTitle" once-id="menu.id" once-text="menu.title" once-title="menu.title"></span>
+					<span class="shortcut-key" once-text="menu.shortCutKey" title="{{menu.shortCutKey}}"></span>
+					<i class="more-items fa fa-angle-right"></i>
+				</div>
+				<div class="sub-menu {{ menu.id }}" ng-if="menu.children.length" ng-show="vm.activeMenu === $index">
+					<cmpt-nav-sub-menu menu-items="menu.children" level="{{level + 1}}"></cmpt-nav-sub-menu>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

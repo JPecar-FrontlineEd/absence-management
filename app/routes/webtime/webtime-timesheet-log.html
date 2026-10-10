@@ -1,0 +1,14 @@
+<div class="fixed-width report-standards route-webtime-webtime-timesheet-log" ng-controller="WebtimeTimesheetLogCtrl as route">
+	<h3>{{route.strings['ts.log.title']}}</h3>
+	<div ng-if="route.vm.backText!==''" class="back-btn fl-button" ng-click="go.GoBack()">{{route.vm.backText}}</div>
+	<div class="header">
+		<div class="header-content">
+			<div class="count loaded">{{route.vm.data.length}}</div>
+			<div class="label">{{route.strings['ts.log.subHeading']}}{{ route.vm.tsId }}</div>
+		</div>
+	</div>
+	<div class="content-panel loaded">
+		<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+		<cmpt-ui-sortable-grid class="log-grid" columns="route.vm.cols" dataset="route.vm.data" is-loading="route.vm.isLoading">{{route.strings['AbsenceLog.text.NoRecordFound']}}</cmpt-ui-sortable-grid>
+	</div>
+</div>

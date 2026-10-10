@@ -1,0 +1,23 @@
+<div class="cmpt-ui-textarea-v2">
+	<div class="input">
+		<i class="icon fa fa-exclamation"
+			ng-show="formValue.$invalid && formValue.$touched"></i>
+		<textarea name='{{name}}'
+			placeholder='{{ placeholder }}'
+			ng-model="vm.fieldValue"
+			ng-minlength="{{ minLength }}"
+			minlength="{{ minLength }}"
+			ng-maxlength="{{ maxLength }}"
+			maxlength="{{ maxLength }}"
+			ng-show="!readOnly"
+			ng-disabled="!enabled"
+			ng-required="required"
+			ng-blur="go.onBlur(vm.fieldValue)">
+		</textarea>
+		<div class="label" ng-show="readOnly">{{ (valueText != null && valueText.toString().length > 0) ? valueText : readOnlyPlaceholder }}</div>
+		<div ng-messages="formValue.$touched && formValue.$error" class="validation-messages">
+			<ng-transclude></ng-transclude>
+		</div>
+		<div ng-if="!readOnly && maxLength > 0" class="notes-characters-left" ng-class="{ 'over-limit': maxLength - vm.fieldValue.length < 0 }">{{ maxLength - vm.fieldValue.length }} character(s) left</div>
+	</div>
+</div>

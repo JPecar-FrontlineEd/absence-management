@@ -1,0 +1,11 @@
+<div class="cmpt-template-available-sub-block-unblock-cell">
+	<div class="block-unblock">
+		<i class="{{ vm.cssClass }}"></i>
+		<a class="fl-button" ng-click="go.onClick()" ng-class="{'fl-disabled': vm.onAbsence}">
+			<i class="fa fa-spinner fa-spin" ng-if="vm.isProcessing"></i>
+			<span ng-if="!vm.isProcessing">
+				{{ vm.text }}
+			</span>
+		</a>
+	</div>
+</div>

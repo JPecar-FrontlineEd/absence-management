@@ -1,0 +1,39 @@
+<div class="cmpt-reports-monthly-summary">
+
+	<div ng-hide="searchPerformed" class="no-data">
+		<ng-transclude></ng-transclude>
+	</div>
+
+	<div ng-show="searchPerformed" class="monthData-container">
+		<cmpt-ui-sortable-grid class="monthData"
+			columns="vm.columns"
+			dataset="vm.weeks"
+			default-row-height="201"
+		>
+			<div class="archiveWarning">
+				<div>{{ vm.archiveDateMessage1 }}</div>
+				<div>{{ vm.archiveDateMessage2 }}</div>
+				<div>{{ vm.archiveDateMessage3 }}</div>
+		    </div>
+		</cmpt-ui-sortable-grid>
+	</div>
+	<div class="summaryData" ng-show="searchPerformed">
+		<cmpt-ui-sortable-grid class="weekData"
+			columns="vm.weekColumns"
+			dataset="vm.weekStats"
+			default-row-height="36"
+		>
+			<div class="archiveWarning">
+				<div>{{ vm.archiveDateMessage1 }}</div>
+				<div>{{ vm.archiveDateMessage2 }}</div>
+				<div>{{ vm.archiveDateMessage3 }}</div>
+		    </div>
+		</cmpt-ui-sortable-grid>
+		<cmpt-ui-sortable-grid class="weekSummary"
+			columns="vm.weekColumns"
+			dataset="vm.weekSummary"
+			default-row-height="36"
+		></cmpt-ui-sortable-grid>
+	</div>
+
+</div>

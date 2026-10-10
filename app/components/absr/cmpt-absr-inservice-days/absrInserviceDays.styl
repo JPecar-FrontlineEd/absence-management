@@ -1,0 +1,34 @@
+@import "common-var"
+.cmpt-absr-inservice-days {
+	width:100%;
+	.related-inservice-days {
+		margin: 10px 0px 0px 0px;
+		background: absence-inserviceDays-backGroundColor;
+		border: 1px solid absence-inserviceDays-borderColor;
+		color: absence-inserviceDays-color;
+		font-size: 13px;
+		font-weight: bold;
+		padding: 10px;
+		position: relative;
+		.inservice-toggler{
+			position: absolute;
+			top: 0;
+			right: 1px;
+			bottom: 0;
+			width: 45px;
+			z-index: 1;
+			text-align: center;
+			font-size: 26px;
+		}
+		ul {
+			display:none;
+			li {
+				padding:0 20px;
+				font-weight:500;
+				a {
+					font-weight:bold;
+				}
+			}
+		}
+	}
+}

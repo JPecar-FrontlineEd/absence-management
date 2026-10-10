@@ -1,0 +1,76 @@
+<div class="cmpt-call-group-call-group-defaults">
+    <div class="error-message-area" ng-show="vm.validationMessages.length>0">
+        <div class="fl-system-message error" >
+            <div><span><strong>{{strings['Error']}}!<strong></span><span>There are ({{vm.validationMessages.length}})</span><span>{{strings['Error']}}(s)</span></div>
+            <ul>
+                <li class="message"  ng-repeat="error in vm.validationMessages"><span>{{error}}</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <h4 class="title defaults">{{strings['Defaults']}}</h4>
+
+    <div class="-g" ng-class="{'no-edit': !editable}">
+        <div class="-u-5-24 calling-sequence-container">
+            <div class="group-title">{{strings['PreferredSub.Label.Text.CallingSequence']}}</div>
+            <div class="calling-sequence-radio">
+                <label>
+                   <input name="call-order" value="0" type="radio" ng-model="vm.defaults.callGroupOrder" ng-disabled="!vm.canEditList || !editable" />
+                   {{strings['PreferredSub.Label.Text.UseCallOrder']}}</label>
+            </div>
+            <div class="calling-sequence-radio">
+                <label>
+                    <input name="call-order" value="1" type="radio" ng-model="vm.defaults.callGroupOrder" ng-disabled="!vm.canEditList || !editable"/>
+                    {{strings['PreferredSub.Label.Text.UseRandomOrder']}}</label>
+            </div>
+        </div>
+        <div class="-u-12-24 job-visibility-container">
+            <div class="group-title">{{strings['PreferredSub.Button.Text.JobVisibility']}}</div>
+            <div class="-g">
+            	<div class="-u-11-24 job-visibility-row" ng-if="userHrsVisibilityMode">
+            		<input type="text" class="fl-input" ng-model="vm.visibilityDays" ng-class="{'error':vm.visDaysErrors.length>0}" ng-disabled="!vm.canEditList || !editable"  />
+            		<div class="label">{{strings['Days']}}</div>
+    	            <input type="text" class="fl-input" ng-model="vm.visibilityHours" ng-class="{'error':vm.visHrErrors.length>0}" ng-disabled="!vm.canEditList || !editable"/>
+    	            <div class="label">{{strings['Hrs']}}</div>
+
+    	        </div>
+                <div class="-u-10-24 visibility-percent" ng-if="!userHrsVisibilityMode">
+                    <div>
+                    	<input type="text" class="fl-input" ng-model="vm.defaults.visibilityPercent" ng-class="{'error':vm.visPerErrors.length>0}" ng-disabled="!vm.canEditList || !editable"/>
+                    	% {{strings['PreferredSub.Radio.Label.Text.LeadTime']}}
+                    </div>
+                    <a ng-show="!vm.saving" class="fl-button" ng-class="{'fl-disabled': userHrsVisibilityMode}" ng-click="userHrsVisibilityMode || go.visibilityCalculator()">{{strings['VisibilityCalculator.Dialog.Text']}}</a>
+                </div>
+                <div class="-u-14-24 visibility-minmax" ng-if="!userHrsVisibilityMode">
+                    <div class="job-visibility-row">
+                        <label>{{strings['Min']}}:</label>
+                        <input type="text" class="fl-input" ng-model="vm.minHrs" placeholder="{{strings['Hrs']}}" ng-class="{'error':vm.minHrErrors.length>0}" ng-disabled="!vm.canEditList || !editable"/>
+                        <div class="label">{{strings['Hrs']}}</div>
+                        <input type="text" class="fl-input" ng-model="vm.minMins" placeholder="{{strings['Min']}}s" ng-class="{'error':vm.minMinErrors.length>0}" ng-disabled="!vm.canEditList || !editable"/>
+                        {{strings['Min']}}s
+                    </div>
+                    <div class="job-visibility-row">
+                        <label>{{strings['Max']}}:</label>
+                        <input type="text" class="fl-input" ng-model="vm.maxDays" placeholder="{{strings['Days']}}" ng-class="{'error':vm.maxDaysErrors.length>0}" ng-disabled="!vm.canEditList || !editable"/>
+                        <div class="label">{{strings['Days']}}</div>
+                        <input type="text" class="fl-input" placeholder="{{strings['Hrs']}}" ng-model="vm.maxHrs" ng-class="{'error':vm.maxHrsErrors.length>0}" ng-disabled="!vm.canEditList || !editable"/>
+                        {{strings['Hrs']}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="-u-6-24 button-container" ng-if="vm.canEditList">
+            <button title="Cancel" class="fl-button fa fa-times" ng-show="vm.canSave" ng-class="{'fl-disabled':!vm.canSave && vm.saving}" ng-click="go.cancel()"></button>
+
+            <button title="{{strings['PreferredSub.Button.Text.SaveDefaults']}}" ng-show="!vm.saving && vm.canSave" class="fl-button fl-positive" ng-class="{'fl-disabled':!vm.canSave}" ng-click="go.save()">
+                <i class="fa fa-check" ></i>
+                {{strings['PreferredSub.Button.Text.SaveDefaults']}}
+            </button>
+
+            <button class="fl-button fl-positive" ng-show="vm.saving">
+                <i class="fa fa-spinner fa-spin"></i>
+                {{strings['PreferredSub.Button.Text.SavingDefaults']}}
+            </button>
+        </div>
+    </div>
+</div>

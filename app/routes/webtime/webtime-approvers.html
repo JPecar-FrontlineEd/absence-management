@@ -1,0 +1,51 @@
+<div class="fixed-width route-webtime-webtime-approvers" ng-controller="WebtimeApproversCtrl as route">
+	<div class="heading">
+		{{route.strings['ts.approver.subHeading']}} <span class="school-name">{{route.vm.institutionName}}</span>
+	</div>
+
+	<span ng-show="route.vm.showInstitutions" class="school-selector filter">
+		<span class="label">{{route.strings['Report.Label.SelectSchool']}}</span>
+		<cmpt-ui-dropdown
+			options-array="route.vm.institutions"
+			value-selected="route.vm.institution"
+			allow-blank="false"
+			enabled="true"
+			field-width="300px"
+   			error-messages="[]"></cmpt-ui-dropdown>
+	</span>
+
+	<div class="content">
+		<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+		<div class="content-header">
+			{{route.strings['ts.approver.label.primaryApprover']}}
+		</div>
+		<cmpt-ui-sortable-grid
+			columns="route.vm.primaryCols"
+			dataset="route.vm.primaryApprover"
+			actions="route.go"
+		></cmpt-ui-sortable-grid>
+
+		<div class="alternate-approvers" ng-if="route.vm.hasPrimary">
+			<div class="content-header">
+				{{route.strings['ts.approver.label.altApproverSch']}}
+			</div>
+			<cmpt-ui-sortable-grid
+				columns="route.vm.alternateCols"
+				dataset="route.vm.alternateApprovers"
+				actions="route.go"
+				sort="route.vm.altApproverSort"
+			>
+				<div class="caption">{{route.strings['ts.altApprover.noAltSched']}}</div>
+			</cmpt-ui-sortable-grid>
+		</div>
+
+		<div class="actions-footer" ng-if="route.vm.canEditApprovers">
+			<button class="fl-button fl-positive" ng-class="{'fl-disabled':route.vm.editMode}"
+				ng-click="!route.vm.editMode && route.go.addApprover()"
+				ng-show="!route.vm.isLoading"
+			>
+				<i class="fa fa-plus"></i> {{ route.vm.hasPrimary ? route.strings['ts.label.addApprover'] : route.strings['ts.label.addPrimaryApprover'] }}
+			</button>
+		</div>
+	</div>
+</div>

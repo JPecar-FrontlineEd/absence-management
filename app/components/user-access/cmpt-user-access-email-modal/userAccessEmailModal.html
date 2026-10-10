@@ -1,0 +1,34 @@
+<div class="dialog-popup cmpt-user-access-email-modal">
+	<ng-form name="emailForm">
+		<div class="ngdialog-message">
+			<div class="header">{{vm.actionText}} {{strings['Email']}}</div>
+			<div class="content">
+				<div>
+					<div class="label">{{vm.actionText}} {{vm.user.firstName}} {{vm.user.lastName}}'s {{strings['Email']}}: </div>
+					<div class="field">
+						<cmpt-ui-textbox-v2
+							name="email"
+							validations="decoratoremail"
+							value-text="vm.email"
+							form-value="emailForm.email"
+							placeholder="Enter Email Address"
+							max-length="80"
+							required="true"
+							update-on-blur>
+							<div ng-message="required">{{strings['Required']}}</div>
+							<div ng-message="decoratoremail">{{strings['Validation.Email.Required']}}</div>
+							<div ng-message="maxlength">{{strings['Validation.Field.MaxLength'].replace('{0}', vm.maxEmailChars)}}</div>
+						</cmpt-ui-textbox-v2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="ngdialog-buttons">
+			<a class="{{ button.cls }}" ng-click="button.action(emailForm)" ng-repeat="button in vm.buttons" ng-class="{ 'fl-disabled': button.disableWhenFormInvalid && emailForm.$invalid }">
+				<i class="fa fa-spinner fa-spin" ng-if="!!button.loading"></i>
+				{{ button.title }}
+			</a>
+		</div>
+	</ng-form>
+</div>

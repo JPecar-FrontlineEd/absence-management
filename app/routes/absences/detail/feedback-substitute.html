@@ -1,0 +1,10 @@
+<div class="route-absences-detail-feedback-substitute" ng-controller="FeedbackSubstituteCtrl as route">
+	<div class="loader-panel" ng-show="route.vm.isProcessing">
+		<div class="processing">
+		</div>
+		<cmpt-ui-loader is-loading="true"></cmpt-ui-loader>
+	</div>
+	<cmpt-feedback-buttons show-errors="true" has-substitute="route.vm.hasSubstitute" after-absence-start="route.vm.afterAbsenceStart" class="top" edit-mode="route.vm.editMode" feedback-about-substitute="true" is-processing="route.vm.isProcessing"></cmpt-feedback-buttons>
+	<cmpt-feedback-feedback-response edit-mode="route.vm.editMode" feedback-about-substitute="true" is-processing="route.vm.isProcessing"></cmpt-feedback-feedback-response>
+	<cmpt-feedback-buttons has-substitute="route.vm.hasSubstitute" after-absence-start="route.vm.afterAbsenceStart" class="bottom" edit-mode="route.vm.editMode" feedback-about-substitute="true" is-processing="route.vm.isProcessing"></cmpt-feedback-buttons>
+</div>

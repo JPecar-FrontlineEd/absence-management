@@ -1,0 +1,13 @@
+<div class="cmpt-template-group-by">
+	<ng-transclude></ng-transclude>
+	<select ng-change = "action(selected)" aria-label="{{label}}" ng-options="item.value as item.title for item in items" ng-model="selected"></select>
+	<span ng-if="displayOptions.length <= 2">
+		<label ng-repeat="item in displayOptions">
+			<input type="radio" name="order-by" ng-value="item.value" ng-model="iscope.displayBy" >
+			{{ item.title }}
+		</label>
+	</span>
+	<span ng-if="displayOptions.length > 2">
+		<select  ng-options="item.title for item in displayOptions" ng-model="displayBy">
+	</span>
+</div>

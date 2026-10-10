@@ -1,0 +1,64 @@
+<div class="cmpt-absr-top-section-summary">
+	<div class="-g">
+		<div class="top-details">
+			<div class="-u-10-24 left-section">
+				<span><ng-transclude></ng-transclude></span>
+				<span class="entry-id">#{{ absrState.id }} - </span>
+				<cmpt-template-worker-link class="worker-title" worker-id="{{ absrState.worker.id }}" worker-name="{{ absrState.worker.name }}" show-name-as-link="true" is-vacancy="absrState.worker.isVacancy"></cmpt-template-worker-link>
+				<div class="all-dates bold">{{vm.allDates}}</div>
+				<cmpt-absr-switch-to-old-version></cmpt-absr-switch-to-old-version>
+			</div>
+			<div class="-u-14-24 right-section">
+				<div class="status">
+					<span>{{strings['Status']}}:</span>
+					<span class="bold">
+						<cmpt-template-absence-request-status></cmpt-template-absence-request-status>
+					</span>
+					<span ng-if="absrState.context.showApprovalStatus">
+						&nbsp;/&nbsp;
+						<cmpt-template-approval requires-approval="absrState.absr.requiresApproval" is-approved="absrState.absr.isApproved" is-denied="absrState.absr.isDenied" is-partially-approved="absrState.absr.isPartiallyApproved">
+						</cmpt-template-approval>
+					</span>
+				</div>
+				<div class="details">
+					<span>
+						{{ strings['HoursPerDay'] }}:
+						<span class="bold">{{ absrState.absr.hoursPerDay }}</span>
+					</span> |
+					<span>
+						 {{ strings['Created'] }}:
+						<span class="bold">{{ vm.created }}</span>
+					</span> |
+					<span>
+						{{ strings['LastUpdate'] }}:
+						<span class="bold">{{ vm.lastUpdated }}</span>
+					</span>
+				</div>
+				<div class="renotify-substitute">
+					<button class="fl-button" ng-class="{'fl-disabled': absrState.absr.isLocked }" ng-click="go.renotify()" ng-show="absrState.context.showRenotifySub && vm.showRenotifyButton">
+						<i ng-class="{'fa-spinner fa-spin' : vm.renotifyProcessing}"></i>
+						{{ strings['CreateAbsence.Button.Text.RenotifyFavoriteSubs'] }}
+					</button>
+				</div>
+				<div class="return" ng-if="vm.hasDestination">
+					<button class="fl-button" ng-click="go.back()">{{ vm.returnText }}</button>
+				</div>
+			</div>
+		</div>
+		<cmpt-absr-closed-days></cmpt-absr-closed-days>
+		<cmpt-absr-inservice-days></cmpt-absr-inservice-days>
+
+
+
+		<div class="related-abs-container" ng-if="absrState.related.length > 0">
+            <label>{{ strings[mnemonic.relatedFilesText] }}: </label>
+            <span ng-repeat="absr in absrState.related">
+                <a href="/v1/absences/detail/{{ absr.id }}/view">{{ absr.id }}</a>
+                 <span ng-if="$index !== absrState.related.length -1">&nbsp;,&nbsp;</span>
+            </span>
+        </div>
+
+
+
+	</div>
+</div>

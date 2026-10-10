@@ -1,0 +1,54 @@
+<div
+  class="fixed-width report-standards route-reports-report-writer-index"
+  ng-controller="ReportWriterIndexCtrl as route"
+>
+  <!--<cmpt-reports-switcher section="Report Writer"></cmpt-reports-switcher>-->
+
+  <h3>{{route.strings['ReportWriter']}}</h3>
+  <div class="panel">
+    <cmpt-reports-filter-panel
+      filters="route.vm.filters"
+      action="route.go.search"
+      show-print-button="false"
+      auto-execute="true"
+    ></cmpt-reports-filter-panel>
+  </div>
+
+  <div ng-class="{loaded: route.vm.dataLoaded}">
+    <div ng-repeat="group in route.vm.dataSet" class="report-group">
+      <div class="header">
+        <div class="header-content">
+          <div class="count" ng-class="{loaded: route.vm.dataLoaded}">
+            {{ group.items.length}}
+          </div>
+          <div class="label" ng-class="{loaded: route.vm.dataLoaded}">
+            {{ group.title }}
+            <span
+              ng-if="group.isAbsenceTrendReport"
+              qtip
+              content="<div>{{	route.strings['Report.AbsenceTrendAnalysis.ToolTip'] }}</div>"
+              qtip-class="absencetrendreporttooltip"
+              ><i class="fa fa-question-circle"></i
+            ></span>
+          </div>
+        </div>
+      </div>
+      <div class="content-panel">
+        <cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+        <cmpt-ui-sortable-grid
+          columns="route.vm.columns"
+          show-header="true"
+          dataset="group.items"
+        ></cmpt-ui-sortable-grid>
+      </div>
+    </div>
+    <div class="content-panel no-records" ng-if="route.vm.dataSet.length === 0">
+      <cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+      <div class="no-data">
+        <span ng-if="route.vm.dataLoaded && !route.vm.isLoading"
+          >{{ route.strings['NoRecordsFound'] }}.</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

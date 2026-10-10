@@ -1,0 +1,70 @@
+<div class="width-dailyreport report-standards route-reports-absence-daily-report" ng-class="{'paddingleft': !route.vm.sidekickEnabled}" ng-controller="DailyReportCtrl as route">
+	<cmpt-reports-switcher section="Absence" from-daily-report="true"></cmpt-reports-switcher>
+	<div class="-u-24-24 daily-report-heading">
+		<h1 class="-u-17-24 daily-report-headingText">{{ route.strings['DR.Header.Text.DailyReport'] }}</h1>
+		<div class="-u-5-24 margins views tab-view-container">
+			<div class="filter no-bg-color">
+				<div class="views-actions view-action-margins">
+					<a class="views-actions-btn btn-list-view fl-button viewButtons" ng-click="route.go.views(true)" ng-class="{'selected': route.vm.filters.isListView}">List</a>
+					<a class="views-actions-btn btn-tab-view fl-button viewButtons marginLeftMinus4" ng-click="route.go.views(false)" ng-class="{'selected': !route.vm.filters.isListView}">Tab</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel">
+		<cmpt-reports-filter-panel is-daily-report=true filters="route.vm.filters" extra-validators="route.vm.validation" action="route.go.callToServer" group-by-action = "route.go.processData" auto-execute="true"></cmpt-reports-filter-panel>
+		<div class="summary-panel" ng-show="route.vm.dataLoaded" ng-class="{expanded: route.vm.expanded}">
+			<div class="bar -g">
+				<div class="title -u-23-24">{{route.strings['Summary']}}</div>
+				<div class="collapsable -u-1-24" ng-click="route.go.toggleCollapse()">
+					<i class="fa fa-angle-right"></i>
+				</div>
+			</div>
+			<div class="summary-content" ap-show-slide="route.vm.expanded">
+				<cmpt-reports-absence-summary-panel
+					no-need-sub="route.vm.summary.nosub",
+					unfilled="route.vm.summary.unfilled",
+					filled="route.vm.summary.filled"
+				>
+					<div class="graph-summary-content">
+						<div class="header">{{ route.strings['DR.Summary.Label.Totals']}}</div>
+						<div class="date">
+							{{ route.vm.printDate }}
+						</div>
+						<div>
+							<label>{{ route.strings['DR.Summary.Label.Total']}}:</label>
+							<span>{{ route.vm.summary.unfilled + route.vm.summary.filled + route.vm.summary.nosub}}</span>
+						</div>
+						<div class="fill-rate">
+							<label>{{ route.strings['DR.Summary.Label.FillRate'] }}: </label>
+							<span>{{ route.vm.fillRate }}%</span>
+						</div>
+					</div>
+				</cmpt-reports-absence-summary-panel>
+			</div>
+		</div>
+	</div>
+	<div id="report-lock-header" class="lock-header-fill" ng-class="{'tab-view': !route.vm.filters.isListView}"></div>
+	<div ng-class="{'tab-view': !route.vm.filters.isListView, 'list-view': route.vm.filters.isListView}">
+		<div class="tab" ng-repeat="tab in route.vm.tabKeys" ng-class="{'active': $index === route.vm.selectedTab}">
+			<div ng-style="{ 'padding-top': '10px' }"></div>
+			<div class="header {{ tab }}">
+				<div class="header-content"  ng-click="route.go.selectTab($index)">
+					<span class="count" ng-class="{loaded: route.vm.dataLoaded}">{{ route.vm.count[tab] }}</span>
+					<span class="label"  ng-class="{loaded: route.vm.dataLoaded}">{{ route.strings[route.vm.sectionLabel[tab]] }}</span>
+					<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+					<cmpt-ui-print-button></cmpt-ui-print-button>
+				</div>
+			</div>
+			<div class="content-panel {{ tab }}">
+				<cmpt-ui-grid
+						columns="route.vm.columns[tab]"
+						dataset="route.vm.data[tab]"
+						group-by="route.vm.filters.groupBy"
+						default-sort ="{{route.vm.filters.sortBy}}"
+						set-in-view="false"
+				>{{ route.strings[route.vm.noDataLabel[tab]] }}.</cmpt-ui-grid>
+			</div>
+		</div>
+	</div>
+</div>

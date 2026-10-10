@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "id": 4045,
+      "mode": "purchased",
+      "productId": 1,
+      "name": "Aesop",
+      "marketingUrl": "http://www.frontlinek12.com/Products/Aesop.html?utm_source=AESOP%20Navigator%20Navigation%20Bar%20App%20Switcher%20Button%20AESOP&utm_medium=Aesop%20Navigator&utm_term=none&utm_content=none&utm_campaign=AESOP%20Navigator%20Navigation%20Bar%20App%20Switcher%20Button%20AESOP",
+      "url": "",
+      "displayName": "Absence Management"
+    },
+    {
+      "id": 11241,
+      "mode": "purchased",
+      "productId": 2,
+      "name": "VeriTime",
+      "marketingUrl": "http://www.frontlinek12.com/Products/VeriTime.html?utm_source=AESOP%20Navigator%20Navigation%20Bar%20App%20Switcher%20Button%20Veritime&utm_medium=Aesop%20Navigator&utm_term=none&utm_content=none&utm_campaign=AESOP%20Navigator%20Navigation%20Bar%20App%20Switcher%20Button%20Veritime",
+      "url": "System/RedirectToVeritime",
+      "displayName": "Time & Attendance"
+    }
+  ],
+  "messages": [
+    
+  ],
+  "success": true,
+  "modelState": {
+    
+  }
+}

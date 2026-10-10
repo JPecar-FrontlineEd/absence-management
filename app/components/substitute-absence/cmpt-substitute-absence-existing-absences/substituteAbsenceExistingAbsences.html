@@ -1,0 +1,12 @@
+<div class="cmpt-substitute-absence-existing-absences">
+	<div class="box absences" ng-if="!vm.isLoading && vm.absences.length > 0">
+		<div class="title">{{ strings['Substitute.Absence.Existing.TitleMessage'] }}</div>
+		<div>
+			<div class="sub-title">{{ strings['Substitute.Absence.Existing.SubstituteAbsenceList'].replace('{0}', vm.absences.length) }}</div>
+			<div class="absence-list" ng-repeat="absence in vm.absences">
+				<span class="times">{{ absence.times }}</span>-
+				<cmpt-template-substitute-absence-confirmation substitute-absence-id="{{ absence.id }}"></cmpt-template-substitute-absence-confirmation>
+			</div>
+		</div>
+	</div>
+</div>

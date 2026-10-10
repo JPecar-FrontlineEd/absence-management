@@ -1,0 +1,38 @@
+<div class="cmpt-call-group-pref-list">
+	<div class="grid-header -g">
+		<div class="grid-header-content {{ col.width }} {{ col.key + '-th' }} {{ col.cls }} {{col.extraClass}}"
+			ng-repeat="col in vm.preferredColumns">
+			<div ap-bind-html="col.title" class="col-title"></div>
+			<div ng-if="col.subHeader !== ''" ap-bind-html="col.subHeader" class="sub-header"></div>
+		</div>
+	</div>
+
+	<div class="loader-container" ng-show="isLoading">
+	   <cmpt-ui-loader
+	   		fill
+	   		is-loading=isLoading>
+	   	</cmpt-ui-loader>
+	</div>
+
+   	<ul class="grid-rows" sv-root sv-part="data" sv-on-sort="go.Renumber()">
+		<li class="-g grid-row {{ row.cls }}" ng-repeat="row in data" sv-element="vm.opts">
+			<div class="error-message-area" ng-show="row.validationMessages.length>0">
+			    <div class="fl-system-message error">
+			    	<div><span><strong>{{strings['Error']}}!<strong></span><span>There are ({{row.validationMessages.length}})</span><span>{{strings['Error']}}(s)</span></div>
+			        <ul>
+			        <li class="message" ng-repeat="error in row.validationMessages"><span>{{error}}</span></li>
+			        </ul>
+			        <span class="dismiss"><i class="icon-remove"></i><a ng-click="vm.removeMessages()">{{strings['Dismiss']}}</a></span>
+			    </div>
+			</div>
+			<div class="{{ col.width }} {{ col.key + '-cell' }} grid-cell {{ col.cls }} {{col.extraClass}}"
+					ng-repeat="col in vm.preferredColumns" ap-bind-html="col.template || col.render(row[col.key], row)">
+			</div>
+
+		</li>
+	</ul>
+	<div class="no-data" ng-if="data.length == 0">
+		<div class="image"></div>
+		<div class="caption"><ng-transclude></ng-transclude></div>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+<div class="cmpt-template-substitute-absence-confirmation">
+	<ng-transclude></ng-transclude>
+	<a href="/v1/substitute-absences/detail/{{ substituteAbsenceId }}/view" ng-if="vm.isValid">{{substituteAbsenceId}}</a>
+	<div ng-if="!vm.isValid">{{invalidText}}</div>
+</div>

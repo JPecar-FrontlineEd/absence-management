@@ -1,0 +1,21 @@
+<div class="cmpt-template-school-selector">
+	<div class="instruction">{{strings['schoolList.heading.selectSchool']}}</div>
+	<div class="search">
+		<span>{{strings['Search']}}: </span>
+		<div class="fl-search">
+			<i class="fa-search"></i> <input class="fl-input" type="text" placeholder="{{strings['schoolList.search.placeholder.schoolName'] }}" ng-model="vm.filter">
+	 	</div>
+ 	</div>
+
+ 	<div class="-g body-section">
+		<div class="-u-24-24 search-results">
+			<cmpt-template-institution-tree filter="vm.filter" link="{{vm.link}}">
+				<div class="no-data">
+					<span ng-show="vm.filter.length > 0">
+						{{strings['schoolList.Text.NoResultFoundFor']}} {{vm.filter}}
+					</span>
+				</div>
+			</cmpt-template-institution-tree>
+		</div>
+	</div>
+</div>

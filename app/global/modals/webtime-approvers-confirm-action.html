@@ -1,0 +1,9 @@
+<div class="dialog-popup modal-webtime-approvers-confirm-action">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content" ng-bind-html="ngDialogData.confirmMessage"></div>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="{{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons">{{ button.title }}</a>
+	</div>
+</div>

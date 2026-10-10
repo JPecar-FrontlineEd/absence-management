@@ -1,0 +1,44 @@
+@import "common-var"
+.cmpt-ui-progress-bar {
+
+	.progress-bar-container {
+		margin-left:auto;
+		margin-right:auto;
+		width:415px;
+		height:20px;
+		text-align: center;
+
+		.progress-bar {
+		  display: block;
+		  height: 8px;
+		  width: 415px;
+		  background: progressBar-backGroundColor;
+		  overflow: hidden;
+		}
+
+		.progress-bar {
+			.progress {
+			  display: block;
+			  height: 100%;
+			  width: 100%;
+			  -webkit-transform: translateX(-100%);
+			  -moz-transform: translateX(-100%);
+			  -o-transform: translateX(-100%);
+			  -ms-transform: translateX(-100%);
+			  transform: translateX(-100%);
+			  -webkit-transition: -webkit-transform 300ms ease-in-out;
+			  -moz-transition: -moz-transform 300ms ease-in-out;
+			  -o-transition: -o-transform 300ms ease-in-out;
+			  -ms-transition: -ms-transform 300ms ease-in-out;
+			  transition: transform 300ms ease-in-out;
+			  background-color: ap-blue;
+			}
+		}
+	}
+
+	.text {
+		margin-top: 0.3rem;
+		font-weight: 600;
+	}
+
+}

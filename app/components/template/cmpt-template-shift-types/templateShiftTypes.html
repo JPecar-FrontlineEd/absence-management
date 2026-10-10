@@ -1,0 +1,6 @@
+<div class="cmpt-template-shift-types">
+	<div class="icon-container" ng-repeat="shiftType in vm.shiftTypes">
+		<i class="duration-Icon hide-print fa {{shiftType.cssClass}}" title="{{ shiftType.title }}"></i>
+		<div ng-class="{'wrap-words' : wrapTextInLine}" class="no-screen">{{ shiftType.title }}</div>
+	</div>
+</div>

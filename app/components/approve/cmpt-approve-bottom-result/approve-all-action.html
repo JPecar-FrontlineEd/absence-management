@@ -1,0 +1,19 @@
+<div class="dialog-popup approve-all-popup forApprove" >
+	<div class="ngdialog-message">
+		<div class="header"><span>{{ ngDialogData.header }}</span></div>
+		<div ng-show="!vm.preloader.loading">
+			<label>{{ngDialogData.commentText}}:</label>
+			<cmpt-ui-textarea
+					characters="255" text-model="vm.approveAllComment"  read-only="false" error-messages="[]"></cmpt-ui-textarea>
+		</div>
+		<cmpt-ui-progress-bar
+			preloader=vm.preloader
+			>
+			</cmpt-ui-progress-bar>
+		<div class="ngdialog-buttons" ng-show="!vm.preloader.loading">
+			<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons" ><i class="fa {{ button.icon }}"></i>
+			{{ button.title }}</a>
+		</div>
+		<div class="processing" ng-show="vm.preloader.loading"><span>Processing...</span></div>
+	</div>
+</div>

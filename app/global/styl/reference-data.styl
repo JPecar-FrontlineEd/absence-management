@@ -1,0 +1,326 @@
+@import "common-var"
+.reference-data-styles{
+	position:relative;
+	.add-link{
+		color: anchor-tag-blue;
+		cursor: pointer;
+		margin-bottom: 5px;
+    	display:inline-block;
+		i{
+			font-size:14px;
+		}
+		span{
+			font-size:13px;
+			vertical-align: text-bottom;
+			margin-left:5px;
+		}
+	}
+	.description{
+		margin-bottom:10px;
+		font-size:14px;
+		color: subTitle-color-dark;
+		span{
+			font-weight: bold;
+		}
+	}
+	.mian-list{
+		display: inline-block;
+		width: 100%;
+		&.has-scroll{
+			.scrollable-grid{
+					&.cmpt-ui-grid{
+					.grid-header{
+						margin-right: 14px
+					}
+					.grid-rows{
+						overflow-y: scroll;
+		    		}
+    			}
+			}
+		}
+	}
+	.details{
+		display: none;
+		vertical-align: top;
+		width:0%;
+	}
+	.row-container{
+		background-color: referenceData-backGroundColor !important;
+	}
+	.cmpt-ui-grid{
+		background: referenceData-backGroundColor;
+		border: 1px solid referenceData-grid-borderColor;
+		.grid-header{
+			.grid-header-content{
+				background-image:none;
+				color: referenceData-grid-header-color;
+				background: referenceData-grid-header-backGroundColor;
+				border-left:0px;
+				font-size:14px;
+				text-shadow:none;
+				border-bottom: 1px solid referenceData-grid-borderColor;
+			}
+		}
+		.grid-rows{
+			font-size:15px;
+			.row-container{
+				min-height:41px !important;
+				.row-content{
+					.grid-row{
+						.grid-cell{
+							border-bottom: 1px solid referenceData-grid-borderColor;
+							border-left:0px;
+							.ref-name{
+								margin-left:10px;
+								line-height:40px;
+							}
+						}
+						.toggle{
+							color: subTitle-color-dark;
+							cursor: pointer;
+					    text-align: center;
+					    width: 40px;
+					    float: left;
+					    line-height: 40px;
+							height: 40px;
+							border-right:1px solid referenceData-grid-borderColor;
+						}
+						.actions-cell{
+							padding:0;
+						}
+					}
+					.grid-row > div{
+						line-height:20px;
+					}
+					.cancel{
+					    position: absolute;
+						cursor: pointer;
+					    font-size: 12px;
+					    color: subTitle-color-lightest;
+					    display: none;
+					    line-height: 40px;
+					    top: 0px;
+					    right: 0px;
+					    background: referenceData-selectedRow;
+					    box-shadow: -20px 0px 20px referenceData-selectedRow ;
+					    padding: 0 10px;
+
+					}
+				}
+				&:last-child{
+					.row-content{
+						.grid-row{
+							background-color
+							.grid-cell{
+								border-bottom:0px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.cmpt-ui-loader {
+		.bar {
+			background-color: rgba(255,255,255,.65);
+			animation-name: height-change-blue;
+		}
+	}
+
+	&.disable-add{
+		.add-link{
+			opacity: 0.3;
+    		cursor: not-allowed;
+		}
+	}
+
+	&.shrink{
+		.mian-list{
+			width: 25%;
+			margin-right: 20px;
+			.grid-header{
+				.grid-header-content{
+					width:100%;
+					display:none;
+					&:first-child{
+						display:block;
+					}
+				}
+			}
+			.grid-rows{
+				.row-container{
+					.row-content{
+						.grid-row{
+							.grid-cell{
+								width:100%;
+								display: none;
+								&:first-child{
+									display: block;
+								}
+							}
+						}
+						.selected{
+							font-weight:bold;
+							background:referenceData-selectedRow ;
+							border-left: 2px solid ap-blue;
+							.toggle{
+								width: 38px;
+							}
+							.cancel{
+								font-weight: normal;
+							 	display: block;
+
+							}
+						}
+						.view-only{
+							color: subTitle-color-dark;
+							line-height:40px;
+							vertical-align: middle;
+							span{
+								margin-left:10px;
+							}
+						}
+						.footer-template{
+							.cancel{
+							 	font-size:10px;
+							 	margin-right:5%;
+							}
+						}
+					}
+				}
+
+			}
+		}
+		.details{
+			display: inline-block;
+			width: 73%;
+
+		}
+	}
+	.scrollable-grid{
+		background: referenceData-grid-header-backGroundColor;
+		&.cmpt-ui-grid{
+			height: auto;
+			max-height: calc(100vh - 220px);
+			.grid-rows{
+				//width: calc(100% +15px);
+				//overflow-y: scroll;
+    			max-height: calc(100vh - 330px);
+			}
+		}
+
+	}
+	.hover{
+		&.cmpt-ui-grid{
+			.grid-rows{
+				.grid-row{
+					&:hover{
+						background: referenceData-grid-row-hover;
+						.actions{
+							opacity:1;
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+//in this case, we want the column borders so with the same specificity as above so it will override, change the border.
+.reference-data-styles.reference-data-styles-with-col-borders {
+	.cmpt-ui-grid{
+		border-left: 0px; //clear the border so we don't get doubles.
+		.grid-header{
+			.grid-header-content{
+				border-left:1px solid referenceData-grid-borderColor;
+			}
+		}
+		.grid-rows{
+			.row-container{
+				.row-content{
+					.grid-row{
+						.grid-cell{
+							border-left:1px solid referenceData-grid-borderColor;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.reference-data-details{
+	border: 1px solid referenceData-borderColor;
+	border-radius:3px;
+	.header-section{
+		background: referenceData-header-backGroundColor;
+		padding:10px;
+		border-radius:3px;
+		.title{
+			font-size: 16px;
+			font-weight: bold;
+			color: subTitle-color-darkest;
+			> div{
+				margin-left:10px;
+			}
+		}
+		.button-section{
+			text-align: right;
+			.fl-button{
+				width: 75px;
+			}
+			.plain-icon{
+				cursor: pointer;
+				color: subTitle-color-lightest;
+				margin: 0 10px;
+				&:hover{
+					color: subTitle-color-darkest;
+				}
+			}
+		}
+	}
+	.field-section{
+		border-top:1px solid referenceData-borderColor;
+		background: referenceData-backGroundColor;
+		padding:20px;
+		.element{
+			position:relative;
+			padding:5px;
+			label{
+				color: subTitle-color-dark;
+				font-size:12px;
+			}
+			a{
+				position: absolute;
+				right: 5px;
+				font-weight: 600;
+				text-decoration: underline;
+				font-size: 12px;
+				top: 10px;
+			}
+
+		}
+		.required-field{
+			color: ap-red;
+			font-size:13px;
+			padding:0px 5px;
+			vertical-align: middle;
+			font-weight:normal;
+		}
+		.sub-title{
+			color: subTitle-color-darkest;
+		    font-size: 18px;
+		    font-weight: 600;
+		}
+		label{
+			font-size:12px;
+			input{
+				margin-right:5px;
+			}
+		}
+		// select{
+		// 	height:34px;
+		// }
+	}
+}

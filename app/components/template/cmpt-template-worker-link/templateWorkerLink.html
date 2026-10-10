@@ -1,0 +1,20 @@
+<div class="cmpt-template-worker-link">
+	<!--<a href="some/Link/{{:: workerId }}" title="{{:: workerName }}">-->
+	<div ng-if="workerTooltipData != null" title="{{:: workerTooltipData !== null ? '' : workerName }}">
+		<ng-transclude></ng-transclude>
+		<span ng-class="{'wrap-words' : wrapTextInLine}" class="content">{{:: workerName }}</span>
+		<span tabindex="0" class="info-qtip" ng-if="workerTooltipData !== null" qtip content="<cmpt-template-general-info-tooltip qtip-data='workerTooltipData' name-link='link'></cmpt-template-general-info-tooltip>">
+			<i class="fa fa-li-ellipsis"></i>
+		</span>
+	</div>
+	<div ng-if="workerTooltipData == null"> 
+		<span ng-if="showNameAsLink && (link != '')">
+			<span ng-if="showLinkFollowingName">
+				<span ng-class="{'wrap-words' : wrapTextInLine}">{{:: workerName }}</span>&nbsp;<a ng-context-menu="VacancyProfile" ng-href="{{ link }}" title="{{:: workerName }}">view</a>		
+			</span>
+			<a ng-class="{'wrap-words' : wrapTextInLine, 'dailyReportHyperlink' : isDailyReport}" ng-if="!showLinkFollowingName" ng-href="{{ link }}" title="{{:: workerName }}" ng-context-menu="Worker">{{ workerName }}</a>
+		</span>
+		<span ng-class="{'wrap-words' : wrapTextInLine}" ng-if="!showNameAsLink || (link == '')">{{:: workerName }}</span>
+	</div>
+	<!-- </a> -->
+</div>

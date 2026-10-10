@@ -1,0 +1,18 @@
+<div class="flexible-width reference-data-styles hover route-reference-data-substitute-cancellation-reasons" ng-controller="SubstituteCancellationReasonsCtrl as route">
+	<h1>{{ route.strings['Substitute.Cancellation.Header.Text.CancellationReasons'] }}</h1>
+	<span class="add-link" ng-click="route.go.add()" ng-if="$root.havePermission('REFDATA.REFDATAADD')">
+		<i class="fa fa-plus"></i>
+		<span>{{ route.strings['Substitute.Cancellation.Button.TextAddNewCancellationReason'] }}</span>
+	</span>
+	<form novalidate name="cancellationReasonForm">
+		<cmpt-ui-grid
+			columns="route.vm.columns"
+			dataset="route.vm.dataset"
+			default-sort="description"
+			track-by="id"
+			is-loading="route.vm.isLoading"
+			>
+			{{  route.strings['NoRecordsFound'] }}
+		</cmpt-ui-grid>
+	</form>
+</div>

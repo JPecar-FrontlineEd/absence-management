@@ -1,0 +1,12 @@
+<div class="cmpt-ui-tabs">
+	<div class="tabs">
+    	<a href="{{tab.route}}"
+				ng-repeat="tab in tabs"
+				ng-if="tab.isVisible"
+				ng-class="{'active': tab.isActive}"
+				class="{{ (tab.cls != null) ? tab.cls : '' }}"
+				click="go.changeRoute(tab.route)">
+    		 <span ap-bind-html="tab.title"></span>
+    	</a>
+   	</div>
+</div>

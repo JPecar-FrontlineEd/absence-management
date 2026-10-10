@@ -1,0 +1,14 @@
+<div class="dialog-popup available-substiute-confirm-action">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content">{{ngDialogData.title}}</div class="content">
+	</div>
+    <div class="ngdialog-buttons">
+		<a class="{{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)" ng-repeat="button in ngDialogData.buttons">
+		<i class="fa fa-spinner fa-spin"
+			ng-if="!!button.loading"
+		></i>
+		{{ button.title }}
+		</a>
+	</div>
+</div>

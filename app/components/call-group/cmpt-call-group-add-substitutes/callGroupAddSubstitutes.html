@@ -1,0 +1,90 @@
+<div class="cmpt-call-group-add-substitutes">
+	<ng-form name="outerForm">
+		<div class="header">
+			<div class="search-by-text" ng-if="vm.currentMode==vm.pageMode.subSelection">
+				<span class="label" once-text="strings['Search'] + ':'"></span>
+				<div class="fl-search">
+					<i class="fa-search"></i> <input class="fl-input" type="text" once once-attr-placeholder="strings['LastName']" ng-model="vm.searchText" ng-model-options="{debounce: 300}">
+			 	</div>
+		 	</div>
+		 	<div class="search-by-text" ng-if="vm.currentMode==vm.pageMode.commentEntry"></div>
+		 	<div class="actions">
+				<a class="fl-button" ng-click="go.executeCancelStep()">{{strings[vm.cancelTextMnemonic]}}</a>
+				<a class="fl-button fl-positive" ng-click="go.executeNextStep(outerForm)" ng-class="{'fl-disabled':vm.selectedSubs.length === 0 || outerForm.$invalid}">
+					<span ng-if="vm.shouldShowAddSubsButton()" class="fl-label"><i class="fa {{vm.savingSubs ? 'fa-spinner fa-spin' : 'fa-check'}}"></i>{{strings[vm.addTextMnemonic]}}</span>
+					<span ng-if="!vm.shouldShowAddSubsButton()" class="fl-label"><i class="fa fa-arrow-right"></i> Next </span>
+				</a>
+			</div>
+		</div>
+		<div class="sub-sections" ng-if="vm.currentMode==vm.pageMode.subSelection">
+			<div class="search-by-letter">
+				<div class="letter-header" once-text="strings['Absence.Create.Select.SearchByLetter']"></div>
+				<div class="letter-table">
+					<div ng-repeat="character in ::vm.characters" ng-click="go.setLetter(character)">
+						<span once-text="character"></span>
+					</div>
+					<div ng-click="go.setLetter('')">
+						<span once-text="strings['All']"></span>
+					</div>
+				</div>
+			</div>
+			<div class="search-results" ng-if="show" ng-class="{'rating-hidden':!sub.canViewSubPerfScore}">
+				<cmpt-ui-loader
+					fill
+			   		is-loading="vm.loading">
+			   	</cmpt-ui-loader>
+
+				<cmpt-ui-grouped-grid
+					columns="vm.columns"
+					dataset="vm.availableSubs"
+					selected="vm.selectedSubs"
+					multi-select="true"
+					group-by="'group'"
+				>
+					<span ng-show="!vm.loading">{{strings['EligibleSub.Text.NoSubstitutesFound']}}</span>
+				</cmpt-ui-grouped-grid>
+
+				<div class="load-more" ng-show="vm.moreSubsAvailable && !vm.loading">
+					<button class="fl-button" ng-click="go.loadMoreSubs()">
+						<i class="fa {{vm.loadingMoreSubs ? 'fa-spinner fa-spin' : ''}}"></i>
+						{{strings['AvailableSub.Text.LoadMore']}}
+					</button>
+				</div>
+			</div>
+			<div class="selected-subs">
+				<div class="header">
+					{{strings['EligibleSub.Text.SelectedSubstitutes']}}
+				</div>
+				<div class="selected-sub-list" ng-show="!vm.loading || vm.selectedSubs.length > 0">
+					<div class="selected-sub" ng-repeat="sub in vm.selectedSubs" ng-class="{'rating-hidden':!sub.canViewSubPerfScore}">
+						<div class="sub-name">{{sub.fullName}}</div>
+						<cmpt-template-feedback-rating ng-if="sub.canViewSubPerfScore" average-score="sub.feedBackScore" total-number-of-rating="sub.feedBackTotal"></cmpt-template-feedback-rating>
+						<div class="no-rating" ng-show="sub.feedBackScore <= 0 && sub.canViewSubPerfScore">({{strings['Report.Label.NoRating']}})</div>
+						<button class="remove-sub fl-button-sm fl-negative fa fa-times" ng-click="go.removeSub(sub)"></button>
+					</div>
+					<div class="no-subs-selected" ng-show="vm.selectedSubs.length === 0">
+						{{strings['EligibleSub.Text.CurrentlyNoSubstituteSelected']}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sub-sections sub-comments-required" ng-if="vm.currentMode==vm.pageMode.commentEntry">
+			<cmpt-call-group-excluded-list
+	    		is-loading=route.vm.loadingPrefs
+	    		data=vm.selectedSubs
+	    		editing=true
+	    		enabled=true
+	    		comment-entry-bulk-mode=true
+	    	>{{strings['PreferredSub.Text.GetStartedByAddingSubstitutes']}}!</cmpt-call-group-excluded-list>
+		</div>
+		<div class="footer">
+			<div class="actions">
+				<a class="fl-button" ng-click="go.executeCancelStep()">{{strings[vm.cancelTextMnemonic]}}</a>
+				<a class="fl-button fl-positive" ng-click="go.executeNextStep(outerForm)" ng-class="{'fl-disabled':vm.selectedSubs.length === 0 || outerForm.$invalid}">
+					<span ng-if="vm.shouldShowAddSubsButton()" class="fl-label"><i class="fa {{vm.savingSubs ? 'fa-spinner fa-spin' : 'fa-check'}}"></i>{{strings[vm.addTextMnemonic]}}</span>
+					<span ng-if="!vm.shouldShowAddSubsButton()" class="fl-label"><i class="fa fa-arrow-right"></i> Next </span>
+				</a>
+			</div>
+		</div>
+	</ng-form>
+</div>

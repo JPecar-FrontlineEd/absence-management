@@ -1,0 +1,22 @@
+<div class="dialog-popup modal-bulk-actions">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content">
+			<div>
+				<div class="message">{{ ngDialogData.data.message }}</div>
+				<div ng-show="ngDialogData.data.processed && !ngDialogData.data.hasError" class="sub-message">This process could take a while. Check back later to view an updated status for these users.</div>
+				<cmpt-ui-loader  class="loading" is-loading="ngDialogData.data.isProcessing"></cmpt-ui-loader>
+			</div>
+		</div>
+	</div>
+	<div class="ngdialog-buttons"
+			 ng-hide="ngDialogData.data.isProcessing"
+			 ng-class="{'processed': ngDialogData.data.processed, 'not-processed': !ngDialogData.data.processed}">
+		<a class="{{ button.cls }}"
+			ng-click="button.action()"
+			ng-repeat="button in ngDialogData.buttons"
+		>
+			{{ button.title }}
+		</a>
+	</div>
+</div>

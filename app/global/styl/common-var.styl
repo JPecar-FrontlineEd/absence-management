@@ -1,0 +1,320 @@
+/* Colors */
+ap-blue = #2387B9;
+ap-green = #26A26A;
+ap-yellow = #D6AD6A;
+ap-red = #E55E55;
+ap-dark-red = darken(ap-red, 25%);
+ap-light-red = lighten(ap-red,85%);
+ap-purple = #7e3e82;
+
+ap-dark-green = #BCB;
+ap-light-green = #eeffee;
+
+/* Ground & Figure */
+ap-light-grey-1 = #E4E4E4;
+ap-light-grey-2 = #F7F7F7;
+ap-light-grey-3 = #FAFAFA;
+ap-light-grey-4 = #FFFFFF;
+ap-light-grey-5 = #f0f0f0;
+
+/* Typography */
+ap-dark-grey-1 = #404040;
+ap-dark-grey-2 = #606060;
+ap-dark-grey-3 = #8A8A8A;
+ap-dark-grey-4 = #BABABA;
+
+/* Accent & Highlights */
+ap-dark-blue = #3678CC;
+ap-light-blue = #E2EFFF;
+
+
+/* Miscellaneous */
+selected-item = #ffffdd;
+headingColor-dark = ap-dark-grey-1;
+headingColor-light = ap-dark-grey-3;
+backGroundColor = ap-light-grey-4;
+backGroundColor-dark = ap-light-grey-2;
+html-backGroundColor = #E8ECF0;
+body-backGroundColor = #E8ECF0;
+anchor-tag-blue = darken(ap-dark-blue, 25%);
+borderColor = ap-dark-grey-1;
+borderColor-light = ap-light-grey-1;
+borderColor-medium =  lighten(ap-dark-grey-4,30%);
+borderColor-dark = ap-dark-grey-1;
+content-panel-borderColor = ap-dark-grey-1;
+boxShadow = rgba(0, 0, 0, 0.1);
+boxShadow-dark = rgba(0, 0, 0, 0.21);
+textShadow = ap-light-grey-4;
+subTitle-color-darkest = ap-dark-grey-1;
+subTitle-color-dark = ap-dark-grey-2;
+subTitle-color-light = ap-dark-grey-3;
+subTitle-color-lightest = ap-dark-grey-4;
+header-count-background = ap-light-blue
+greyBar-backGroundColor = lighten(ap-light-grey-1, 20%);
+yellowBar-backGroundColor = #ffffb2;
+yellowBar-borderColor = #EBEB5F;
+blueBar-borderColor=#B7D1F5;
+blueBar-textColor=#2B64B3;
+blueBar-backGroundColor=#D2E5FF;
+
+// Generic
+content-width = 1050px;
+flexible-width-max = 1500px;
+flexible-width-min = 1024px;
+
+// Navigation
+color-adjust-amt = -5%;
+topbar-height = 60px;
+sidebar-width = 240px;
+sidebar-item-height = 36px;
+sidebar-width-collapsed = 50px;
+sidebar-collapse-time = 250ms;
+bottom-section-height = 255px;
+bottom-section-small-height = 76px;
+
+
+// Navigation => App Switcher
+app-switcher-width = 175px
+app-switcher-item-height = 40px
+
+// Navigation => Colors
+
+// Top Bar
+topbar-bg = #3f2a56;
+topbar-bg-dark = topbar-bg;
+topbar-bg-light = #7a4183;
+topbar-text = topbar-bg-light;
+topbar-gradient = linear-gradient(90deg, topbar-bg-dark  0%, topbar-bg-light  100%);
+topbar-left-hover-backGroundColor = #2D1E3E;
+topbar-right-hover-backGroundColor = #5F3266;
+
+
+topbar-appSwitcherIcon-color = rgba(255,255,255,.5);
+topbar-appSwitcherIcon-color-after = rgba(255,255,255,.2);
+topbar-appSwitcher-product-color = topbar-bg;
+
+topbar-help-titleBackGroundColor = ap-light-grey-1;
+
+topbar-notification-circle-backGroundColor = darken(ap-yellow, 15%)
+topbar-notification-circle-borderColor = topbar-bg-light;
+
+topbar-searchBox-backGroundColor = #ffffff;
+topbar-searchBox-placeholderColor = topbar-bg-light;
+topbar-searchBox-shadow = topbar-bg-dark;
+
+topbar-dropDown-borderColor = ap-light-grey-1;
+topbar-dropDown-hover = ap-light-grey-2;
+
+// Side Navigation
+sidenav-bg = #f9f9f9;
+sidenav-text = ap-dark-grey-1;
+sidenav-borderColor =  #e6e6e6;
+sidenav-title-height = 40px;
+sidenav-contentDimmer = #141B25;
+sidnav-shortKeyBorderColor = #C8C8C8;
+sidenav-groupTitleColor = sidenav-bg;
+sidenav-borderShadowColor = #A2AAAD;
+sidenav-groupTitle-lineColor = rgba(161, 161, 161, 0.6);
+nav-highLightColor = topbar-bg-light;
+nav-highlight = sidenav-bg;
+nav-icon-color = subTitle-color-dark;
+nav-frontlineLogoColor = topbar-bg-light;
+nav-copyRighTextColor = #868E97;
+
+// Dashboard
+circleGaugeSize = 100px;
+
+// z-indexes
+z-index-base = 10;
+z-index-nav = 5000;
+z-index-modal = 9000;
+
+/* gradient bars */
+
+  /* Grey Bar */
+
+  gradientBar = linear-gradient(-180deg,ap-light-grey-3 0,ap-light-grey-1 100%);
+  gradientBar-reverse = linear-gradient(-180deg,ap-light-grey-1 0,ap-light-grey-3 100%);
+
+  gradientBarLight = linear-gradient(-180deg,lighten(ap-light-grey-3,20%) 0,lighten(ap-light-grey-1,20%) 100%);
+  gradientBarLight-reverse = linear-gradient(-180deg,lighten(ap-light-grey-1,20%) 0,lighten(ap-light-grey-3,20%) 100%);
+
+  /* Blue Bar */
+  gradient-blueBar-backGroundColor = gradient-blue-light;
+  gradient-blueBar-borderColor = darken(ap-light-blue, 17%);
+  gradient-blue-dark = darken(ap-light-blue, 10%);
+  gradient-blue-light = darken(ap-light-blue,2%);
+  gradient-blueBar-color = #345;
+  gradient-blueBar = linear-gradient(-180deg, gradient-blue-light 0,gradient-blue-dark 100%);
+  gradient-blueBar-reverse = linear-gradient(-180deg, gradient-blue-dark 0,gradient-blue-light 100%);
+
+  /* Light Blue Bar */
+  gradient-lightBlueBar-backGroundColor = lighten(gradient-blue-light,20%);
+  gradient-lightBlueBar-borderColor = darken(ap-light-blue, 10%);
+  gradient-lightBlue-dark = darken(ap-light-blue, 2%);
+  gradient-lightBlue-light = lighten(ap-light-blue,10%);
+  gradient-lightBlueBar-color = #345;
+  gradient-lightBlueBar = linear-gradient(-180deg, gradient-lightBlue-light 0,gradient-lightBlue-dark 100%);
+  gradient-lightBlueBar-reverse = linear-gradient(-180deg, gradient-lightBlue-dark 0,gradient-lightBlue-light 100%);
+
+
+  /* Green Bar */
+  gradient-greenBar-backGroundColor = ap-light-green;
+  gradient-greenBar-borderColor = ap-dark-green;
+  gradient-green-dark = ap-light-green;
+  gradient-green-light = #ddeedd;
+  gradient-greenBar-color = subTitle-color-darkest;
+  gradient-greenBar = linear-gradient(-180deg, gradient-green-dark 0,gradient-green-light 100%);
+  gradient-greenBar-reverse = linear-gradient(-180deg, gradient-green-light 0,gradient-green-dark 100%);
+
+  /* Red Bar */
+  gradient-redBar-backGroundColor = lighten(ap-red,50%);
+  gradient-redBar-borderColor = lighten(ap-red, 50%);
+  gradient-red-dark = lighten(ap-red, 55%);
+  gradient-red-light = lighten(ap-red,75%);
+  gradient-redBar-color = #345;
+  gradient-redBar = linear-gradient(-180deg, gradient-red-light 0,gradient-red-dark 100%);
+  gradient-redBar-reverse = linear-gradient(-180deg, gradient-red-dark 0,gradient-red-light 100%);
+
+
+
+/* Grid */
+grid-heading-color = content-panel-borderColor;
+grid-borderColor = lighten(ap-dark-grey-4,30%);
+grid-row-odd-color = ap-light-grey-4;
+grid-row-even-color = lighten(ap-light-blue,75%);
+grid-transclude-color = ap-dark-grey-2;
+grid-subHeading-backGroundColor = ap-light-grey-2;
+grid-group-title-color = ap-light-grey-4;
+grid-group-title-backGroundColor = ap-dark-grey-1;
+grid-group-title-backGroundColor-light = ap-dark-grey-3;
+grid-row-selected-color = selected-item;
+grid-groupRow-text-color = ap-light-grey-4;
+
+
+/* Reports */
+report-switcher-backGroundColor = darken(ap-light-grey-3,10%);
+report-filter-panel-greyBorderColor = ap-light-grey-1;
+report-filter-panel-blueBorderColor = ap-dark-grey-4;
+report-filter-panel-element-backGroundColor = darken(ap-light-grey-3,5%);
+report-filter-panel-summary-chart-backGroundColor = lighten(ap-light-blue,75%);
+report-panel-background = backGroundColor;
+report-header-backGround = content-panel-borderColor;
+report-header-text = ap-light-grey-4;
+report-summary-background = backGroundColor;
+report-summary-bar-borderColor = grid-borderColor;
+report-footer-color = ap-dark-grey-1;
+report-footer-background = ap-light-grey-1;
+
+
+/* Dashboard */
+dashboard-bottomResult-header-backGroundColor = content-panel-borderColor;
+dashboard-bottomResult-header-text = ap-light-grey-4;
+dashboard-guage-backGroundColor = darken(ap-light-grey-3,5%);
+
+
+/* Create Absence/Vacancy Workflow */
+
+
+  /* Step progress */
+  fl-selected = darken(ap-dark-blue, 20%);
+  fl-selected-color = ap-light-grey-4;
+  fl-completed = darken(ap-light-blue,5%);
+  fl-completed-color = fl-selected
+  fl-inactive = lighten(ap-dark-grey-4,50%);
+  fl-inactive-color = ap-dark-grey-2;
+
+  /* Absnece Current Step Component */
+  absence-currentStep-color = #345;
+
+  /* Summary Section on Right hand side */
+  absence-summarySection-backGroundColor = #F6FBFF;
+
+  /* Closed Days Component */
+  absence-closedDays-backGroundColor = #FFD7C2;
+  absence-closedDays-borderColor = #DDB7A2;
+  absence-closedDays-color = #773712;
+
+  /* Inservice Days Component */
+  absence-inserviceDays-backGroundColor = #FFE599;
+  absence-inserviceDays-borderColor = #DDB577;
+  absence-inserviceDays-color = #664752;
+
+  /* Done Step - Variation Summary */
+  absence-doneStep-tableHeader-backGroundColor = ap-dark-grey-2;
+  absence-doneStep-tableHeader-borderColor = ap-light-grey-4;
+  absence-doneStep-tableHeader-color = ap-light-grey-4;
+
+  absence-doneStep-tableRow-backGroundColor = ap-light-grey-1;
+  absence-doneStep-tableRow-borderColor = ap-light-grey-4;
+  absence-doneStep-tableRow-label-backGroundColor = ap-light-grey-2;
+
+  /* Approvers Tab */
+  approversTab-blueHeader-description-borderColor = ap-dark-grey-4;
+  approversTab-blueHeader-description-color = #345;
+
+  /* Available Substitute Tab */
+  availableSub-subHeading-backGroundColor = ap-light-grey-2;
+  availableSub-allCheckPassed-color = darken(ap-green,30%);
+  availableSub-allCheckPassed-borderColor = darken(ap-green,0%);
+  assignedSub-allCheckPassed-color = blueBar-textColor;
+  assignedSub-allCheckPassed-borderColor = blueBar-borderColor;
+  assignedSub-allCheckPassed-backGroundColor = blueBar-backGroundColor;
+
+  /* Template Approval Action */
+  approvalAction-borderColor = ap-light-grey-2;
+  approvalAction-backGroundColor = lighten(ap-light-blue,40%);
+
+
+/* School Selector */
+schoolSelector-fieldToggler-backGroundColor = ap-light-grey-1;
+
+
+/* Visibility Calculator */
+visibilityCalculator-result-backGroundColor = lighten(ap-light-blue,30%);
+
+
+/* Reference Data */
+referenceData-backGroundColor = backGroundColor;
+referenceData-grid-header-backGroundColor = lighten(ap-light-grey-1,20%);
+referenceData-grid-header-color = subTitle-color-darkest;
+referenceData-grid-borderColor = grid-borderColor;
+referenceData-grid-nested-backGroundColor = darken(referenceData-backGroundColor,11%)
+referenceData-grid-nested-borderColor = darken(referenceData-grid-borderColor,20%);
+referenceData-grid-row-hover = darken(referenceData-backGroundColor,3%);
+referenceData-borderColor = referenceData-grid-borderColor;
+referenceData-header-backGroundColor = referenceData-grid-header-backGroundColor;
+referenceData-selectedRow = darken(referenceData-backGroundColor,5%);
+referenceData-action-hover = darken(referenceData-backGroundColor,10%);
+
+
+/* Qtip */
+qtip-backGroundColor = ap-dark-grey-1;
+
+/* Dialog */
+dialog-header-color = subTitle-color-dark
+dialog-header-backGroundColor = ap-light-grey-1;
+
+/* UI Shared Components */
+
+  /* UI - File upload */
+  fileUpload-backGroundColor = darken(backGroundColor,2%);
+  fileUpload-borderColor = ap-light-grey-1;
+  fileUpload-color = ap-dark-grey-2;
+
+  fileUpload-dragOver-borderColor = lighten(ap-dark-blue, 20%);
+  fileUpload-dragOver-backGroundColor = lighten(ap-light-blue, 30%);
+  fileUpload-dragOver-color = lighten(ap-dark-blue, 5%);
+
+  fileUpload-progressBar-backGroundColor = backGroundColor-dark;
+
+  /* UI - Multidate Picker */
+  multidatePicker-backGroundColor = backGroundColor;
+  multidatePicker-selected = lighten(ap-dark-blue, 50%);
+  multidatePicker-otherDays = lighten(ap-dark-blue, 80%);
+  multidatePicker-activeDays = ap-light-grey-2;
+  multidatePicker-selecting = lighten(ap-dark-blue, 60%);
+  multidatePicker-deselecting = lighten(ap-dark-grey-3, 50%);
+
+  /* UI - Progress Bar */
+  progressBar-backGroundColor = backGroundColor-dark;

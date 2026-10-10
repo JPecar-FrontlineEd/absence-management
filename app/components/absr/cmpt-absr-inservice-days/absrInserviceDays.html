@@ -1,0 +1,27 @@
+<div class="cmpt-absr-inservice-days">
+	<div class="related-inservice-days" ng-if="vm.relatedInserviceAbsrs.length > 0">
+	 	<div id="related-inservice-days-message">
+	        <span ng-if="isSingleInServiceDay">
+				{{strings[mnemonic.singleInServiceDays]}}</span>
+		    <span ng-if="!isSingleInServiceDay">
+				{{strings[mnemonic.multipleInServiceDays]}}</span>
+		    <div class="inservice-toggler" ng-class="{expanded: vm.expanded}" ng-click="vm.expanded = !vm.expanded">
+				<span>
+						<i class="fa fa-angle-double-{{vm.expanded ? 'up' : 'down'}}"></i>
+				</span>
+			</div>
+	    </div>
+	    <ul ap-show-slide="vm.expanded">
+	        <li ng-repeat="absr in vm.relatedInserviceAbsrs">
+	        	<span ng-repeat="absence in absr.absences">
+		            <span>{{ absence.closedDay.date }}</span>
+		            <span class="reason" ng-if="absence.closedDay.reason.length > 0">-{{ absence.closedDay.reason }}</span>
+		        </span>
+	            <span class="moved-to">→ {{strings['MovedTo']}} #<a href="/v1/absences/detail/{{ absr.id }}/view">{{ absr.id }}</a></span>
+	        </li>
+	    </ul>
+    </div>
+    <div class="related-inservice-days" ng-if="vm.currentAbsrHasInserviceDays">
+    	{{strings['AbsenceFallsOnInServiceDay']}}
+    </div>
+</div>

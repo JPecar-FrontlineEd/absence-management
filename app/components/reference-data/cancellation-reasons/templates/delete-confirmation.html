@@ -1,0 +1,15 @@
+<div class="dialog-popup ref-data-delete">
+	<div class="ngdialog-message">
+		<div class="header">{{ ngDialogData.header }}</div>
+		<div class="content" ap-bind-html="ngDialogData.content.message"></div>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="fl-button {{ button.cls }}"
+			ng-click="button.action(ngDialogData.selectedId)"
+			ng-repeat="button in ngDialogData.buttons"
+			ng-class="{'fl-disabled': ngDialogData.row.isProcessing}"
+		>
+		{{ button.title }}
+		</a>
+	</div>
+</div>

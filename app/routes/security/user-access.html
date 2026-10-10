@@ -1,0 +1,91 @@
+<div class="flexible-width reference-data-styles reference-data-styles-with-col-borders route-security-user-access" ng-controller="UserAccessCtrl as route">
+
+	<div id="saapBanner" ng-if="route.vm.showSaapBanner">
+		<div class="saapItem"><i class="fa fa-li-pencil-ruler"></i></div>
+		<div id="divOverview" class="saapItem">
+			We are improving how you manage application access for your users. During this transition, you can continue to use this page but the <span class="warning">classic Application Access will soon be discontinued</span>.
+		</div>
+		<div id="divBtn" class="saapItem">
+			<button id="btnBackToNew" class="fl-button fl-primary" ng-click="route.go.goToSaap()">Back to New</button>
+		</div>
+	</div>
+
+	<h1>{{route.strings['UserAccess.Heading']}}</h1>
+
+	<!-- Debugging stuff
+	<br>
+	<span>Loading: {{route.vm.isLoading}}</span>
+	<span>CurrMode: {{ route.vm.currentMode }}</span>
+	<span>PaginatedData: ({{ route.vm.paginatedData.toString() }})</span>
+	<br>
+	-->
+	<div id="hdrFilters">
+		<div class="hdrFilter" ng-repeat="tab in route.vm.pageTabs" ng-class="{selected: route.vm.currentMode === tab.pageMode}"><span ng-click="route.go.switchMode(tab.pageMode)"><span once-text="tab.title"></span> <span class='number'>{{ tab.userCount }}</span></span></div>
+	</div>
+	<div id="searchArea">
+		<div ng-if="route.vm.currentMode !== route.pageMode.singleUser">
+			<span ng-show="route.vm.selected.length > 1 || route.vm.forceToShowActionBar">
+				<span class="quick-action-dropdown actions" ap-menu-toggler="dropdown" click-toggler>
+					<button class="fl-button">
+						<span class="fl-label">Actions</span>
+						<i class="fa fa-chevron-down"></i>
+					</button>
+					<ul class="dropdown">
+						<li ng-show="route.vm.perms.canSendInvitation" ng-click="route.go.sendInvitation()">Send Invitation</li>
+						<li ng-click="route.go.inactivateAccess()">Inactivate Users</li>
+						<li ng-click="route.go.activateAccess()">Activate Users</li>
+					</ul>
+				</span>
+				<span class="num-users" id="numUsers">{{ route.vm.selected.length }} {{route.strings['UserAccess.Users']}} Selected</span>
+				<span class="only-show-selected"><label><input type="checkbox" ng-model="route.vm.showSelected" ng-click="route.go.showSelections()">Only show selected</label></span>
+				<span class="clear-all"><a href="" ng-click="route.go.clearAllSelections()">Clear All</a></span>
+			</span>
+			<i class="fa search-icon fa-search"></i>
+			<input id="searchText" class="srchText" ng-model="route.vm.currentSearchString" ng-model-options="{ debounce: 1000 }" placeholder="{{route.strings['UserAccess.FindUser']}}" ng-change="route.go.search(route.vm.currentSearchString)">
+			<span  ng-show="route.vm.selected.length <= 1 && !route.vm.forceToShowActionBar">
+				<span class="num-users" id="numUsers">{{ route.vm.paginatedData.totalRecordCount }} {{route.strings['UserAccess.Users']}}</span>
+			</span>
+		</div>
+		<div ng-if="route.vm.currentMode === route.pageMode.singleUser">
+			<button class="exit-single-user" ng-click=route.go.switchMode(route.pageMode.allUsers)>Exit single user view</button>
+		</div>
+	</div>
+
+	<div class="mian-list">
+		<cmpt-ui-grid
+			columns="route.vm.columns"
+			dataset="route.vm.paginatedData.dataset"
+			track-by="userKey"
+			default-row-height="40"
+			is-loading="route.vm.isLoading"
+			use-in-view="false">
+			{{  route.strings['NoRecordsFound'] }}
+		</cmpt-ui-grid>
+
+		<div class="below-grid" ng-hide="route.vm.showSelected">
+			<div class="loader-container paging-loader" ng-if="route.vm.isPaging" xng-if="true">
+	   			<cmpt-ui-loader fill is-loading="true"></cmpt-ui-loader>
+			</div>
+			<span id="xOfy" ng-if="route.vm.paginatedData.pageCount > 0 && !route.vm.isPaging">
+				<span ng-if="route.vm.paginatedData.totalRecordCount == 1" once-text="
+				route.strings['UserAccess.User']"></span>
+				<span ng-if="route.vm.paginatedData.totalRecordCount > 1" once-text="route.strings['UserAccess.Users']"></span>
+				1
+				<span ng-if="route.vm.paginatedData.totalRecordCount > 1">- {{ route.go.getLastRowShown() }}</span>
+				of {{ route.vm.paginatedData.totalRecordCount }}
+			</span>
+			<button class="fl-button" ng-if="route.vm.paginatedData.pageNumber < route.vm.paginatedData.pageCount && !route.vm.isPaging"ng-click="route.go.getMoreData()">Show More</button>
+		</div>
+	</div>
+</div>
+<!--[if IE]>
+	<style type="text/css">
+	.fa.search-icon { top: 8px; }
+	</style>
+<![endif]-->
+<style type="text/css">
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+{
+	.fa.search-icon { top: 8px; }
+}
+</style>

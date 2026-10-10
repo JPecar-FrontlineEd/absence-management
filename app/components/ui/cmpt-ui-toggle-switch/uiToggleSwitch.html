@@ -1,0 +1,15 @@
+<div class="cmpt-ui-toggle-switch">
+
+	<div class="label">
+		<ng-transclude></ng-transclude>
+	</div>
+	<div ng-if="!readOnly" class="toggle-bg toggle-alternate {{vm.switchAlternate}}" ng-class="{'disabled': !enable}">
+      <label class="{{vm.switchAlternate}}" for="toggle">{{ vm.label }}</label>
+      <input type="radio" ng-disabled="{{ !enable }}" name="toggle" value="off" ng-model="vm.switchAlternate">
+      <input type="radio" ng-disabled="{{ !enable }}" name="toggle" value="on" ng-model="vm.switchAlternate">
+      <span class="switch {{vm.switchAlternate}}"></span>
+    </div>
+    <div class="label" ng-if="readOnly">
+    	{{vm.label}}
+    </div>
+</div>

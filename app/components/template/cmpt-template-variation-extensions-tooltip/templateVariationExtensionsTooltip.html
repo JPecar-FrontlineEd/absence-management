@@ -1,0 +1,15 @@
+<div class="cmpt-template-variation-extensions-tooltip">
+	<table>
+		<thead>
+			<tr><th>{{ strings['ConfirmationNumberPound'] }}</th><th>{{ strings['Date'] }}</th></tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="x in vm.extensionList" class="extensionRow">
+				<td>{{ vm.confNum }}&nbsp;<span class="extensionId">{{ x.display() }}</span></td>
+				<td>
+					<div ng-repeat="y in x.dates" class="date">{{ y }}</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

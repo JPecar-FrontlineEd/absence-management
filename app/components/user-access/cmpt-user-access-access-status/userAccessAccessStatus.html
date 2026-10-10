@@ -1,0 +1,77 @@
+<div class="cmpt-user-access-access-status">
+	<div ng-if="!row.status.isProcessing && !row.isProcessing">
+		<!-- No Access -->
+		<div ng-if="!row.status.accessGranted && !row.status.invitationDate">
+
+			<!-- Has email -->
+			<div ng-if="!!row.email">
+				<span class="accountStatus">
+					<i class="fa fa-circle-o" aria-hidden="true"></i>
+					<span once-text="strings['UserAccess.Status.NoAccess']"></span>
+				</span>
+				<span class="accountAction" ng-if="row.perms.canSendInvitation &&  row.hasPermissionToEdit"><a href="" ng-click="go.sendInvitation()"><span once-text="strings['UserAccess.Action.Send']"></span></a></span>
+			</div>
+
+	        <!-- Missing email -->
+	        <div ng-if="!row.email">
+	            <span class="accountStatus">
+	                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+	                <span once-text="strings['UserAccess.Status.NoEmailAddress']"></span>
+	            </span>
+	            <span class="accountAction" >
+	                <a ng-if='row.hasPermissionToEdit' href="" ng-click="go.showEmailDialog(row)"><span once-text="strings['UserAccess.Action.SetEmail']"></span></a>
+	            </span>
+	        </div>
+
+		</div>
+
+		<!-- Has Access -->
+		<div ng-if="row.status.accessGranted">
+
+			<!-- Active status -->
+			<span class="accountStatus" ng-if="row.isActive">
+				<i class="fa fa-circle fa-circle-access-granted" aria-hidden="true"></i>
+				<span once-text="strings['Active']"></span>
+			</span>
+
+			<!-- Inactive status -->
+			<span class="accountStatus" ng-if="!row.isActive">
+				<i class="fa fa-circle fa-circle-access-paused" aria-hidden="true"></i>
+				<span once-text="strings['Inactive']"></span>
+			</span>
+
+			<!-- Active/inactive actions -->
+			<span class="accountAction">
+	            <a ng-if='row.hasPermissionToEdit && !row.email' href="" ng-click="go.showEmailDialog(row)"><span once-text="strings['UserAccess.Action.SetEmail']"></span></a>
+
+	            <span ng-if="row.hasPermissionToEdit && !row.email"> | </span>
+
+				<!-- Active/inactive check -->
+				<a href="" ng-click="go.inactivateUser()" ng-if="row.isActive && row.hasPermissionToEdit"><span once-text="strings['UserAccess.Action.Inactivate']"></span></a>
+				<a href="" ng-click="go.activateUser()" ng-if="!row.isActive && row.hasPermissionToEdit"><span once-text="strings['UserAccess.Action.Activate']"></span></a>
+
+				<span ng-if="row.hasPermissionToEdit && row.perms.canRevokeAccess"> | </span>
+				<a ng-if="row.hasPermissionToEdit && row.perms.canRevokeAccess" href="" ng-click="go.revokeAccess()"><span once-text="strings['UserAccess.Action.Revoke']"></span></a>
+			</span>
+
+		</div>
+
+		<!-- Invited -->
+		<div ng-if="!!row.status.invitationDate">
+			<span class="accountStatus">
+				<i class="fa fa-circle fa-circle-invited" aria-hidden="true"></i>
+				<span class="qtip-on-click-cursor" qtip on="click" ng-click="go.getInvitedQtipContent(row)" content="{{row.invitationQtip}}">
+					<span class="invitationStatus" once-text="strings['UserAccess.Status.InvitationSent']"></span>
+					<i class="fa fa-calendar"></i>
+				</span>
+			</span>
+			<span class="accountAction">
+				<a ng-if='row.hasPermissionToEdit && !row.email' href="" ng-click="go.showEmailDialog(row)"><span once-text="strings['UserAccess.Action.SetEmail']"></span></a>
+				<a ng-if="row.perms.canSendInvitation && !!row.email &&  row.hasPermissionToEdit" href="" ng-click="go.sendInvitation()"><span once-text="strings['UserAccess.Action.Resend']"></span></a>
+			</span>
+		</div>
+	</div>
+	<div class="is-processing" ng-if="row.status.isProcessing || row.isProcessing">
+		Processing
+	</div>
+</div>

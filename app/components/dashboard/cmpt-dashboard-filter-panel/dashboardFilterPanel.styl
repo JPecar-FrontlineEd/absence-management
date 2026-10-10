@@ -1,0 +1,159 @@
+@import "common-var"
+.cmpt-dashboard-filter-panel {
+	position: relative;
+	z-index: 10;
+
+	.section-arrow {
+		position: absolute;
+		background-image: url(../images/panel_drop.png);
+		width: 161px;
+		height: 38px;
+		top: 207px;
+		z-index: 1;
+		transition: left 500ms;
+	}
+
+	.no-bg-color {
+		background-color: transparent;
+	}
+
+	.filter {
+		padding: 4px 10px;
+		line-height: 25px;
+	}
+
+	.schools, .employee-types {
+		width: 49%;
+	}
+
+	.row {
+		margin-bottom: 5px !important;
+	}
+
+	.cmpt-ui-date-selector, .cmpt-ui-date-navigation {
+		padding-left: 0;
+	}
+
+	.data-gauge.row {
+		position: relative;
+		margin: 14px 0 0;
+		z-index: 4;
+	}
+
+	.schools {
+		margin-right:11px;
+	}
+
+	.mini-absence-vacancy {
+		display: none;
+	}
+
+	.absence-vacancy {
+		width: 235px;
+		float: right;
+
+		label {
+			margin-left: 2px;
+			margin-right: 11px;
+			font-size: 12px;
+
+			input {
+				margin-right: 3px;
+			}
+		}
+	}
+
+	.circle {
+		display: inline-block;
+		width: circleGaugeSize;
+		height: circleGaugeSize;
+		border-radius: 50%;
+		margin: 5px 13px;
+		vertical-align: top;
+		float: left;
+		transform-origin: 50% 0;
+		transform: scale(1);
+		transition: transform 200ms;
+		font-weight: bold;
+		cursor: pointer;
+
+		.content {
+			position: relative;
+			top: -5px;
+			text-align: center;
+			margin: 22px 0;
+			line-height: 18px;
+
+			.label, .percent {
+				margin: 3px 0;
+				font-size: 13px;
+				line-height: 13px;
+				color: subTitle-color-darkest;
+			}
+
+			.count {
+				font-size: 36px;
+				font-weight: bold;
+				line-height: 26px;
+				margin-top:5px;
+				color: subTitle-color-darkest;
+			}
+
+			.percent {
+				font-weight: normal;
+				&:before {
+					content: "["
+				}
+				&:after {
+					content: "%]"
+				}
+			}
+		}
+
+		.cmpt-ui-rad-gauge .content {
+			top: -12px;
+		}
+
+		&.active {
+			.content {
+				top: -11px;
+
+				.label, .percent {
+					font-size: 12px;
+					line-height: 13px;
+				}
+			}
+
+			&.active {
+				transform: scale(1.2);
+			}
+		}
+	}
+
+	.total-Absences, .noSub-Absences {
+		background: dashboard-guage-backGroundColor;
+
+		.label {
+			padding: 0 10px;
+		}
+	}
+	.noSub-Absences.active .content {
+		top: -5px;
+	}
+
+	.unfilled-Absences {
+		color: ap-yellow;
+	}
+
+	.filled-Absences {
+		color: ap-green;
+	}
+
+	.cmpt-ui-calendar-button {
+		.month span {
+			display: none;
+			margin-left:5px;
+		}
+	}
+
+}

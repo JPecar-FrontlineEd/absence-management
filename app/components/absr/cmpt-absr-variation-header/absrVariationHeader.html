@@ -1,0 +1,21 @@
+<div class="cmpt-absr-variation-header">
+	<div class="section-header" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+		<span>
+			<span ng-class="{'-u-16-24' : !variationData.isEditable && absrState.editMode}">
+				<span class="variation-number" ng-show="absrState.absrVariations.length > 1">{{strings['Variation']}} # {{ vm.variationNumber }}</span>
+				<span>{{ vm.dateString }}</span><span ng-if="!datesOnly" ng-show="variationData.institution">&nbsp;at&nbsp;</span>
+				<cmpt-template-institution-link inst-id="{{ vm.instId }}" inst-name="{{ vm.institutionName }}" 
+					show-name-as-link="true"></cmpt-template-institution-link>
+				<span class="days-reconciled" ng-if="vm.absenceCount === 1">&nbsp;{{vm.reconciled ? 'Reconciled' : 'Unreconciled'}}</span>
+				<span class="days-reconciled" ng-if="vm.absenceCount > 1">&nbsp;{{vm.reconciled}} out of {{vm.absenceCount}} Days Reconciled</span>
+			</span>
+			<span ng-class="{'-u-8-24 marginLeftMinus4' : !variationData.isEditable && absrState.editMode}">
+				<span class="locked"
+					ng-if="!variationData.isEditable && absrState.editMode"
+					ap-bind-html="vm.lockedTemplate">
+				</span>
+			</span>
+		</span>
+		<ng-transclude></ng-transclude>
+	</div>
+</div>

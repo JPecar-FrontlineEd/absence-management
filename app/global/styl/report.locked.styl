@@ -1,0 +1,54 @@
+@import "common-var"
+
+.report-locked {
+	header-height = 52px;
+	col-height = 42px;
+	fill-height = 144px;
+
+	div.lock-header-fill {
+		height: header-height + col-height;
+		margin-top: 30px;
+	}
+
+	.report-standards {
+		> .header {
+			position: fixed;
+			top: topbar-height;
+			width: content-width;
+			z-index: 2;
+			background-color: backGroundColor;
+			.header-content {
+				border-top-left-radius: 0 !important;
+				border-top-right-radius: 0 !important;
+				.cmpt-ui-print-button {
+					display: inline-block !important;
+					float: right;
+					margin: 5px 10px 0 0;
+				}
+			}
+			.cmpt-ui-loader {
+				.report-loader {
+					.logo-spinner {
+						right: 110px;
+					}
+				}
+			}
+		}
+
+		> .content-panel {
+			border-top-width: 0;
+
+			div.grid-header {
+				border-top-width: 0;
+				position: fixed;
+				width: content-width;
+				top: topbar-height + header-height;
+				border: 5px solid content-panel-borderColor;
+				border-bottom: 0;
+				margin-left: -5px;
+				z-index: 1;
+				box-shadow: 0px 1px 5px 0px boxShadow-dark;
+			}
+		}
+	}
+}

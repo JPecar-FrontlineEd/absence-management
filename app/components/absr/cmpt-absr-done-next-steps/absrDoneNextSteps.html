@@ -1,0 +1,38 @@
+<div class="cmpt-absr-done-next-steps">
+	<div>{{ strings['Absence.Reciept.Text.NextSteps'] }}</div>
+	<div class="button-section">
+		<a class="fl-button" ng-click="go.view()">{{ strings[mnemonic.viewAbsrButtonText] }}</a>
+		<a ng-if="vm.canAssignSub" class="fl-button fl-positive" ng-click="go.assignSub()">
+			 <i class="fa pull-left" ng-class="{'fa-spinner fa-spin': vm.isAvaiableSubLoading, 'fa-check': !vm.isAvaiableSubLoading}"></i>
+			<span ng-show="absrState.substitute === null">{{ strings['Absence.Reciept.Text.AssignSubToThisPosition'] }}</span>
+			<span ng-show="absrState.substitute !== null">{{ strings['Absence.Reciept.Text.ReassignSubToThisPosition'] }}</span>
+		</a>
+	</div>
+	<div ng-if="absrState.absr.requiresApproval && $root.havePermission('ABSRAPPRVL.ApproveDeny')">
+		<cmpt-template-approve-action
+			absr="absrState.absr"
+			comment="vm.comment">
+				<div ng-show="vm.processingApproval" class="processing">
+						<i class="fa fa-spinner fa-spin"></i> Processing
+				</div>
+				<div ng-show="!vm.processingApproval">
+					<a ng-if="absrState.absr.canApprove" class="fl-button-sm fl-positive"  ng-click="go.approve()"><span class="fl-label"><i class="fa fa-check pull-left"></i>{{ strings['Absence.Button.Text.Approve'] }}</span></a>
+					<a ng-if="absrState.absr.canDeny" class="fl-button-sm fl-negative" ng-click="go.deny()">{{ strings['Absence.Button.Text.Deny'] }}</a>
+					<a ng-if="absrState.absr.canDenyPart" ng-click="go.denyPart()" class="fl-button-sm deny-part">{{ strings['Absence.Button.Text.DenyPart'] }}</a>
+				</div>
+		</cmpt-template-approve-action>
+	</div>
+	<div class="view-profile link">
+		<!--<a href="">-->
+			<cmpt-template-worker-link worker-id="{{ absrState.worker.id }}" worker-name="{{ absrState.worker.name }}" show-name-as-link="true" is-vacancy="absrState.worker.isVacancy">
+				{{ strings['Absence.Reciept.Text.ViewProfileFor'] }}&nbsp;
+			</cmpt-template-worker-link>
+		<!--</a>-->
+	</div>
+	<div class="create-absence link">
+		<a href="" ng-click="go.createAbsence()">{{ strings[mnemonic.createAnotherText] }}</a>
+	</div>
+	<div class="log-out link">
+		<a href="" ng-click="go.logOut()">{{ strings['Absence.Reciept.Text.LogoutOfAesop'] }}</a>
+	</div>
+</div>

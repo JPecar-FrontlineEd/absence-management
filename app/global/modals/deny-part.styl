@@ -1,0 +1,91 @@
+@import "common-var"
+.dialog-popup.deny-part-popup {
+	.ngdialog-message {
+		.header {
+			background: ap-red;
+			color: backGroundColor;
+		}
+
+		.content {
+			.approval-status {
+				font-size: 14px;
+				font-weight: bold;
+				padding: 5px 0;
+  			border-bottom: 1px dashed borderColor-medium;
+				.cmpt-template-approval {
+					padding-left: 5px;
+					display: inline-block;
+					.icon {
+						display: none;
+					}
+					.approved {
+						color: ap-green;
+					}
+					.partial {
+						color: ap-yellow;
+					}
+					.denied {
+						color: ap-red;
+					}
+					.unapproved {
+						color: ap-yellow;
+					}
+				}
+			}
+			.absence-list {
+				.cmpt-ui-multiselect-sortable-grid {
+					font-size: 13px;
+					margin:10px 0;
+					.grid-header {
+						//height: 30px;
+						.uicheckcol-th span:after {
+							//content: 'Select';
+						}
+					}
+					.grid-rows {
+						max-height: 200px;
+						overflow-y: auto;
+						.grid-cell {
+							line-height: 15px;
+							vertical-align: middle;
+							padding-bottom: 2px;
+							.disabled{
+								opacity:0.5;
+							}
+						}
+						.duration-cell {
+							text-align: center;
+							padding-left: 5px;
+							.cmpt-template-shift-types div i {
+								line-height: 15px;
+							}
+						}
+					}
+					.uicheckcol-th {
+						right: 0;
+					}
+					.uicheckcol-cell {
+						right: 0;
+					}
+				}
+			}
+			.comment-box {
+				padding: 10px 0 0 0;
+				border-top: 1px dashed borderColor-medium;
+				span {
+					font-weight: bold;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+	.ngdialog-buttons {
+		border-top: 1px solid borderColor-medium;
+	}
+}
+
+
+.ngdialog.deny-part-dialog .ngdialog-content {
+	width: 710px;
+	top: -75px;
+}

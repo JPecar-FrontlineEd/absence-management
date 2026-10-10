@@ -1,0 +1,21 @@
+<div class="cmpt-ui-textbox-v2">
+	<div class="input">
+		<i class="icon fa fa-exclamation"
+			ng-show="formValue.$invalid && formValue.$touched"></i>
+		<input name='{{ name }}'
+			type="{{ type }}"
+			class="fl-input"
+			placeholder='{{ placeholder }}'
+			ng-model="vm.fieldValue"
+			ng-maxlength="{{ maxLength }}"
+			ng-show="!readOnly"
+			ng-disabled="!enabled"
+			ng-required="required"
+			ng-blur="go.onBlur(vm.fieldValue)">
+		</input>
+		<div class="read-only" ng-show="readOnly">{{ (valueText != null && valueText.toString().length > 0) ? valueText : readOnlyPlaceholder }}</div>
+		<div ng-messages="formValue.$touched && formValue.$error" class="validation-messages">
+			<ng-transclude></ng-transclude>
+		</div>
+	</div>
+</div>

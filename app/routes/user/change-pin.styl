@@ -1,0 +1,79 @@
+@import "common-var"
+.route-user-change-pin {
+	.pin-content {
+		padding: 0px;
+		background: backGroundColor;
+	}
+
+	.pin-header {
+		background: gradient-blueBar-backGroundColor;
+		background-image: gradient-blueBar;
+		border-bottom: 1px solid gradient-blueBar-borderColor;
+		color: gradient-blueBar-color;
+		padding: 20px 0 0 20px;
+	}
+
+	h3 {
+		margin-top: 0;
+		font-weight: bold;
+	}
+
+	.pin-settings {
+		background-color: backGroundColor;
+
+		div {
+			width: 100%;
+			padding: 10px;
+
+			.input-container, .label {
+				display: inline-block;
+				width: 40%;
+			}
+
+			& .invalid.ng-dirty {
+				background: none repeat scroll 0% 0% ap-light-red;
+					border-color: ap-red;
+			}
+
+			& .label {
+				text-align: right;
+				font-weight: bold;
+				font-size: 14px;
+				padding-right: 10px;
+			}
+		}
+	}
+
+	.pin-instructions {
+		width: 100%;
+		text-align: center;
+
+		.title {
+			font-weight: 700;
+		}
+
+		span {
+			margin: 0 auto;
+			width: 40%;
+			font-size: 11px;
+			text-align: left;
+			padding-left: 100px;
+			display: block;
+			font-size: 11px;
+
+			ul {
+				list-style: disc;
+				padding-left: 14px;
+				margin-top: 5px;
+			}
+		}
+	}
+
+	.pin-actions {
+		border-top: 1px solid borderColor-medium;
+		background-color: greyBar-backGroundColor;
+		color:subTitle-color-darkest;
+		padding: 10px 12px;
+		text-align: right;
+	}
+}

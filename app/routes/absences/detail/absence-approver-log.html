@@ -1,0 +1,6 @@
+<div class="route-absences-detail-absence-approver-log" ng-controller="AbsenceApproverLogCtrl as route">
+	<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+	<cmpt-ui-sortable-grid class="log-grid" columns="route.vm.cols" dataset="route.vm.data" is-loading="route.vm.isLoading">
+		{{absrState.absr.requiresApproval ? route.strings['AbsenceLog.text.NoRecordFound'] : route.strings['NoApprovalRequired']}}
+	</cmpt-ui-sortable-grid>
+</div>

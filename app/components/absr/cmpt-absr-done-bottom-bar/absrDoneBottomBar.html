@@ -1,0 +1,16 @@
+<div class="cmpt-absr-done-bottom-bar">
+	<a class="fl-button fl-negative" ng-if="absrState.context.canDelete">
+		<div class="fl-label" ng-click="go.processDelete()">
+			<i class="fa-times pull-left"></i>{{ strings['Absence.Create.Text.DeleteThis'] }} {{ strings[mnemonic.absrType] }}
+		</div>
+	</a>
+	<a class="fl-button" ng-if="absrState.context.canHold && vm.heldUntil === null">
+		<i class="fa" ng-class="{'fa-spinner fa-spin': vm.isProcessingHold }"></i>
+		<div class="fl-label" ng-click="go.processHold()">
+			{{ strings['Absence.Create.Text.HoldFor30Minutes'] }}
+		</div>
+	</a>
+	<div class="hold-for-30" ng-if="vm.holdFor30Processed && vm.heldUntil !== null">
+		{{ strings['HeldUntil'] }} {{ vm.heldUntil }}
+	</div>
+</div>

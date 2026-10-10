@@ -1,0 +1,23 @@
+<div class="cmpt-absr-closed-days">
+	<div id="related-closed-days" ng-if="vm.closedDayAbsences.length > 0">
+	    <div id="related-closed-days-message">
+	    	<span ng-if="vm.closedDayAbsences.length == 1">
+	        	{{strings[mnemonic.singleClosedDays]}}
+	        </span>
+	        <span ng-if="vm.closedDayAbsences.length > 1">
+	        	{{strings[mnemonic.multipleClosedDays]}}
+	        </span>
+		    <div class="closed-toggler" ng-class="{expanded: vm.expanded}" ng-click="vm.expanded = !vm.expanded">
+				<span>
+					<i class="fa fa-angle-double-{{vm.expanded ? 'up' : 'down'}}"></i>
+				</span>
+			</div>
+	    </div>
+	    <ul ap-show-slide="vm.expanded">
+	        <li ng-repeat="absence in vm.closedDayAbsences">
+	            <span>{{ absence.closedDay.date }}</span>
+	            <span class="reason" ng-if="absence.closedDay.reason.length > 0">-{{ absence.closedDay.reason }}</span>
+	        </li>
+	    </ul>
+	</div>
+</div>

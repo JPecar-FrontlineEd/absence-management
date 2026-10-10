@@ -1,0 +1,147 @@
+@import "common-var"
+
+@font-face {
+    font-family: 'midietsans_light';
+    src: url('../font/midiet_sans_light-webfont.eot');
+    src: url('../font/midiet_sans_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/midiet_sans_light-webfont.woff2') format('woff2'),
+         url('../font/midiet_sans_light-webfont.woff') format('woff'),
+         url('../font/midiet_sans_light-webfont.ttf') format('truetype'),
+         url('../font/midiet_sans_light-webfont.svg#midietsans_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.stripes-overlay {
+	background-image: url(unquote("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJElEQVQIW2P8//9/GgMDAwMjI+MsMA0ikAXBAiiCIFmYchAbAEChEsuaKdaYAAAAAElFTkSuQmCC"));
+	background-repeat: repeat;
+}
+
+.section-heading {
+	background: gradient-blueBar-backGroundColor;
+	background:   gradient-blueBar;
+	border-bottom: 1px solid gradient-blueBar-borderColor;
+	color: gradient-blueBar-color;
+	padding: 10px;
+	width:100%;
+}
+
+.section-footer {
+	background: greyBar-backGroundColor;
+	color: subTitle-color-darkest;
+	border-top: 1px solid lighten(ap-dark-grey-4,30%);
+	padding: 10px 12px;
+	text-align: right;
+	width:100%;
+}
+
+
+.inset-panel {
+	background: backGroundColor-dark;
+	border: 1px solid borderColor-medium;
+	border-radius: 5px;
+	box-shadow: 0px 0px 4px boxShadow inset;
+	white-space: nowrap;
+	margin-bottom: 5px;
+	padding: 10px;
+	padding-left: 15px;
+}
+
+.ngdialog.ngdialog-theme-default.large-dialog .ngdialog-content {
+	width: 600px;
+}
+
+.debug {
+	background-color: lime;
+}
+
+.ui-datepicker .ui-datepicker-unselectable span{
+	line-height:normal;
+}
+
+
+#ui-datepicker-div{
+	z-index:20006 !important;
+}
+
+// Print styles for the reciept screen.
+@media print{
+	.v-nav-top{
+		.left-content{
+			display: none !important;
+		}
+	}
+  .route-create-absence-done{
+  	.title{
+      h3 {
+  		  display: none !important;
+      }
+  	}
+    .content-panel {
+      border: 5px solid content-panel-borderColor !important;
+    }
+  }
+	.cmpt-absr-done-banner{
+		border:1px solid borderColor-medium;
+	}
+	.cmpt-step-progress{
+		display: none !important;
+	}
+	.cmpt-absr-done-next-steps, .next-steps{
+		display: none !important;
+	}
+	.cmpt-absr-done-top-bar{
+		border:1px solid borderColor-medium;
+		.fl-button{
+			display: none !important;
+		}
+	}
+	.cmpt-absr-done-summary, .absence-summary{
+		.element{
+			.files{
+				display: none !important;
+			}
+			&.element{
+				border-bottom: 1px solid borderColor-medium !important;
+			}
+		}
+		.variation-summary{
+			margin-top: 10px;
+		}
+		.fa-chevron-right{
+			display: none !important;
+		}
+	}
+	.cmpt-absr-done-bottom-bar, .action-bar{
+		height:51px;
+		.fl-button{
+			display: none !important;
+		}
+	}
+}
+
+@media print {
+  @page { margin: 0; }
+  /* Hide Sidekick chrome */
+  .sidekick { display: none !important; }
+  /* Reset browser default margins/padding */
+  html, body { margin: 0 !important; padding: 0 !important; }
+  /* Reset wrapper margins (base states) */
+  .sidekick-wrapped-application, body.sidekick-wrapped-application { margin: 0 !important; }
+  .sidekick-wrapped-application-mobile, body.sidekick-wrapped-application-mobile { margin: 0 !important; }
+  /* Reset wrapper margins (collapsed/expanded nav states) */
+  body.sk-auto-collapse-nav .sidekick-wrapped-application, body:not(.sk-nav-expanded) .sidekick-wrapped-application, body.sk-auto-collapse-nav.sidekick-wrapped-application, body:not(.sk-nav-expanded).sidekick-wrapped-application { margin: 0 !important; }
+  /* Reset wrapper margins (impersonation mode) */
+  .sidekick-wrapped-application.sk-impersonation, body.sk-auto-collapse-nav .sidekick-wrapped-application.sk-impersonation, body:not(.sk-nav-expanded) { 
+	margin: 0 !important;
+  	margin-left: 0 !important;
+  }
+  #aesop-frontend.sidekick-wrapped-application.sk-impersonation {
+	margin: 0 !important;
+  	margin-left: 0 !important;
+  }
+  /* Reset wrapper padding */
+  .sidekick-wrapped-application, .sidekick-wrapped-application-mobile { padding: 0 !important; }
+}

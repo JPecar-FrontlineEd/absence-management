@@ -1,0 +1,28 @@
+@import "common-var"
+.cmpt-ui-textbox {
+	input{
+		width: 100%;
+		margin: 0;
+
+		&[disabled] {
+			
+		}
+	}
+
+	div {
+		font-size:14px;
+	}
+
+	.error-message {
+		background: none;
+		color: ap-dark-red;
+		font-size: 11px;
+		text-align: right;
+		line-height: 135%;
+	}
+
+	.error {
+		background: none repeat scroll 0% 0% ap-light-red;
+		border-color: ap-red;
+	}
+}

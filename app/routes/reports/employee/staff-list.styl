@@ -1,0 +1,136 @@
+@import "common-var"
+@media print {
+	.data-set.not-ready-for-print {
+		&:before {
+			content: 'Please use CTRL + P to print this content correctly.';
+			margin-top: 50px;
+			font-size: 32px;
+			text-align: center;
+			display: block;
+		}
+		& > div {
+			display: none!important;
+		}
+	}
+
+	 .cmpt-ui-grouped-grid.not-ready-for-print {
+		&:before {
+			display: none;
+		}
+		.grid-rows, .grid-header {
+			display: block!important;
+		}
+	}
+}
+.route-reports-employee-staff-list {
+	.header {
+		.label.loaded{
+			top:40%;
+		}
+	}
+
+	.summary-bar {
+		border-top: 1px solid report-summary-bar-borderColor;
+		border-bottom-color: report-summary-bar-borderColor;
+		background: report-summary-background;
+		background-image: gradientBar;
+		font-size: 13px;
+		color: headingColor-dark;
+		line-height: 40px;
+		text-shadow: 0 1px 0 textShadow;
+		text-align: left;
+		font-weight: bold;
+		font-size: 18px;
+		padding:0 10px;
+	}
+
+
+	.table-header{
+		.data-col{
+			padding:0;
+			border-image: none;
+			background: gradientBar;
+			font-size: 12px;
+			font-weight: bold;
+			color: headingColor-dark;
+			line-height: 16px;
+			text-shadow: 0px 1px 0px textShadow;
+			div{
+				display:inline-block;
+				border-right:0;
+				border-bottom:1px solid grid-borderColor;
+				border-left:1px solid grid-borderColor;
+				padding: 10px 5px;
+				text-align: left;
+				&:last-child{
+					border-right:0;
+				}
+			}
+		}
+	}
+	.data-set{
+		.group-heading{
+			background: grid-group-title-backGroundColor;
+			border-color: grid-group-title-backGroundColor;
+			color: grid-group-title-color;
+			padding: 10px 5px;
+		}
+		.cmpt-ui-grouped-grid{
+			.group-row {
+				background-color: grid-group-title-backGroundColor-light;
+			}
+		}
+		.footer-heading{
+			background: subTitle-color-lightest;
+			border: 1px solid grid-borderColor;
+			padding: 10px;
+			color: grid-heading-color;
+			padding: 10px 5px;
+		}
+		.footer{
+			padding:10px;
+		}
+	}
+	.no-data{
+		text-align: center;
+		line-height: 120px;
+		height: 131px;
+	}
+
+}
+
+
+.report-locked .route-reports-employee-staff-list{
+	header-height = 104px;
+	.lock-header-fill {
+		height:header-height;
+		margin-top: 30px;
+	}
+	.header{
+		position: fixed;
+		top: topbar-height;
+		width: content-width - 10;
+		z-index: 2;
+	}
+	.table-header {
+		box-shadow: 0px 3px 5px 0px boxShadow;
+		position: fixed;
+		top: topbar-height + 51;
+		width: content-width - 10;
+		z-index: 2;
+		background-color: backGroundColor;
+		.data-col{
+			div{
+				&:first-child{
+					border-left:1px solid grid-borderColor;
+				}
+			}
+		}
+
+	}
+	.cmpt-ui-print-button {
+		display: inline-block !important;
+  		float: right;
+  		margin: 5px 10px 0 0;
+	}
+}

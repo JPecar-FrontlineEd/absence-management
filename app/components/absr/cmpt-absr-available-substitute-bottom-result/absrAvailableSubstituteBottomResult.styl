@@ -1,0 +1,173 @@
+@import "common-var"
+.cmpt-absr-available-substitute-bottom-result {
+	position: relative;
+	min-height: 310px;
+
+	.search-box {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 12px;
+
+		label {
+			font-weight: bold;
+			font-size: 14px;
+		}
+
+		.fa-spinner {
+			color: subTitle-color-light;
+		}
+
+	}
+
+	.details-section {
+		position: relative;
+	}
+
+	.table-header{
+		.row{
+			width: 100%;
+			&:first-child{
+				border-top:1px solid grid-borderColor;
+			}
+			&:last-child{
+				border-bottom:1px solid grid-borderColor;
+				border-top:1px solid grid-borderColor;
+				div{
+					height:65px;
+					vertical-align:top;
+				}
+			}
+			div{
+				display:inline-block;
+				border-right:1px solid grid-borderColor;
+				border-image: none;
+				padding: 10px;
+				background: gradientBar;
+				font-size: 12px;
+				font-weight: bold;
+				color: subTitle-color-darkest;
+				line-height: 16px;
+				text-shadow: 0px 1px 0px textShadow;
+				text-align: left;
+				&.data-col{
+					padding:0;
+					div{
+						display:inline-block;
+						border-left:0;
+						border-bottom:0;
+						border-right:1px solid grid-borderColor;
+						padding: 10px 5px;
+						text-align: center;
+						&:last-child{
+							border-right:0;
+						}
+					}
+				}
+				&.call-now{
+					&.tool-tip{
+						cursor:help;
+					}
+					font-size:12px;
+					text-align:center;
+				}
+				&.block-unblock{
+					&.tool-tip{
+						cursor:help;
+					}
+				}
+
+			}
+			.sub-heading{
+				background: availableSub-subHeading-backGroundColor;
+				font-size: 10px;
+				font-weight: bold;
+				padding: 5px 10px;
+				text-shadow: none;
+				color: subTitle-color-light;
+				text-align: center;
+				cursor:help;
+			}
+			.call-sub-heading{
+				font-size: 10px;
+				font-weight: bold;
+				text-shadow: none;
+				color: #8a8a8a;
+				text-align: center;
+
+				.leftMargin{
+					margin-left:-7%;
+				}
+			}
+		}
+	}
+	.cmpt-ui-grouped-grid{
+		border-left:0;
+		.grid-header{
+			display:none;
+		}
+		.grid-row{
+			.grid-cell{
+				border-right:1px solid grid-borderColor;
+				padding:10px !important;
+				&.name-cell{
+					.phone{
+						font-style: italic;
+						color: subTitle-color-darkest;
+						font-weight: bold;
+						font-size: 10px;
+					}
+					.paycode {
+						font-weight:bold;
+						font-size:10px;
+						vertical-align:top;
+						span{
+							white-space: pre-wrap;
+							/*display: inline-block;*/
+							width: 80px;
+						}
+					}
+					.no-rating{
+						color: subTitle-color-light;
+						font-weight: bold;
+						font-size: 11px;
+					}
+				}
+				&.callNow-cell{
+					text-align:center;
+				}
+				&.dataCol-cell{
+					padding:0 !important;
+				}
+
+				&:last-child{
+					border-right:0;
+				}
+			}
+		}
+	}
+	.no-data {
+		text-align: center;
+		padding: 160px;
+		background: backGroundColor;
+		font-size: 18px;
+		font-weight: bold;
+		color: grid-transclude-color;
+	}
+	.below-grid {
+		text-align: center;
+		border-top: 1px solid grid-borderColor;
+
+		button.fl-button {
+			margin: 10px;
+		}
+	}
+	.modal-spinner {
+		top: 97px;
+		&.no-call{
+			top: 106px;
+		}
+	}
+	&.spinner-bottom .modal-spinner:after {
+		bottom: 100px;
+	}
+}

@@ -1,0 +1,20 @@
+<div class="dialog-popup file-attachments">
+	<div  class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div  class="content">
+			<p class="note">Click to download file.</p>
+			<div ng-repeat="file in ngDialogData.files">
+				<div class="file-attachment">
+				 	<i class="fa {{ file.icon }}"></i>
+				 	<a href="{{ngDialogData.downloadLink(file)}}" target="_self">{{file.fileName}}</a>
+				</div>
+			</div>
+			<div ng-if="ngDialogData.files.length === 0">
+				No Attachments
+			</div>
+		</div>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="{{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons">{{ button.title }}</a>
+	</div>
+</div>

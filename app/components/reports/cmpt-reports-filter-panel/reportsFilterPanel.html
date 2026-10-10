@@ -1,0 +1,612 @@
+<div class="cmpt-reports-filter-panel">
+	<div class="error-message-area" ng-cloak ng-show="vm.errorMessages!=''">
+	    <div class="fl-system-message error">
+	        <div class="message"><i class="icon-warning-sign"></i><strong>{{strings['Error']}}!</strong>
+	        	<span>{{vm.errorMessages}}</span>
+	        </div>
+	        <span class="dismiss"><i class="icon-remove"></i><a ng-click="vm.removeMessages()">{{strings['Dismiss']}}</a></span>
+	    </div>
+	</div>
+		<div class="filterPanelHeader -u-24-24">
+			<div ng-if="!isDailyReport" class="-u-23-24 title filterPanelHeaderText">{{strings['Filter']}} {{strings['Report']}}</div>
+			<div ng-if="isDailyReport" class="-u-23-24 title filterPanelHeaderText dailyReport">{{strings['Filter']}} {{strings['Report']}}:
+				<span class="-u-6-24 margins marginRight0 width39P" ng-if="go.isKeyPresent('date')">
+					<span class="dateNavigatorMargins -u-24-24">
+						<cmpt-ui-date-navigation class="filter stepper no-bg-color" date-error="vm.dateError"  filters="filters" date-model="filters.date" report-type="vm.reportType" on-change="go.search"></cmpt-ui-date-navigation>
+					</span>
+				</span>
+			</div>
+			<div class="-u-1-24 collapsibleArrowColumn">
+				<div class="collapsingArrowPadding -u-1-24" ng-click="isExpanded = !isExpanded">
+					<span>
+						<i class="fa fa-angle-{{!isExpanded ? 'right' : 'down'}}"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="filter-section hide-print -u-24-24" ap-show-slide="isExpanded">
+			<div class="confirmation-number -u-5-24 margins" ng-if="go.isKeyPresent('absrId')">
+				<div class="-u-24-24"><label class="title font11">{{vm.strings['ConfirmationNumberPound']}}:</label></div>
+				<div class="-u-24-24"><input type="text" class="fl-input" ng-model="filters.absrId"/></div>
+			</div>
+
+			<div class="filter date no-bg-color -u-3-24 margins marginRight5" ng-if="go.isKeyPresent('date') && !isDailyReport">
+				<div class="marginLeftMinus12 -u-24-24">
+					<label class="title font11">
+						{{strings['Reports.CriteriaPanel.Label.Date']}}
+					</label>
+				</div><br>
+				<div class="marginLeftMinus25 -u-24-24 paddingTop7">
+					<cmpt-ui-date-selector class="date-picker no-bg-color" got-error="vm.dateError" date-model="filters.date" label="strings['SelectDate']"></cmpt-ui-date-selector>
+				</div>
+			</div>
+			<div class="-u-4-24 margins marginRight0" ng-if="go.isKeyPresent('date') && !isDailyReport">
+				<div class="-u-24-24"></div>
+				<div class="dateNavigatorMargins -u-24-24">
+					<cmpt-ui-date-navigation class="filter stepper no-bg-color" date-model="filters.date" on-change="go.search"></cmpt-ui-date-navigation>
+				</div>
+			</div>
+
+			<div class="filter date-range no-bg-color margins" ng-class="{'-u-7-24': !go.isKeyPresent('quickDateRange'),'-u-10-24': go.isKeyPresent('quickDateRange')} " 
+				ng-if="go.isKeyPresent('dateRange')">
+				<div class="marginLeftMinus12 -u-24-24">
+					<label class="title font11">
+						{{ vm.strings['Reports.CriteriaPanel.Label.DateRange'] }}
+					</label>
+				</div><br>
+				<div class="paddingTop7 marginLeftMinus25 -u-24-24" ng-class="{'quick':go.isKeyPresent('quickDateRange')}">
+					<cmpt-ui-quick-date-selector ng-if="go.isKeyPresent('quickDateRange')" class="no-bg-color marginLeft10" start-date-model="filters.dateRange.startDate" end-date-model="filters.dateRange.endDate" manual-update="filters.dateManualUpdate" selected="filters.quickSelected"></cmpt-ui-quick-date-selector>
+					<cmpt-ui-date-selector label="strings['SelectFromDate']" class="date-picker no-bg-color" got-error="vm.startDateError" date-model="filters.dateRange.startDate" max-date="filters.maxDate" min-date="filters.minDate">
+						<label style="display: none;">{{ strings['SelectFromDate'] }}</label></cmpt-ui-date-selector>
+					<cmpt-ui-date-selector label="strings['SelectToDate']" class="date-picker no-bg-color" got-error="vm.endDateError" date-model="filters.dateRange.endDate" max-date="filters.maxDate" min-date="filters.minDate">
+						<label style="display: none;">{{ strings['SelectToDate'] }}</label></cmpt-ui-date-selector>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('monthYear')">
+				<div class="-u-24-24"><label class="title font11"></label></div>
+				<div class="filter month -u-24-24">
+					<select class="date-select" ng-options='month.id as month.value for month in vm.months' ng-model="filters.monthYear.month"></select>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('monthYear')">
+				<div class="-u-24-24"><label class="title font11"></label></div>
+				<div class="filter year -u-24-24">
+					<select class="date-select" ng-options="year for year in vm.years" ng-model="filters.monthYear.year"></select>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('presetDaySpan')">
+				<div class="-u-24-24"><label class="title font11">{{ strings['ShowReportsLastRun'] }}</label></div>
+				<div class="filter preset-day-span -u-24-24">
+					<cmpt-ui-dropdown
+					options-array="vm.presetDaySpans"
+					value-selected="filters.presetDaySpan"
+					allow-blank="false"
+					enabled="true"
+					field-width="170px"
+					sort-by="'sort'"
+					error-messages="[]"></cmpt-ui-dropdown>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('name')">
+				<div class="-u-24-24"><label class="title font11">{{ strings['Name'] }}</label></div>
+				<div class="filter name no-bg-color -u-24-24">
+					<input type="text" class="fl-input name-input nameMargins" ng-model="filters.name"/></label>
+				</div>
+			</div>
+
+			<!-- TODO: Refactor order-by cmpt to generic radio option component with configurable label text -->
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('accessLevel')">
+				<div class="-u-24-24"><label class="title font11">{{strings['Access']}}</label></div>
+				<div class="filter access-level auto-width -u-24-24">
+					<cmpt-template-order-by items="filters.accessLevels" selected="filters.accessLevel" allow-drop-down="false"></cmpt-template-order-by>
+				</div>
+			</div>
+
+			<div class="-u-5-24 absence-type margins" ng-if="go.isKeyPresent('absenceType') && vm.canViewVacancies">
+				<div class="-u-24-24"><label class="title font11">{{strings['Reports.CriteriaPanel.Label.Type']}}</label></div>
+				<div class="filter absence-type auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox absences" got-error="vm.endDateError" ng-model="filters.absenceType.includeAbsences">
+						{{ vm.strings['Absences'] }}
+					</label>
+					<label ng-if="vm.canViewVacancies">
+						<input type="checkbox" class="checkbox vacancies" ng-model="filters.absenceType.includeVacancies">
+						{{ vm.strings['Vacancies'] }}
+					</label>
+				</div>
+			</div>
+
+			<div ng-if="!isDailyReport" class="-u-5-24 margins views">
+				<div class="-u-24-24">
+					<label class="views-title title font11">{{ strings['Dashboard.Filter.Label.View'] }}</label>
+				</div>
+				<div class="filter no-bg-color -u-24-24">
+					<span class="views-actions view-action-margins">
+						<a class="views-actions-btn btn-list-view fl-button viewButtons" ng-click="go.views(true)" ng-class="{'selected': filters.isListView}">List</a>
+						<a class="views-actions-btn btn-tab-view fl-button viewButtons marginLeftMinus4" ng-click="go.views(false)" ng-class="{'selected': !filters.isListView}">Tab</a>
+					</span>
+				</div>
+			</div>
+
+			<div class="-u-7-24 margins filled-status" ng-if="go.isKeyPresent('filledStatus')">
+				<div class="-u-24-24"><label class="title font11"></label></div>
+				<div class="filter auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox filled" ng-model="filters.filledStatus.includeFilled">
+						{{ vm.strings['Report.FillStatus.Filled'] }}
+					</label>
+					<label>
+						<input type="checkbox" class="checkbox includeUnfilled" ng-model="filters.filledStatus.includeUnfilled">
+						{{ vm.strings['Report.FillStatus.Unfilled'] }}
+					</label>
+					<label>
+						<input type="checkbox" class="checkbox subnotneeded" ng-model="filters.filledStatus.includeNoSubRequired">
+						{{ vm.strings['Report.FillStatus.SubNotNeeded'] }}
+					</label>
+				</div>
+			</div>
+
+			<!-- <br> -->
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('institution')" >
+				<div class="-u-24-24"><label class="title font11">{{ filters.institution.value }}</label></div>
+				<div class="filter school -u-24-24">
+					<cmpt-ui-dropdown
+					options-array="vm.institutions"
+					value-selected="filters.institution"
+					allow-blank="false"
+					enabled="true"
+					field-width="125px"
+					error-messages="[]"></cmpt-ui-dropdown>
+				</div>
+			</div>
+			
+			<div class="-u-5-24 margins" ng-show="vm.showInstitutions" ng-if="go.isKeyPresent('institutions') && !go.isKeyPresent('institution')">
+				<div class="-u-24-24"><label class="title font11">{{strings['Reports.CriteriaPanel.Filter.Schools']}}</label></div>
+				<div class="filter schools -u-24-24">
+					<cmpt-ui-multiselect class=""
+						type="Report.Label.Schools"
+						label-all="All|Report.Label.Schools"
+						items="vm.institutions"
+						width="100%"
+						name="schools"
+						multiple="go.isKeyPresent('institutionsMultiple') ? filters.institutionsMultiple : true"
+						selected="filters.institutions"
+					></cmpt-ui-multiselect>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('employeeExclusion')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter employee-exclusion auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox" ng-model="filters.employeeExclusion"/>
+						{{ strings['Reports.Filter.ShowEmpExclusion'] }}?
+					</label>
+				</div>
+			</div>
+
+			<!-- TODO: Create separate view-by template - OR - refactor order-by cmpt to generic radio button use? -->
+			<div class="-u-6-24 margins" ng-if="go.isKeyPresent('viewBy')">
+				<div class="-u-24-24">
+					<label class="title font11">{{strings['Reports.Filter.ViewBy']}}</label>
+				</div>
+				<div class="filter view-by auto-width -u-24-24">
+					<cmpt-template-order-by items="filters.viewByOptions" selected="filters.viewBy"></cmpt-template-order-by>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-show="vm.showWorkers && vm.showInstitutions" ng-if="go.isKeyPresent('workers')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter employees -u-24-24" ng-class="{'disabled': filters.absenceType && !filters.absenceType.includeAbsences}">
+					<cmpt-ui-multiselect class=""
+					type="Report.Label.Employees"
+					label-all="All|Report.Label.Employees"
+					items="vm.workers"
+					width="100%"
+					name="employees"
+					multiple="true"
+					selected="filters.workers"
+					enable="!filters.absenceType || filters.absenceType.includeAbsences"></cmpt-ui-multiselect>
+				</div>
+			</div>
+			
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('workerTypes')" ng-show="vm.showWorkerTypes">
+				<div class="-u-24-24"><label class="title font11">{{strings['Reports.CriteriaPanel.Select.EmployeeTypes']}}</label></div>
+				<div class="employee-margin filter employee-types -u-24-24 margins">
+					<cmpt-ui-multiselect class=""
+						type="Report.Label.EmployeeTypes"
+						label-all="All|Report.Label.EmployeeTypes"
+						items="vm.workerTypes"
+						width="100%"
+						name="employee types"
+						multiple="true"
+						selected="filters.workerTypes"
+					></cmpt-ui-multiselect>
+					<!-- enable="!filters.absenceType || filters.absenceType.includeAbsences" -->
+				</div>
+			</div>
+
+			<div class="-u-6-24 margins" ng-if="go.isKeyPresent('employeesVacancies')">
+				<div class="-u-24-24">
+					<label class="title font11">{{ strings['Reports.CriteriaPanel.Label.Type'] }}</label>
+				</div>
+				<div class="filter employees-vacancies auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox employess" ng-model="filters.employeesVacancies.includeWorkers">
+						{{ strings['Reports.EmployeeType.Workers'] }}
+					</label>
+					<label>
+						<input type="checkbox" class="checkbox vacancies" ng-model="filters.employeesVacancies.includeVacancies">
+						{{ strings['Report.Label.VacancyProfiles'] }}
+					</label>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('activeStatus')">
+				<div class="-u-24-24">
+					<label class="title font11">{{ strings['Reports.CriteriaPanel.Label.Status'] }}</label>
+				</div>
+				<div class="filter active-status auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox active" ng-model="filters.activeStatus.includeActive">
+						{{ strings['Reports.EmployeeStatus.Active'] }}
+					</label>
+					<label>
+						<input type="checkbox" class="checkbox inactive" ng-model="filters.activeStatus.includeInactive">
+						{{ strings['Reports.EmployeeStatus.Inactive'] }}
+					</label>
+				</div>
+			</div>
+
+			<!-- // JPP - WE ARE NOT USING THIS ANYWHERE (possibly was originally intended as vac profiles?)
+			<div class="filter vacancies" ng-if="go.isKeyPresent('vacancies')" ng-class="{'disabled': !filters.absenceType.includeVacancies}">
+				<cmpt-ui-multiselect class=""
+					type="vacancies"
+					label-all="All Vacancies"
+					items="[]"
+					width="100%"
+					name="vacancies"
+					multiple="true"
+					selected="filters.vacancies"
+					enable="filters.absenceType.includeVacancies"
+				></cmpt-ui-multiselect>
+			</div> -->
+
+			<!-- // DTN - WE ARE NOT USING THIS ANYWHERE IN THE CODEBASE
+			<div class="filter vacancy-types" ng-if="go.isKeyPresent('vacancyTypes')" ng-class="{'disabled': !filters.absenceType.includeVacancies}">
+				<cmpt-ui-multiselect class=""
+					type="vacancy types"
+					label-all="All Vacancy types"
+					items="[]"
+					width="100%"
+					name="vacancy types"
+					multiple="true"
+					selected="filters.vacancyTypes"
+					enable="filters.absenceType.includeVacancies"
+				></cmpt-ui-multiselect>
+			</div> -->
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('substitutes')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter substitutes auto-width -u-24-24" ng-class="{'disabled': go.isKeyPresent('filledStatus') && !filters.filledStatus.includeFilled}">
+					<cmpt-ui-multiselect class=""
+					type="Report.Label.Substitutes"
+					label-all="All|Report.Label.Substitutes"
+					items="vm.substitutes"
+					width="100%"
+					name="substitutes"
+					multiple="true"
+					selected="filters.substitutes"
+					enable="!filters.filledStatus || filters.filledStatus.includeFilled"></cmpt-ui-multiselect>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-show="vm.showEntitlementTypes && vm.showInstitutions" ng-if="go.isKeyPresent('absenceReasons')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter absenceReasons -u-24-24" ng-class="{'disabled': !filters.absenceType.includeAbsences}">
+					<cmpt-ui-multiselect class=""
+					type="Report.Label.AbsenceReasons"
+					label-all="All|Report.Label.AbsenceReasons"
+					items="vm.absenceReasons"
+					width="100%"
+					name="absenceReasons"
+					multiple="true"
+					selected="filters.absenceReasons"></cmpt-ui-multiselect>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-show="vm.showVacancyEntitlementTypes && vm.showInstitutions" ng-if="vm.canViewVacancies && go.isKeyPresent('vacancyReasons')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter vacancyReasons -u-24-24" ng-class="{'disabled': !filters.absenceType.includeVacancies}">
+					<cmpt-ui-multiselect class=""
+					type="Report.Label.VacancyReasons"
+					label-all="All|Report.Label.VacancyReasons"
+					items="vm.vacancyReasons"
+					width="100%"
+					name="vacancyReasons"
+					multiple="true"
+					selected="filters.vacancyReasons"
+					enable="filters.absenceType.includeVacancies"></cmpt-ui-multiselect>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-show="vm.showVacancyProfiles && vm.showInstitutions" ng-if="vm.canViewVacancies && go.isKeyPresent('vacancyProfiles')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter vacancyProfiles -u-24-24" ng-class="{'disabled': !filters.absenceType.includeVacancies}">
+					<cmpt-ui-multiselect class=""
+					type="Report.Label.VacancyProfiles"
+					label-all="All|Report.Label.VacancyProfiles"
+					items="vm.vacancyProfiles"
+					width="100%"
+					name="vacancyProfiles"
+					multiple="true"
+					selected="filters.vacancyProfiles"
+					enable="filters.absenceType.includeVacancies"></cmpt-ui-multiselect>
+				</div>
+			</div>
+
+			<div class="-u-6-24 margins" ng-if="go.isKeyPresent('substitutePerformance') && $root.havePermission('ABSRFeedBk.ViewFeedBack')">
+				<div class="-u-24-24">
+					<label class="title font11">{{ strings['Report.Criteria.Label.SubPerfRatingBetween'] }}</label>
+				</div>
+				<div class="filter no-bg-color substitute-performance slider -u-24-24 width100pc" ng-class="{'disabled': !filters.absenceType.includeVacancies}">
+					<cmpt-ui-slider
+					ng-if="filters.substitutePerformance.min != null && filters.substitutePerformance.max != null"
+					min-value="filters.substitutePerformance.min"
+					max-value="filters.substitutePerformance.max"
+					range="true"
+					min = "0"
+					max="5"
+					steps="1"
+					first-value="No Rating"></cmpt-ui-slider>
+				</div>
+			</div>
+
+			<div class="-u-6-24 margins" ng-if="go.isKeyPresent('substituteExperience') && $root.havePermission('ABSRFeedBk.ViewSubExpFeedBack')">
+				<div class="-u-24-24">
+					<label class="title font11">{{ strings['Report.Criteria.Label.SubExpRatingBetween'] }}
+						{{ vm.minValue }}
+					</label>
+				</div>
+				<div class="filter no-bg-color substitute-experience slider -u-24-24 width100pc" ng-class="{'disabled': !filters.absenceType.includeVacancies}">
+					<cmpt-ui-slider
+					ng-if="filters.substituteExperience.min != null && filters.substituteExperience.max != null"
+					min-value="filters.substituteExperience.min"
+					max-value="filters.substituteExperience.max"
+					range="true"
+					min = "0"
+					max="5"
+					steps="1"
+					first-value="No Rating"></cmpt-ui-slider>
+				</div>
+			</div>
+
+			<div class="-u-10-24 margins" ng-if="go.isKeyPresent('approvalStatus')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter approval-status auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox filled" ng-model="filters.approvalStatus.includeUnApproved">
+						{{vm.strings['Unapproved']}}
+					</label>
+					<label>
+						<input type="checkbox" class="checkbox includeUnfilled" ng-model="filters.approvalStatus.includeApproved">
+						{{vm.strings['Approved']}}
+					</label>
+					<label>
+						<input type="checkbox" class="checkbox subnotneeded" ng-model="filters.approvalStatus.includeDenied">
+						{{vm.strings['Denied']}}
+					</label>
+					<label>
+						<input type="checkbox" class="checkbox subnotneeded" ng-model="filters.approvalStatus.includePartialApproved">
+						{{vm.strings['PartiallyApproved']}}
+					</label>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('showSkills')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter show-skills auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox show-skills" ng-model="filters.showSkills">
+						{{vm.strings['Reports.CriteriaPanel.Label.ShowSkills']}}
+					</label>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('skills')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter skills -u-24-24" ng-class="{'disabled': !filters.showSkills}">
+					<cmpt-ui-multiselect class=""
+					type="Report.Label.Skills"
+					label-all="All|Report.Label.Skills"
+					items="vm.skills"
+					width="100%"
+					name="skills"
+					multiple="true"
+					selected="filters.skills"
+					enable="filters.showSkills"></cmpt-ui-multiselect>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('orderBy')">
+				<div class="-u-24-24">
+					<label class="title font11">{{strings['Reports.CriteriaPanel.Label.OrderBy']}}</label>
+				</div>
+				<div class="filter order-by -u-24-24">
+					<cmpt-template-order-by items="filters.orderByOptions" selected="filters.orderBy"></cmpt-template-order-by>
+				</div>
+			</div>
+
+			<div class="-u-16-24 margins" ng-if="go.isKeyPresent('timeSheetStatus')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter time-sheet -u-24-24 width100pc">
+					<label>
+						<input type="checkbox" class="checkbox absences" ng-model="filters.timeSheetStatus.includeSaved">
+						{{ strings['ts.summaryReport.status.saved'] }}
+					</label>
+	
+					<label>
+						<input type="checkbox" class="checkbox absences" ng-model="filters.timeSheetStatus.includeRevised">
+						{{ strings['ts.summaryReport.status.revised'] }}
+					</label>
+	
+					<label>
+						<input type="checkbox" class="checkbox absences" ng-model="filters.timeSheetStatus.includePending">
+						{{ strings['Pending'] }}
+					</label>
+	
+					<label>
+						<input type="checkbox" class="checkbox absences" ng-model="filters.timeSheetStatus.includeApproved">
+						{{ strings['Approved'] }}
+					</label>
+	
+					<label>
+						<input type="checkbox" class="checkbox absences" ng-model="filters.timeSheetStatus.includeSystemApproved">
+						{{ strings['ts.summaryReport.summaryApproved'] }}
+					</label>
+	
+					<label>
+						<input type="checkbox" class="checkbox absences" ng-model="filters.timeSheetStatus.includeRejected">
+						{{ strings['ts.summaryReport.status.rejected'] }}
+					</label>
+	
+					<label>
+						<input type="checkbox" class="checkbox absences" ng-model="filters.timeSheetStatus.includePaperTimeSheet">
+						{{ strings['ts.summaryReport.status.paperTimesheet'] }}
+					</label>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('printPageBreaks')">
+				<div class="-u-24-24">
+					<label class="title font11"></label>
+				</div>
+				<div class="filter print-page-breaks auto-width -u-24-24">
+					<label>
+						<input type="checkbox" class="checkbox" ng-model="filters.printPageBreaks">
+						{{vm.strings['Reports.CriteriaPanel.Label.PrintPageBreaks']}}
+					</label>
+				</div>
+			</div>
+
+			<div class="margins" 
+				ng-class="{'-u-8-24':filters.groupByDisplayOptions.length >= 2, 
+				'-u-5-24': filters.groupByDisplayOptions == null || filters.groupByDisplayOptions.length < 2}"
+				ng-if="go.isKeyPresent('groupBy')">
+				<div class="-u-24-24"><label class="title font11">{{strings['AbsenceInteractive.Label.GroupBy']}}</label></div>
+				<div class="filter group-by auto-width -u-24-24">
+					<cmpt-template-group-by items="filters.groupByOptions" action = "groupByAction" selected="filters.groupBy" display-by="filters.groupByDisplay" display-options="filters.groupByDisplayOptions">
+					</cmpt-template-group-by>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('preferred')">
+				<div class="-u-24-24"><label class="title font11">{{strings['SubPrefersLocation']}}</label></div>
+				<div class="filter -u-24-24">
+					<cmpt-ui-dropdown
+					options-array="vm.optionValues"
+					value-selected="filters.preferred"
+					allow-blank="false"
+					enabled="true"
+					field-width="170px"></cmpt-ui-dropdown>
+				</div>
+			</div>
+
+			<div class="-u-5-24 margins" ng-if="go.isKeyPresent('subExcluded')" >
+				<div class="-u-24-24"><label class="title font11">{{strings['AvailableSub.Text.Excluded']}}</label></div>
+				<div class="filter  -u-24-24">
+					<cmpt-ui-dropdown
+					options-array="vm.optionValues"
+					value-selected="filters.subExcluded"
+					allow-blank="false"
+					enabled="true"
+					field-width="170px"
+					error-messages="[]"></cmpt-ui-dropdown>
+				</div>
+			</div>
+
+			<div class="action-section action-section-alignment">
+				<a class="fl-button fl-primary search" ng-click="go.search()">
+					<div class="fl-label">
+						<i class="fa" ng-class="{'fa-spinner fa-spin': vm.isProcessing, 'fa-search': !vm.isProcessing}"></i>
+						<span>
+							{{vm.strings['Reports.CriteriaPanel.Button.Search']}}
+						</span>
+					</div>
+				</a>
+				<span class="print" ng-if="showPrintButton">
+					<cmpt-ui-print-button></cmpt-ui-print-button>
+				</span>
+				<a class="fl-button print-pdf" ng-click="go.download()">
+					<div class="fl-label">
+						<i class="fa fa-file-pdf-o"></i>
+						<span>
+							{{ strings['Button.text.PrintPDF'] }}
+						</span>
+					</div>
+				</a>
+				<span class="reset-filters" ng-if="originalFilters!==''">
+					<a class="fl-button" ng-click="go.resetFilters()">
+						{{vm.strings['Reports.CriteriaPanel.Label.ResetFilters']}}
+					</a>
+				</span>
+				
+				<a class="fl-button" ng-click="go.createEmail()" ng-if="go.isKeyPresent('email') && subSendEmailFeatureEnabled" title="{{go.getSelectedRecipientsCount() === 0 ? strings['PleaseSelectOneSubstitute'] : ''}}"  ng-class="{'disabled': go.getSelectedRecipientsCount() === 0}">
+					<div class="fl-label">
+						<i class="fa fa-envelope"></i>
+						<span>
+							{{strings['SubProfile.text.Email']}}
+						</span>
+					</div>
+				</a>
+			</div>
+			<div ng-if="filteredList.length > 0" class="selectedFiltersSection -u-24-24">
+				<div class="selectedFilteredValues" ng-repeat = "filter in filteredList">
+					<label class="selectedFilter">{{filter.value}} <i ng-click="removeFilter(filter)" class="fa fa-times" aria-hidden="true"></i></label>
+				</div>
+			</div>
+		</div>
+	
+	<div class="-g print-summary no-screen">
+		<div class="-u-12-24 left-column">
+			<div class="{{value.key}} print-summary--item" ng-repeat="value in vm.printSummaryValues | limitTo:16" >
+				{{value.value}}
+			</div>
+		</div>
+		<div class="-u-12-24 right-column">
+			<div class='second-column {{value.key}} print-summary--item' ng-if="vm.printSummaryValues.length >= 16" ng-repeat="value in vm.printSummaryValues | limitTo:vm.printSummaryValues.length | limitTo:(-1)*(vm.printSummaryValues.length-16)" >
+				{{value.value}}
+			</div>
+
+			<div class='{{value.key}} print-summary--item' ng-repeat="value in vm.printSummaryTotals" >
+				{{value.value}}
+			</div>
+		</div>
+	</div>
+</div>

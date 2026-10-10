@@ -1,0 +1,325 @@
+@import "common-var"
+
+ai-header-height = 52px;
+ai-top-header-height = 40px;
+ai-grid-header-height = 42px;
+
+.route-reports-absence-interactive {
+
+	#report-lock-header {
+		.report-locked & {
+			height: ai-header-height + ai-top-header-height + ai-grid-header-height;
+		}
+	}
+	#report-lock-header.details-view {
+		.report-locked & {
+			height: ai-header-height + ai-grid-header-height;
+		}
+	}
+
+	.header {
+		.header-content {
+			.previous-page {
+				display:inline-block;
+				position: absolute;
+				right: 20px;
+				top: 11px;
+			}
+			& .details-view {
+				right: 175px;
+			}
+			.previous-available {
+				.cmpt-ui-loader {
+					.report-loader {
+						.logo-spinner {
+							right: 150px;
+						}
+					}
+				}
+			}
+			.download-details{
+				display:inline-block;
+				position: absolute;
+				right: 20px;
+				top: 11px;
+			}
+		}
+	}
+
+	.content-panel {
+		.abs-int-view.totals-row {
+			color: report-footer-color;
+			background-color: report-footer-background;
+			border-top: 2px solid grid-borderColor;
+			font-weight: bold;
+			li {
+				div {
+					line-height: 15px;
+	  				white-space: normal;
+	  				padding: 10px 5px 10px 10px;
+	  				border-left: 1px solid grid-borderColor;
+				}
+			}
+			.actions {
+				a {
+					line-height: 18px;
+					width: 145px;
+  					font-size: 11px;
+				}
+				.fl-button-sm:last-child {
+					margin-top:2px;
+				}
+			}
+		}
+		.details-view {
+
+			.grid-row {
+				.grid-cell {
+				  	white-space: normal;
+				}
+
+				.institution-cell {
+					.emp-time, .sub-time {
+						font-size: 10px;
+						color: subTitle-color-darkest;
+						span {
+							font-weight: bold;
+						}
+					}
+					.school {
+						white-space: normal;
+					}
+				}
+
+				.duration-cell {
+					text-align: center;
+					padding-left: 5px;
+					div {
+						margin-bottom: 5px;
+						white-space: normal;
+						&:last-child {
+							margin-bottom: 0;
+						}
+					}
+
+					.duration-Icon {
+						font-size: 22px;
+						color: ap-blue;
+					}
+
+					.FullDay:before {
+						content: '\e60c';
+					}
+
+					.HalfDayAM:before {
+						content: '\e606';
+					}
+
+					.HalfDayPM:before {
+						content:'\e60b';
+					}
+
+					.CustomDay:before {
+						content: '\e608';
+					}
+				}
+
+				.reason-cell{
+
+					.budget-code, .pay-code, .accounting-code {
+						font-size:11px;
+						white-space:normal;
+						label{
+							font-size:10px;
+							font-weight:bold;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.top-header {
+		border: 5px solid content-panel-borderColor;
+		border-top: none;
+		border-bottom: none;
+		width:content-width;
+		height:40px;
+
+		div:first-child{
+			width:124px;
+		}
+		div:last-child{
+			width:165px;
+		}
+		div{
+			float:left;
+			border-left: 1px solid grid-borderColor;
+			border-bottom: 1px solid grid-borderColor;
+			border-bottom-color: grid-borderColor;
+			padding: 10px;
+			font-weight: bold;
+			color: subTitle-color-darkest;
+			font-size: 12px;
+			background-image: gradientBar;
+			height:40px;
+
+			&.count-label{
+				width:453px;
+			}
+
+			&.perc-label{
+				width:248px;
+			}
+		}
+	}
+
+	.grid-header {
+		.percentFilled-th::before,.percentUnFilled-th::before,.percenttotal-th::before{
+			content: '% ';
+		}
+		.sub-heading{
+			background: grid-subHeading-backGroundColor;
+			font-size: 10px;
+			font-weight: bold;
+			padding: 12px 10px;
+			text-shadow: none;
+			color: subTitle-color-light;
+			height:42px;
+		}
+	}
+
+	.sortField-cell div{
+		white-space: normal !important;
+		width: 93px;
+		font-weight: 600;
+	}
+
+	.actions-cell{
+		a{
+			width:145px;
+			font-size:11px;
+		}
+	}
+	.accounting-code{
+		.sortField-th{
+			line-height: 16px;
+			padding-top: 5px;
+		}
+	}
+
+	.cmpt-ui-sortable-grid .grid-header div{
+		cursor: initial;
+	}
+
+	@media print {
+		.content-panel {
+			.cmpt-ui-sortable-grid.abs-int-view {
+				.grid-header {
+					 .sortField-th {
+					 	width:29.1%;
+					 }
+					.actions-th {
+						display: none;
+					}
+					.percenttotal-th {
+						border-right: 1px solid grid-borderColor;
+					}
+				}
+				.grid-rows {
+					li {
+						background-color: backGroundColor;
+						 .sortField-cell {
+						 	width:29.1%;
+						 }
+						.percenttotal-cell {
+							border-right: 1px solid grid-borderColor;
+						}
+					}
+					.actions-cell {
+						display: none;
+					}
+				}
+			}
+			.totals-row {
+				li {
+					background-color: backGroundColor;
+					border-bottom: 1px solid grid-borderColor;
+					 .totalTitle {
+					 	width:29.1%;
+					 }
+					.percent-total {
+						border-right: 1px solid grid-borderColor;
+					}
+					.actions {
+						border-right: 1px solid grid-borderColor;
+						display: none;
+					}
+				}
+			}
+		}
+		div.top-header {
+			background-color: backGroundColor;
+			background: none;
+			width: inherit;
+			position: static;
+			border-left: 0;
+			border-right: 0;
+			border-bottom: 1px solid grid-borderColor !important;
+			border-right: 1px solid grid-borderColor !important;
+			div {
+				background: none;
+				border-bottom: 0;
+			}
+			div:first-child{
+				width:29.2%;
+			}
+			div:last-child{
+				display: none;
+				border-left: 0;
+			}
+			div.count-label{
+				width:481px;
+			}
+			div.perc-label{
+				width:260px;
+			}
+		}
+	}
+}
+&.report-locked {
+	.header {
+		.header-content {
+			.previous-page {
+				right: 110px;
+			}
+			& .details-view {
+				right: 265px;
+			}
+			.download-details {
+				right: 110px;
+			}
+		}
+	}
+	.top-header {
+		border-top-width: 0;
+		position: fixed;
+		width: content-width;
+		top: topbar-height + ai-header-height;
+		z-index: 1;
+	}
+	.content-panel {
+		.cmpt-ui-sortable-grid.abs-int-view {
+			div.grid-header {
+				top: topbar-height + ai-header-height + ai-top-header-height;
+				border-top: 0;
+			}
+		}
+		.cmpt-ui-sortable-grid.details-view {
+			div.grid-header {
+				top: topbar-height + ai-header-height;
+				border-top: 0;
+			}
+		}
+	}
+}

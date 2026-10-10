@@ -1,0 +1,111 @@
+<div class="fixed-width route-webtime-time-sheet" ng-controller="TimeSheetCtrl as route">
+
+	<div class="timesheet-header">
+		<div class="timesheet-period-title" ng-show="!vm.loadingHeader">
+			<span>{{strings['ts.enterTimeSheet.label.timeSheetFor']}}</span>
+			<cmpt-template-substitute-link substitute-id="{{ vm.substitute.id }}" substitute-name="{{ vm.substitute.name }}" ></cmpt-template-substitute-link>
+			<span class="period-heading">{{vm.currentPeriod}}</span>
+		</div>
+		<div class="loading" ng-show="vm.loadingHeader">
+			<span><i class="fa-spinner fa-spin"></i></span>
+		</div>
+		<div class="return-links">
+			<button class="fl-button" ng-click="go.GoBack()">{{strings['ts.enterTimeSheet.label.returnSummaryReport']}}</button>
+			<button class="fl-button" ng-click="go.Log()">{{strings['ts.enterTimeSheet.label.log']}}</button>
+		</div>
+	</div>
+
+	<div class="content-panel">
+		<div class="section-heading">
+		</div>
+
+		<div class="grid-header -g">
+			<div ng-style="col.width" class="grid-header-content {{ col.key + '-th' }} {{ col.cls }}"
+				ng-repeat="col in route.vm.cols">
+				<div ap-bind-html="col.title" class="col-title"></div>
+			</div>
+		</div>
+
+		<cmpt-ui-loader
+			fill
+			is-loading=route.vm.isLoading
+			status-text="'Loading'">
+		</cmpt-ui-loader>
+
+		<ul class="grid-rows" >
+			<li class="-g grid-row {{ row.cls }}" ng-repeat="row in route.vm.data" >
+				<div ng-style="col.width" class="{{ col.key + '-cell' }} grid-cell {{ col.cls }} {{col.extraClass}}"
+					ng-repeat="col in route.vm.cols" ap-bind-html="col.template || col.render(row[col.key], row)">
+				</div>
+			</li>
+		</ul>
+
+		<div class="timesheet-table-footer">
+			<div class="left">
+				<ul>
+					<li>
+						<div class="container-approved">
+							<div class="approved-val"></div>
+						</div>
+						{{strings['ts.enterTimeSheet.legend.label.approved']}}
+					</li>
+					<li>
+						<div class="no-val"></div>
+						{{strings['ts.enterTimeSheet.legend.label.noVals']}}
+					</li>
+					<li>
+						<div class="container-rejected">
+							<div class="rejected-val"></div>
+						</div>
+						{{strings['ts.enterTimeSheet.legend.label.rejected']}}
+					</li>
+					<li>
+						<div class="container-not-assigned">
+							<div class="not-assigned-val"></div>
+						</div>
+						{{strings['ts.enterTimeSheet.legend.label.removed']}}
+					</li>
+					<li>
+						<div class="container-paper">
+							<div class="paper-val"></div>
+						</div>
+						{{strings['ts.enterTimeSheet.legend.label.paper']}}
+					</li>
+
+				</ul>
+			</div>
+			<div class="right timesheet-comments-container" >
+				<div class="timesheet-comment-header">
+					<div class="left title">{{strings['ts.enterTimeSheet.label.comments']}}</div>
+					<div class="right">
+						<select class="school-select" ng-if="vm.institutions.length>1" ng-model="vm.instId" ng-options="inst.id as inst.name for inst in vm.institutions" ></select>
+						<div ng-if="vm.institutions.length === 1">{{vm.institutions[0].name}}</div>
+					</div>
+				</div>
+				<div class="timesheet-comments" >
+					<div class="comment-block" ng-show="comments[0].inst_id === vm.instId" ng-repeat="comments in route.vm.comments">
+						<ul>
+							<li ng-repeat="comment in comments">
+								 <div class="comment-date">
+								 	<div class="title">{{comment.CommentDate}}</div>
+								 	<div class="time">{{comment.CommentTime}}</div>
+								 </div>
+								 <div class="comment-content">
+								 	<div class="title">{{comment.name}}</div>
+								 	<div class="message">{{comment.message}}</div>
+								 </div>
+							</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+
+			</div>
+	 	</div>
+	 	<div class="timesheet-footer">
+
+	 	</div>
+	</div>
+</div>

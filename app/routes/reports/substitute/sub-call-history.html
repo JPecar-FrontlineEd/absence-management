@@ -1,0 +1,31 @@
+<div class="fixed-width report-standards route-reports-subtitute-sub-call-history" ng-controller="SubCallHistoryCtrl as route">
+	<cmpt-reports-switcher section="substitute"></cmpt-reports-switcher>
+
+	<h3>{{route.strings['Reports.Title.SubstituteCallHistory']}}</h3>
+	<div class="panel">
+		<cmpt-reports-filter-panel filters="route.vm.filters" extra-validators="route.vm.validation" action="route.go.search"></cmpt-reports-filter-panel>
+	</div>
+
+	<div id="report-lock-header" class="lock-header-fill"></div>
+	<div class="header">
+		<div class="header-content">
+			<div class="count" ng-class="{loaded: route.vm.dataLoaded}">{{route.vm.dataSet.length}}</div>
+			<div class="label" ng-class="{loaded: route.vm.dataLoaded}">{{route.strings['Reports.Title.SubstituteCallHistory']}}</div>
+			<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<cmpt-ui-print-button></cmpt-ui-print-button>
+		</div>
+	</div>
+	<div class="content-panel" ng-class="{loaded: route.vm.dataLoaded}">
+		<cmpt-ui-sortable-grid
+			columns="route.vm.columns"
+			dataset="route.vm.dataSet"
+			progressive
+		>
+			{{route.vm.dataLoaded ? route.strings['NoRecordsFound'] : route.strings['Reports.Results.Label.InitialInstructions']}}.
+		</cmpt-ui-sortable-grid>
+		<div class="totals" ng-if="route.vm.dataLoaded && route.vm.dataSet.length > 0">
+			<div class="-u-2-24">{{route.strings['Reports.GroupSummary.Label.TotalCalls']}}:</div>
+			<div class="-u-22-24">{{route.vm.dataSet.length}}</div>
+		</div>
+	</div>
+</div>

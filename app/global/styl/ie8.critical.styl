@@ -1,0 +1,93 @@
+@import "common-var"
+.ie-8 {
+	display: table;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	.frontline-logo {
+		display: inline;
+		position: absolute;
+		left: 50%;
+		margin-left: -86px;
+		bottom: 15px;
+		z-index: 1;
+
+		img {
+			width: 176px;
+		}
+	}
+
+	.aesop-logo {
+		display: inline;
+		position: absolute;
+		left: 70px;
+		top: 15px;
+		z-index: 1;
+
+		img {
+			width: 75px;
+		}
+	}
+
+	.content {
+		display: table-cell;
+		vertical-align: middle;
+		height: 100%;
+		padding-left: 75px;
+		color: subTitle-color-dark;
+
+		.message {
+			font-size: 55px;
+			width: 665px;
+  			line-height: 1.2;
+		}
+
+		.sub-message {
+			font-size: 16px;
+			margin-top: 16px;
+		}
+
+		.tag {
+			font-weight: bold;
+		}
+
+		.message {
+			font-weight: 300;
+		}
+
+		.buttons {
+			margin-top: 25px;
+		}
+
+		.update-button {
+			padding-left: 35px;
+			padding-right: 35px;
+		}
+
+		.or {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+
+		.browser-support-link {
+			text-decoration: underline;
+		}
+	}
+
+	.mountains {
+		background: url('../images/error-page-mountains.png') no-repeat;
+		background-size: cover;
+		-ms-behavior: url(../polyfills/backgroundsize.min.htc);
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 25%;
+		width: 100%;
+	}
+}

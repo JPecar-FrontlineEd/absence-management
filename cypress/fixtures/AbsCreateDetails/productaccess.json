@@ -1,0 +1,29 @@
+[{
+	"OrganizationId": "31403",
+	"OrganizationName": "JPS QA TEST DISTRICT",
+	"ProductId": "TADEV",
+	"ProductName": "Time & Attendance (DEV)",
+	"ProductLegacyName": "VeriTime (DEV)",
+	"Url": "http://ta.localhost.fldev.net/login/BeTheOrg?orgid=31403"
+}, {
+	"OrganizationId": "31403",
+	"OrganizationName": "JPS QA TEST DISTRICT",
+	"ProductId": "AbsMgmtDev",
+	"ProductName": "Absence Mgmt Dev",
+	"ProductLegacyName": "Aesop (DEV)",
+	"Url": "http://localhost:3000/access?orgid=31403"
+}, {
+	"OrganizationId": "31403",
+	"OrganizationName": "JPS QA TEST DISTRICT",
+	"ProductId": "TAQA",
+	"ProductName": "Time & Attendance (QA)",
+	"ProductLegacyName": "VeriTime (QA)",
+	"Url": "https://vtqa.flqa.net/login/BeTheOrg?orgid=31403"
+}, {
+	"OrganizationId": "31403",
+	"OrganizationName": "JPS QA TEST DISTRICT",
+	"ProductId": "AbsMgmtQA",
+	"ProductName": "Absence Mgmt QA",
+	"ProductLegacyName": "Aesop (QA)",
+	"Url": "http://adminwebqa.flqa.net/access?orgid=31403"
+}]

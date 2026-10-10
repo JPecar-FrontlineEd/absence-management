@@ -1,0 +1,16 @@
+<div class="cmpt-template-available-sub-checks">
+	<div  class="container full-width">
+		<div class="container full-width">
+			<cmpt-template-available-sub-time-cell width="width" check="subRow.isQualified" time-string="subRow.qualifiedTime"></cmpt-template-available-sub-time-cell>
+			<cmpt-template-available-sub-simple-cell width="width" check="subRow.haveOtherJobConflict"></cmpt-template-available-sub-simple-cell>
+			<cmpt-template-available-sub-simple-cell width="width" check="subRow.haveNonWorkDayConflict"></cmpt-template-available-sub-simple-cell>
+			<cmpt-template-available-sub-simple-cell width="width" check="subRow.isExcluded"></cmpt-template-available-sub-simple-cell>
+			<cmpt-template-available-sub-simple-cell width="width" check="!subRow.isSubPreferredByInstitute"></cmpt-template-available-sub-simple-cell>
+			<cmpt-template-available-sub-simple-cell width="width" check="subRow.isSubOverWorked" tool-tip="subRow.overWorkReason" ng-if="vm.usingWorkLimits"></cmpt-template-available-sub-simple-cell>
+			<cmpt-template-available-sub-simple-cell width="width" check="subRow.isJobRejectedBySub"></cmpt-template-available-sub-simple-cell>
+			<cmpt-template-available-sub-time-cell width="width" check="subRow.jobIsVisible" time-string="subRow.jobVisibleTime"></cmpt-template-available-sub-time-cell>
+			<cmpt-template-available-sub-simple-cell width="width" check="subRow.notInCallTimes"></cmpt-template-available-sub-simple-cell>
+		</div>
+	</div>
+
+</div>

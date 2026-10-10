@@ -1,0 +1,145 @@
+@import "common-var"
+
+AMS-weekend-backGroundColor = #fbfbfc;
+AMS-otherMonths-backGroundColor = #e9edf0;
+AMS-today-backGroundColor = #f5fcff;
+
+.cmpt-reports-monthly-summary {
+	.no-data {
+		text-align: center;
+		line-height: 120px;
+		height: 131px;
+	}
+	.cmpt-ui-sortable-grid.monthData {
+		.weekendHeader, .sunday-cell, .saturday-cell {
+			width: 15%;
+		}
+		.weekdayHeader, .monday-cell, .tuesday-cell, .wednesday-cell, .thursday-cell, .friday-cell {
+			width: 14%;
+		}
+		.grid-header {
+			div {
+				text-align: center;
+			}
+		}
+		.grid-row {
+			.grid-cell {
+				padding: 0;
+				background-color: backGroundColor;
+			}
+			.summaryDay {
+				font-size: 12px;
+				padding: 10px;
+				height: 200px;
+				.day {
+					color: subTitle-color-lightest;
+					font-size: 14px;
+					margin: 0 0 5px 0;
+				}
+				.highlight {
+					font-weight: bold;
+				}
+				.total {
+					margin: 3px 0 0 0;
+					padding: 4px 0 0 0;
+				}
+				.group {
+					border-top: 1px solid grid-borderColor;
+					margin: 3px 0 0 0;
+					padding: 4px 0 0 0;
+				}
+				.label {
+					display: inline-block;
+					float: left;
+				}
+				.data {
+					display: inline-block;
+					float:right;
+				}
+			}
+			.weekend {
+				background-color: AMS-weekend-backGroundColor ;
+			}
+			.other-month {
+				background-color: AMS-otherMonths-backGroundColor;
+			}
+			.today {
+				background-color: AMS-today-backGroundColor;
+				box-shadow: inset 0 0 10px boxShadow;
+				.day {
+					color: ap-blue;
+					font-weight: bold;
+				}
+			}
+		}
+		.no-data {
+			.archiveWarning {
+				margin-top: -15px;
+				line-height: 20px;
+				color: ap-red;
+				font-size: 16px;
+				font-weight: bold;
+			}
+		}
+	}
+
+	.summaryData {
+		.cmpt-ui-sortable-grid.weekData {
+			text-align: center;
+			.grid-header {
+				position: static;
+				width: 100%;
+				margin: 0;
+				border-left-width: 0;
+				border-right-width: 0;
+				border-top: 5px solid content-panel-borderColor;
+				div {
+					font-size: 12px;
+					text-align: center;
+				}
+			}
+			.grid-row {
+				.weekRange-cell {
+					text-align:left;
+					.monthTotal {
+						display:none;
+					}
+				}
+			}
+			.no-data {
+				.archiveWarning {
+					margin-top: -15px;
+					line-height: 20px;
+					color: ap-red;
+					font-size: 16px;
+					font-weight: bold;
+				}
+			}
+		}
+
+		.cmpt-ui-sortable-grid.weekSummary {
+			text-align: center;
+			font-weight: bold;
+			border-top: 2px solid grid-borderColor;
+			.grid-header {
+				position: static;
+				display: none;
+			}
+			.grid-row {
+				background-color: report-footer-background;
+				.weekRange-cell {
+					text-align:left;
+					.weekRange {
+						display:none;
+					}
+				}
+				.grid-cell {
+					border-left-width: 0;
+				}
+			}
+			.no-data {
+				display: none;
+			}
+		}
+	}
+}

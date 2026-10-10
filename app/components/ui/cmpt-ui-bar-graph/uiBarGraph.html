@@ -1,0 +1,18 @@
+<div class="cmpt-ui-bar-graph" ng-class="{'stacks': vm.stacks}">
+	<div class="graph-container" ng-style="vm.containerStyle">
+		<ul class="bar-graph-bars">
+			<li ng-repeat="bar in vm.bars" ng-style="bar.style">
+				<div class="bar-value">{{ bar.value | roundNumber : 1 }}</div>
+				<ul class="bar-graph-bar-items">
+					<li ng-repeat="item in bar.items"
+						ng-style="item.style"
+						ng-class="{'stripes-overlay': props.titleHovered === item.title}"
+						ng-mouseenter="props.titleHovered = item.title"
+						ng-mouseleave="props.titleHovered = ''"
+						ng-if="item.value > 0"
+					></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<div class="cmpt-reference-data-action-cell">
+	<div class="actions" ng-show="!data.isEditing">
+		<span ng-if="data.canDelete" ng-click="go.delete()"><i class="fa fa-trash-o"></i></span>
+		<span ng-if="data.canEdit" ng-click="go.edit()"><i class="fa fa-pencil"></i></span>
+	</div>
+	<div class="actions" ng-if="data.isEditing">
+		<span ng-click="go.save()" ng-if="!data.isProcessing"><i  class="fa fa-check"></i></span>
+		<span ng-if="data.isProcessing"><i class="fa fa-spinner fa-spin"></i></span>
+		<span ng-click="go.cancel()" ng-if="!data.isProcessing"><i class="fa fa-times"></i></span>
+	</div>
+</div>

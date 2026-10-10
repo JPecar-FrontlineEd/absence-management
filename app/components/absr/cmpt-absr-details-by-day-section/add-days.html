@@ -1,0 +1,23 @@
+<div class="dialog-popup">
+	<div class="ngdialog-message">
+		<div class="header fontWeight600">{{ngDialogData.header}}
+		</div>
+		<div class="content">
+            <div ng-if="!ngDialogData.isMultiLocationSelectEnabled && !(ngDialogData.multipleLocation.length > 1)" class="content">
+			    <cmpt-absr-details-add-days></cmpt-absr-details-add-days>
+		    </div>
+		    <div ng-if="ngDialogData.isMultiLocationSelectEnabled && ngDialogData.multipleLocation.length > 1">
+				<cmpt-absr-details-add-days 
+					ng-repeat="variation in ngDialogData.absenceVariations"
+					unique-id="{{'variation' + $index}}"
+					is-multi-location-select-enabled="ngDialogData.isMultiLocationSelectEnabled" 
+					variation-data-by-location="variation" 
+					selected-location="variation.institution">
+				</cmpt-absr-details-add-days>
+				<div class="ngdialog-buttons-step2">
+					<a class="{{ button.cls }}" ng-click="button.action()"  ng-repeat="button in ngDialogData.buttons">{{ button.title }}</a>
+				</div>
+		    </div>
+	    </div>
+    </div>
+</div>

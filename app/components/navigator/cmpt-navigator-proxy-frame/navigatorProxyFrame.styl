@@ -1,0 +1,53 @@
+@import "common-var"
+.cmpt-navigator-proxy-frame {
+	.navigator-container {
+		position: relative;
+		padding: 15px;
+		min-height: 250px;
+		min-height: calc(100vh - 90px);
+		padding: 0;
+  		margin-top: -32px;
+
+  		.cmpt-ui-loader {
+  			.loading-container{
+  				top: 30px;
+  			}
+  			.cover {
+  				background: backGroundColor;
+  				opacity: 0.6;
+  			}
+  		}
+  		.temporary-bar{
+  			position: absolute;
+		    width: 100%;
+		    height: 30px;
+		    background: backGroundColor;
+  		}
+	}
+	
+	body:not(.nav-expanded) &{
+		margin-top: 10px!important;
+		margin-left: 0px!important;
+	}
+
+	.nav-expanded &{
+		margin-top: 10px!important;
+	}
+
+	iframe {
+		opacity: 1;
+		transition: opacity 500ms;
+		width: 100%;
+
+		&.ng-hide-add {
+			transition: opacity 0ms;
+		}
+		&.ng-hide-remove {
+			display: block !important;
+		}
+
+		&.ng-hide {
+			opacity: 0;
+		}
+	}
+}

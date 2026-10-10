@@ -1,0 +1,83 @@
+@import "common-var"
+.cmpt-reconcile-edit-section {
+	.form-loader {
+		position: relative;
+		.bar {
+			background-color: backGroundColor;
+			animation-name: height-change-blue;
+		}
+	}
+	.row{
+		margin-bottom: 5px;
+
+		label {
+			display: inline-block;
+			vertical-align: top;
+			font-weight: 600;
+			width: 146px;
+
+			.caption{
+				color: subTitle-color-lightest;
+				display: block;
+				font-size: 11px;
+				font-weight: normal;
+				line-height: 135%;
+			}
+		}
+
+		.element {
+			font-size: 14px;
+			width: 240px;
+			display: inline-block;
+			vertical-align: top;
+			hyphenate();
+
+			.cmpt-ui-dropdown {
+				select {
+					white-space: nowrap;
+				}
+			}
+			.cmpt-ui-textbox {
+				.fl-input {
+					font-size: 12px;
+					height: 23px;
+					width: 52px;
+					line-height: 16px;
+					padding: 4px 7px;
+					color: subTitle-color-darkest;
+				}
+				.error-message {
+					text-align: left;
+					margin-top: 2px;
+				}
+			}
+		}
+		&.sub-worked {
+			.text {
+				vertical-align: middle;
+			}
+		}
+		&.accounting-codes{
+			.cmpt-ui-dropdown {
+				display: inline-block;
+			}
+			.read-only {
+				padding-left: 5px;
+			}
+			input{
+				font-size: 12px;
+				height: 23px;
+				line-height: 16px;
+				padding: 4px 7px;
+				color: subTitle-color-darkest;
+				margin-top: 5px;
+				margin-bottom: 5px;
+				width:100%;
+			}
+		}
+		&.action{
+			text-align: right;
+			padding: 5px 5px 0 0;
+		}
+	}
+}

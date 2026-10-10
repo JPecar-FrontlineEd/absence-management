@@ -1,0 +1,232 @@
+@import "common-var"
+borderColor = darken(borderColor-medium,10%);
+.cmpt-ui-multiselect {
+	position: relative;
+
+	&.right-align .dropdown {
+		right: 0;
+	}
+
+	&.left-align .dropdown {
+		left: 0;
+	}
+
+	.loading {
+		text-align: center;
+		padding: 15px;
+	}
+
+	.label {
+		width: 100%;
+		position: absolute;
+		overflow: ellipsis;
+		font-size: 12px;
+	}
+
+	.selector {
+		float: right;
+
+		.trigger-button {
+			position: relative;
+			color: subTitle-color-darkest;
+			background: backGroundColor;
+			background-image: gradientBarLight;
+			border: 1px solid borderColor;
+			border-radius: 4px;
+			cursor: pointer;
+			text-decoration: none;
+			-webkit-touch-callout: none;
+			user-select: none;
+			box-shadow: none;
+			padding: 0px 23px 0px 8px;
+			font-size: 12px;
+			overflow: visible;
+
+			&.disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+
+				&:active {
+					background: backGroundColor;
+					border-color: borderColor;
+					background-image: gradientBar-reverse;
+					box-shadow: none;
+				}
+			}
+
+			&:active {
+				background: backGroundColor;
+				border-color: borderColor;
+				background-image: gradientBarLight-reverse;
+				box-shadow: inset 0 1px 1px boxShadow;
+			}
+
+			.dropdown {
+				position: absolute;
+				display: none;
+				padding: 0px;
+				text-align: left;
+				z-index: 10000;
+				box-shadow: 0px 0px 10px boxShadow-dark;
+				margin-top: 2px;
+				border-radius: 4px;
+				background-color: backGroundColor;
+				overflow: hidden;
+
+				&.active {
+					display: block;
+					border-radius: 4px;
+				}
+
+				ul.items {
+					max-height: 275px;
+					max-width: 450px;
+					min-width: 320px;
+					overflow-x: hidden;
+					overflow-y: auto;
+
+					li {
+						display: block;
+						position: relative;
+						width: 100%;
+						padding-left: 10px;
+						border-top: 1px solid borderColor-medium;
+						font-weight: normal;
+						cursor: pointer;
+						line-height: 1;
+						&.hidden {
+							display: none;
+						}
+						&.checked {
+							font-weight: 600;
+						}
+						&:hover {
+							background-color: darken(backGroundColor,4%);
+						}
+						label {
+							display: block;
+							padding: 10px 10px 8px 0;
+							overflow: ellipsis;
+							width: 100%;
+							cursor: pointer;
+						}
+
+						&.disabled {
+							cursor: not-allowed;
+							color: ap-light-grey-3;
+							label {
+								cursor: not-allowed;
+							}
+							&:hover {
+								background-color: backGroundColor;
+							}
+						}
+
+						for n in (0..20) {
+							.nest-{n} {
+								padding-left: n*10px
+							}
+						}
+						div.dropdown-divider {
+							border-top: 1px solid #b5b8c1;
+							width: 70%;
+							margin-left: -6%;
+						}
+					}
+				}
+
+				ul.before-type{
+					max-width: 450px;
+    			min-width: 320px;
+					padding: 10px;
+					color: subTitle-color-light;
+				}
+
+				input[type="radio"] {
+					display: none;
+				}
+
+				input[type="checkbox"] {
+					position: absolute;
+					top: 10px;
+					left: 10px;
+				}
+
+				.search {
+					position: relative;
+					top: 0px;
+					cursor: default;
+					padding: 3px 5px;
+					font-weight: bold;
+					font-size: 13px;
+					height: 40px;
+
+					.dropdown-filter {
+						width: 100%;
+						background: none repeat scroll 0% 0% report-filter-panel-element-backGroundColor;
+						border-radius: 5px;
+						padding: 2px 30px 2px 52px;
+						margin-top: 2px;
+						line-height: 14px;
+
+						span {
+							margin-top: 4px;
+							position: absolute;
+							font-weight: bold;
+
+							&.filter-label {
+								left: 15px;
+								top: 9px;
+							}
+
+							&.view-all {
+								cursor: pointer;
+								right: 32px;
+								top: 9px;
+							}
+						}
+
+						input {
+							font-weight: normal;
+							height: 22px;
+							width: 96%;
+							padding: 0px 3px;
+							font-size: 12px;
+							cursor: text;
+						}
+
+						i {
+							position: absolute;
+							top: 13px;
+							right: 12px;
+							cursor: pointer;
+						}
+					}
+				}
+
+				&.multi {
+					.search {
+						.dropdown-filter {
+							padding-right: 90px;
+						}
+					}
+
+					.list-item {
+						padding-left: 30px;
+					}
+				}
+			}
+
+			span {
+				font-weight: normal;
+			}
+
+			.ui-icon {
+				position: absolute;
+				right: 4px;
+				top: 50%;
+				margin-top: -8px;
+			}
+		}
+	}
+}

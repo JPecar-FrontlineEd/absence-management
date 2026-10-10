@@ -1,0 +1,15 @@
+<div class="nav-node cmpt-topnav-user" ap-menu-toggler="dropdown" click-toggler>
+	<div class="user-name fa fa-angle-down-after" title="{{vm.userFullName}}">{{vm.userShownName}}</div>
+	<ul class="dropdown right-align">
+		<li ng-click="go.profile()">
+			<i class="fa fa-user"></i>{{ strings['header.DropDown.option.MyProfile'] }}
+		</li>
+		<li ng-click="go.pin()">
+			<i class="fa fa-lock"></i>{{ strings['Pin'] }}
+		</li>
+		<li ng-click="go.logout()">
+			<i class="fa fa-power-off"></i>{{ strings['Logout'] }}
+			<span>{{ vm.logOutShortcutKey }}</span>
+		</li>
+	</ul>
+</div>

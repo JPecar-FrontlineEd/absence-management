@@ -1,0 +1,66 @@
+<div class="route-user-user-profile" ng-controller="UserProfileCtrl as route">
+	<div class="profile-content">
+		<div class="profile-header">
+			<h3>{{route.strings['header.DropDown.option.MyProfile']}}</h3>
+		</div>
+		<!-- <div class="profile-sub-header">{{route.strings['GeneralInformation']}}</div> -->
+		<div class="profile-settings">
+			<form name="updateProfile" ng-submit="updateProfile.$pristine || route.go.updateProfile()">
+				<div class="name">
+					<span class="label">{{route.strings['Name']}}:</span>
+					<span ng-if="route.vm.personalInfoObj.canEdit">
+					<span><input name="firstName" class="fl-input input-name input-first-name" maxlength="50" type="text" ng-model="route.vm.personalInfoObj.firstName"
+									ng-class="{error: route.vm.firstNameInvalid}"	ng-required="true"/></span>
+					<span><input name="middleName" class="fl-input input-name input-middle-name" maxlength="30" type="text" ng-model="route.vm.personalInfoObj.middleName" /></span>
+					<span><input name="lastName" class="fl-input input-name input-last-name" maxlength="50" type="text" ng-model="route.vm.personalInfoObj.lastName"
+									ng-class="{error: route.vm.lastNameInvalid}" ng-required="true" /></span>
+					</span>
+					<!-- <span>{{route.vm}}</span> -->
+					<span ng-if="!route.vm.personalInfoObj.canEdit">
+						<span>{{route.vm.personalInfoObj.firstName}} {{route.vm.personalInfoObj.middleName}} {{route.vm.personalInfoObj.lastName}}</span>
+					</span>
+				</div>
+				<div class="loginId" ng-if="route.vm.showLoginId">
+					<span class="label">{{route.strings['LoginID']}}:</span>
+					<span>{{route.vm.personalInfoObj.loginId}}</span>
+				</div>
+				<div class="email">
+					<span class="label">{{route.strings['Email']}}:</span>
+					<span ng-if="route.vm.personalInfoObj.canEdit">
+						<input name="emailAddress" class="fl-input input-email" type="text" ng-model="route.vm.personalInfoObj.emailAddress" ng-class="{error: route.vm.emailInvalid}" ng-pattern="/^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$/" />
+					</span>
+					<span ng-if="!route.vm.personalInfoObj.canEdit">
+							<span>{{route.vm.personalInfoObj.emailAddress}}</span>
+					</span>
+				</div>
+				<div class="phone">
+					<span class="label">{{route.strings['Phone']}}:</span>
+					<span>
+						<input name="phoneNumber" class="fl-input" type="text" ng-model="route.vm.personalInfoObj.phoneNumber" ng-class="{error: route.vm.phoneInvalid}" ng-pattern="/^(\([0-9]\d{2}\)|[0-9]\d{2})[- .]?\d{3}[- .]?\d{4}$/" />
+					</span>
+				</div>
+				<div class="language">
+					<span class="label">{{route.strings['Language']}}:</span>
+					<span ng-if="route.vm.languageSettingViewOnly">
+						<span class="language-display">
+							<span ng-if="route.vm.personalInfoObj.languageId < 1">{{route.strings['NoneSelected']}}</span>
+							<span ng-if="route.vm.personalInfoObj.languageId > 0">{{route.go.getLanguageFromId(route.vm.personalInfoObj.languageId).description}}</span>
+							<span class="idm-settings-link" ng-if="!route.vm.isAnyImpersonatingGoingOn">{{route.strings['LanguagePreferenceText']}} <a ng-href="{{route.vm.idmSettingsUrl}}">{{route.strings['nav.settings.accountSettings']}}</a>.</span>
+						</span>
+					</span>
+					<span ng-if="!route.vm.languageSettingViewOnly">
+						<select class="language-select" ng-model="route.vm.personalInfoObj.languageId">
+							<option ng-repeat="lang in route.vm.languageList" value="{{lang.id}}"
+									ng-selected="route.vm.personalInfoObj.languageId === lang.id">{{lang.description}}</option>
+						</select>
+					</span>
+				</div>
+				<div class="profile-actions">
+					<button type="submit" class="fl-button fl-positive" ng-class="{'fl-disabled': updateProfile.$pristine}">
+						<i class="fa {{route.vm.saving ? 'fa-spinner fa-spin' : 'fa-check'}}"></i> {{ route.strings['Save'] }}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

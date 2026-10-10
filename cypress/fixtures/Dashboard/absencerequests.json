@@ -1,0 +1,249 @@
+{
+  "data": [
+    {
+      "id": 224963251,
+      "startDate": "10/5/2017 12:00 AM",
+      "endDate": "10/5/2017 12:00 AM",
+      "requiresApproval": false,
+      "isApproved": true,
+      "isDenied": false,
+      "isPartiallyApproved": false,
+      "heldPastFulfillmentCutoff": false,
+      "isHeld": false,
+      "heldUntil": null,
+      "created": "10/2/2017 5:00 PM",
+      "needSub": true,
+      "isCancelled": false,
+      "isClosed": false,
+      "substitute": null,
+      "worker": {
+        "id": 8274601,
+        "isVacancy": false,
+        "firstName": "Ernest",
+        "middleName": "",
+        "lastName": "Gislason83",
+        "title": null,
+        "workerType": {
+          "id": 1357
+        }
+      },
+      "absences": [
+        {
+          "date": "10/5/2017 12:00 AM",
+          "institution": {
+            "id": 5408
+          },
+          "entitlement": {
+            "name": "EnforceNote2Admin"
+          },
+          "shiftType": 1,
+          "substituteShiftType": 1,
+          "budgetCode": {
+            "description": "Certified Teacher"
+          },
+          "payCode": null
+        }
+      ],
+      "closedDayAbsences": [
+        
+      ]
+    },
+    {
+      "id": 224963252,
+      "startDate": "10/5/2017 12:00 AM",
+      "endDate": "10/5/2017 12:00 AM",
+      "requiresApproval": false,
+      "isApproved": true,
+      "isDenied": false,
+      "isPartiallyApproved": false,
+      "heldPastFulfillmentCutoff": false,
+      "isHeld": false,
+      "heldUntil": null,
+      "created": "10/2/2017 5:00 PM",
+      "needSub": true,
+      "isCancelled": false,
+      "isClosed": false,
+      "substitute": null,
+      "worker": {
+        "id": 8274854,
+        "isVacancy": false,
+        "firstName": "Cole",
+        "middleName": "",
+        "lastName": "Ritchie268",
+        "title": null,
+        "workerType": {
+          "id": 1357
+        }
+      },
+      "absences": [
+        {
+          "date": "10/5/2017 12:00 AM",
+          "institution": {
+            "id": 5408
+          },
+          "entitlement": {
+            "name": "EnforceNote2Admin"
+          },
+          "shiftType": 1,
+          "substituteShiftType": 1,
+          "budgetCode": {
+            "description": "Certified Teacher"
+          },
+          "payCode": null
+        }
+      ],
+      "closedDayAbsences": [
+        
+      ]
+    },
+    {
+      "id": 224963253,
+      "startDate": "10/5/2017 12:00 AM",
+      "endDate": "10/5/2017 12:00 AM",
+      "requiresApproval": false,
+      "isApproved": true,
+      "isDenied": false,
+      "isPartiallyApproved": false,
+      "heldPastFulfillmentCutoff": false,
+      "isHeld": false,
+      "heldUntil": null,
+      "created": "10/2/2017 5:00 PM",
+      "needSub": true,
+      "isCancelled": false,
+      "isClosed": false,
+      "substitute": null,
+      "worker": {
+        "id": 8275040,
+        "isVacancy": false,
+        "firstName": "Lacy",
+        "middleName": "",
+        "lastName": "Halvorson262",
+        "title": null,
+        "workerType": {
+          "id": 1357
+        }
+      },
+      "absences": [
+        {
+          "date": "10/5/2017 12:00 AM",
+          "institution": {
+            "id": 5408
+          },
+          "entitlement": {
+            "name": "EnforceNote2Admin"
+          },
+          "shiftType": 1,
+          "substituteShiftType": 1,
+          "budgetCode": {
+            "description": "Certified Teacher"
+          },
+          "payCode": null
+        }
+      ],
+      "closedDayAbsences": [
+        
+      ]
+    },
+    {
+      "id": 224963375,
+      "startDate": "10/5/2017 12:00 AM",
+      "endDate": "10/5/2017 12:00 AM",
+      "requiresApproval": true,
+      "isApproved": true,
+      "isDenied": false,
+      "isPartiallyApproved": false,
+      "heldPastFulfillmentCutoff": false,
+      "isHeld": false,
+      "heldUntil": null,
+      "created": "10/4/2017 6:06 AM",
+      "needSub": true,
+      "isCancelled": false,
+      "isClosed": false,
+      "substitute": null,
+      "worker": {
+        "id": 8275766,
+        "isVacancy": false,
+        "firstName": "Shyann",
+        "middleName": "",
+        "lastName": "Haley315",
+        "title": null,
+        "workerType": {
+          "id": 1357
+        }
+      },
+      "absences": [
+        {
+          "date": "10/5/2017 12:00 AM",
+          "institution": {
+            "id": 5401
+          },
+          "entitlement": {
+            "name": "Personal Day"
+          },
+          "shiftType": 1,
+          "substituteShiftType": 1,
+          "budgetCode": null,
+          "payCode": null
+        }
+      ],
+      "closedDayAbsences": [
+        
+      ]
+    },
+    {
+      "id": 224963376,
+      "startDate": "10/5/2017 12:00 AM",
+      "endDate": "10/9/2017 12:00 AM",
+      "requiresApproval": false,
+      "isApproved": true,
+      "isDenied": false,
+      "isPartiallyApproved": false,
+      "heldPastFulfillmentCutoff": false,
+      "isHeld": false,
+      "heldUntil": null,
+      "created": "10/4/2017 6:06 AM",
+      "needSub": true,
+      "isCancelled": false,
+      "isClosed": false,
+      "substitute": null,
+      "worker": {
+        "id": 8275767,
+        "isVacancy": false,
+        "firstName": "Cydney",
+        "middleName": "",
+        "lastName": "Keeling3",
+        "title": null,
+        "workerType": {
+          "id": 1357
+        }
+      },
+      "absences": [
+        {
+          "date": "10/5/2017 12:00 AM",
+          "institution": {
+            "id": 5408
+          },
+          "entitlement": {
+            "name": "EnforceNote2Admin"
+          },
+          "shiftType": 1,
+          "substituteShiftType": 1,
+          "budgetCode": {
+            "description": "Certified Teacher"
+          },
+          "payCode": null
+        }
+      ],
+      "closedDayAbsences": [
+        
+      ]
+    }
+  ],
+  "messages": [
+    
+  ],
+  "success": true,
+  "modelState": {
+    
+  }
+}

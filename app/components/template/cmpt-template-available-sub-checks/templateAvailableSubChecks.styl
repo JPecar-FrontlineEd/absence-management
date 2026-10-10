@@ -1,0 +1,61 @@
+@import "common-var"
+.cmpt-template-available-sub-checks {
+	padding:0 !important;
+
+	* {
+		overflow: visible !important;
+	}
+
+	div{
+		display:inline-block;
+		border-right:1px solid grid-borderColor;
+		height:95px;
+		padding:30px 1px;
+		text-align: center;
+		font-size:22px;
+		color: ap-red;
+		&.all-checks-passed{
+			width:100%;
+			margin-top: 24px;
+			.success{
+				color: availableSub-allCheckPassed-color
+				font-size: 15px;
+				width: 90%;
+				border-radius: 20px;
+				height: 40px;
+				border: 1px solid availableSub-allCheckPassed-borderColor;
+				line-height: 1;
+				padding: 10px;
+				.message{
+					margin:0;
+				}
+				&.assigned{
+					color: assignedSub-allCheckPassed-color;
+					border: 1px solid assignedSub-allCheckPassed-borderColor;
+					background-image: none;
+					background-color: assignedSub-allCheckPassed-backGroundColor;	
+				}
+			}
+		}
+		&.sub-already-assigned{
+			width: 100%;
+			font-size: 16px;
+			font-weight: bold;
+			color: subTitle-color-lightest;
+			line-height: 89px;
+		}
+		&:last-child{
+			border-right:0;
+		}
+		&.visible-time{
+			color: subTitle-color-darkest;
+		}
+	}
+	.container {
+		padding:0;
+	}
+	.full-width{
+		width:100%;
+	}
+
+}

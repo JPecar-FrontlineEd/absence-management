@@ -1,0 +1,146 @@
+@import "common-var"
+.cmpt-reconcile-detail-filter-panel {
+	height:115px;
+	.filter-section {
+		padding: 10px;
+		:after{
+			clear:both;
+		}
+	}
+
+	.filter {
+		font-size: 12px;
+		height: 30px;
+		padding: 3px 8px;
+		display: inline-block;
+		width: 280px;
+		float: none;
+		margin-right: 5px;
+		margin-top: 5px;
+		vertical-align: middle;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+
+		.section-title{
+			font-weight: bold;
+		}
+
+		&.filled-status{
+			width:135px;
+			height:90px;
+			label{
+				display:block;
+			}
+		}
+
+		&.type-state{
+			height:90px;
+			width:240px;
+			.absence-type{
+				width:90px;
+				height:80px;
+				float:left;
+				border-right: 1px solid borderColor-medium;
+				label{
+					display:block;
+				}
+			}
+			.states{
+				width:130px;
+				height:80px;
+	  			padding-left: 7px;
+	  			//margin-left: 7px;
+				float:left;
+				label{
+					display:block;
+				}
+			}
+		}
+
+	}
+
+	input[type='checkbox'], input[type='radio'] {
+		margin-right: 5px;
+	}
+
+	.title {
+		font-weight: 600;
+	}
+
+	label {
+		margin-right: 10px;
+	}
+
+	label:last-child {
+		margin-right: 0;
+	}
+
+	label:first-child {
+		margin-right: 10px;
+	}
+
+	.school {
+		width: 280px;
+		.cmpt-ui-dropdown {
+			position: relative;
+			span {
+				width: 130px;
+				display: inline-block;
+			}
+			select {
+				position: absolute;
+				right: 0;
+			}
+		}
+	}
+
+	.stepper {
+		display: none;
+		width: 13%;
+		padding: 0;
+		margin-top: 3px;
+
+		.cmpt-ui-date-navigation {
+			display: block;
+			height: 100%;
+			float: right;
+		}
+	}
+
+	.filter-panel{
+		float:left;
+		&.drop-downs{
+			width:580px;
+			.disabled {
+				opacity: 0.4;
+				cursor: not-allowed;
+				.ui-multiselect {
+					cursor: not-allowed;
+				}
+			}
+		}
+	}
+	.panel{
+		height:115px;
+	}
+
+	.removeBorderPadding{
+        border:0;
+		padding: 0 px;
+    }
+     
+	 fieldset{
+		
+		&.disabled {
+			opacity: 0.4;
+			cursor: not-allowed;
+			input,span{
+				cursor: not-allowed;
+			}
+		}
+	}
+}

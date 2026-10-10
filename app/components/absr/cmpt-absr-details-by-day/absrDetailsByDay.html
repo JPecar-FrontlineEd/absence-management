@@ -1,0 +1,103 @@
+<div class="cmpt-absr-details-day">   
+    <div class="-u-24-24 column-details" ap-show-slide="apshowslide">
+        <div class="-u-24-24 rowDivider font13" >
+            <div ng-class="{inServiceDayLeftBorder: (absence.closedDay != null && absence.closedDay.closedDayType == 2),
+                    closedDayLeftBorder: (absence.closedDay != null && absence.closedDay.closedDayType == 1)}">
+                <div class="-u-24-24">
+                    <div class="-u-2-24 fontBold leftPadding10 font16">{{go.parseTime(absence.date) | date: 'MM/dd/yy'}}
+                    </div>
+                    <div class="-u-3-24 leftPadding20 verticalAlignTextTop">{{go.getDay(absence.date)}}</div>
+                    <div ng-if="absence.closedDay != null" class="-u-3-24 verticalAlignTextTop">
+                        <div ng-if="absence.closedDay.closedDayType == 2"
+                            class="inServiceDayLabel">{{strings['InServiceDay']}}</div>
+                        <div ng-if="absence.closedDay.closedDayType == 1"
+                            class="closedDayLabel">{{strings['ClosedDay']}}</div>
+                    </div>
+                    <div ng-if="absence.canReconciled && !absence.isReconciled" class="-u-1-24 UnreconciledIcon left" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+                        <span class="UnreconciledText paddingLeft5">U</span></div>
+                    <div ng-if="absence.canReconciled && absence.isReconciled" class="-u-1-24 ReconciledIcon left " ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+                        <span class="ReconciledText paddingLeft5">R</span></div>
+                    <div class="-u-14-24" 
+                        ng-if="absence.closedDay != null && absence.closedDay.closedDayType == 2 && absrState.id != absence.absrId">
+                        <span class="relatedAbsenceHyperlinkLabel">{{strings['ConfirmationNumber']}} :</span>
+                        <span class="verticalAlignTextTop" >
+                            <a href="/v1/absences/detail/{{ absence.absrId  }}/view">{{ absence.absrId }}</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="-u-24-24 detailsExceptDate wordWrap">
+                    <div class="-u-12-24">
+                        <div class="-u-24-24">{{absence.institution.value}}</div>
+                        <div class="-u-24-24 font15 darkFont">{{absence.entitlement.value}}</div>
+                    </div>
+                    <div class="-u-12-24 darkFont">
+                        <div class="-u-8-24 fontBold">{{absence.IsVacancy? strings['VacancyTimes'] : strings['AbsenceTimes']}}</div>
+                        <div class="-u-1-24"></div>
+                        <div class="-u-15-24">{{go.parseTime(absence.absenceStartTime) | date: 'h:mma'}} -
+                            {{go.parseTime(absence.absenceEndTime) | date: 'h:mma'}}
+                            &nbsp;&nbsp;({{absence.shiftType.value}})
+                        </div>
+                        <div ng-if='absrState.context.showVacancyTimes' class="-u-8-24 lightFont">
+                            {{strings['SubTimes']}}
+                        </div>
+                        <div class="-u-1-24"></div>
+                        <div ng-if='absrState.context.showVacancyTimes' class="-u-15-24">
+                            {{go.parseTime(absence.substituteStartTime) | date: 'h:mma'}} -
+                            {{go.parseTime(absence.substituteEndTime) | date: 'h:mma'}}
+                            &nbsp;&nbsp;({{absence.substituteShiftType == null? '-' : absence.substituteShiftType.value}})
+                        </div>
+                    </div>
+                    <div class="-u-24-24 topMargin10">
+                        <div ng-if="absrState.context.showBudgetCode && vm.bugdetCodeList.length > 0" class="-u-6-24">
+                            <div class="darkFont fontBold">{{strings['BudgetCode']}}</div>
+                            <div class="lightFont rightPadding10">
+                                {{absence.budgetCode == null || absence.budgetCode.value == "" ? strings['NoneSelected'] : absence.budgetCode.value}}
+                            </div>
+                        </div>
+                        <div ng-if="absrState.context.showAccountingCode" class="-u-6-24">
+                            <div class="darkFont fontBold">{{strings['AccountingCode']}}</div>
+                            <div class="lightFont rightPadding10">
+                                <span ng-if="!absence.accountingCode.isFreeForm">{{absence.accountingCode == null || absence.accountingCode.value == null? strings['NoneSelected'] : absence.accountingCode.value}}</span>
+                                <span ng-if="absence.accountingCode.isFreeForm">{{strings['Custom']}} - {{absence.accountingCode == null || absence.accountingCode.value == null || absence.accountingCode.value == '' ? '' : absence.accountingCode.value}}</span>
+                            </div>
+                        </div>
+                        <div ng-if="absrState.context.showPayCode" class="-u-5-24">
+                            <div class="darkFont fontBold">{{strings['PayCode']}}</div>
+                            <div class="lightFont rightPadding10">
+                                {{absence.payCode == null || absence.payCode.value == ""? strings['NoneSelected'] : absence.payCode.value}}
+                            </div>
+                        </div>
+                        <div class="-u-6-24" ng-if="absrState.context.showExtensions && !absrState.absr.isVacancy && absrState.substitute !== null && extensions.length > 0">
+                             <div class="darkFont fontBold">{{strings['ConfirmationNumber']}} :</div>    
+                            <div class="element">
+                                <cmpt-template-day-extensions extensions="extensions"></cmpt-template-day-extensions>
+                            </div>
+                        </div>
+                        <div ng-if="absrState.context.showHoursSubWorked && !inServiceDay" class="-u-6-24">
+                            <div class="darkFont fontBold">{{strings['HoursSubstituteWorked']}}</div>
+                            <div class="lightFont">{{absence.hoursSubWorked == ""? '-' : absence.hoursSubWorked}}</div>
+                        </div>
+                        <div ng-if="absrState.context.showAbsenceTime" class="-u-6-24">
+                            <div class="darkFont fontBold">{{strings['TimeAbsent']}}</div>
+                            <div class="lightFont">{{absence.userSpecifiedAbsenceDuration == ""? '-' : absence.userSpecifiedAbsenceDuration}}
+                            </div>
+                        </div>
+                        <div ng-if="absrState.context.showNonPayTime" class="-u-6-24">
+                            <div class="darkFont fontBold">{{strings['NonPayTime']}}</div>
+                            <div class="lightFont">{{absence.nonPayTime == ""? '-' : absence.nonPayTime}}</div>
+                        </div>
+                        <div ng-if = "absence.shiftType.id == 4 && showCustomBreakTime && canDeductCustomBreakTime" class="-u-6-24">
+                            <div ng-if=" isReviewingAbsenceRequest && ((absence.deductCustomBreakTime && absence.doesBreakTimeOverlapAbsenceTimes) || (absrState.context.CanViewBreakTime && !absrState.context.CanEditBreakTime))">
+                            <div class="darkFont fontBold">{{strings['DeductBreak']}}</div>
+                            <div class="lightFont">{{absence.breakStartTime}} to {{absence.breakEndTime}}</div>
+                        </div>
+                        <div ng-if="!isReviewingAbsenceRequest && absence.DeductBreakFromAbsenceDuration" >
+                            <div class="darkFont fontBold">{{strings['DeductBreak']}}</div>
+                            <div class="lightFont">{{absence.BreakStart}} to {{absence.BreakEnd}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="dialog-popup balance-year-start-popup">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content" ap-bind-html="ngDialogData.body"></div>
+		<div class="settings">
+			<div class="-g">
+				<div class="-u-7-24 radio-btn">
+				 	<input type="radio" data-ng-model="ngDialogData.balanceYearVm.isHireDate" data-ng-value="false">
+				</div>
+				<div class="-u-10-24">
+					<cmpt-ui-dropdown-v2
+						name="month"
+						options-array="ngDialogData.balanceYearVm.monthList"
+						value-selected="ngDialogData.balanceYearVm.month"
+						allow-blank="false"
+						enabled="!ngDialogData.balanceYearVm.isHireDate"
+						sort-by="'id'"
+						enabled="true">
+					</cmpt-ui-dropdown-v2>
+				</div>
+				<div class="-u-7-24 day-drpdwn">
+					<cmpt-ui-dropdown-v2
+						name="day"
+						options-array="ngDialogData.balanceYearVm.dayList"
+						value-selected="ngDialogData.balanceYearVm.day"
+						allow-blank="false"
+						enabled="!ngDialogData.balanceYearVm.isHireDate"
+						enabled="true">
+					</cmpt-ui-dropdown-v2>
+				</div>
+			</div>
+			<div class="-g">
+				<div class="-u-7-24 radio-btn">
+					<input type="radio" data-ng-model="ngDialogData.balanceYearVm.isHireDate" data-ng-value="true">
+				</div>
+				<div class="-u-17-24">
+					<label>
+						{{ ngDialogData.strings['balanceYear.label.ByUserHireDate'] }}
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="{{ button.cls }}"
+			ng-click="button.action()"
+			ng-repeat="button in ngDialogData.buttons"
+		>
+			<i class="fa fa-spinner fa-spin"
+				ng-if="!!button.loading"
+			></i>{{ button.title }}
+		</a>
+	</div>
+</div>

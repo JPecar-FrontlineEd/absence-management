@@ -1,0 +1,23 @@
+<div class="fixed-width route-settings-school-details" ng-controller="SchoolDetailsCtrl as route">
+	<div class="heading">
+		{{route.strings['SchoolSettings.text.SchoolSettings']}}
+	</div>
+
+	<span ng-show="route.vm.showInstitutions" class="school-selector filter">
+		<span class="label">{{route.strings['schoolList.heading.selectSchool']}}</span>
+		<cmpt-ui-dropdown
+			options-array="route.vm.institutions"
+			value-selected="route.vm.institution"
+			allow-blank="false"
+			enabled="true"
+			field-width="300px"
+   			error-messages="[]"></cmpt-ui-dropdown>
+	</span>
+
+	<h3>{{route.vm.schoolName}}</h3>
+
+	<cmpt-ui-tabs tabs="route.vm.tabs"></cmpt-ui-tabs>
+   	<div class="content-panel">
+		<ui-view></ui-view>
+	</div>
+</div>

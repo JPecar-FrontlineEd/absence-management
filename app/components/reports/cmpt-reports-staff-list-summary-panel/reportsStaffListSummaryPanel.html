@@ -1,0 +1,43 @@
+<div class="-g cmpt-reports-staff-list-summary-panel">
+	<div class="-u-8-24 chart-wrap">
+		<div class="graph-content">
+			<cmpt-ui-bar-graph
+				graph-data="vm.employeeGraphData"
+				colors="vm.colors"
+				title-hovered="vm.titleHovered"
+				ng-if="vm.hasEmployeeData"
+			></cmpt-ui-bar-graph>
+			<div class="no-chart-container" ng-if="!vm.hasEmployeeData">
+				<div class="no-Chart">
+					No Employees
+				</div>
+			</div>
+		</div>
+		<div ng-if="vm.hasEmployeeData" class="graph-title">Employees</div>
+	</div>
+
+	<div class="-u-8-24 chart-wrap">
+		<div class="graph-content">
+			<cmpt-ui-bar-graph
+				graph-data="vm.vacancyGraphData"
+				colors="vm.colors"
+				title-hovered="vm.titleHovered"
+				ng-if="vm.hasVacancyData"
+			></cmpt-ui-bar-graph>
+			<div class="no-chart-container" ng-if="!vm.hasVacancyData">
+				<div class="no-Chart">
+					No Vacancy Profile
+				</div>
+			</div>
+		</div>
+		<div ng-if="vm.hasVacancyData" class="graph-title">Vacancy Profiles</div>
+	</div>
+	<div class="-u-8-24">
+		<cmpt-ui-bar-graph-legend
+			graph-data="vm.legendData"
+			colors="vm.colors"
+			title-hovered="vm.titleHovered"
+			
+		>{{strings['DR.Summar.Legend.Header.ReadingTheReport']}}:</cmpt-ui-bar-graph-legend>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+<div class="cmpt-ui-multiselect {{specialClass}}" ng-style="vm.styles">
+	<span class="label" ng-style="vm.labelStyle" title="{{ vm.label || strings[labelAll] }}">{{ vm.label || strings[labelAll] }}</span>
+	<span class="selector">
+		<div
+			class="ui-multiselect ui-widget ui-state-default ui-corner-all trigger-button"
+			ap-menu-toggler="dropdown" click-toggler no-hide-on-select="{{::vm.multiselect}}"
+			ng-click="go.showMenu($event)"
+			on-menu-close="go.menuHasClosed()"
+			ng-class="::{disabled: vm.singleSelect}"
+		>
+			<span class="ui-icon ui-icon-triangle-1-s"></span>
+			<span ng-if="!isGlobalSearch" class="type-label">{{:: strings.bind(type) }}</span>
+
+			<ul class="dropdown" ng-class="::{multi: vm.multiselect}">
+				<li>
+					<div ng-if="!isGlobalSearch" class="search" ng-click="go.cancel($event)">
+						<div class="dropdown-filter">
+							<span class="filter-label">{{:: strings.bind('Filter') }}:</span>
+							<input aria-label = "{{strings.bind('Filter')}}" ng-model="vm.filterTextImmediate" type='search'/>
+							<span class="view-all"
+								ng-click="go.selectNone()"
+								ng-show="::vm.multiselect">{{:: strings.bind('ViewAll') }}</span>
+							<i class="fa fa-times-circle" ng-click="go.closeMenu()"></i>
+						</div>
+					</div>
+					<ul class="items"  ng-if="!vm.checkMax || (vm.filterText.length >= vm.minLetter)">
+						<li ng-if="::!vm.multiselect" ng-hide="vm.itemList.length === 0">
+							<input
+								type="radio"
+								id="ms-{{::name}}-all"
+								name="{{::name}}"
+								value=""
+								ng-click="go.selectItem($event, item)">
+							<label for="ms-{{::name}}-all">{{:: strings.bind(labelAll) }}</label>
+						</li>
+						<li ng-show="vm.itemList.length === 0" class="loading">
+							<span class="data-spinner"></span>
+						</li>
+						<li ng-repeat="item in vm.itemList" class="list-item" ng-class="{disabled: !item.enabled, checked: item.checked, hidden: !item.visible}">
+							<input
+								type="{{::(vm.multiselect ? 'checkbox' : 'radio')}}"
+								id="ms-{{::name}}-{{::$index}}"
+								name="{{::name}}"
+								value="{{::item.id}}"
+								ng-click="go.selectItem($event, item)"
+								ng-disabled="!item.enabled"
+								ng-checked="item.checked">
+							<label for="ms-{{::name}}-{{::$index}}" class="nest-{{::item.nestLevel}}">{{::item.value}}</label>
+						</li>
+					</ul>
+					<ul class="before-type" ng-show="vm.checkMax && (vm.filterText.length < vm.minLetter)">
+						Type at least {{ vm.minLetter }} letters to start search
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</span>
+</div>

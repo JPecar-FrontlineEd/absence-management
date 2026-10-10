@@ -1,0 +1,117 @@
+@import "common-var"
+.cmpt-template-visibility-calculator {
+	padding: 10px;
+	font-size: 14px;
+	.visibility-details {
+		width: 325px;
+		display: inline-block;
+		.cmpt-ui-sortable-grid {
+			.percentNum-th {
+				text-align: center;
+			}
+			.percentNum-cell {
+				font-weight: bold;
+			}
+			.visibleOn-cell {
+				line-height: 15px;
+			}
+		}
+	}
+	.visibility-summary {
+		vertical-align: top;
+		margin: 10px 0 0 20px;
+		width: 250px;
+		display: inline-block;
+		background-color: backGroundColor;
+		border: 2px dashed borderColor;
+		border-radius: 10px;
+		font-size: 13px;
+		font-weight: normal;
+		.row {
+			margin-top: 20px;
+			.label {
+				font-weight:bold;
+			}
+			.cmpt-ui-date-selector {
+				.fl-input {
+					font-size: 13px;
+				}
+			}
+			.time {
+				padding: 2px 0px 3px 6px;
+				margin-left: 5px;
+				width: 80px;
+			}
+			.format {
+			  color: subTitle-color-light;
+				font-size: 12px;
+				font-weight: normal;
+				margin-top: 2px;
+			}
+			.slider-percent {
+				width: 50px;
+			}
+			.cmpt-ui-slider {
+				display: inline-block;
+				width: 90px;
+				margin-right: 20px;
+				.markers {
+					display:none;
+				}
+			}
+			&.visible-on {
+				border-top: 1px solid borderColor-light;
+				padding-top: 18px
+				.label, .date {
+					display: inline-block;
+					width: 50%;
+				}
+				.label {
+					vertical-align: top;
+				}
+				.date {
+					font-size: 14px;
+					font-weight: bold;
+  					color: ap-blue;
+  					line-height: 18px;
+				}
+			}
+			&.lead-time {
+				.desc,.value {
+					display: inline-block;
+					width: 50%;
+				}
+				.desc {
+					line-height:13px;
+				}
+				.value {
+					vertical-align: top;
+					font-weight: bold;
+					font-size: 18px;
+				}
+			}
+		}
+		.inputs {
+			padding: 15px;
+			.summary {
+				line-height: 125%;
+			}
+		}
+		.results {
+			background-color: visibilityCalculator-result-backGroundColor;
+  			padding: 15px;
+  			.lead-time {
+  				.value {
+  					font-size: 14px;
+  					color: ap-blue;
+  				}
+  			}
+		}
+		.cmpt-ui-date-selector {
+			display: inline-block;
+		}
+		input {
+			display: inline-block;
+		}
+	}
+}

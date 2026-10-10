@@ -1,0 +1,80 @@
+<div class="cmpt-ui-grouped-grid" ng-class="{'not-ready-for-print': !vm.printing}">
+	<div class="grid-header -g" ng-show='isLoaded && showHeader' ng-class="{'hide-print':printWithBreaks}">
+		<div class="{{ vm.colClasses['data'][col.key] }} {{:: col.key + '-th' }} {{:: col.cls }}"
+			ng-repeat="col in columns"
+			ng-style="vm.colStyles['data'][col.key]"
+		>
+		{{ ((col.autoResolveName) ? strings[col.name] : col.name) || '&nbsp;' }}
+		</div>
+	</div>
+	<ul class="grid-rows">
+		<li class="grid-row grouped-data"
+			ng-repeat="group in vm.gridRows"
+			ng-class="{'page-breaks':printWithBreaks}"
+			ng-init="group.$index = $index"
+		>
+			<div class="grid-header -g no-screen" ng-show='printWithBreaks'>
+				<div class="{{ vm.colClasses['data'][col.key] }} {{:: col.key + '-th' }} {{:: col.cls }}"
+					ng-repeat="col in columns"
+					ng-style="vm.colStyles['data'][col.key]"
+				>
+				{{ (col.name.length > 0 ? strings[col.name] : '') }}
+				</div>
+			</div>
+			<div class="-u-1 {{:: summaryRow.cssClass }}" ng-show="$index === 0 && summaryRow !== null && group.items.length > 0"
+				ap-bind-html="summaryRow.template">
+			</div>
+			<div class="-u-1 group-row" ng-if="groupBy.length > 0" ap-bind-html="group.title"></div>
+			<ul class="grid-rows">
+				<li class="grid-row row-{{ group.$index }}-{{ $index }}"
+					ng-repeat="row in group.items"
+					ng-style="{'min-height': (vm.printing ? 0 : row.$height || vm.avgRowHeight || 50) + 'px', 'background-color': (row.substitute && row.id === row.substitute.id)?'#EDF5FF':''}"
+					in-view="(row.isInView = $inview) && row.$height == null && go.rowInView(group, row)"
+					in-view-options="{offsetTop: -300, offsetBottom: 200}"
+					ng-init="row.$index = $index"
+				>
+					<div class="-g row-item"
+						ng-class="{'selected' : $parent.selected.length > 0 && !vm.multiSelect && $parent.selected[0].id === row.id && row.id != null}"
+						ng-click="vm.multiSelect || go.select(row)"
+						ng-dblclick="dblclick(row)"
+						ng-if="row.isInView || vm.printing"
+						
+					>
+						<input type="radio" class="radio"
+							value="{{:: row.id }}"
+							id="{{row.id}}"
+							ng-model="vm.selectedId"
+							name="selectedItem"
+							ng-if="vm.enableSelection && !vm.multiSelect"
+						>
+						<input type="checkbox" class="checkbox"
+							value="{{:: row.id }}"
+							ng-model="row.selected"
+							ng-click="go.selectMultiple(row)"
+							ng-if="vm.enableSelection && vm.multiSelect"
+						>
+						<div
+							class="{{:: vm.colClasses['data'][col.key] }} {{:: col.key + '-cell' }} {{:: 'cell-' + $index }} grid-cell"
+							ng-style="vm.colStyles['data'][col.key]"
+							title="{{:: col.noTitle ? '' : row[col.key] }}"
+							ng-repeat="col in columns"
+							ap-bind-html="::( col.template || col.render(row[col.key], row) )"
+						></div>
+					</div>
+				</li>
+			</ul>
+			<div class="-u-1 grid-row grid-footer" ng-show="group.items.length > 0 && footerColumns.length > 0">
+				<div
+					class="{{:: vm.colClasses['footer'][col.key] }} {{:: col.key + '-cell' }} {{:: 'cell-' + $index }} grid-cell"
+					ng-style="vm.colStyles['footer'][col.key]"
+					title="{{:: col.noTitle ? '' : group[col.key] }}"
+					ng-repeat="col in footerColumns"
+					ap-bind-html="::( col.template || col.render(group[col.key], group) )"
+				></div>
+			</div>
+		</li>
+	</ul>
+	<div class="no-data" ng-show="(!isLoaded || (isLoaded && vm.gridRows.length === 0))">
+		<ng-transclude></ng-transclude>
+	</div>
+</div>

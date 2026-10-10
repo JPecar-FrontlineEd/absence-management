@@ -1,0 +1,44 @@
+@import "common-var"
+.cmpt-template-general-info-tooltip {
+	infoColor = absence-summarySection-backGroundColor;
+	background: infoColor;
+	.top-section{
+		color: subTitle-color-light;
+		font-size: 12px;
+		& > div:first-child{
+			text-align: left;
+		}
+		& > div:last-child{
+			text-align: right;
+		}
+	}
+	.name{
+		color: subTitle-color-dark;
+		font-size: 14px;
+		font-weight: bold;
+		padding-top: 2px;
+		padding-bottom: 18px;
+	}
+	.data-list{
+		color: subTitle-color-dark;
+		div {
+			margin: 0 0 3px 0;
+			span {
+				vertical-align: middle;
+			}
+			i {
+				font-size: 14px;
+				font-style: normal;
+				&:before{
+					margin-right: 5px;
+				}
+			}
+		}
+		.value-without-icon{
+			margin: 7px 0 3px 0;
+			font-size: 12px;
+			font-weight: 600;
+			line-height:1.4;
+		}
+	}
+}

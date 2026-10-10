@@ -1,0 +1,26 @@
+<div class="dialog-popup modal-feedback-delete-confirmation">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content">
+			<div class="message" ng-bind-html="ngDialogData.confirmMessage"></div>
+			<div>
+				{{ngDialogData.absrInfoText}}
+				<span ng-if="ngDialogData.showApprovalStatus && ngDialogData.absr.requiresApproval">
+					&nbsp;/&nbsp;
+					<cmpt-template-approval requires-approval="ngDialogData.absr.requiresApproval" is-approved="ngDialogData.absr.isApproved" is-denied="ngDialogData.absr.isDenied" is-partially-approved="ngDialogData.absr.isPartiallyApproved">
+					</cmpt-template-approval>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="{{ button.cls }}"
+			ng-click="button.enabled && button.action(ngDialogData.selectedId)"
+			ng-repeat="button in ngDialogData.buttons"
+			ng-class="{'fl-disabled': !button.enabled}"
+		>
+			<i class="fa {{button.loading ? 'fa-spinner fa-spin' : button.icon}}"></i>
+			{{ button.title }}
+		</a>
+	</div>
+</div>

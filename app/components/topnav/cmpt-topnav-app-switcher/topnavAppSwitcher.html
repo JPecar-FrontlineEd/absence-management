@@ -1,0 +1,26 @@
+<div class="cmpt-topnav-app-switcher nav-node" ap-menu-toggler="dropdown" click-toggler ng-show="vm.products.length">
+	<div class="product fa fa-angle-down-after" ng-class="{'ghost-aesop': vm.aesopObj.hideRealName}">
+		<!-- <div>
+			<i class="app-switch-icon fa fa-th"></i>
+		</div> -->
+		<!-- <span> -->
+			<div class="name">{{ vm.aesopObj.displayName }}</div>
+			<div class="sub-title" ng-hide="vm.aesopObj.hideRealName">Formerly {{ vm.aesopObj.name }}</div>
+		<!-- </span> -->
+	</div>
+	<ul class="dropdown">
+		<li ng-repeat="product in vm.products | orderBy:'displayName'"
+			ng-class="{active: product.active, 'not-purchased': !product.purchased}"
+			title="{{strings[product.titleTextMnumonic]}}"
+		>
+			<a ng-href="{{ (product.loadUrl !== '') ? product.loadUrl : product.marketingUrl}}" >
+				<div class="name">{{ product.displayName }}<span ng-hide="product.hideRealName">({{ product.name }})</span></div>
+				<i class="fa fa-check"></i>
+			</a>
+			<!-- <a ng-if="product.loadUrl === ''" ng-href="{{product.marketingUrl}}" >
+				<i class="fa fa-logo-{{product.lCaseName}}"></i>
+				<i class="fa fa-check"></i>
+			</a> -->
+		</li>
+	</ul>
+</div>

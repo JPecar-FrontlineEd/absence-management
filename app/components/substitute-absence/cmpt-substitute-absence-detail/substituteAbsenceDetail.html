@@ -1,0 +1,154 @@
+<div class="cmpt-substitute-absence-detail" ng-class="{'cannot-edit': vm.canEdit !== null && !vm.canEdit, 'loading-state' : vm.canEdit === null }">
+	<cmpt-substitute-absence-buttons class="top" form-value="substituteAbsenceForm"></cmpt-substitute-absence-buttons>
+	<cmpt-ui-loader is-loading="vm.canEdit === null" status-text="vm.statusText" fill></cmpt-ui-loader>
+	<div class="section-header">
+		<span>{{ vm.titleDate }}</span>
+        <span ng-if="substituteAbsenceVal.institution"> at&nbsp;</span>
+		<cmpt-template-institution-link inst-id="{{ substituteAbsenceVal.institution.id }}" inst-name="{{ substituteAbsenceVal.institution.value }}" show-name-as-link="true"></cmpt-template-institution-link>
+	</div>
+	<div class="content" ng-class="{'view-mode' : !substituteAbsenceVal.editMode, 'edit-mode': substituteAbsenceVal.editMode}">
+		<div class="details"  ng-init="go.initilizeForm(substituteAbsenceForm)">
+			<div class="row institution">
+				<label>
+					<span class="text">{{ strings['School'] }}</span>
+				</label>
+				<div class="element">
+					<cmpt-ui-dropdown-v2
+						options-array="vm.institutionList"
+						value-selected="substituteAbsenceVal.institution"
+						read-only="!vm.editable.institution"
+						required="true"
+						form-value="substituteAbsenceForm.institution"
+						name="institution"
+						enabled="true">
+							<div ng-message="required">{{ strings['Validation.Institution.Required'] }}</div>
+					</cmpt-ui-dropdown-v2>
+				</div>
+			</div>
+			<div class="form-loader" ng-if="!vm.instDependentDataReady">
+				<cmpt-ui-loader cls="loader" is-loading="true"></cmpt-ui-loader>
+			</div>
+			<div class="form" ng-show="vm.instDependentDataReady && substituteAbsenceVal.institution">
+				<div class="row date">
+					<label>
+						<span class="text">{{ strings['Date'] }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-date-selector-v2
+							name="date"
+							value-text="substituteAbsenceVal.date"
+							form-value="substituteAbsenceForm.date"
+						 	ng-if="vm.editable.date"
+						 	max-length="vm.dateLength"
+						 	min-date="vm.pastAbsenceDate"
+						 	validations="decoratordate"
+						 	required="true"
+						 	alloweddow="vm.allowedDow"
+							on-change="go.validateDate"
+							button-label="vm.SelectSubstituteDate"
+						 	update-on-blur>
+						 	<div ng-message="required">{{ strings['Validation.Date.Required'] }}</div>
+							<div ng-message="maxlength">{{ strings['Validation.Date.Format'] }}</div>
+							<div ng-message="decoratordate">{{ strings['Validation.Date.Format'] }}</div>
+							<div ng-message="absencePastDate">{{ strings['Validation.Date.CannotSelectThisDatePast'] }}</div>
+							<div ng-message="allowedDOW">{{ strings['Validation.Date.CannotSelectThisDOW'] }}</div>
+						</cmpt-ui-date-selector-v2>
+						<div ng-if="!vm.editable.date">{{ vm.date }}</div>
+					</div>
+				</div>
+				<div class="row entitlementType">
+					<label>
+						<span class="text">{{ strings['AbsenceReason'] }}</span>
+						<span class="required-field" ng-if="substituteAbsenceVal.editMode && vm.canEdit">*</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-dropdown-v2
+							options-array="vm.entitlementTypeList"
+							value-selected="substituteAbsenceVal.entitlementType"
+							read-only="!vm.editable.entitlementType"
+							sort-by="id"
+							required="true"
+							form-value="substituteAbsenceForm.entitlementType"
+							name="entitlementType"
+							enabled="true">
+								<div ng-message="required">{{ strings['Validation.AbsenceReason.Required'] }}</div>
+						</cmpt-ui-dropdown-v2>
+					</div>
+				</div>
+				<div class="row report-times">
+					<label>
+						<span class="text">{{ strings['Time'] }}</span>
+						<span class="caption" ng-if="substituteAbsenceVal.editMode && vm.canEdit">{{ strings['EnterValidAMPMTime'] }}</span>
+					</label>
+					<div class="element">
+						<span class="field">
+							<cmpt-ui-textbox-v2
+								name="startTime"
+								value-text="substituteAbsenceVal.startTime"
+								form-value="substituteAbsenceForm.startTime"						required="true"
+								read-only="!vm.editable.startTime"
+								placeholder="HH:MM AM"
+								filter="time"
+								validations="decoratortime"
+								on-blur="go.validateTime"
+								update-on-blur>
+								<div ng-message="required">{{ strings['Validation.StartTime.Required'] }}</div>
+								<div ng-message="decoratortime">{{ strings['EnterValidAMPMTime'] }}</div>
+								<div ng-message="decoratortimecomparison">{{ strings['Validation.StartTime.BeforeEndTime'] }}</div>
+							</cmpt-ui-textbox-v2>
+						</span>
+						<span class="text">to</span>
+						<span class="field">
+							<cmpt-ui-textbox-v2
+								name="endTime"
+								value-text="substituteAbsenceVal.endTime"
+								form-value="substituteAbsenceForm.endTime"
+								required="true"
+								read-only="!vm.editable.endTime"
+								placeholder="HH:MM AM"
+								filter="time"
+								validations="decoratortime"
+								on-blur="go.validateTime"
+								update-on-blur>
+								<div ng-message="required">{{ strings['Validation.EndTime.Required'] }}</div>
+								<div ng-message="decoratortime">{{ strings['EnterValidAMPMTime'] }}</div>
+								<div ng-message="decoratortimecomparison">{{ strings['Validation.EndTime.AfterStartTime'] }}</div>
+							</cmpt-ui-textbox-v2>
+						</span>
+					</div>
+				</div>
+				<div class="row accountingCode" ng-if="$root.havePermission('SUBABS.DTLSACCD')">
+					<label>
+						<span class="text">{{ strings['AccountingCode'] }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-dropdown-v2
+							options-array="vm.accountingCodeList"
+							value-selected="substituteAbsenceVal.accountingCode"
+							read-only="!vm.editable.accountingCode"
+							sort-by="go.sortByNameWithCustomAtBottom"
+							enabled="true">
+						</cmpt-ui-dropdown-v2>
+						<span ng-if="substituteAbsenceVal.accountingCode.id === 0 &&
+									!substituteAbsenceVal.editMode">&nbsp;-&nbsp;</span>
+						<cmpt-ui-textbox-v2
+							name="customAccountingCode"
+							value-text="substituteAbsenceVal.customAccountingCode"
+							form-value="substituteAbsenceForm.customAccountingCode"
+							max-length="vm.customAccountingCodeLength"
+							required="true"
+							read-only="!substituteAbsenceVal.editMode"
+							placeholder="None"
+							ng-if="substituteAbsenceVal.accountingCode.id === 0"
+							update-on-blur>
+							<div ng-message="required">{{ strings['Validation.AccountingCode.Custom.Required'] }}</div>
+							<div ng-message="maxlength">{{ strings['Validation.AccountingCode.Custom.Length'].replace('{0}', vm.customAccountingCodeLength) }}</div>
+						</cmpt-ui-textbox-v2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<cmpt-substitute-absence-existing-absences form-value="substituteAbsenceForm.date"></cmpt-substitute-absence-existing-absences>
+	</div>
+	<cmpt-substitute-absence-buttons class="bottom" form-value="substituteAbsenceForm"></cmpt-substitute-absence-buttons>
+</div>

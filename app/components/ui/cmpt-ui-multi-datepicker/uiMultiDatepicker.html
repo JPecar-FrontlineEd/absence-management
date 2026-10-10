@@ -1,0 +1,13 @@
+<div class="cmpt-ui-multi-datepicker" ng-class="{'error': errorMessages.length > 0}">
+	<div class="small-date-picker multi-datepicker"
+			ng-jquery-plugin='vm.jqMultiDatePlugins'
+			></div>
+	<div class="error-message" ng-repeat="value in errorMessages">
+		{{ value }}
+	</div>
+	<div ng-if="vm.showRelatedCalendarData" class="dotTextContainer" ng-class="{'marginLeft15P': vm.isVacancy}">
+		<span ng-if="!vm.isVacancy" class='dot absencedot'>A</span><span ng-if="!vm.isVacancy" class="dotlabel">{{strings['Absence']}}</span>
+		<span class='dot inservicedot' ng-class="{'vacancyLegendsMargin': vm.isVacancy}">IS</span><span class="dotlabel">{{strings['InService']}}</span>
+		<span class='dot closeddot' ng-class="{'vacancyLegendsMargin': vm.isVacancy}">C</span><span class="dotlabel">{{strings['Closed']}}</span>
+	</div>
+</div>

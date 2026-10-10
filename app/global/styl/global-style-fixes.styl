@@ -1,0 +1,72 @@
+@import "common-var"
+.qtip {
+  box-shadow: 0px 0px 15px boxShadow;
+}
+
+.qtip-content li {
+	white-space: nowrap;
+}
+
+.qtip-large {
+	background-color: qtip-backGroundColor;
+	padding: 10px;
+	border-radius: 5px;
+
+	.qtip-content {
+		padding: 0;
+
+		.wrapper {
+			display: inline-block;
+			padding: 15px;
+			width: 250px;
+			color: subTitle-color-darkest;
+			background-color: backGroundColor;
+		}
+	}
+}
+
+.dialog-popup {
+
+	.ngdialog-message {
+		& > div {
+			margin: 0 1rem 1rem 1rem;
+		}
+
+	 	.header {
+			font-size: 1.2rem;
+			color: dialog-header-color;
+			background: none repeat scroll 0% 0% dialog-header-backGroundColor;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			margin: 0 0 1rem 0;
+			padding: 0.7rem 2.7rem 0.7rem 1rem;
+		}
+
+		.content {
+			font-size: 1rem;
+		}
+	}
+
+	.ngdialog-buttons {
+
+		a {
+			float:right;
+			margin-left: 5px;
+
+			&.fl-link {
+				font-size: 14px;
+				margin: 6px 24px;
+				color: subTitle-color-darkest;
+				cursor:pointer;
+			}
+			i{
+				margin-right: 5px;
+			}
+
+		}
+	}
+}
+
+.ngdialog-close {
+	content: '\f05c';
+}

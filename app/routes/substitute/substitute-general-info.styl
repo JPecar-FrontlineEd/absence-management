@@ -1,0 +1,111 @@
+@import "common-var"
+.route-substitute-substitute-general-info {
+	.label {
+		font-weight: bold;
+	}
+	.deleted-sub {
+		border-radius: 4px;
+  	background: gradient-lightBlueBar-backGroundColor;
+  	background-image: gradient-lightBlueBar;
+		border: 1px solid gradient-lightBlueBar-borderColor;
+		color: gradient-lightBlueBar-color;
+		font: 14px/125% Helvetica,Arial,sans-serif;
+		padding: 15px;
+	}
+	.content {
+	  border: 5px solid content-panel-borderColor;
+		padding: 0px;
+		background: backGroundColor;
+		min-height: 300px;
+		position: relative;
+		.header {
+			background: gradient-blueBar-backGroundColor;
+			background-image: gradient-blueBar;
+		  border-bottom: 1px solid gradient-blueBar-borderColor;
+			color: gradient-blueBar-color;
+			padding: 20px;
+			position: relative;
+			.active-status {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+		}
+		.info-section {
+			padding: 10px;
+			.personal-info {
+				display: inline-block;
+				width: 45%;
+				border-right: 1px solid borderColor-medium;
+				font-size: 14px;
+				.avatar {
+					padding-right: 5px;
+					vertical-align: top;
+					display: inline-block;
+					img {
+					  width: 150px;
+						height: 150px;
+					}
+					.fa {
+						font-size: 150px;
+						line-height: 20px;
+					}
+				}
+				.info {
+					display: inline-block;
+					padding-left: 10px;
+					.sub-name {
+						font-weight: bold;
+						font-size: 16px;
+					}
+				}
+			}
+			.files {
+				display: inline-block;
+				vertical-align: top;
+				padding: 0 10px;
+				font-size: 16px;
+				.resume {
+					font-size: 14px;
+				}
+				.no-resume {
+					font-size: 14px;
+  					color: subTitle-color-light;
+  					font-weight: bold;
+				}
+			}
+		}
+		.skills {
+			.skill-header {
+				font-size: 14px;
+				background: content-panel-borderColor;
+				border-color: content-panel-borderColor;
+				color: backGroundColor;
+				padding: 10px;
+			}
+			.cmpt-ui-sortable-grid {
+				font-size: 12px;
+				.expired {
+					color: ap-red;
+				}
+				.no-data{
+					text-align:center;
+					.image{
+						  background: url(../images/No-Data-Initial.png);
+						  background-repeat: no-repeat;
+						  width: 150px;
+						  height: 135px;
+						  display: inline-block;
+						  background-position-x: 50%;
+					}
+					.caption{
+						font-size: 14px;
+					  	color: subTitle-color-light;
+					  	font-weight: bold;
+					  	text-align: center;
+					}
+				}
+			}
+		}
+	}
+}

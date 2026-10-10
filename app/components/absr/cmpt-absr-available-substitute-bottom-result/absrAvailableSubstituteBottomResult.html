@@ -1,0 +1,59 @@
+
+<div class="report-standards cmpt-absr-available-substitute-bottom-result" ng-class="{'spinner-bottom': vm.nextPage}">
+
+	<!-- <input ng-model="vm.value" type="text" id="mySlider3" slider options="vm.options" /> -->
+
+    <div class="details-section">
+		<div class="loader-container" ng-show="vm.loading">
+		   <cmpt-ui-loader
+		   		fill
+		   		is-loading="vm.loading">
+		   	</cmpt-ui-loader>
+		</div>
+
+		<div class="table-header" id="availableSubHeader">
+			<div class="row">
+				<div ng-style="{width: vm.nameColWidth}">&nbsp;</div>
+				<div ng-style="{width: vm.assignColWidth}" ng-if="$root.havePermission('ABSR.ASSIGNSUB')">&nbsp;</div>
+				<div class="data-col" ng-style="{width: vm.dataColsWidth}">
+					<div ng-style="{width: vm.qualifiedCheckWidth}">{{ strings['AvailableSub.Text.QualifiedAndAvailableChecks'] }}</div>
+					<div ng-style="{width: vm.additionalCheckWidth}">{{ strings['AvailableSub.Text.AdditionalChecks'] }}</div>
+				</div>
+				<div class="call-now" ng-style="{width: vm.callNowColWidth}" ng-if="$root.havePermission('ABSRPROC.FORCEABSRCALL')">&nbsp;</div>
+				<div class="block-unblock" ng-style="{width: vm.blockUnblockColWidth}" ng-if="$root.havePermission('ABSRPROC.BLOCKSUB')">&nbsp;</div>
+			</div>
+			<div class="row">
+				<div ng-style="{width: vm.nameColWidth}">{{ strings['AvailableSub.Text.SubstituteName'] }}</div>
+				<div ng-style="{width: vm.assignColWidth}" ng-if="$root.havePermission('ABSR.ASSIGNSUB')">{{ strings['Assign'] }}</div>
+				<div class="data-col" ng-style="{width: vm.dataColsWidth}">
+					<div ng-repeat="col in vm.columns"
+						 class="sub-heading"
+						 ng-style="{width: col.width}"
+						 title="{{ strings[col.toolTip].split('{0}').join('\n') }}">
+						{{ strings[col.title] }}
+					</div>
+				</div>
+				<div class="call-now tool-tip" ng-style="{width: vm.callNowColWidth}" ng-if="$root.havePermission('ABSRPROC.FORCEABSRCALL')" title="{{ strings['AvailableSub.Header.CallNow'].split('{0}').join('\n') }}">{{ strings['AvailableSub.Text.Call'] }}
+					<span class="call-sub-heading">
+						<i class="fa fa-spinner" ng-if="vm.callsRemaining === null"></i>
+						<span>{{ vm.callsRemaining }}/{{ vm.maxManualCallsPerAbsence }}</span>
+						<span class="leftMargin">{{ strings['AvailableSub.Text.Remaining'] }}</span>
+					</span>
+				</div>
+				<div class="block-unblock tool-tip" ng-style="{width: vm.blockUnblockColWidth}" ng-if="$root.havePermission('ABSRPROC.BLOCKSUB')" title="{{ strings['AvailableSub.Header.BlockUnblock'] .split('{0}').join('\n')}}">{{ strings['AvailableSub.Text.BlockUnblock'] }}</div>
+			</div>
+		</div>
+
+		<cmpt-ui-grouped-grid columns="vm.resultCols"
+							  dataset="vm.results"
+							  group-by="'group'"
+							  actions="go"
+							  parent-vm="vm">
+			<div ng-show="!vm.loading && (absrState.needSub || !showQualified)">{{strings['Absence.Create.Select.Text.NoRecordFound']}}</div>
+			<div ng-show="!vm.loading && showQualified && !absrState.needSub">{{strings['Absence.NeedSubOff.AssignSubWarning']}}</div>
+		</cmpt-ui-grouped-grid>
+		<div class="below-grid" ng-show="vm.moreRowsAvailable">
+			<button class="fl-button" ng-click="go.fetchData()">{{strings['Absence.Create.Select.LoadMore']}}</button>
+		</div>
+	</div>
+</div>

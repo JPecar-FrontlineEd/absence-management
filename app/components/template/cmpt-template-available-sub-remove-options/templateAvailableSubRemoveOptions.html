@@ -1,0 +1,105 @@
+<div class="dialog-popup cmpt-template-available-sub-remove-options">
+	<div class="ngdialog-message">
+		<div ng-if="!ngDialogData.data.deleteAbsence" class="header">{{ strings['Remove'] }} {{ strings['Substitute'] }} {{ strings['From'].toLowerCase() }} #{{ ngDialogData.data.abState.id}}
+		</div>
+		<div ng-if="ngDialogData.data.deleteAbsence" class="header">{{ ngDialogData.title }} - #{{ ngDialogData.data.abState.id}}
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="-u-12-24">
+					<div class="name">
+						{{ ngDialogData.data.abState.substitute.lastName }}, {{ ngDialogData.data.abState.substitute.firstName }}
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="-u-12-24">
+					<div class="phone">
+						{{ ngDialogData.data.abState.substitute.phone | phoneFormat }}
+					</div>
+				</div>
+
+				<div class="-u-12-24">
+					<div class="assigned">Assigned</div>
+				</div>
+			</div>
+			<div class="separator-bottom"></div>
+			<div class="row auto-allowSubToSeeJob">
+				<div class="-u-24-24">
+					<label class="multi-line-indent"><input type="checkbox" ng-model="vm.allowSubToSeeJob"> {{ strings['AbsenceForm.RemoveSub.Label.AllowSubToSeeAfterRemoval'].trim() }}</label>
+				</div>
+			</div>
+			<div class="row auto-canPreventSubRemovedNotification" ng-if="absrState.context.canPreventSubRemovedNotification">
+				<div class=" -u-24-24">
+					<label class="multi-line-indent"><input type="checkbox" ng-model="vm.notifySub"> {{ strings['AbsenceForm.RemoveSub.Label.NotifySub'].trim() }}</label>
+				</div>
+			</div>
+			<div class="row auto-datesWithinXHoursOfStartingString" ng-if="absrState.context.canPunishSubWhenRemoving && vm.datesWithinXHoursOfStartingString.length > 0">
+				<div class="-u-24-24">
+					<label class="multi-line-indent"><input type="checkbox" ng-model="vm.preventSubFromWorking"> {{ strings['AbsenceForm.RemoveSub.Label.PunishSub'].replace('{0}', vm.datesWithinXHoursOfStartingString).replace('{1}',vm.leadTime).trim()	}}</label>
+				</div>
+			</div>
+			<div class="separator-bottom"></div>
+			<div class="row auto-requested-by">
+				<div class="-u-10-24">
+					<label for="{{strings['SelectRequestedBy']}}">{{ strings['AbsenceForm.RemoveSub.Label.RequestedBy'] }}:</label>
+				</div>
+				<div class="-u-14-24">
+					<cmpt-ui-dropdown
+					options-array="vm.requestedOptions"
+					value-selected="vm.requestedBy"
+					sort-by="'id'"
+					allow-blank="false"
+					read-only="false"
+					enabled="true"
+					error-messages="[]"
+					uniqueMarkerClass="'auto-requested-by'"
+					label="strings['SelectRequestedBy']"></cmpt-ui-dropdown>
+				</div>
+			</div>
+			<div class="row" ng-if="vm.cancellationReasons.length">
+				<div class="-u-10-24">
+					<label for="{{strings['SelectCancellationReason']}}">{{ strings['Absense.Label.Text.CancellationReasons'] }}:</label>
+				</div>
+				<div class="-u-14-24">
+					<cmpt-ui-dropdown
+					options-array="vm.cancellationReasons"
+					value-selected="vm.cancellationReason"
+					sort-by="'id'"
+					allow-blank="true"
+					read-only="false"
+					default-text="strings['NoneSelected']"
+					enabled="true"
+					unique-marker-class="'auto-cancellation-reasons'"
+					error-messages="[]"
+					label="strings['SelectCancellationReason']"></cmpt-ui-dropdown>
+				</div>
+				</div>
+				<div class="separator-bottom"></div>
+			<div class="row ngdialog-buttons">
+
+				<div class="-u-24-24">
+					<a class="fl-button fl-negative RemoveSub" ng-if="!ngDialogData.data.deleteAbsence" ng-click="go.removeSub();closeThisDialog(true)">
+						<span class="fl-label ng-binding">
+							<i class="fa pull-left" ng-class="{'fa-times': !vm.isProcessing, 'fa-spinner fa-spin': vm.isProcessing}"></i>
+							{{ strings['AbsenceForm.Button.RemoveSub'] }}
+						</span>
+					</a>
+					<a class="fl-button fl-negative" ng-if="ngDialogData.data.deleteAbsence" ng-click="go.removeSubAndDeleteAbsence(ngDialogData.data.deleteAbsence, ngDialogData.data.cancelSelections);">
+						<span class="fl-label ng-binding">
+							<i class="fa pull-left" ng-class="{'fa-times': !vm.isProcessing, 'fa-spinner fa-spin': vm.isProcessing}"></i>
+							{{ strings['Delete'] }} {{ strings['And'].toLowerCase() }} {{ strings['AbsenceForm.Button.RemoveSub'] }}
+						</span>
+					</a>
+					<a class="fl-button" ng-click="closeThisDialog(true); go.showDeleteDialog(ngDialogData.data.deleteAbsence, ngDialogData.data.cancelSelections)">
+						<span class="fl-label ng-binding">
+							{{ strings['Cancel'] }}
+						</span>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,80 @@
+<div class="fixed-width report-standards route-reports-absence-interactive" ng-controller="InteractiveCtrl as route">
+	<cmpt-reports-switcher section="Absence"></cmpt-reports-switcher>
+
+	<h3>{{route.strings['Reports.Title.AbsenceInteractive']}}</h3>
+
+	<div class="panel">
+		<cmpt-reports-filter-panel filters="route.vm.filters" extra-validators="route.vm.validation" action="route.go.callToServer" original-filters="route.vm.resetFilters" ></cmpt-reports-filter-panel>
+	</div>
+
+	<div id="report-lock-header" class="lock-header-fill" ng-class="{'details-view': route.vm.showDetails}"></div>
+
+	<div class="header">
+		<div class="header-content">
+			<div class="count" ng-if="route.vm.showDetails" ng-show="!route.vm.isLoading" ng-class="{loaded: route.vm.dataLoaded}">{{route.vm.abscenceDataSet.length}}</div>
+			<div class="label" ng-class="{loaded: route.vm.dataLoaded}">{{route.strings['Reports.Title.AbsenceInteractive']}}</div>
+			<span ng-class="{'previous-available': route.vm.showPrevious && !route.vm.isLoading}">
+				<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			</span>
+
+			<div class="previous-page hide-print" ng-class="{'details-view': route.vm.dataLoaded && !route.vm.isLoading && route.vm.showDetails}" ng-show="route.vm.showPrevious && !route.vm.isLoading">
+				<a class="fl-button" ng-click="route.go.loadPreviousSearch()">{{ route.strings['Reports.Results.Button.PreviousPage'] }}</a>
+			</div>
+
+			<div class="download-details hide-print" ng-show="route.vm.dataLoaded && !route.vm.isLoading && route.vm.showDetails">
+				<a class="fl-button" ng-click="route.go.downloadDetails({title:'Details'},true)"><div class="fl-label">{{route.strings['AbsenceInteractive.Button.Text.DownloadDetails']}}</div></a>
+			</div>
+			<cmpt-ui-print-button></cmpt-ui-print-button>
+		</div>
+	</div>
+
+	<div class="top-header" ng-show="route.vm.dataLoaded && !route.vm.showDetails">
+		<div></div>
+		<div class="count-label">{{ route.strings['AbsenceInteractive.Header.Text.AbsenceVacancyCounts'] }}</div>
+		<div class="perc-label">{{ route.strings['AbseneInteractive.Header.Text.AbsenceVacancyPercentages'] }}</div>
+		<div></div>
+	</div>
+
+	<div class="content-panel" ng-class="{loaded: route.vm.dataLoaded,'accounting-code': route.vm.accountingCodeColumn}">
+		<cmpt-ui-sortable-grid
+			columns="route.vm.columns"
+			dataset="route.vm.dataSet"
+			actions="route.go"
+			ng-show="!route.vm.showDetails"
+			class="abs-int-view"
+			sort="route.vm.sort"
+		>
+			{{route.vm.dataLoaded ? route.strings['NoRecordsFound'] : route.strings['Reports.Results.Label.InitialInstructions']}}.
+		</cmpt-ui-sortable-grid>
+		<ul class="abs-int-view totals-row" ng-if="!route.vm.showDetails" ng-show="route.vm.dataLoaded && route.vm.dataSet.length > 0">
+			<li class="-g">
+				<div class="totalTitle -u-3-24"><span>{{route.vm.absIntTotals.title}}</span></div>
+				<div class="total -u-2-24"><span>{{route.vm.absIntTotals.Total}}</span></div>
+				<div class="sub-required -u-2-24">{{route.vm.absIntTotals.SubRequired}}</div>
+				<div class="filled -u-2-24">{{route.vm.absIntTotals.Filled}}</div>
+				<div class="unfilled -u-2-24">{{route.vm.absIntTotals.Unfilled}}</div>
+				<div class="no-sub-required -u-3-24">{{route.vm.absIntTotals.NoSubRequired}}</div>
+				<div class="percent-filled -u-2-24">{{route.vm.absIntTotals.PercentFilled}} %</div>
+				<div class="percent-unfilled -u-2-24">{{route.vm.absIntTotals.PercentUnFilled}} %</div>
+				<div class="percent-total -u-2-24">{{route.vm.absIntTotals.PercentTotal}} %</div>
+				<div class="actions -u-4-24">
+					<a class="fl-button-sm" ng-if="route.vm.absIntTotals.Total <= route.vm.maxDetailRows" ng-click="route.go.getDetails(route.vm.absIntTotals, true)"><span class="fl-label"> {{route.strings['absrList.button.viewDetails']}} </span></a>
+					<a class="fl-button-sm" ng-click="route.go.downloadDetails(route.vm.absIntTotals, true)"><span class="fl-label">{{route.strings['AbsenceInteractive.Button.Text.DownloadDetails']}}</span></a>
+				</div>
+			</li>
+		</ul>
+
+		<cmpt-ui-sortable-grid
+			columns="route.vm.absColumns"
+			dataset="route.vm.abscenceDataSet"
+			actions="route.go"
+			ng-show="route.vm.showDetails"
+			class="details-view"
+		>
+			<div ng-hide="route.vm.isLoading">
+				{{route.vm.dataLoaded ? route.strings['NoRecordsFound'] : route.strings['Reports.Results.Label.InitialInstructions']}}.
+			</div>
+		</cmpt-ui-sortable-grid>
+	</div>
+
+</div>

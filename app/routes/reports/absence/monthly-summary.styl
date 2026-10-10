@@ -1,0 +1,50 @@
+.route-reports-absence-monthly-summary {
+
+
+
+
+	.header {
+		.header-content {
+			.count {
+				display: none;
+			}
+		}
+	}
+	.cmpt-reports-filter-panel {
+		.filter-section {
+			.date-range, .approval-status {
+				display: none;
+			}
+		}
+	}
+
+	@media print {
+		&.report-standards h3{
+			margin-bottom: 0.5rem !important;
+		}
+		.panel{
+			padding: 5px 15px !important;
+			page-break-after: always;
+			.cmpt-reports-filter-panel {
+				.print-summary {
+					.dateRangeTitle, .dateRange, .approvalStatusTitle, .approvalStatus {
+						display: none !important;
+					}
+
+				
+				}
+			}
+		}
+
+		.content-panel{
+			.monthData-container{
+				page-break-after: always;
+			}
+		}
+		/* overrides to fix  DE12165 */
+		&.report-standards{
+			padding-top: 0;
+		}
+
+	}
+}

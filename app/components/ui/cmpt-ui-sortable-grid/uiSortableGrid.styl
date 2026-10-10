@@ -1,0 +1,71 @@
+@import "common-var"
+
+@media print {
+	.cmpt-ui-sortable-grid.not-ready-for-print {
+		&:before {
+			content: 'Please use CTRL + P to print this content correctly.';
+			margin-top: 50px;
+			font-size: 32px;
+			text-align: center;
+			display: block;
+		}
+		.grid-rows, .grid-header {
+			display: none!important;
+		}
+	}
+}
+.cmpt-ui-sortable-grid {
+	.no-data {
+		background-color: backGroundColor;
+		padding: 50px 0;
+
+		ng-transclude {
+			color: grid-transclude-color;
+			text-align: center;
+			display: block;
+		}
+	}
+
+	.loading {
+		position: relative;
+		background-color: backGroundColor;
+		padding-top: 50px;
+		width: 100%;
+		height: 150px;
+
+		&:after {
+			//content: "loading....";
+			position: relative;
+			font-size: 24px;
+			font-weight: bold;
+		}
+	}
+
+	.grid-header .grid-header-content {
+		cursor: default;
+
+		&.sortable {
+			cursor: pointer;
+
+			&:active {
+				color: ap-dark-grey-2;
+				background: backGroundColor;
+				background-image: gradientBar;
+				border-left: 1px solid grid-borderColor;
+				border-bottom: 1px solid grid-borderColor;
+				border-bottom-color: grid-borderColor;
+			}
+		}
+	}
+
+	.not-in-view {
+	}
+
+	.no-flexbox & .-g {
+		display: table !important;
+	}
+
+	.selectedRow{
+		background-color: #ffd;
+	}
+}

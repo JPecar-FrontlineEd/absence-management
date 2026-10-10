@@ -1,0 +1,4 @@
+<div class="cmpt-template-admin-link">
+	<a ng-if="showNameAsLink && (vm.link != '')" href="{{ vm.link }}" aria-label="{{strings['ApproverName']}}" title="{{:: adminName }}">{{:: adminName }}</a>
+	<span ng-if="!showNameAsLink || (vm.link == '')">{{adminName}}</span>
+</div>

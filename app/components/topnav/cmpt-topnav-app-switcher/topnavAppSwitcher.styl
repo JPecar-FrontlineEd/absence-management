@@ -1,0 +1,141 @@
+@import "common-var"
+
+selected-Nav-Product = #3F2A56;
+
+.cmpt-topnav-app-switcher {
+	// position: absolute;
+	float: left;
+	//width: sidebar-width-collapsed;
+
+	// .app-switch-icon {
+	// 	color: topbar-appSwitcherIcon-color;
+	// 	font-size: 18px;
+	// 	display: inline-block;
+	// 	width: sidebar-width-collapsed;
+	// 	height: topbar-height;
+	// 	text-align: center;
+	// 	line-height: topbar-height;
+	// 	cursor: pointer;
+		//
+		// &:after {
+		// 	content: "";
+		// 	position: absolute;
+		// 	left: sidebar-width-collapsed;
+		// 	top: 6px;
+		// 	height: topbar-height - 12px;
+		// 	width: 1px;
+		// 	background: topbar-appSwitcherIcon-color-after;
+		// }
+	//}
+
+	.product{
+		&.ghost-aesop{
+			.name{
+				line-height:32px;
+			}
+			&:after{
+				top:20px;
+			}
+		}
+		&.fa-angle-down-after{
+			margin: 12px 30px 13px 15px;
+		}
+		line-height: 30px;
+		.name{
+			font-size: 18px;
+			line-height: 20px;
+			font-weight: 600;
+		}
+		.sub-title{
+			line-height: 15px;
+			font-size: 12px;
+			opacity: 0.8;
+		}
+		&:after{
+			position: absolute;
+    	top: 14px;
+    	right: 10px;
+    	font-size: 18px;
+		}
+	}
+
+	.dropdown li {
+		width: auto;
+		color: lighten(topbar-appSwitcher-product-color, 20%);
+
+		i.fa-logo-absencedata{
+			font-size: 125px !important;
+		}
+
+
+		i:first-child {
+			position:absolute;
+			font-size: 100px;
+			display: inline-block;
+			height: app-switcher-item-height;
+			line-height: app-switcher-item-height;
+			margin-left: 10px;
+			font-style: normal;
+			&.fa-logo-applitrack {
+				font-size: 92px;
+			}
+		}
+
+
+		i:last-child {
+			color: subTitle-color-light;
+			position: absolute;
+			top: 8px;
+			right: 9px;
+			display: none;
+		}
+
+		a{
+			text-decoration: none;
+			color:subTitle-color-light;
+			.name{
+				font-size: 14px;
+				span{
+					margin-left: 5px;
+					font-size: 12px;
+					font-weight: 600;
+					opacity: 0.8;
+				}
+			}
+		}
+
+		&:hover {
+			color: topbar-appSwitcher-product-color;
+
+			i:last-child {
+				display: inline-block;
+				opacity: .5;
+			}
+		}
+
+		&.active {
+			i:last-child {
+				display: inline-block;
+			}
+			a,i{
+				color: selected-Nav-Product;
+			}
+			&:hover {
+				i:last-child {
+					display: inline-block;
+					opacity: 1;
+				}
+			}
+		}
+
+		&.not-purchased {
+			i:first-child {
+				color: subTitle-color-light;
+			}
+
+			i:last-child:before {
+				content: "\f05a";
+			}
+		}
+	}
+}

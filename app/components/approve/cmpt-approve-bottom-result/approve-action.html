@@ -1,0 +1,11 @@
+<div class="dialog-popup approval-popup" ng-class="{'forApprove': ngDialogData.forApprove, 'forDeny': !ngDialogData.forApprove}">
+	<div class="ngdialog-message">
+		<!-- TODO: show Approve or Deny (not both) -->
+		<div class="header"><span>{{ ngDialogData.header }}</span></div>
+		<cmpt-template-approve-action absr="ngDialogData.absr" comment="ngDialogData.comment.comment" class="no-bg"></cmpt-template-approve-action>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons" ><i class="fa {{button.loading ? 'fa-spinner fa-spin' : button.icon}}"></i>
+		{{ button.title }}</a>
+	</div>
+</div>

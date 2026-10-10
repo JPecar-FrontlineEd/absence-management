@@ -1,0 +1,12 @@
+<div class="cmpt-template-order-by">
+	<ng-transclude></ng-transclude>
+	<span ng-if="items.length <= 2 || !allowDropDown">
+		<label ng-repeat="item in items">
+			<input type="radio" name="order-by" ng-value="item.value" ng-model="iscope.selected" >
+			{{ item.title }}
+		</label>
+	</span>
+	<span ng-if="items.length > 2 && allowDropDown">
+		<select ng-options="items.title for item in items" ng-model="selected">
+	</span>
+</div>

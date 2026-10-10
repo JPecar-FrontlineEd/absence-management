@@ -1,0 +1,61 @@
+@import "common-var"
+.cmpt-ui-tabs {
+	.tabs {
+		a {
+			width: 150px;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			border: 0;
+			margin-right: 5px;
+			background: backGroundColor;
+			padding: 7px 10px;
+			display: inline-block;
+			opacity: 1;
+			text-align: center;
+			border: 1px solid borderColor-medium;
+			cursor: pointer;
+			vertical-align: bottom;
+
+			&.active {
+				background: grid-heading-color;
+				border: 1px solid content-panel-borderColor;
+
+				&:hover {
+					background: content-panel-borderColor;
+				}
+
+				span {
+					color: grid-group-title-color;
+				}
+			}
+
+			&:hover {
+				background: grid-group-title-color;
+				text-decoration: none;
+			}
+
+			&:focus {
+				text-decoration: none;
+			}
+
+			&.active {
+				&:focus {
+					
+				}
+			}
+
+			span {
+				font-size: 14px;
+				color: subTitle-color-darkest;
+				font-weight: bold;
+				text-align: center;
+
+				div {
+					font-weight: normal;
+					font-size: 11px;
+				}
+			}
+
+		}
+	}
+}

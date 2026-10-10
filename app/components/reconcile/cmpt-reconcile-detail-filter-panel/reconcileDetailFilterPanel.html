@@ -1,0 +1,110 @@
+<div class="cmpt-reconcile-detail-filter-panel">
+	<div class="filter-section panel">
+		<div class="filter-panel drop-downs">
+			<div class="filter school" ng-if="go.isKeyPresent('institutionList')"
+			ng-class="{'disabled': filters.institutionList.length=== 0}">
+			   		<cmpt-ui-multiselect class=""
+						type="Schools"
+						label-all="Reports.CriteriaPanel.Select.AllSchools"
+						items="filters.institutionList"
+						width="100%"
+						name="institutions"
+						multiple="false"
+						selected="filters.selectedInst"
+						allow-single-item="true"
+						enable="filters.institutionList.length > 0"
+					></cmpt-ui-multiselect>
+			</div>
+
+			<div class="filter budgetCodes"
+				ng-if="vm.canViewBudgetCodes && go.isKeyPresent('budgetCodeList')"
+				ng-class="{'disabled': filters.budgetCodeList.length === 0}"
+			>
+				<cmpt-ui-multiselect class=""
+					type="Reconciliation.Label.Text.BudgetCodes"
+					label-all="Option.Text.AllBudgetCodes"
+					items="filters.budgetCodeList"
+					width="100%"
+					name="budgetCodes"
+					multiple="false"
+					selected="filters.budgetCodeId"
+					allow-single-item="true"
+					enable="filters.budgetCodeList.length > 0"
+				></cmpt-ui-multiselect>
+			</div>
+			<div class="filter absenceReasons"
+				ng-if="go.isKeyPresent('absenceReasonList')"
+				ng-class="{'disabled': filters.absenceReasonList.length === 0}"
+			>
+				<cmpt-ui-multiselect class=""
+					type="Reconciliation.Label.Text.Reasons"
+					label-all="Option.Text.AllReasons"
+					items="filters.absenceReasonList"
+					width="100%"
+					name="absenceReasons"
+					multiple="false"
+					selected="filters.absenceReasonId"
+					allow-single-item="true"
+					enable="filters.absenceReasonList.length > 0"
+				></cmpt-ui-multiselect>
+			</div>
+			<div class="filter accountingCodes"
+				ng-if="vm.canViewAccountingCodes && go.isKeyPresent('accountingCodeList')"
+				ng-class="{'disabled': filters.accountingCodeList.length === 0}"
+			>
+				<cmpt-ui-multiselect class=""
+					type="Reconciliation.Label.Text.AccountingCodes"
+					label-all="Option.Text.AllAccountingCodes"
+					items="filters.accountingCodeList"
+					width="100%"
+					name="accountingCodes"
+					multiple="false"
+					selected="filters.accountingCodeId"
+					enable="filters.accountingCodeList.length > 0"
+					allow-single-item="true"
+				></cmpt-ui-multiselect>
+			</div>
+		</div>
+		<fieldset ng-class= "{'disabled': !isDataRendered }" ng-disabled = "!isDataRendered"  class="removeBorderPadding">
+		<div class="filter-panel"  >
+			<div class="filter filled-status auto-width"  ng-if="go.isKeyPresent('filledStatus')">
+				<div class="section-title" once-text="strings['Reconciliation.Label.Text.FilledStatus'] + ':'"></div>
+				<label>
+		        	<input type="checkbox" class="checkbox filled" ng-model = "filters.filledStatus.includeFilled" />
+		        	<span once-text="strings['Report.FillStatus.Filled']"></span>
+		        </label>
+				<label>
+		        	<input type="checkbox" class="checkbox includeUnfilled" ng-model="filters.filledStatus.includeUnfilled">
+		        	<span once-text="strings['Report.FillStatus.Unfilled']"></span>
+		        </label>
+		    	<label>
+		        	<input type="checkbox" class="checkbox subnotneeded" ng-model="filters.filledStatus.includeNoSubRequired">
+		        	<span once-text="strings['Report.FillStatus.SubNotNeeded']"></span>
+		        </label>
+			</div>
+		</div>
+		<div class="filter-panel type-state">
+			<div class="filter type-state">
+				<div class="absence-type auto-width" ng-if="go.isKeyPresent('absenceType') && vm.canViewVacancies">
+					<div class="section-title">{{strings['Reports.CriteriaPanel.Label.Type']}}:</div>
+					<label>
+			        	<input type="checkbox" class="checkbox absences" got-error="vm.endDateError" ng-model="filters.absenceType.includeAbsences">
+			        	<span once-text="strings['Absences']"></span>
+			        </label>
+			    	<label ng-if="vm.canViewVacancies">
+			        	<input type="checkbox" class="checkbox vacancies" ng-model="filters.absenceType.includeVacancies">
+			        	<span once-text="strings['Vacancies']"></span>
+			        </label>
+				</div>
+				<div class="states auto-width" ng-if="go.isKeyPresent('states')">
+					<div class="section-title" once-text="strings['State'] + ':'"></div>
+					<cmpt-template-reconcile-state
+						items='filters.states'
+						selected='filters.state'
+					></cmpt-template-reconcile-state>
+				</div>
+			</div>
+		</fieldset>
+		</div>
+	</div>
+</div>

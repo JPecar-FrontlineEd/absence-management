@@ -1,0 +1,51 @@
+@import "common-var"
+.cmpt-ui-linking {
+	div {
+		background: backGroundColor-dark;
+		background-image: gradientBar;
+		width: 37px;
+		height: 37px;
+		padding: 1px 8px;
+		border-radius: 22px;
+		border: 1px solid borderColor-medium;
+		color: subTitle-color-dark;
+		font-size: 20px;
+		cursor: pointer;
+		&.disabled {
+			border-color: borderColor-medium;
+			color: subTitle-color-light;
+			cursor: default;
+		}
+		&.toggleDiv {
+			position: absolute;
+			top: 11px;
+			left: -15px;
+			width: 30px;
+			height: 30px;
+    	}
+		&.top42{
+			top: 42px;
+		}
+		i.chain{
+                left: -1px;
+                font-size: 17px;
+                position: relative;
+                top: -5px;
+            }
+	}
+
+	&.editLink{
+        border: 1px solid rgb(192, 200, 207);
+        width: 20px;
+        height: 53px;
+        position: relative;
+        top: 15px;
+        left: 40px;
+        border-right-width: 0;
+	}
+	.breakTimeChain{
+		height: 124px;
+		top: 39px;
+		left: 36px;
+	}
+}

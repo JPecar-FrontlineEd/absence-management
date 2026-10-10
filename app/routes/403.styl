@@ -1,0 +1,120 @@
+.route-403 {
+	display: table;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	.test {
+		display: none;
+	}
+
+	.content {
+		display: table-cell;
+		vertical-align: middle;
+		height: 100%;
+		padding-left: 125px;
+		padding-top: 60px;
+		color: #616365;
+
+		.nav-expanded & {
+			padding-left: 325px;
+		}
+
+		.sk-nav-expanded & {
+ 			padding-left: 325px;
+ 		}
+
+		.tag, .message {
+			font-size: 3.5rem;
+			width: 670px;
+  			line-height: 1.2;
+		}
+
+		.tag {
+			font-weight: 400;
+		}
+
+		.message {
+			font-weight: 300;
+		}
+
+		.error-code {
+			font-size: 0.9rem;
+		}
+
+		.dashboard-button {
+			margin-top: 25px;
+			padding-left: 35px;
+			padding-right: 35px;
+		}
+	}
+
+
+	.mountains {
+		background: url('../images/error-page-mountains.png') no-repeat;
+		background-size: cover;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 25vh;
+		width: 100vw;
+
+		transition: all 200ms;
+
+		.nav-expanded & {
+			left: 150px;
+			height: 20vh;
+		}
+
+		.sk-nav-expanded & {
+ 			left: 150px;
+ 			height: 20vh;
+ 		}
+
+		svg {
+			display: none;
+		}
+	}
+
+	html.svg & .mountains {
+		background: none;
+		position: fixed;
+		bottom: 0;
+		left: 50px;
+		right: 0;
+		width: calc(100vw - 50px);
+
+		transition: left 200ms, width 200ms, height 200ms;
+
+		svg {
+			display: block;
+			width: calc(100vw - 50px);
+			transition: width 200ms;
+			position: absolute;
+			bottom: -40px;
+			left: 0;
+		}
+	}
+
+	html.svg .nav-expanded & .mountains {
+		left: 240px;
+		width: calc(100vw - 240px);
+
+		svg {
+			width: calc(100vw - 240px);
+		}
+	}
+
+	html.svg .sk-nav-expanded & .mountains {
+ 		left: 240px;
+ 		width: calc(100vw - 240px);
+ 
+ 		svg {
+ 			width: calc(100vw - 240px);
+ 		}
+ 	}
+}

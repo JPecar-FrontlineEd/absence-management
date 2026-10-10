@@ -1,0 +1,30 @@
+<div class="fixed-width route-test-test-page" ng-controller="TestPageCtrl as route">
+
+	<div class="container">
+		<cmpt-ui-bar-chart
+			data="data"
+			labels="labels"
+			series="series"
+			colors="colors"
+			options="options"
+		></cmpt-ui-bar-chart>
+	</div>
+
+	<div>
+		<button type="button" name="button" ng-click="route.go.extract()">Extract Image</button>
+	</div>
+	<div class="cont image">
+		<div class="header">Actual Image</div>
+		<img id="img" src="" alt="" />
+	</div>
+	<div class="cont string-rep">
+		<div class="header">64 Bit string equivalent</div>
+		<div id="string-rep"></div>
+	</div>
+
+
+	<div>
+		<button type="button" name="button" ng-click="route.go.download()">Download test</button>
+	</div>
+
+</div>

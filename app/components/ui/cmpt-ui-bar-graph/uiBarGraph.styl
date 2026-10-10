@@ -1,0 +1,70 @@
+@import 'common-var'
+
+.cmpt-ui-bar-graph {
+	height: 100%;
+	position: relative;
+
+	.graph-container {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		transition: height 500ms ease-out;
+	}
+
+	.bar-graph-bars {
+		position: absolute;
+		top: 25px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		> li {
+			position: absolute;
+			bottom: 0;
+			text-align: center;
+		}
+	}
+
+	.bar-value {
+		display: inline-block;
+		font-weight: bold;
+		font-size: 13px;
+		line-height: normal;
+		padding: 1px 6px;
+		top: -30px;
+		background-color: backGroundColor;
+		position: relative;
+		border-radius: 3px;
+		box-shadow: 0 0 5px boxShadow;
+	}
+
+	.bar-graph-bar-items {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		> li {
+			width: 100%;
+			position: relative;
+			top: 0;
+			left: 0;
+			transition: all 40ms;
+
+			&.stripes-overlay {
+				box-shadow: 1px 2px 3px 0px boxShadow-dark;
+				z-index: 1;
+				top: -1px;
+				left: -1px;
+			}
+		}
+	}
+	&.stacks .bar-graph-bar-items > li {
+		border-top: 1px solid borderColor-medium;
+		&:first-child {
+			border-top: none;
+		}
+	}
+}

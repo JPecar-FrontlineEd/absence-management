@@ -1,0 +1,40 @@
+<div class="dialog-popup confirm-delete-popup">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content">
+
+			<div class="cancelReasons" ng-if="ngDialogData.cancelReasons.length > 0">
+				<div>
+					<span class="cancel-reasons-label">{{ ngDialogData.strings['SelectCancelReason'] }}</span>
+					<span class="cancel-reasons-value">
+						<cmpt-ui-dropdown class="dropDown"  options-array="ngDialogData.cancelReasons" enabled="true"
+							value-selected="ngDialogData.cancelSelections.id">
+						</cmpt-ui-dropdown>
+					</span>
+				</div>
+				<div>
+					<span class="cancel-reasons-label">{{ ngDialogData.strings['EnterCancelNotes'] }}</span>
+					<span class="cancel-reasons-value"><textarea ng-model="ngDialogData.cancelSelections.notes"></textarea></span>
+				</div>
+				<div>
+					<span class="cancel-reasons-label">{{ ngDialogData.isVacancy ? ngDialogData.strings['FortheVacancy'] : ngDialogData.strings['FortheAbsence'] }}</span>
+					<span class="cancel-reasons-value">#{{ ngDialogData.absrState.absr.id }}</span>
+				</div>
+			</div>
+			<div ng-if="ngDialogData.cancelReasons.length === 0">
+				<p>
+					{{ ngDialogData.confirmText }}{{ ngDialogData.absrState.absr.id }}?
+				</p>
+			</div>
+			<div ng-if="!ngDialogData.absrState.editMode && ngDialogData.absrState.context.canRemoveSub && ngDialogData.absrState.substitute != null">
+				<label class="removeSubstituteLabel">
+					<input type="checkbox" ng-model="ngDialogData.unassignSubstitute" ng-change="ngDialogData.toggleUnassignSubstitute()" > {{ ngDialogData.strings['AbsenceForm.Button.RemoveSub'] }}, {{ ngDialogData.absrState.substitute.firstName }}  {{ngDialogData.absrState.substitute.lastName}} ({{ ngDialogData.strings['AbsenceForm.Button.MoreOptionsOnNextStep'] }})
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="ngdialog-buttons" ng-class="{'disabled': ngDialogData.state.isProcessing}">
+		<a class="fl-button {{ button.cls }}" ng-if="button.isVisible()" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons" ><i class="fa {{ button.icon }}"></i>
+		{{ button.title }}</a>
+	</div>
+</div>

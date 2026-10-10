@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        if (window.parent && window !== window.parent) {
+            var url = window.location.href;
+            if (url) {
+                window.parent.postMessage(url, location.protocol + "//" + location.host);
+            }
+        }
+    </script>
+</body>
+</html> 

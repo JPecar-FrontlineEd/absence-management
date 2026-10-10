@@ -1,0 +1,69 @@
+/* MIXINS
+ * --------------------------------------------- */
+/* user-select */
+/* VARIABLES
+ * --------------------------------------------- */
+/* Sizes */
+/* Colors */
+/* Colors v2 */
+/* Typography */
+/*------------------------------------*\
+    #CONTENT-BLOCKS
+\*------------------------------------*/
+/**
+  * Standard Area
+  */
+.fl-area {
+  background: #FFFFFF;
+  border: 1px solid #D5D5D5;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  min-height: 50px;
+}
+/**
+  * Summary Area
+  */
+.fl-area-summary {
+  background: #FFFFFF;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  min-height: 50px;
+}
+/**
+ * Filter Area
+ */
+.fl-area-filters {
+  background: #F5F5F5;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  padding: 20px;
+  -webkit-box-shadow: inset 0 0 4px #cccccc;
+  -moz-box-shadow: inset 0 0 4px #cccccc;
+  box-shadow: inset 0 0 4px #cccccc;
+}
+/*
+ * Standard Sidebar
+ */
+.fl-sidebar {
+  background: #F6FBFF;
+  border-top: 1px solid #CCDDEE;
+  padding: 10px;
+}
+/*
+ * Simple Box
+ */
+.fl-box {
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  padding: 10px;
+}
+
+.separator-bottom {
+  border-bottom: 1px solid #e8e8e8;
+}
+.separator-top {
+  border-top: 1px solid #e8e8e8;
+}

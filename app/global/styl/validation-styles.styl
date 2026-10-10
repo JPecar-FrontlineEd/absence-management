@@ -1,0 +1,224 @@
+@import "common-var"
+.input{
+    position:relative;
+    input,
+    select,
+    textarea {
+        width:100%;
+        padding: 6px 10px;
+        border: 1px solid borderColor-medium;
+        border-radius: 2px;
+        font-size:14px;
+        transition: padding 70ms ease-in-out;
+    }
+    input.hasDatepicker{
+        padding: 6px 30px 6px 10px;
+    }
+    .icon{
+        position:absolute;
+        color: ap-red;
+        left:14px;
+        font-size:16px;
+        line-height:35px;
+    }
+    input.ng-invalid.ng-touched,
+    select.ng-invalid.ng-touched,
+    textarea.ng-invalid.ng-touched {
+        border:1px solid ap-red;
+        padding: 6px 10px 6px 10px;
+    }
+    input.ng-invalid.ng-touched.hasDatepicker{
+        padding: 6px 30px 6px 30px;
+    }
+    input[disabled] {
+        opacity:0.3;
+    }
+    .validation-messages {
+        font-size: 13px;
+        font-weight: 600;
+        background: ap-red;
+        color: ap-light-grey-4;
+        width: 100%;
+        padding: 6px 10px;
+        margin-top:1px;
+        position: absolute;
+        z-index: 1;
+        box-shadow: 0 2px 4px boxShadow;
+        opacity: 0;
+        text-align: left;
+        border-radius: 2px;
+        transition: all 160ms ease-in-out;
+        -webkit-transition: all 160ms ease-in-out;
+        pointer-events: none;  /* This will probably go away */
+    }
+    .validation-messages.ng-active {
+        opacity: 1;
+        overflow: visible;
+    }
+    .validation-messages .placeholder {
+        display: block;
+    }
+
+    input[type="checkbox"] ~ .validation-messages {
+        top: -9px;
+    }
+
+
+    .validation-messages.between {
+        position: absolute;
+        top: -35px;
+        right: -233px;
+    }
+
+    .validation-messages.between.invalid {
+        opacity: 1;
+        right: -233px;
+    }
+
+    .validation-messages::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 17px solid transparent;
+        border-bottom: 17px solid transparent;
+        opacity: .4;
+        top: 3px;
+        left: -10px;
+        -webkit-filter: blur(.4px);
+        -moz-filter: blur(.4px);
+        -ms-filter: blur(.4px);
+        -o-filter: blur(.4px);
+        filter: blur(.4px);
+    }
+
+    .validation-messages::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-bottom: 12px solid ap-red;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        top: -7px;
+        left: 1px;
+    }
+
+
+
+    /* responsive styles */
+    @media (max-width: 1023px) {
+
+
+        span[id^="qa-validation"] {
+            border-bottom: 10px solid ap-red;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            content: "";
+            display: block;
+            height: 0;
+            left: 1.5em;
+            position: absolute;
+            top: 3.25em;
+            width: 0;
+        }
+
+        .validation-messages::after,
+        .validation-messages::before {
+            border-bottom: 10px solid ap-red;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            content: "";
+            height: 0;
+            left: .5em;
+            position: absolute;
+            top: -2em;
+            width: 0;
+        }
+
+        .validation-messages.checkbox::after,
+        .validation-messages.checkbox::before {
+            border-bottom: 10px solid ap-red;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            content: "";
+            height: 0;
+            left: 43%;
+            position: absolute;
+            top: -2em;
+            width: 0;
+        }
+
+        .validation-messages::before {
+            border-bottom: none;
+            top: -2.15em;
+        }
+
+
+        .validation-messages,
+        .validation-messages.between {
+            background: ap-red none repeat scroll 0 0;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px boxShadow;
+            color: ap-light-grey-4;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 12px;
+            opacity: 0;
+            position: relative;
+            text-align: left;
+            top: -0.5em;
+            right: 0;
+            -moz-transition: all 160ms ease-in-out 0s;
+            -o-transition: all 160ms ease-in-out 0s;
+            -webkit-transition: all 160ms ease-in-out 0s;
+            transition: all 160ms ease-in-out 0s;
+            width: auto;
+            z-index: 1;
+        }
+
+        input[type="checkbox"] ~ .validation-messages {
+            top: -5px;
+        }
+
+        .control.ng-invalid .validation-messages {
+            left: 0;
+            margin-top: 1rem;
+            opacity: 1;
+            position: relative;
+            width: auto;
+            right: 0;
+            min-height: inherit;
+        }
+
+        .control.ng-pending .validation-messages {
+            opacity: 0;
+            padding: 0 14px;
+            right: 0;
+        }
+
+        .control.ng-invalid .validation-messages.ng-active {
+            height: auto;
+            max-height: inherit;
+            padding: 12px 14px;
+            font-size: 12px;
+            margin-bottom: -7px;
+        }
+        .control.ng-invalid .validation-messages.ng-inactive {
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .validation-messages.ng-inactive {
+            max-height: 0;
+            padding: 0 14px;
+        }
+
+        .row .validation-messages {
+            max-height: 0;
+            padding: 0 14px;
+        }
+    }
+}

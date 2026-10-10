@@ -1,0 +1,92 @@
+@import "common-var"
+.cmpt-absr-date-picker {
+	.date-picker{
+		&>div:nth-child(2){
+			vertical-align: middle;
+			text-align: center;
+		}
+		.date-label{
+			padding-left: 5px;
+			font-size: 12px;
+			font-weight: 600;
+		}
+	}
+	.label{
+		text-align: left;
+		font-size: 12px;
+		padding-top: 5px;
+		padding-left: 10px;
+		padding-bottom: 5px;
+		font-weight: 600;
+	}
+	.range-picker{
+		border-bottom: 1px solid borderColor-medium;
+		margin-bottom: 10px;
+		padding: 0 5px 10px 5px;
+		line-height: 16px;
+		.label{
+			color: subTitle-color-light;
+			padding-top: 0;
+			padding-bottom: 5px;
+			padding-left: 8px;
+			font-size: 11px;
+			font-weight: 400;
+		}
+		.date-picker{
+			input{
+				font-size: 12px;
+			}
+		}
+		.custom-box{
+			font-size: 12px;
+			padding: 4px 9px;
+	    border: 1px solid borderColor-medium;
+	    border-radius: 2px;
+			height:30px;
+			&>div{
+				vertical-align: sub;
+			}
+			&>div:nth-child(1){
+				text-align: left;
+			}
+			&>div:nth-child(2){
+				text-align: right;
+			}
+		}
+	}
+	.cmpt-ui-multi-datepicker{
+		margin: 6px;
+		.multi-datepicker{
+			border: 1px solid borderColor-medium;
+			.ui-datepicker{
+				.ui-datepicker-calendar{
+						border-bottom:0;
+				}
+			}
+		}
+	}
+
+	.cmpt-ui-date-selector-v2 {
+		.fl-input{
+			border-radius: 0;
+			&.hasDatepicker{
+				padding: 4px 0 4px 8px;
+			}
+		}
+	}
+
+	.error-message {
+		background: none;
+		color: ap-dark-red;
+		font-size: 11px;
+		text-align: right;
+		line-height: 135%;
+	}
+
+	.error {
+		input{
+			background: none repeat scroll 0% 0% backGroundColor;
+			border-color: ap-red;
+		}
+	}
+}

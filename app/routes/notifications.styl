@@ -1,0 +1,59 @@
+@import "common-var"
+.route-notifications {
+	.notifications {
+		border: 5px solid content-panel-borderColor;
+		padding: 0px;
+		background: backGroundColor;
+		position:relative;
+		min-height: 150px;
+		.header {
+			position: relative;
+			display: block;
+			font-size: 14px;
+			font-weight: bold;
+			padding: 10px;
+			background: gradientBar;
+			border-bottom: 1px solid borderColor-medium;
+			border-top: 1px solid borderColor-medium;
+			.pill {
+			  width: 75px;
+				margin-right: 10px;
+				display: inline-block;
+				border-radius: 10px;
+				padding: 1px 5px;
+				font-size: 12px;
+				text-align: center;
+				color: ap-light-grey-4;
+				&.High {
+					background: ap-red;
+				}
+				&.Medium {
+					background: ap-yellow;
+				}
+				&.Low {
+					background: ap-blue;
+				}
+			}
+			.posted-date {
+				position: absolute;
+				display: inline-block;
+				right: 10px;
+			}
+		}
+		.message {
+			padding: 10px;
+			p {
+				font-size: 1em;
+  				line-height: 1em;
+			}
+		}
+		.no-data {
+			background-color: backGroundColor;
+			padding: 50px 0;
+			color: subTitle-color-light;
+			font-weight: bold;
+			text-align: center;
+			display: block;
+		}
+	}
+}

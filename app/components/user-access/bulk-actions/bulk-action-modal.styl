@@ -1,0 +1,31 @@
+@import "common-var"
+.modal-bulk-actions.dialog-popup {
+	.message{
+		text-align: center;
+	}
+	.sub-message{
+		text-align: center;
+		font-size: 12px;
+	}
+	.cmpt-ui-loader {
+		&.loader{
+			position:relative;
+			.logo-spinner{
+				margin:0;
+			}
+			.bar {
+				background-color: backGroundColor;
+				animation-name: height-change-blue;
+			}
+		}
+	}
+	.ngdialog-buttons{
+		&.not-processed{
+			.post-process{ display: none;}
+		}
+		&.processed{
+			.pre-process{display: none;}
+		}
+	}
+
+}

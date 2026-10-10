@@ -1,0 +1,12 @@
+<div class="cmpt-ui-linking" ng-class="{editLink:fromEdit, breakTimeChain: expandLinkingChain}">
+	<div aria-pressed = "linked"
+	 role= "button" 
+	 tabindex="0" 
+	 ng-click="go.toggleLink()" 
+	 ng-keypress = "go.handleKeyPress($event.keyCode)" 
+	 aria-label= {{label}}
+	 ng-class="{disabled: !enabled,toggleDiv:fromEdit, top42: expandLinkingChain}">
+		<span><i class="fa fa-chain" ng-show="linked" ng-class="{chain:fromEdit}"></i></span>
+		<span><i class="fa fa-unlink" ng-hide="linked" ng-class="{chain:fromEdit}"></i></span>
+	</div>
+</div>

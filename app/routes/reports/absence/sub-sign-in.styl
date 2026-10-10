@@ -1,0 +1,83 @@
+@import "common-var"
+
+.report-locked{
+	.report-standards{
+		&.route-reports-substitute-sub-sign-in{
+			&> .header{
+				.header-content{
+					.cmpt-ui-print-button{
+						display: none !important;
+					}
+					.print-pdf{
+						display: inline-block;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}
+
+.route-reports-substitute-sub-sign-in {
+	.action-section {
+		.print { display: none;}
+		.print-pdf {display: inline-block;}
+	}
+	.header{
+		.header-content{
+			.print-pdf {display: none;}
+		}
+	}
+	.cmpt-ui-grouped-grid {
+		.grid-row {
+			.duration-cell {
+				.duration-text {
+					padding-bottom: 5px;
+				}
+			}
+			.date-cell {
+				padding-right:5px;
+			}
+			.signature-cell {
+				.line {
+					border-bottom: 1px dotted borderColor;
+					font-size: 40px;
+					//vertical-align: bottom;
+					margin-right: 10px;
+					.x-mark {
+						font-family: Verdana, sans-serif;
+						font-size: 14px;
+						font-weight: bold;
+						padding: 0 0 0 5px;
+						//vertical-align: baseline;
+					}
+				}
+			}
+			.name-cell {
+				padding-right:5px;
+			}
+			.external-id {
+				font-size: 11px;
+				color: ap-dark-grey-3;
+				font-style: italic;
+			}
+		}
+	}
+	.cmpt-reports-filter-panel {
+		.filter-section {
+			.filled-status {
+				display: none;
+			}
+		}
+	}
+
+	@media print {
+		.cmpt-reports-filter-panel {
+			.print-summary {
+				.filledStatusTitle, .filledStatus, .orderByTitle, .orderBy {
+					display: none !important;
+				}
+			}
+		}
+	}
+}

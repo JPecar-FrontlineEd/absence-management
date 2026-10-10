@@ -1,0 +1,105 @@
+<div class="dialog-popup">
+    <div class="ngdialog-message">
+        <div class="header"></div>
+        <div class="content textAlignContent -u-24-24 padding">
+
+            <div ng-if="ngDialogData.isDenied || ngDialogData.permissionConflictData.warning.isPermitted" class="headerAlign marginBottom2pc"><i class="fal fa-exclamation-circle colorC26B13"></i> {{ngDialogData.headerMessage}} </div>
+            <div class="-u-24-24 marginBottom2pc" ng-if="ngDialogData.isDenied">
+                {{ngDialogData.deniedMessage}}
+            </div>
+            <div ng-if="!ngDialogData.isDenied">
+                <div ng-if="!ngDialogData.permissionConflictData.warning.isPermitted" class="headerAlign marginBottom2pc"><i class="fal fa-exclamation-circle colorC26B13"></i> {{ngDialogData.permissionConflictData.headerText}} </div>
+                <div ng-if="ngDialogData.subConflict.data.length>0 && ngDialogData.closedDayConflict.data.length>0
+                && ngDialogData.permissionConflictData.warning.isPermitted"
+                     class="-u-24-24 marginBottom2pc">{{ngDialogData.data.multipleConflictMessage}}</div>
+
+                <div class="-u-24-24" ng-if="ngDialogData.empConflict.data.length>0 && ngDialogData.permissionConflictData.warning.isPermitted">
+                    <div class="marginBottom2pc marginTop3pc textAlignLeft">{{ngDialogData.empConflict.message}}</div>
+                    <div class="textAlignLeft fontSmall">{{ngDialogData.empConflict.headerText}}</div>
+
+                    <div ng-repeat="employee in  ngDialogData.empConflict.data" class="textAlignLeft">
+                        <span ng-if="employee.FromDate != employee.ToDate" class="-u-7-24 textAlignCenter">{{employee.FromDate}} - {{employee.ToDate}}</span>
+                        <span ng-if="employee.FromDate == employee.ToDate" class="-u-7-24 textAlignCenter">{{employee.FromDate}}</span>
+                        <span class="-u-7-24 textAlignContent">
+                            <a ng-if="!employee.isDifferentDistrict"
+                               class="textDecoration"
+                               href='/v1/absences/detail/{{employee.confirmationNumber}}/view'
+                               target="_blank">
+                                {{employee.confirmationNumber}}
+                            </a>
+                            <span ng-if="employee.isDifferentDistrict"> {{employee.orgName}}</span>
+                        </span>
+                        <span class="-u-9-24 paddingLeft">{{employee.institutionName}}</span>
+                    </div>
+                </div>
+                <div ng-if="ngDialogData.empConflict.data.length>0 && ngDialogData.permissionConflictData.warning.isPermitted" class="-u-24-24"></div>
+                <div ng-if="ngDialogData.subConflict.data.length>0 && ngDialogData.permissionConflictData.warning.isPermitted" class="-u-24-24">
+
+                    <div class="marginBottom2pc textAlignLeft">{{ngDialogData.subConflict.message}}</div>
+
+                    <div class="-u-24-24 warningMessage">
+                        <div class="padding9">
+                            <span class="-u-1-24"><i class="far fa-exclamation-circle"></i></span>
+                            <span class="-u-22-24 textAlignLeft marginBottom2pc">
+                                <a href="/navigator/sub_displayDataAbsence.asp?x=x&sub_Id={{ngDialogData.subConflict.subId}}"
+                                   target="_blank">
+                                    {{ngDialogData.subConflict.subName}}
+                                </a>
+                                <span>{{ngDialogData.subConflict.warningMessage}}</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="textAlignLeft fontSmall marginTop2pc">{{ngDialogData.subConflict.headerText}}</div>
+                    <div ng-repeat="subConflict in  ngDialogData.subConflict.data" class="textAlignLeft">
+                        <span ng-if="subConflict.FromDate != subConflict.ToDate" class="-u-7-24 textAlignCenter">{{subConflict.FromDate}} - {{subConflict.ToDate}}</span>
+                        <span ng-if="subConflict.FromDate == subConflict.ToDate" class="-u-7-24 textAlignCenter">{{subConflict.FromDate}}</span>
+                        <span class="-u-7-24 textAlignContent">
+                            <a ng-if="!subConflict.isDifferentDistrict"
+                               class="textDecoration"
+                               href='/v1/absences/detail/{{subConflict.confirmationNumber}}/view'
+                               target="_blank">
+                                {{subConflict.confirmationNumber}}
+                            </a>
+                            <span ng-if="subConflict.isDifferentDistrict"> {{subConflict.orgName}}</span>
+                        </span>
+                        <span class="-u-9-24 paddingLeft">{{subConflict.institutionName}}</span>
+                    </div>
+                </div>
+                <div ng-if="ngDialogData.subConflict.data.length>0 && ngDialogData.permissionConflictData.warning.isPermitted" class="-u-24-24"></div>
+                <div class="-u-24-24" ng-if="ngDialogData.closedDayConflict.data.length>0 && ngDialogData.permissionConflictData.warning.isPermitted">
+                    <div class="marginBottom2pc marginTop2pc textAlignLeft">{{ngDialogData.closedDayConflict.message}}</div>
+                    <div class="-u-24-24 warningMessage">
+                        <div class="padding9">
+                            <span class="-u-1-24"><i class="fal fa-exclamation-circle"></i></span>
+                            <span class="-u-22-24 textAlignLeft marginBottom2pc">{{ngDialogData.closedDayConflict.warningMessage}}  </span>
+                        </div>
+                    </div>
+
+                    <div class="textAlignLeft fontSmall marginTop2pc">{{ngDialogData.closedDayConflict.headerText}}</div>
+                    <div ng-repeat="closedDay in  ngDialogData.closedDayConflict.data" class="textAlignLeft">
+                        <span ng-if="closedDay.FromDate != closedDay.ToDate" class="-u-7-24 textAlignCenter">{{closedDay.FromDate}} - {{closedDay.ToDate}}</span>
+                        <span ng-if="closedDay.FromDate == closedDay.ToDate" class="-u-7-24 textAlignCenter">{{closedDay.FromDate}}</span>
+                        <span class="-u-7-24 textAlignContent">{{closedDay.dayType}}</span>
+                        <span class="-u-9-24 paddingLeft">{{closedDay.institutionName}}</span>
+                    </div>
+                </div>
+
+                <div class="-u-24-24" ng-if="!ngDialogData.permissionConflictData.warning.isPermitted">
+                    <div class="marginBottom2pc marginTop2pc">{{ngDialogData.permissionConflictData.headerMessage}}</div>
+                    <div class="-u-24-24 warningMessage">
+                        <div class="padding9">
+                            <span class="-u-1-24"><i class="fal fa-exclamation-circle"></i></span>
+                            <span class="-u-22-24 textAlignLeft marginBottom2pc">{{ngDialogData.permissionConflictData.warning.message}}  </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ngdialog-buttons -u-24-24">
+            <div class="marginRight211px">
+                <a ng-if="button.isEnabled" class="{{ button.cls }} {{button.marginRight  }}" ng-click="button.action()" ng-repeat="button in ngDialogData.buttons">{{ button.title }}</a>
+            </div>
+        </div>
+    </div>
+</div>

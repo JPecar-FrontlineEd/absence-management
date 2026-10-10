@@ -1,0 +1,7 @@
+<div class="cmpt-ui-date-navigation">
+	<a ng-if="reportType == 'dailyReport'" class="calendarIcon fa-calendar" ng-click="go.openInputDatepicker()"></a>
+	<a class="fl-button previous fa fa-chevron-left" ng-click="go.prev()"></a>
+	<a ng-if="reportType != 'dailyReport'" class="fl-button today" ng-click="go.today()">{{ strings['DR.Today'] }}</a>
+	<div ng-if="reportType == 'dailyReport'" class="fl-button inputToday" date-model="dateModel" ng-click="go.openInputDatepicker()" >{{vm.reportDate}}</div>
+	<a class="fl-button next fa fa-chevron-right" ng-click="go.next()"></a>
+</div>

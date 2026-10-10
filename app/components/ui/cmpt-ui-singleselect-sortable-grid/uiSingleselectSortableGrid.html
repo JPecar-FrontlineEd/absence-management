@@ -1,0 +1,11 @@
+<div class="cmpt-ui-singleselect-sortable-grid" ng-class="{'boxes-on-left': boxesOnLeft}">
+	<cmpt-ui-sortable-grid columns="vm.columns"
+						   dataset="dataset"
+						   is-loading="isLoading"
+						   sort="sort"
+						   actions="actions"
+	                       ng-attr-progressive="{{progressive}}"
+						   id-prefix="vm.idPrefix">
+		<ng-transclude></ng-transclude>
+	</cmpt-ui-sortable-grid>
+</div>

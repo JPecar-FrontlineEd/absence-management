@@ -1,0 +1,53 @@
+<div class="cmpt-absr-done-summary">
+	<div class="-g">
+		<div class="-u-19-24">
+			<div class="summary">
+				<div class="element">
+					<label>{{ strings['Substitute'] }} {{ strings['Required'] }}</label>
+					<span>{{ absrState.needSub ? strings.Yes : strings.No }}</span>
+				</div>
+				<div class="element" ng-if="vm.files.length > 0">
+					<label>{{ strings['Attachments'] }}</label>
+					<span>{{ vm.files.length }} {{ vm.files.length > 1 ? strings.Files : strings.File }} <a class="files" ng-click="go.showFiles()">({{ strings['ViewFile'] }})</a></span>
+				</div>
+				<div class="element" ng-if="absrState.context.showNotesToAdmin">
+					<label>{{ strings['NotesToAdmin'] }}</label>
+					<span>{{ absrState.administratorNotes || strings.None }}</span>
+				</div>
+			</div>
+			<table class="variation-summary" ng-repeat="variation in absrState.absrVariations track by $index">
+				<tbody>
+					<tr class="header">
+						<th colspan="2">
+							<cmpt-absr-variation-header variation-data="variation" dates-only ="true">
+							</cmpt-absr-variation-header>
+						</th>
+					</tr>
+					<tr class="row">
+						<td class="label">{{ strings['School'] }}</td>
+						<td><cmpt-template-institution-link inst-id="{{ variation.institution.id }}" inst-name="{{ variation.institution.value }}" show-name-as-link="true"></cmpt-template-institution-link></td>
+					</tr>
+					<tr class="row">
+						<td class="label">{{ strings[mnemonic.reasonTitle] }}</td>
+						<td>{{ variation.entitlementType.value }}</td>
+					</tr>
+					<tr class="row">
+						<td class="label">
+							{{ strings['Absence.Reciept.Text.Start/End Times'] }}
+						</td>
+						<td>
+						<span>{{ variation.absenceShiftType.value }}</span> ({{ go.parseTime(variation.absenceStartTime) | date : 'shortTime' }}-{{ go.parseTime(variation.absenceEndTime) | date : 'shortTime'  }})
+						</td>
+					</tr>
+					<tr class="row" ng-if="absrState.context.showVacancyTimes && absrState.context.needSub > 0">
+						<td class="label">{{ strings['SubstituteReportTime'] }}</td>
+						<td>{{ variation.vacancyShiftType.value }} ({{ go.parseTime(variation.vacancyStartTime) | date : 'shortTime'  }}-{{ go.parseTime(variation.vacancyEndTime) | date : 'shortTime'  }})</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="-u-5-24 pointer">
+			<i class="fa fa-chevron-right"></i>
+		</div>
+	</div>
+</div>

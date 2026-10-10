@@ -1,0 +1,58 @@
+<div class="dialog-popup cmpt-reports-report-writer-execdetails-dialog">
+	<div class="ngdialog-message">
+		<div class="header">
+			<span ng-if="!dgViewDetails.dataLoaded">{{ dgViewDetails.strings['LoadingDetails'] }}...</span>
+			<span ng-if="dgViewDetails.dataLoaded">{{ dgViewDetails.strings['Report.Execute.Label.ReportRun'] }}</span>
+		</div>
+
+		<div class="content">
+
+			<div ng-if="!dgViewDetails.dataLoaded" class="loading"><i class="fa-spinner fa-spin"></i></div>
+
+			<div ng-if="dgViewDetails.dataLoaded">
+				<div class="processing-status">
+					<div ng-if="dgViewDetails.data.created !== null"><span class="label">{{ dgViewDetails.strings['Started'] }}</span>{{ dgViewDetails.data.createdOn }}</div>
+					<div ng-if="dgViewDetails.data.numFailures > 0"><span class="label">{{ dgViewDetails.strings['Report.Execute.Results.FailedToRun'] }}</span></div>
+					<div ng-if="dgViewDetails.data.numFailures === 0">
+						<div ng-if="dgViewDetails.data.processingStarted === null && !dgViewDetails.data.complete"><span class="label">{{ dgViewDetails.strings['Report.Execute.Results.Queued'] }}</span></div>
+						<div ng-if="dgViewDetails.data.processingStarted !== null && !dgViewDetails.data.complete"><span class="label">{{ dgViewDetails.strings['Running'] }}...</span></div>
+						<div ng-if="dgViewDetails.data.complete"><span class="label">{{ dgViewDetails.strings['Finished'] }}</span>{{ dgViewDetails.data.completedOn }}</div>
+					</div>
+				</div>
+
+				<div class="download-results">
+					<div class="title">
+						<span ng-if="dgViewDetails.data.complete">{{ dgViewDetails.strings['Report.Output.Label.DownloadResults'] }}</span>
+						<span ng-if="!dgViewDetails.data.complete">{{ dgViewDetails.strings['Report.Output.Label.OutputRequested'] }}</span>
+					</div>
+					<div class="output-files">
+						<cmpt-reports-report-writer-output-files report-exec="dgViewDetails.data" show-text="true"></cmpt-reports-report-writer-output-files>
+					</div>
+				</div>
+
+				<div ng-if="dgViewDetails.data.complete">
+					<div class="distribution-list" ng-if="dgViewDetails.data.distributionList !== null">
+						<span class="label">{{ dgViewDetails.strings['Report.Output.Label.DistributedToList'] }}</span> {{ dgViewDetails.data.distributionList.name }}
+					</div>
+
+					<div class="email-ftp" ng-if="dgViewDetails.data.distributionList === null">
+						<div ng-if="dgViewDetails.data.email.length > 0" class="email-recipient">
+							<span ng-if="dgViewDetails.data.attachResults">{{ dgViewDetails.strings['Report.Output.Label.ResultsEmailedTo'] }} {{ dgViewDetails.data.email }}</span>
+							<span ng-if="!dgViewDetails.data.attachResults">{{ dgViewDetails.strings['Report.Output.Label.NotificationEmailedTo'] }} {{ dgViewDetails.data.email }}</span>
+						</div>
+
+						<div class="ftp" ng-if="dgViewDetails.data.ftpServer !== null && dgViewDetails.data.ftpServer.length > 0">
+							<div class="title">{{ dgViewDetails.strings['Report.Output.Label.DeliveredBy'] }} {{ dgViewDetails.data.ftpType }}</div>
+							<div class="info"><span class="label">{{ dgViewDetails.strings['Report.Output.FTP.Server'] }}</span> {{ dgViewDetails.data.ftpServer }}</div>
+							<div class="info"><span class="label">{{ dgViewDetails.strings['Report.Output.FTP.Folder'] }}</span> {{ dgViewDetails.data.ftpDirectory }}</div>
+							<div class="info"><span class="label">{{ dgViewDetails.strings['Report.Output.FTP.User'] }}</span>  {{ dgViewDetails.data.ftpUser }}</div>
+							<div class="info"><span class="label">{{ dgViewDetails.strings['Report.Output.FTP.Port'] }}</span>  {{ dgViewDetails.data.ftpPort }}</div>
+						</div>
+					</div>
+
+					<div ng-if="dgViewDetails.data.markRecordsAsExtracted "class="fl-system-message re-extracted"><span class="message">{{ dgViewDetails.strings['Report.Output.Label.MarkAsExtracted'] }}</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

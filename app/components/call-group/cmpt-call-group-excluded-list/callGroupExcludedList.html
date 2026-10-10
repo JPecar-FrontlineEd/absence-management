@@ -1,0 +1,38 @@
+<div class="cmpt-call-group-excluded-list">
+	<div class="grid-header -g">
+		<div class="grid-header-content {{ col.width }} {{ col.key + '-th' }} {{ col.cls }} {{col.extraClass}}"
+			ng-repeat="col in vm.excludedColumns"
+		>
+			<div ap-bind-html="col.title" class="col-title"></div>
+
+		</div>
+	</div>
+
+	<div class="loader-container" ng-show="isLoading">
+	   <cmpt-ui-loader
+	   		fill
+	   		is-loading=isLoading>
+	   	</cmpt-ui-loader>
+	</div>
+
+	<ul class="grid-rows" >
+		<li class="grid-row {{ row.cls }}"
+			ng-repeat="row in data"
+			sub-id="{{row.substitute.id}}"
+		>
+			<ng-form class="-g" name="rowForm">
+				<div
+					class="{{ col.width }} {{ col.key + '-cell' }} grid-cell {{ col.cls }}"
+					ng-repeat="col in vm.excludedColumns"
+					ap-bind-html="col.template || col.render(row[col.key], row)"
+				></div>
+			</ng-form>
+		</li>
+	</ul>
+
+	<div class="no-data" ng-if="data.length == 0">
+		<div class="image"></div>
+		<div class="caption"><ng-transclude></ng-transclude></div>
+		</div>
+	</div>
+</div>

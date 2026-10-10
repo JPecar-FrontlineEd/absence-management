@@ -1,0 +1,125 @@
+<div class="cmpt-reconcile-absence-details">
+	<div>
+		<div class="processed-absence" ng-show="absence.isProcessed">
+			<div class="detail -u-18-24">
+				<cmpt-template-confirmation-link absrid="{{ absrVal.id }}"></cmpt-template-confirmation-link>
+					{{strings['for']}}
+				<cmpt-template-worker-link is-vacancy="worker.isVacancy" worker-id="{{ worker.id}}" show-name-as-link="true" worker-name="{{ vm.workerName}}"></cmpt-template-worker-link>
+					{{strings['hasbeen']}}
+				<div ng-if="absence.isReconciled">{{strings['AbsenceLog.Text.Reconciled']}}</div>
+		        <div ng-if="!absence.isReconciled">{{strings['AbsenceLog.Text.Unreconciled']}}</div>
+	        </div>
+	        <div class="action -u-6-24">
+				<!-- Actions buttons -->
+				<button class="fl-button-sm dismiss-button" ng-click="go.dismiss()">
+					<i class="fa fa-times"></i>
+					{{strings['Dismiss']}}
+				</button>
+				<button class="fl-button-sm action-button" ng-class="{'fl-primary':absence.isReconciled, 'fl-positive': !absence.isReconciled}" ng-click="go.undoAction()">
+					<i class="fa" ng-class="{'fa-rotate-left':!vm.isProcessing, 'fa-spinner fa-spin': vm.isProcessing}"></i>
+					<span ng-if="absence.isReconciled">{{strings['Absence.Button.Text.Unreconcile']}}</span>
+					<span ng-if="!absence.isReconciled">{{strings['Dashboard.Header.Button.Reconcile']}}</span>
+				</button>
+				<!-- Action Buttons -->
+			</div>
+		</div>
+		<div class="-g detail-header grid-heading" ng-class="{'locked': absence.isLocked }" ng-show="!absence.isProcessed">
+			<div class="status -u-18-24">
+				<span class="locked-icon fa fa-lock" ng-if="absence.isLocked"></span>
+				<span class="type">{{ absrVal.worker.isVacancy ? strings['Vacancy'] : strings['Absence']}}</span>
+				<cmpt-template-worker-link is-vacancy="worker.isVacancy" worker-id="{{ worker.id}}" show-name-as-link="true" worker-name="{{ vm.workerName}}"></cmpt-template-worker-link>
+				<span class="times">
+					{{ absence.absenceShiftType.value }}
+					{{ vm.absenceTimes }}
+				</span>
+				<span class="icon">
+					<i class="fa fa-file-text" ng-if="vm.hasNotes" qtip my="left center" at="right center" qtip-class="notes-content" content="{{ vm.notesHtml }}"></i>
+					<i class="fa" ng-click="go.showAttachments(absence)" ng-class="{'fa-spinner fa-spin': vm.fetchingFiles, 'fa-paperclip': !vm.fetchingFiles}"></i>
+				</span>
+			</div>
+			<div class="actions -u-6-24">
+				<button class="fl-button-sm details-button" ng-show="absrVal.context.canEdit" ng-click="absence.isLocked ? go.viewDetails() : go.editDetails()">
+					<span ng-if="absence.isLocked">{{strings['Reconciliation.Button.Text.ViewDetails']}}</span>
+					<span ng-if="!absence.isLocked">{{strings['Reconciliation.Button.Text.EditDetails']}}</span>
+				</button>
+				<span ng-if="vm.canReconcile">
+					<button class="fl-button-sm fl-primary action-button" ng-class="{'fl-disabled': absence.isLocked }" ng-if="absence.isReconciled" ng-click="go.reconcileAction()">
+						<i class="fa" ng-class="{'fa-times':!vm.isProcessing, 'fa-spinner fa-spin': vm.isProcessing}"></i>
+						{{strings['Absence.Button.Text.Unreconcile']}}
+					</button>
+					<button class="fl-button-sm fl-positive action-button" ng-class="{'fl-disabled': absence.isLocked }" ng-if="!absence.isReconciled" ng-click="go.reconcileAction()">
+						<i class="fa" ng-class="{'fa-check':!vm.isProcessing, 'fa-spinner fa-spin': vm.isProcessing}"></i>
+						{{strings['Dashboard.Header.Button.Reconcile']}}
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="global-warning" ng-show="absrVal.warnings.length > 0">
+			<div ng-repeat="warning in absrVal.warnings">
+				<span class="title">{{strings['Warning']}}:</span> {{ warning.message }}
+			</div>
+		</div>
+		<div class="global-error" ng-show="absrVal.errors.length > 0" >
+			<div ng-repeat="error in absrVal.errors">
+				<span class="title">{{strings['Error']}}:</span> {{ error.message }}
+			</div>
+		</div>
+		<div class="details -g" ap-show-slide="!absence.isProcessed">
+			<div class="first column -u-7-24">
+				<div class="content-group">
+					<span class="label">{{strings['ConfirmationNumberPound']}}:</span>
+					<cmpt-template-confirmation-link absrid="{{ absrVal.id }}"></cmpt-template-confirmation-link>
+				</div>
+				<div class="content-group">
+					<span class="label">{{strings['WorkerTypeGeneric']}}:</span>
+					<span class="content">{{ worker.workerType.title}}</span>
+				</div>
+				<div class="content-group" ng-if="worker.title.length > 0">
+					<span class="label">{{strings['Title']}}:</span>
+					<span class="content">{{ worker.title }}</span>
+				</div>
+				<div class="content-group">
+					<span class="label">{{strings['Location']}}:</span>
+					<span class="content">
+						<cmpt-template-institution-link inst-id="{{ absence.institution.id }}" inst-name="{{ absence.institution.value }}" show-name-as-link="true"></cmpt-template-institution-link>
+					</span>
+				</div>
+			</div>
+			<div class="second column -u-7-24">
+				<div class="content-group" ng-if="vm.viewReportTimes">
+					<span class="label">{{strings['Reconciliation.Label.Text.ReportTimes']}}:</span>
+					<span class="content">
+						<span ng-if="absrVal.context.showVacancyTimes">{{ vm.vacancyTimes }}</span>
+						<span ng-if="!absrVal.context.showVacancyTimes">{{ vm.absenceTimes }}</span>
+					</span>
+				</div>
+				<div class="content-group" ng-if="absrVal.substitute !== null">
+					<span class="label">{{strings['Substitute']}}:</span>
+					<span class="substitute content">
+						<cmpt-template-substitute-link substitute-id="{{ vm.substituteId }}" show-name-as-link="true" substitute-name="{{ vm.substituteName }}" ></cmpt-template-substitute-link>
+					</span>
+				</div>
+				<div class="content-group" ng-if="absrVal.context.showGrossPayAmount">
+					<span class="label">PGP <i class="fa fa-question-circle" title="{{strings['ReconciliationList.Title.Text.ProjectedGrossPayout']}}"></i>:</span>
+					<span class="content">{{ absrVal.grossPayout | currency : '$':2 }}</span>
+				</div>
+				<div class="content-group" ng-If="absrVal.substitute != null">
+					<div class="label">{{strings['SubDuration']}}:</div>
+					<div class="content" ng-If= "fullDaysCount > 0">{{ fullDaysCount }} {{ fullDaysCount > 1 ? strings['FullDays']: strings['FullDay'] }}</div>
+					<div class="label" ng-If= "halfDaysCount > 0 && fullDaysCount > 0"></div>
+					<div class="content" ng-If= "halfDaysCount > 0">{{ halfDaysCount }} {{ halfDaysCount > 1 ? strings['HalfDays']: strings['HalfDay'] }}</div>
+					<div class="label" ng-If= "hoursCount > 0 && (fullDaysCount > 0 || halfDaysCount > 0)"></div>
+					<div class="content" ng-If= "hoursCount > 0">{{ hoursCount }} {{ hoursCount > 1 ? strings['Hours']: strings['Hour'] }}</div>
+				</div>
+			</div>
+			<div class="third column -u-10-24 edit-section">
+				<cmpt-reconcile-edit-section absr-val="absrVal" save="go.save"></cmpt-reconcile-edit-section>
+				<div class="locked" ng-if="absence.isLocked">
+					<span class="message">
+						<i class="fa fa-lock"></i>{{strings['LockWarning']}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

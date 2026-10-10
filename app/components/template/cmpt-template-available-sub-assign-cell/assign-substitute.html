@@ -1,0 +1,24 @@
+<div class="dialog-popup assign-sub-popup">
+	<div class="ngdialog-message">
+		<div class="header" ng-class="{'subOverworked': ngDialogData.substitute.isSubOverWorked}">{{ngDialogData.header}}</div>
+		<div class="content">
+			<div class="title">{{  ngDialogData.strings['AvailableSub.Text.ConfirmAssignment'] }}</div>
+			<div class="subInfo">
+				<div class="left">
+					<div class="name">{{ ngDialogData.substitute.lastName + ', ' + ngDialogData.substitute.firstName }}</div>
+					<div class="phone">{{ ngDialogData.substitute.phone }}</div>
+					</div>
+				<div class="right">
+					<div class="status" ng-class="{'subOverworked': ngDialogData.substitute.isSubOverWorked}">{{ ngDialogData.substitute.statusString }}</div>
+				</div>
+			</div>
+			<p>
+				{{  ngDialogData.strings['AvailableSub.Dialog.Body.Text'] }}
+			</p>
+		</div>
+	</div>
+	<div class="ngdialog-buttons" ng-class="{'disabled': ngDialogData.state.isProcessing}">
+		<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons" ><i class="fa {{ button.icon }}"></i>
+		{{ button.title }}</a>
+	</div>
+</div>

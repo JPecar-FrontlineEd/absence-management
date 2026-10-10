@@ -1,0 +1,10 @@
+<div class="cmpt-user-access-user">
+	<div class="userLink" once-title="user.combinedName.length > 25 ? user.combinedName : ''">
+		<a once-href="user.url">
+			<span once-html="user.combinedName"</span>
+		</a>
+	</div>
+	<div class="qtip-on-click-cursor" qtip on="click" ng-click="go.getEmailQtip(user)" content="{{user.emailQtip}}" ng-if="!!user.email">
+		<i class="fa fa-envelope-o" aria-hidden="true"></i>
+	</div>
+</div>

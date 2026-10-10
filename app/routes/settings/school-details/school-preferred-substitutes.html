@@ -1,0 +1,97 @@
+<div class="route-settings-school-details-school-preferred-substitutes" ng-controller="SchoolPreferredSubstitutesCtrl as route">
+	<div class="section-heading clear">
+        <div class="left-section">{{strings['InstSelector.Tab.Header.Text.PreferredSubstitutes']}}</div>
+    </div>
+
+	<div ng-if="!route.vm.canViewList">You do not have permission to view the preferrence list.</div>
+
+	<div ng-if="route.vm.canViewList">
+        <div ng-show="!route.vm.showAddSubs">
+        	<cmpt-call-group-call-group-defaults
+        		defaults=route.vm.schoolDefaults
+        		user-hrs-visibility-mode=route.vm.userHrsVisMode
+        		defaults-dirty=route.vm.defaultsDirty
+        		editable=route.vm.defaultsEditable
+        	></cmpt-call-group-call-group-defaults>
+
+            <div class="actions-header clear">
+                <div ng-if="route.vm.enableReorderButtons">
+                    <button title="Cancel Changes" ng-click="go.revertPrefOrder()" ng-show="route.vm.showOrderColumn" class="fl-button" ng-class="{'fl-disabled':!route.vm.enableReorderButtons}">
+                        <i class="fa fa-times"></i>
+                        Cancel
+                    </button>
+                    <button title="Save Reordered List" ng-show="route.vm.showOrderColumn" class="fl-button fl-positive" ng-class="{'fl-disabled':!route.vm.enableReorderButtons}" ng-click="go.savePrefOrder()" >
+                        <i class="fa fa-check"></i>
+                        Save
+                    </button>
+                </div>
+
+                <div ng-if="!route.vm.enableReorderButtons">
+                    <button class="fl-button"  ng-show="route.vm.removingSub">
+                        <i class="fa fa-spinner fa-spin"></i>
+                        {{strings['PreferredSub.Button.Text.RemovingSubstitutes']}}
+                    </button>
+                    <button class="fl-button fl-negative" ng-class="{'fl-disabled':route.vm.selected.length<1}" ng-if="route.vm.selected.length >= 1"
+                        ng-click="go.removeSelected()" ng-show="!route.vm.removingSub">
+                        <i class="fa fa-trash-o"></i>
+                        {{strings['PreferredSub.Button.Text.RemoveSelectedSubstitutes']}}
+                    </button>
+                    <button class="fl-button fl-positive" ng-if="route.vm.canEditList" ng-show="route.vm.enableAddSubs" 
+                        ng-click="go.AddSubs()">
+                        <i class="fa fa-plus"></i>
+                        {{strings['PreferredSub.Button.Text.AddSubstitutes']}}
+                    </button>
+                </div>
+            </div>
+
+            <cmpt-call-group-pref-list
+        		is-loading=route.vm.loadingPrefs
+        		data=route.vm.preferences
+        		selected=route.vm.selected
+        		editing=route.vm.prefEditing
+        		enabled=route.vm.enablePrefList
+        		reorder-dirty=route.vm.enableReorderButtons
+        		user-hrs-visibility-mode=route.vm.userHrsVisMode
+        		show-order=route.vm.showOrderColumn>
+                {{strings['PreferredSub.Text.GetStartedByAddingSubstitutes']}}!
+            </cmpt-call-group-pref-list>
+
+        	<div class="actions-footer clear">
+                <div class="reorder-actions left-section" ng-if="route.vm.canEditList"></div>
+                <div class="substitute-actions right-section" ng-if="route.vm.canEditList">
+                	<div ng-if="route.vm.enableReorderButtons">
+                        <button title="Cancel Changes" ng-click="go.revertPrefOrder()" ng-show="route.vm.showOrderColumn" class="fl-button" ng-class="{'fl-disabled':!route.vm.enableReorderButtons}">
+                            <i class="fa fa-times"></i>
+                            Cancel
+                        </button>
+                        <button title="Save Reordered List" ng-show="route.vm.showOrderColumn" class="fl-button fl-positive" ng-class="{'fl-disabled':!route.vm.enableReorderButtons}" ng-click="go.savePrefOrder()" >
+                            <i class="fa fa-check"></i>
+                            Save
+                        </button>
+                    </div>
+
+                    <div ng-if="!route.vm.enableReorderButtons">
+                        <button class="fl-button"  ng-show="route.vm.removingSub">
+                            <i class="fa fa-spinner fa-spin"></i>
+                            {{strings['PreferredSub.Button.Text.RemovingSubstitutes']}}
+                        </button>
+                        <button class="fl-button fl-negative" ng-class="{'fl-disabled':route.vm.selected.length<1}" ng-if="route.vm.selected.length >= 1"
+                            ng-click="go.removeSelected()" ng-show="!route.vm.removingSub">
+                            <i class="fa fa-trash-o"></i>
+                            {{strings['PreferredSub.Button.Text.RemoveSelectedSubstitutes']}}
+                        </button>
+                        <button class="fl-button fl-positive" ng-if="route.vm.canEditList" ng-show="route.vm.enableAddSubs" 
+                            ng-click="go.AddSubs()">
+                            <i class="fa fa-plus"></i>
+                            {{strings['PreferredSub.Button.Text.AddSubstitutes']}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-subs" ng-show="route.vm.showAddSubs">
+            <cmpt-call-group-add-substitutes preferred-subs="true" adding-subs="route.vm.addingSubs" show="route.vm.showAddSubs" call-group-id="{{route.vm.callGroupId}}"></cmpt-call-group-add-substitutes>
+        </div>
+    </div>
+</div>

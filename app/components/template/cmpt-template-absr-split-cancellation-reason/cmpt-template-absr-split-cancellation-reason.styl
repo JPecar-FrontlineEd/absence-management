@@ -1,0 +1,56 @@
+@import "common-var"
+.modal-absr-split-alert-html.dialog-popup {
+	.ngdialog-message {
+			.header {
+				&:before {
+					margin-right: 12px;
+				}
+			}
+			.separator-bottom {
+				margin: 1rem -1rem;
+			}
+			.container {
+				.dialog-text{
+					margin-bottom: 1rem;
+				}
+				.content {
+					font-size: 14px;
+					ul {
+						margin-top: 10px;
+					}
+					li {
+						font-weight: bold;
+					}
+
+					select, label + input[type="checkbox"] {
+						margin-left: .5rem;
+					}
+				}
+
+				.grid {
+					.grid-header-content {
+						border-right: 1px solid grid-borderColor;
+					}
+					.grid-rows{
+						max-height: 10rem;
+						overflow: auto;
+					}
+				}
+			}
+			& .cmpt-ui-dropdown{
+				display:inline-block;
+			}
+		}
+
+		.dialog-form > .row {
+			margin-bottom: 1rem;
+		}
+
+		.fl-button {
+			margin-left: 5px;
+		}
+		.fa-spinner {
+			position: relative;
+			left: -6px;
+		}
+	}

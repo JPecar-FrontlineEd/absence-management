@@ -1,0 +1,6 @@
+<div class="cmpt-template-institution-tree">
+	<!-- <ul ng-show="vm.tree.children.length > 0"> -->
+		<cmpt-template-institution-tree-node inst="vm.tree" link="{{vm.link}}"></cmpt-template-institution-tree-node>
+	<!-- </ul> -->
+	<ng-transclude ng-show="vm.tree.children.length === 0"></ng-transclude>
+</div>

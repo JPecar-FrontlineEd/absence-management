@@ -1,0 +1,42 @@
+<div class="fixed-width report-standards route-reports-report-writer-view" ng-controller="ReportWriterViewCtrl as route">
+	<a class="fl-button reports-link" href="reports/report-writer/">{{route.strings['ReturnToReportTemplateList']}}</a>
+	<h3>{{ route.vm.reportConfig.name }}</h3>
+	<div class="caption-data">
+		<div><span class="title-label">{{route.strings['Reports.CriteriaPanel.Label.Type']}}:</span> {{ route.vm.reportConfig.typeName }}</div>
+		<div>{{route.strings['Created']}} {{ route.vm.reportConfig.created }} <span ng-if="route.vm.reportConfig.createdBy !== null">{{route.strings['by']}} {{ route.vm.reportConfig.createdBy }}</span></div>
+	</div>
+	<div class="report-actions">
+		<span class="title-label">{{route.strings['Actions']}}:</span>
+		<cmpt-reports-report-writer-actions report-config="route.vm.reportConfig"></cmpt-reports-report-writer-actions>
+	</div>
+
+	<div class="details-header">
+		<span class="label">{{route.strings['Details']}}</span>
+	</div>
+	<div class="report-details">
+		<cmpt-reports-report-writer-fields header="{{route.strings['DisplayFields']}}" fields="route.vm.reportConfig.displayFields" allow-fixed-text="true">
+		</cmpt-reports-report-writer-fields>
+		<cmpt-reports-report-writer-fields header="{{route.strings['GroupByFields']}}" fields="route.vm.reportConfig.groupByFields" allow-fixed-text="false">
+		</cmpt-reports-report-writer-fields>
+		<cmpt-reports-report-writer-fields header="{{route.strings['SortFields']}}" fields="route.vm.reportConfig.sortFields" allow-fixed-text="false">
+		</cmpt-reports-report-writer-fields>
+	</div>
+
+
+	<h4>{{route.strings['Reports.Title.ReportExecutions']}}</h4>
+	<div class="panel">
+		<cmpt-reports-filter-panel filters="route.vm.filters" action="route.go.search" show-print-button="false" auto-execute="true"></cmpt-reports-filter-panel>
+	</div>
+	<div ng-class="{loaded: route.vm.dataLoaded}">
+		<div class="content-panel" ng-class="{'no-results': route.vm.dataLoaded && route.vm.reportExecs.length === 0}">
+			<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<cmpt-ui-sortable-grid
+			  columns="route.vm.columns"
+			  is-loading="route.vm.isLoading"
+			  dataset="route.vm.reportExecs"
+			  parent-vm="route.vm">
+			  	{{ route.strings['NoResultsFound'] }}
+			  </cmpt-ui-sortable-grid>
+		</div>
+	</div>
+</div>

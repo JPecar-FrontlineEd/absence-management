@@ -1,0 +1,46 @@
+@import "common-var"
+.cmpt-ui-loader {
+	&.fill-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		.cover {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			top: 0;
+			right: 0;
+			background-color: backGroundColor;
+			opacity: 0.8;
+			z-index: 2;
+		}
+
+		.loading-container {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			top: 97px;
+			right: 0;
+			height: 50px;
+			z-index: 5;
+		}
+
+		.bar {
+			animation-name: height-change-blue;
+		}
+	}
+
+	.status {
+		position: relative;
+		top: -2px;
+		color: ap-blue;
+		padding-right: 10px;
+		font-weight: bold;
+		font-size: 12px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}

@@ -1,0 +1,113 @@
+@import "common-var"
+.route-substitute-absences-create-substitute-absence-review {
+	.title {
+		float:left;
+		h5 {
+			line-height: 30px;
+			font-weight: bold;
+		}
+	}
+
+	div.top {
+		background: gradient-blueBar-backGroundColor;
+		background: gradient-blueBar;
+		border-bottom: 1px solid gradient-blueBar-borderColor;
+		color: gradient-blueBar-color;
+		padding: 10px;
+		width: 100%;
+
+		.left-section {
+			span.button-section {
+				display: none;
+			}
+		}
+	}
+
+	div.bottom {
+		background: greyBar-backGroundColor;
+		color: subTitle-color-darkest;
+		border-top: 1px solid borderColor-medium;
+		padding: 10px 12px;
+		text-align: right;
+		width: 100%;
+
+
+	}
+	.section-header {
+		background: gradient-greenBar-backGroundColor;
+		background-image: gradient-greenBar;
+		border-bottom: 1px solid gradient-greenBar-borderColor;
+		color: gradient-greenBar-color;
+		zoom: 1;
+		font-weight: bold;
+		padding: 9px 10px;
+		padding-right: 55px;
+		position: relative;
+		font-size: 14px;
+		width: 100%;
+	}
+	.bold{
+		font-weight:bold;
+	}
+	.details {
+		margin:auto;
+		width:515px;
+		min-height: 245px;
+		.row{
+			border-bottom: 1px solid borderColor-medium;
+			padding: 10px 0;
+			label{
+				display: inline-block;
+				font-size: 13px;
+				font-weight: bold;
+				vertical-align: top;
+				margin-bottom:5px;
+				width:245px;
+				.caption{
+					color: subTitle-color-light;
+					display: block;
+					font-size: 11px;
+					font-weight: normal;
+					line-height: 135%;
+				}
+			}
+			.element{
+				font-size: 14px;
+				width: 265px;
+				display: inline-block;
+				vertical-align: top;
+				hyphenate();
+
+			}
+
+			&.date{
+				.element{
+					width:155px;
+				}
+			}
+
+			&:last-child{
+				border-bottom:0;
+			}
+			&.report-times{
+				.field{
+					width: 65px;
+					display: inline-block;
+				}
+				.text{
+					width:50px;
+				}
+			}
+		}
+	}
+	
+	.cmpt-template-substitute-link {
+		display: inline;
+		margin-left: 4px;
+		font-weight: bold;
+	}
+
+	.cmpt-template-institution-link {
+		display: inline;
+	}
+}

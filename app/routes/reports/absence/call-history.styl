@@ -1,0 +1,46 @@
+@import "common-var"
+
+.route-reports-absences-call-history {
+
+	.cmpt-ui-grouped-grid {
+		.summary-row {
+			border-bottom: 1px solid grid-borderColor;
+			padding: 15px 20px;
+			.section {
+				display: inline-block;
+				margin-right: 20px;
+				vertical-align: top;
+				div {
+					margin-top: 0;
+					font-size: 13px;
+				}
+				div.first {
+					margin-top: 0;
+				}
+			}
+			.label {
+				font-weight: bold;
+			}
+		}
+		.cmpt-template-worker-link,
+		.cmpt-template-confirmation-link
+		{
+			display: inline-block;
+		}
+
+	}
+
+	.totals {
+		background-color: backGroundColor;
+		font-size: 12px;
+		font-weight: bold;
+		border-top: 2px solid borderColor-light;
+		div {
+			padding: 6px 10px;
+			display: inline-block;
+		}
+		div:last-child {
+			border-left: 1px solid borderColor-light;
+		}
+	}
+}

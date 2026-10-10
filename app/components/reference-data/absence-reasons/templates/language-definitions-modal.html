@@ -1,0 +1,64 @@
+<div class="dialog-popup absence-reason-language-definitions-modal" ng-class="{'view-mode': !ngDialogData.canEdit}">
+	<ng-form name="languageDefinitionsForm">
+		<div class="ngdialog-message">
+			<div class="header">{{ngDialogData.header}}</div>
+			<div class="content">
+				<div>
+					<div class="label">{{ngDialogData.strings["English"]}}</div>
+					<div class="field">
+						<cmpt-ui-textbox-v2
+							name="english"
+							value-text="ngDialogData.languageTexts.English.text"
+							form-value="languageDefinitionsForm.english"
+							read-only="!ngDialogData.canEdit"
+							read-only-placeholder="{{ngDialogData.strings['NoneDefined']}}"
+							placeholder="{{ngDialogData.strings['Referencedata.AbsenceReason.Text.EnterLanguageDefinitionsPrompt']}}"
+							max-length="ngDialogData.languageTextMaxLength"
+							update-on-blur>
+							<div ng-message="maxlength">{{ngDialogData.strings['Validation.Message.MustNotBeLongerChars'].replace('{0}', ngDialogData.languageTextMaxLength) }}</div>
+						</cmpt-ui-textbox-v2>
+					</div>
+				</div>
+
+				<div>
+					<div class="label">{{ngDialogData.strings["Spanish"]}}</div>
+					<div class="field">
+						<cmpt-ui-textbox-v2
+							name="spanish"
+							value-text="ngDialogData.languageTexts.Spanish.text"
+							form-value="languageDefinitionsForm.spanish"
+							read-only="!ngDialogData.canEdit"
+							read-only-placeholder="{{ngDialogData.strings['NoneDefined']}}"
+							placeholder="{{ngDialogData.strings['Referencedata.AbsenceReason.Text.EnterLanguageDefinitionsPrompt']}}"
+							max-length="ngDialogData.languageTextMaxLength"
+							update-on-blur>
+							<div ng-message="maxlength">{{ngDialogData.strings['Validation.Message.MustNotBeLongerChars'].replace('{0}', ngDialogData.languageTextMaxLength) }}</div>
+						</cmpt-ui-textbox-v2>
+					</div>
+				</div>
+
+				<div>
+					<div class="label">{{ngDialogData.strings["French"]}}</div>
+					<div class="field">
+						<cmpt-ui-textbox-v2
+							name="french"
+							value-text="ngDialogData.languageTexts.French.text"
+							form-value="languageDefinitionsForm.french"
+							read-only="!ngDialogData.canEdit"
+							read-only-placeholder="{{ngDialogData.strings['NoneDefined']}}"
+							placeholder="{{ngDialogData.strings['Referencedata.AbsenceReason.Text.EnterLanguageDefinitionsPrompt']}}"
+							max-length="ngDialogData.languageTextMaxLength"
+							update-on-blur>
+							<div ng-message="maxlength">{{ngDialogData.strings['Validation.Message.MustNotBeLongerChars'].replace('{0}', ngDialogData.languageTextMaxLength) }}</div>
+						</cmpt-ui-textbox-v2>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="ngdialog-buttons">
+			<a class="{{ button.cls }}" ng-class="{ 'fl-disabled': button.disableWhenFormInvalid && languageDefinitionsForm.$invalid }" ng-click="button.action(languageDefinitionsForm)" ng-if="button.visible" ng-repeat="button in ngDialogData.buttons">{{ button.title }}</a>
+		</div>
+	</ng-form>
+</div>

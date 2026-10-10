@@ -1,0 +1,119 @@
+@import "common-var"
+
+@media print {
+	.cmpt-ui-grouped-grid.not-ready-for-print {
+		&:before {
+			content: 'Please use CTRL + P to print this content correctly.';
+			font-size: 32px;
+			text-align: center;
+			display: block;
+		}
+
+		.grid-header, .grid-rows {
+			display: none !important;
+		}
+	}
+}
+.cmpt-ui-grouped-grid {
+
+	.grid-header {
+		user-select: none;
+
+		div {
+			background: gradientBar;
+			border-bottom: 1px solid grid-borderColor;
+			padding: 10px;
+			font-weight: bold;
+			color: grid-heading-color;
+			font-size: 12px;
+		}
+	}
+
+	.grid-row {
+		position: relative;
+		border-top: 1px solid grid-borderColor;
+
+		.selected {
+			background: grid-row-selected-color;
+		}
+
+		.radio {
+			position: absolute;
+			bottom: 14px;
+			left: 10px;
+		}
+
+		.checkbox {
+			position: absolute;
+			top: 20px;
+			left: 10px;
+			cursor: pointer;
+		}
+
+		.group-row {
+			color: grid-groupRow-text-color;
+			background-color: grid-heading-color;
+			font-weight: bold;
+			line-height: 1;
+			padding: 10px;
+			font-size: 14px;
+		}
+
+		.grid-cell {
+			font-size: 12px;
+			padding: 12px;
+			line-height: normal;
+			overflow: ellipsis;
+			border: none;
+
+			&.cell-0 {
+				padding-left: 35px;
+			}
+		}
+
+		&:nth-child(odd) {
+			background-color: grid-row-odd-color;
+		}
+
+		&:nth-child(even) {
+			background-color: grid-row-even-color;
+		}
+
+		&:first-child {
+			border-top: 0;
+		}
+
+		&:last-child {
+			//border-bottom: 1px solid grid-borderColor;
+		}
+	}
+
+	.grid-footer{
+		font-weight:bold;
+		page-break-after:always;
+	}
+
+	.grouped-data{
+		&.page-breaks{
+			page-break-after:always;
+		}
+		&.page-breaks:last-child {
+			page-break-after: avoid;
+		}
+	}
+
+	.loading {
+		position: relative;
+		background-color: backGroundColor;
+		padding-top: 50px;
+		width: 100%;
+		height: 150px;
+
+		&:after {
+			content: "loading....";
+			position: relative;
+			font-size: 24px;
+			font-weight: bold;
+		}
+	}
+}

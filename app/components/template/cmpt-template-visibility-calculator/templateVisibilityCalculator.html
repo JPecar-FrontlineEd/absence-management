@@ -1,0 +1,61 @@
+<div class="cmpt-template-visibility-calculator">
+	<div class="visibility-details">
+		<cmpt-ui-sortable-grid
+			columns="vm.columns"
+			dataset="vm.dataSet"
+			sort="vm.sort"
+		></cmpt-ui-sortable-grid>
+	</div>
+	<div class='visibility-summary'>
+		<div class="inputs">
+			<div class="summary">
+				{{strings['VisibilityCalc.Summar.Text']}}.
+			</div>
+			<div class="row">
+				<div class="label">{{strings['VisibilityCalc.Label.Text.AbsenceCreatedOn']}}:</div>
+				<cmpt-ui-date-selector date-model="vm.jobCreatedDate" got-error="false"></cmpt-ui-date-selector>
+				<input type="text" class="fl-input time" ng-model="vm.jobCreatedTime" ng-blur="go.createLeadTimePercentages()" />
+			</div>
+			<div class="row">
+				<div class="label">{{strings['VisibilityCalc.Label.Text.AbsenceBeginsOn']}}:</div>
+				<cmpt-ui-date-selector date-model="vm.jobBeginDate" got-error="false"></cmpt-ui-date-selector>
+				<input type="text" class="fl-input time" ng-model="vm.jobBeginTime" ng-blur="go.createLeadTimePercentages()" />
+			</div>
+			<div class="row lead-time">
+				<div class="desc">
+					<div class="label">{{strings['PreferredSub.Radio.Label.Text.LeadTime']}}:</div>
+					<div class="format">{{strings['VisibilityCalc.LeadTime.Format.Text']}}</div>
+				</div>
+				<div class="value">
+					{{vm.leadTime}}
+				</div>
+			</div>
+		</div>
+
+		<div class="results">
+			<div class="row">
+				<div class="label">{{strings['Other']}}:</div>
+				<cmpt-ui-slider range="false" min-value="vm.visibilityPercentage" min="0" max="100" steps="1"></cmpt-ui-slider>
+				<input type="text" class="fl-input slider-percent" ng-model="vm.visibilityPercentageText" ng-blur="go.updateSlider()" /> <span>%</span>
+			</div>
+			<div class="row lead-time">
+				<div class="desc">
+					<div class="label">{{strings['PreferredSub.Radio.Label.Text.LeadTime']}}:</div>
+					<div class="format">{{strings['VisibilityCalc.LeadTime.Format.Text']}}</div>
+				</div>
+				<div class="value">
+					{{vm.resultLeadTime}}
+				</div>
+			</div>
+			<div class="row visible-on">
+				<div class="label">
+					{{strings['VisibilityCal.Header.Text.VisibleOn']}}:
+				</div>
+				<div class="date">
+					<div>{{vm.visibleOnDateTime | parseDate:'MMM. d, yyyy'}}</div>
+					<div>{{vm.visibleOnDateTime | time:'h:mm TT'}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

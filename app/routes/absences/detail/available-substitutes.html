@@ -1,0 +1,9 @@
+<div class="route-absences-detail-available-substitutes" ng-controller="DetailAvailableSubstitutesCtrl as route">
+	<cmpt-absr-buttons class="top" is-loading="route.vm.loading" message="route.vm.message" ng-if="absrState.absr.isLocked" unlock-only="true"></cmpt-absr-buttons>
+	<div class="filter-section">
+		<cmpt-absr-available-substitutes-filter-panel  filter="vm.filter" show-qualified="vm.showQualifiedAndAvailable"></cmpt-absr-available-substitutes-filter-panel>
+	</div>
+	<div class="results-section">
+		<cmpt-absr-available-substitute-bottom-result filter="vm.filter" show-qualified="vm.showQualifiedAndAvailable"></cmpt-absr-available-substitute-bottom-result>
+	</div>
+</div>

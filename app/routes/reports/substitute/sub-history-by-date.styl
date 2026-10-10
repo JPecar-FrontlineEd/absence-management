@@ -1,0 +1,76 @@
+@import "common-var"
+.route-reports-sub-history-by-date {
+
+	#report-lock-header {
+		.report-locked & {
+			height: 122px;
+		}
+	}
+
+	.content-panel .cmpt-ui-grouped-grid {
+		.grid-header div {
+			height: 65px;
+		}
+
+		.activeEmployee-cell,
+		.activeSub-cell,
+		.duration-cell {
+			text-align: center;
+			padding-right: 10px;
+
+			.duration-Icon {
+				font-size: 22px;
+				color: ap-blue;
+			}
+
+			.FullDay:before {
+				content: '\e60c';
+			}
+
+			.HalfDayAM:before {
+				content: '\e606';
+			}
+
+			.HalfDayPM:before {
+				content:'\e60b';
+			}
+
+			.CustomDay:before {
+				content: '\e608';
+			}
+
+			.breaktime {
+				font-size: 10px;
+				color: subTitle-color-darkest;
+				padding-top: 5px;
+			}
+			.hide-print {
+				div{
+					line-height:30px;
+				}
+			}
+		}
+
+		.group-row {
+			.cmpt-template-substitute-link  {
+				a {
+					color: grid-group-title-color;
+					opacity: 1.0;
+					text-decoration: underline;
+				}
+			}
+		}
+
+		.grid-rows {
+			.grid-footer {
+				background-color: report-footer-background;
+			}
+		}
+	}
+
+	.employee-title, .shift-times {
+		font-style: italic;
+		margin: 2px 0;
+	}
+
+}

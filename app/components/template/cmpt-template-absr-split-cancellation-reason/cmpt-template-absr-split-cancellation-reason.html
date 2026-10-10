@@ -1,0 +1,52 @@
+<div class="dialog-popup modal-absr-split-alert-html cmpt-template-absr-split-cancellation-reason">
+	<div class="ngdialog-message">
+		<div class="header">{{ vm.strings[mnemonic.splitConfirmHeader] }}</div>
+		<div class="container dialog-form">
+			<div class="row">
+				<div class="-u-24-24 content dialog-text" ng-bind-html="ngDialogData.body"></div>
+				<div class="-u-24-24 grid">
+					<cmpt-ui-sortable-grid 
+						columns="vm.columns"
+						dataset="vm.gridData"
+					></cmpt-ui-sortable-grid>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="-u-24-24 content auto-splitRemoveSub">
+					<span class="label" ng-if="absrState.substitute != null">
+					<label for="removeSubModule">{{ ngDialogData.removeSubLabel }}</label>
+					<input id="removeSubModule" type="checkbox" ng-model="vm.removeSub" />
+				</span>
+				</div>
+			</div>
+			<div class="row split-cancellation-reasons content" ng-if="vm.cancellationReasons.length > 0 && vm.removeSub">
+				<div class="-u-24-24 content">
+					<label>{{ strings['Absense.Label.Text.CancellationReasons'] }}:</label>
+						<cmpt-ui-dropdown
+							options-array="vm.cancellationReasons"
+							value-selected="vm.cancellationReason"
+							sort-by="'id'"
+							allow-blank="true"
+							read-only="false"
+							enabled="true"
+							default-text="vm.strings['NoneSelected']"
+							unique-marker-class="'auto-split-cancellation-reasons'"
+							error-messages="[]"></cmpt-ui-dropdown>
+				</div>
+			</div>
+		</div>
+		<div class="row ngdialog-buttons">
+			<div class="-u-24-24">
+				<a class="fl-button fl-positive" ng-click="go.split();go.closeThisDialog()" ng-disabled="vm.loading">
+					<span class="fl-label ng-binding">
+					<i class="fa pull-left" ng-class="{'fa-check': !vm.loading, 'fa-spinner fa-spin': vm.loading}"></i>
+					{{ vm.strings[mnemonic.splitButtonConfirm]  }}
+				</span>
+				</a>
+				<a class="fl-button" ng-click="closeThisDialog(true)">
+					<span class="fl-label ng-binding">{{ strings['Cancel'] }}</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

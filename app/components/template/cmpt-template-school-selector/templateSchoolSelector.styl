@@ -1,0 +1,99 @@
+@import "common-var"
+.cmpt-template-school-selector {
+	font-size: 13px;
+	border: 5px solid content-panel-borderColor;
+	padding: 0;
+	background: backGroundColor;
+	width: 100%;
+	clear: both;
+	.instruction {
+	  background: gradient-blueBar-backGroundColor;
+		background: gradient-blueBar;
+		border-bottom: 1px solid gradient-blueBar-borderColor;
+		color: gradient-blueBar-color;
+		padding: 10px;
+		width: 100%;
+		vertical-align: middle;
+		display: inline-block;
+		line-height: 30px;
+	}
+	.search {
+	  background: gradient-greenBar-backGroundColor;
+		background: gradient-greenBar;
+		border-bottom: 1px solid gradient-greenBar-borderColor;
+		color: gradient-greenBar-color;
+		padding: 10px;
+		span {
+			font-size: 12px;
+			font-weight: bold;
+			margin-right: 5px;
+		}
+		input {
+			width: 300px;
+		}
+	}
+
+	.body-section {
+		background: backGroundColor;
+
+		.cmpt-template-institution-tree {
+			div {
+				padding: 1px 0;
+				width: 100%;
+				position: relative;
+
+				.count {
+					display: inline-block;
+					background: header-count-background;
+					font-weight: bold;
+					border-radius: 20px;
+					font-size: 13px;
+					min-width: 22px;
+					text-align: center;
+					margin-left: 5px;
+					padding-left: 5px;
+					padding-right: 5px;
+					color: subTitle-color-darkest;
+				}
+
+				.fields-toggler {
+					margin-right: 5px;
+					cursor: pointer;
+					background: schoolSelector-fieldToggler-backGroundColor;
+					width: 22px;
+					display: inline-block;
+					text-align: center;
+					border-radius: 3px;
+
+					user-select(none);
+
+					&:hover {
+						background: lighten(schoolSelector-fieldToggler-backGroundColor,30%);
+					}
+
+				}
+			}
+
+			& .inst-children {
+				font-weight: bold;
+			}
+
+			& .inst-root {
+				// padding: 8px 0;
+				font-weight: bold;
+				font-size: 14px;
+			}
+
+			.no-data {
+				font-size: 18px;
+				color: subTitle-color-lightest;
+				font-weight: bold;
+				text-align:center;
+				padding-top: 40px;
+				min-height:131px;
+				white-space: normal;
+				word-wrap: break-word;
+			}
+		}
+	}
+}

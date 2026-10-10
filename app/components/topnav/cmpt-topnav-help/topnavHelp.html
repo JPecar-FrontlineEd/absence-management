@@ -1,0 +1,31 @@
+<div class="nav-node cmpt-topnav-help" ap-menu-toggler="dropdown" click-toggler>
+	<i class="fa fa-question-circle"></i>
+	<span once-title="strings['Navigation.Top.MenuItem.Help']" once-text="strings['Navigation.Top.MenuItem.Help']"></span>
+	<ul class="dropdown right-align">
+		<li ng-if="vm.isNavigatorUser" ng-click="go.toPath('/navigator/s_select.asp')">
+			<i class="fa fa-institution"></i>{{ vm.topLevelInstName }}
+		</li>
+		<li ng-if="vm.isCampusUser" class="opt-out-hover-background-change" no-hide-on-select>
+			<div class="contact-info-expanded">
+				<div class="contact-title">{{strings['Navigation.Top.MenuItem.Help.Resources'] | uppercase }}</div>
+				<div class="contact-details">
+					<div class="contact-heading">{{strings['Navigation.Top.MenuItem.Help.ContactPrompt'].replace('{0}', vm.appDisplayName) | uppercase}}</div>
+					<div class="contact-element element-person">{{vm.contactInfo.firstName}} {{vm.contactInfo.lastName}} ({{vm.orgName}})</div>
+					<div class="contact-element element-emphasis element-phone" ng-if="vm.contactInfo.phone">{{strings['Phone']}}: {{vm.contactInfo.phone | phoneFormat}}</div>
+					<div class="contact-element element-emphasis element-fax" ng-if="vm.contactInfo.fax">{{strings['Fax']}}: {{vm.contactInfo.fax | phoneFormat}}</div>
+					<div class="contact-element element-email" ng-if="vm.contactInfo.email">
+						<a href="mailto:{{vm.contactInfo.email}}">{{strings['Navigation.Top.MenuItem.Help.EmailPrompt'].replace('{0}', vm.appDisplayName)}}</a>
+					</div>
+					<div class="contact-element element-comments" ng-if="vm.contactInfo.comments">{{vm.contactInfo.comments}}</div>
+				</div>
+			</div>
+		</li>
+		<li ng-if="havePermission('MISC.Help')" ng-click="go.toLearningCenter()"><i class="fa fa-user"></i>{{vm.HelpLinkText}}</li>
+        <li ng-if="vm.isNavigatorUser" ng-click="go.toPath('/navigator/contact_aesop.asp')">
+        	<i class="fa fa-envelope-o"></i>{{strings['Navigation.Top.MenuItem.Help.ContactPrompt'].replace('{0}', vm.appDisplayName)}}
+        </li>
+
+		<!-- <li><i class="fa fa-comments"></i>Live Chat</li> -->
+		<!-- <li><i class="fa fa-user"></i>Replay Tour</li> -->
+	</ul>
+</div>

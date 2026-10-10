@@ -1,0 +1,53 @@
+@import "common-var"
+.cmpt-reports-report-writer-output-files {
+    .output-file {
+	    display: inline-block;
+	    a, a:hover {
+	    	text-decoration: none;
+	    }
+    }
+    .file-icon {
+		font-family: 'FL-Icons';
+	    font-size: 17px;
+	    margin-right: 15px;
+	    cursor: pointer;
+    }
+    .disabled {
+    	opacity: .3;
+    	cursor: default;
+    }
+	.html:before {
+		content: "\f1c9";
+		color: ap-blue;
+	}
+	.xls:before {
+		content: "\f1c3";
+	}
+	.txt-delim:before {
+		content: "\f15c";
+	}
+	.txt-fixed:before {
+		content: "\f15c";
+	}
+
+	.dialog-format {
+		.output-file {
+			text-align: center;
+			display: inline-block;
+			margin-left: 50px;
+			font-size: 24px;
+			.filetype-name {
+				font-size: 14px;
+				margin-top: 5px;
+				line-height: 15px;
+			}
+		}
+		.file-icon {
+			margin-right: 0;
+			font-size: 24px;
+		}
+		.output-file:first-of-type {
+			margin-left: 0;
+		}
+	}
+}

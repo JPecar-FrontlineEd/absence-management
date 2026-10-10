@@ -1,0 +1,75 @@
+<div class="cmpt-absr-date-picker">
+	<div class="type-1" ng-show="true">
+		<div class="label">
+			{{ strings['AbsenceRequest.DatePicker.Text.SelectDaysYouWillBeOut'] }}
+		</div>
+		<div class="range-picker">
+			<div class="-u-13-24">
+				<div class="label">
+					<label for="{{'absrStart' + vm.uniqueId}}">{{ strings['AbsenceRequest.DatePicker.Text.From'] }}</label>
+				</div>
+			</div>
+			<div class="-u-11-24">
+				<div class="label">
+					<label for="{{'absrEnd' + vm.uniqueId}}">{{ strings['AbsenceRequest.DatePicker.Text.To'] }}</label>
+				</div>
+			</div>
+			<div class="date-picker" ng-show="vm.showRange">
+				<div class="-u-11-24">
+					<cmpt-ui-date-selector-v2
+						name="startDate"
+						value-text="vm.startDate"
+						placeholder='Select Start'
+						min-date="vm.minSystemDate"
+						alloweddow="vm.selectabledow"
+						on-change="go.changeStartDate"
+						button-label="vm.SelectFromDate"
+						update-on-blur
+						ng-if="enabled"
+						ng-class="{'error': errorMessages.startDate.length > 0}"
+						unique-id="{{'absrStart' + vm.uniqueId}}" selected-location = "selectedLocation"
+					></cmpt-ui-date-selector-v2>
+					<div class="date-label" ng-if="!enabled">{{ startDate }}</div>
+					<div class="error-message" ng-repeat="value in errorMessages.startDate">{{ value }}</div>
+				</div>
+				<div class="-u-2-24">
+					-
+				</div>
+				<div class="-u-11-24">
+					<cmpt-ui-date-selector-v2
+						name="endDate"
+						value-text="vm.endDate"
+						placeholder='Select End'
+						alloweddow="vm.selectabledow"
+						on-change="go.changeEndDate"
+						update-on-blur
+						ng-if="enabled"
+						ng-class="{'error': errorMessages.endDate.length > 0}"
+						unique-id="{{'absrEnd' + vm.uniqueId}}"
+						button-label="vm.SelectToDate" selected-location = "selectedLocation"></cmpt-ui-date-selector-v2>
+					<div class="date-label" ng-if="!enabled">{{ endDate }}</div>
+					<div class="error-message" ng-repeat="value in errorMessages.endDate">{{ value }}</div>
+				</div>
+			</div>
+			<div class="custom-box" ng-show="!vm.showRange">
+				<div class="-u-18-24">
+					{{ strings['AbsenceRequest.DatePicker.Text.CustomDateSelection'] }}
+				</div>
+				<div class="-u-6-24">
+					<a ng-if="enabled" href="#" ng-click="go.clearDates()">{{ strings['AbsenceRequest.DatePicker.Text.Clear'] }}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<cmpt-ui-multi-datepicker
+			date-value="dateValue"
+			other-dates="otherDates"
+			min-date="minDate"
+			drag-selectdow="dragSelectdow"
+			selectabledow="selectabledow"
+			enabled="enabled"
+			disabled-dates="vm.disabledDates"
+			error-messages="errorMessages.dates"></cmpt-ui-multi-datepicker>
+	</div>
+</div>

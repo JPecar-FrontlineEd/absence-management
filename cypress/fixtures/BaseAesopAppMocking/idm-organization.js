@@ -1,0 +1,270 @@
+module.exports = function() {
+    return {
+        "data": [{
+            "id": 101475,
+            "name": "an org for agibson",
+            "settings": {
+                "usesVeritime": true,
+                "usesAbsenceApproval": true,
+                "usesVacancies": true,
+                "usesReportWriterScheduling": true,
+                "usesAbsenceAttachment": true,
+                "usesBlockSubstitute": true,
+                "showPayCodeOnAssignSubstitutePage": true,
+                "maxManualCallsPerAbsence": 15,
+                "usesDailyLimits": true,
+                "usesWeeklyLimits": true,
+                "usesMonthlyLimits": false,
+                "usesCancelClosedMode": false,
+                "showIdentifierToCampusUser": true,
+                "DeductBreakFromAbsenceDuration": false,
+                "workLeaveFeedback": true,
+                "workViewSubstituteAverageFeedbackScore": true,
+                "subViewFeedback": true,
+                "subLeaveFeedback": true,
+                "showAbsReasonOnSubSignIn": true,
+                "ShowAbsenteeReportBudgetCode": true,
+                "ShowAbsenteeReportPayCode": true,
+                "showDailyReportBudgetCode": true,
+                "showDailyReportPayCode": true,
+                "showDailyReportEmployeeExtId": false,
+                "showDailyReportSubstituteExtId": false,
+                "showIdentifiersToCampusUser": true,
+                "showPinToCampusUser": false,
+                "ShowAccountingCode": true,
+                "ShowSchoolCustomerNumber": false,
+                "subReportTimesEnabled": true,
+                "UserHrsVisMode": false,
+                "PastAbsenceDateTime": "1\/16\/2018",
+                "showSubResume": true,
+                "showSubPhoto": true,
+                "isWebTimeVisible": false,
+                "showDashboard": true,
+                "trackLogin": true,
+                "showAllocationGroups": true,
+                "importsEnabled": true,
+                "AllowedDOW": [
+                    false,
+                    true,
+                    true,
+                    true,
+                    true,
+                    true,
+                    false
+                ],
+                "usesParentWeeklyLimits": false,
+                "usesParentMonthlyLimits": false,
+                "allowedShiftTypes": 2,
+                "isVeritimeOnly": false,
+                "usesUserVoice": true
+            },
+            "absenceRequestArchiveDate": "6\/30\/2013",
+            "applId": 1,
+            "orgXrefId": 120018,
+            "orgNcesId": null,
+            "appDisplayName": "Aesop",
+            "orgContactInfo": {
+                "title": null,
+                "firstName": "Auto",
+                "middleName": null,
+                "lastName": "Org",
+                "phone": "9364363523",
+                "fax": null,
+                "email": null,
+                "comments": null
+            },
+            "subContactInfo": {
+                "title": null,
+                "firstName": null,
+                "middleName": null,
+                "lastName": null,
+                "phone": null,
+                "fax": null,
+                "email": null,
+                "comments": null
+            },
+            "featureList": [{
+                    "id": 2,
+                    "name": "AngularApprovalsForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 3,
+                    "name": "AngularReconcileForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 4,
+                    "name": "AngularAbsenceRequestForOU",
+                    "enabled": true
+                },
+                {
+                    "id": 8,
+                    "name": "Sidekick",
+                    "enabled": true
+                },
+                {
+                    "id": 9,
+                    "name": "AngularAbsenteeReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 10,
+                    "name": "AngularSubSignInReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 11,
+                    "name": "AngularDailyReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 12,
+                    "name": "AngularApprovalStatusReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 13,
+                    "name": "AngularMonthlySummaryReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 14,
+                    "name": "AngularCallHistoryReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 15,
+                    "name": "AngularFeedbackReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 16,
+                    "name": "AngularDOWAbsenceAnalysisReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 17,
+                    "name": "AngularInteractiveReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 18,
+                    "name": "AngularSubHistoryByDateReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 19,
+                    "name": "AngularSubExcludedReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 20,
+                    "name": "AngularStaffListReportForOU",
+                    "enabled": false
+                },
+                {
+                    "id": 21,
+                    "name": "IDM",
+                    "enabled": true
+                },
+                {
+                    "id": 23,
+                    "name": "IDMisIdentityProvider",
+                    "enabled": true
+                },
+                {
+                    "id": 26,
+                    "name": "SidekickNavigator",
+                    "enabled": true
+                },
+                {
+                    "id": 27,
+                    "name": "SidekickCampus",
+                    "enabled": true
+                },
+                {
+                    "id": 28,
+                    "name": "ChangeLogImpersonation",
+                    "enabled": true
+                },
+                {
+                    "id": 29,
+                    "name": "FrontlineInstitute",
+                    "enabled": false
+                },
+                {
+                    "id": 30,
+                    "name": "InAppDashboard",
+                    "enabled": false
+                },
+                {
+                    "id": 31,
+                    "name": "SidekickRemote",
+                    "enabled": false
+                },
+                {
+                    "id": 32,
+                    "name": "EventSynching",
+                    "enabled": true
+                },
+                {
+                    "id": 33,
+                    "name": "EventPublishing",
+                    "enabled": false
+                },
+                {
+                    "id": 34,
+                    "name": "AbsenceAwareOfTASchedule",
+                    "enabled": false
+                },
+                {
+                    "id": 35,
+                    "name": "Zendesk",
+                    "enabled": false
+                },
+                {
+                    "id": 36,
+                    "name": "MosAlwaysMigratable",
+                    "enabled": false
+                },
+                {
+                    "id": 37,
+                    "name": "MOSNewSuggestions",
+                    "enabled": false
+                },
+                {
+                    "id": 38,
+                    "name": "ExcludedCommentsRequired",
+                    "enabled": true
+                },
+                {
+                    "id": 39,
+                    "name": "IDM_ShadowMigration",
+                    "enabled": true
+                },
+                {
+                    "id": 40,
+                    "name": "PermissionSyncing",
+                    "enabled": false
+                },
+                {
+                    "id": 41,
+                    "name": "SharedAppAccess",
+                    "enabled": false
+                }
+            ],
+            "orgStatus": {
+                "statusTypeId": 2
+            },
+            "userVoiceSSOToken": "JaxVCAgGGQ5LxUz%2bbqaTu3V7AO%2frNRVEStwvAF0dxmQ9PtyblZ9F5ewAmtjZusbR%2ffl1hrcFUhFU3pswfSSGgzRXa14rpPrFVkXbLZ9FOLD4aEaIQ%2bBXKbtkbWaFq0SZ3k%2bmx%2bYiSgATnEAGFweeHA%3d%3d"
+        }],
+        "messages": [
+
+        ],
+        "success": true,
+        "modelState": {
+
+        }
+    }
+}

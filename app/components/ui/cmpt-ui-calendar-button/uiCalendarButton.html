@@ -1,0 +1,15 @@
+<div class="cmpt-ui-calendar-button">
+	<a class="date" href="{{ baseLink }}?date={{ dateModel.toString('MM/dd/yyyy') }}">
+		<div class="calender-date">
+			<div class="month">{{ vm.month }}<span> {{ vm.date }}</span></div>
+			<div class="date" >
+				<div class="number">{{ vm.date }}</div>
+				<div class="daily-text"><ng-transclude></ng-transclude></div>
+			</div>
+		</div>
+	</a>
+	<div class="print">
+		<i class="fa fa-print"></i>
+		<a href="{{ baseLink }}?date={{ dateModel.toString('MM/dd/yyyy') }}&&print=true">{{ strings['Dashboard.Header.Print.Label'] }}</a>
+	</div>
+</div>

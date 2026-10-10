@@ -1,0 +1,205 @@
+@import "common-var"
+.cmpt-absr-details-variation {
+
+	.variation-toggler{
+		&:focus{
+			border: 1px solid #bbbbbb;
+			box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+			outline: none;
+		}
+	}
+	.section-header{
+		.variation-number{
+			font-weight: normal;
+		}
+	}
+	.variation{
+		border-bottom: 1px solid borderColor-medium;
+	}
+
+	.form-loader {
+		position: relative;
+		.bar {
+			background-color: backGroundColor;
+			animation-name: height-change-blue;
+		}
+	}
+
+	.no-school {
+		text-align: center;
+		padding-top: 15px;
+	}
+
+	.column-details{
+		border-left: 1px solid borderColor-medium;
+		min-height: 300px;
+		padding: 10px;
+
+		.row{
+			border-bottom: 1px solid borderColor-medium;
+			padding: 10px 0;
+			label{
+				display: inline-block;
+				font-size: 13px;
+				font-weight: bold;
+				vertical-align: top;
+				margin-bottom:5px;
+				width:245px;
+				.caption{
+					color: subTitle-color-lightest;
+					display: block;
+					font-size: 11px;
+					font-weight: normal;
+					line-height: 135%;
+				}
+			}
+			.element{
+				font-size: 14px;
+				width: 195px;
+				display: inline-block;
+				vertical-align: top;
+
+				select{
+					white-space: nowrap;
+				}
+			}
+			&:last-child{
+				border-bottom:0;
+			}
+
+			&.disabled {
+				opacity: 0.5;
+			}
+			&.accounting-codes{
+				input{
+					background: backGroundColor;
+					border: 1px solid borderColor-medium;
+					box-shadow: inset 0 0 6px boxShadow;
+					padding: 5px;
+					font-size: 14px;
+					color: subTitle-color-darkest;
+					width: 100%;
+					margin-top:5px;
+				}
+				div.element{
+					white-space: normal;
+    				word-break: break-word;
+				}
+			}
+			&.non-pay{
+				.caption{
+					width: 215px;
+				}
+			}
+			&.time-absent{
+				.caption{
+					width: 215px;
+				}
+			}
+			&.reasons{
+				&.vacancy-reason-shrink{
+					display:none;
+				}
+			}
+			&.extensions {
+				i.fa-li-ellipsis {
+					font-size: 16px;
+				}
+			}
+		}
+
+		div.noBottomBorder{
+			border-bottom: none;
+		}
+
+		div.noTopPadding{
+			padding-top:0px;
+		}
+
+		.time {
+			transition: height 200ms;
+			overflow: hidden;
+			&.both {
+				.field{
+					display:inline-block;
+					width:195px;
+					label{
+						width:195px;
+					}
+				}
+				.link{
+					display:inline-block;
+					width:38px;
+					margin: 0 2px;
+				}
+			}
+			.one-option{
+				.cmpt-ui-dropdown{
+					display:none;
+				}
+			}
+			.absenceDuration{
+				font-weight:600;
+				position: absolute;
+				font-size: 14px;
+			}
+			.absenceDurationMarginsWithoutSubReportTime{
+				margin: -3.5% 0% 0% 56%;
+			}
+			.absenceDurationMarginsWithSubReportTime{
+				margin: 11.3% 0% 0% -1%;
+			}
+			span.resetBreakTime a{
+				font-weight:600;
+        		margin: 8% 0% 0% 0%;
+        		position: absolute;
+			}
+			span.resetBreakTime a:hover{
+                 text-decoration: none;
+             }
+		}
+	}
+	.variation-footer{
+		clearfix();
+		font-weight:bold;
+		width:100%;
+		background: greyBar-backGroundColor;
+		border-top: 1px solid borderColor-medium;
+		padding: 10px 12px;
+		.add-variation{
+			float:left;
+		}
+		.delete-variation{
+			float:right;
+		}
+	}
+	.cmpt-absr-time-field.sub-report-time {
+		.error-message {
+			display:none;
+		}
+		&.enabled {
+			.error-message {
+				display:block;
+			}
+		}
+	}
+}
+
+.qtip.info-qtip.extensions {
+	width: 240px;
+}
+
+.schoolDefaultInfo{
+	margin-left:3px;
+	bottom:2px;
+	position:relative;
+}
+
+
+.schoolDefaultInfo-content{
+	line-height:1.5;
+}
+
+.normalFont{
+	font-weight: normal;
+}

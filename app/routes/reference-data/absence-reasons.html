@@ -1,0 +1,40 @@
+<div class="fixed-width reference-data-styles route-reference-data-absence-reasons" ng-controller="AbsenceReasonsCtrl as route" ng-class="{'shrink': route.vm.shrink, 'disable-add': route.vm.addingNew }">
+
+	<div class="top-banner">
+		<h1>{{ route.strings['Report.Label.AbsenceReasons'] }}</h1>
+		<div class="-g">
+			<div class="-u-18-24 description" ap-bind-html="route.strings['Referencedata.AbsenceReason.Description'].replace('span','div')"></div>
+			<div class="-u-6-24"><cmpt-reference-data-balance-year></cmpt-reference-data-balance-year></div>
+		</div>
+		<div class="actions" ng-if="$root.havePermission('REFDATA.REFDATAADD')">
+			<span class="add-link" ng-click="route.go.addAbsenceReason(false)">
+				<i class="fa fa-plus"></i>
+				<span>{{ route.strings['Referencedata.AbsenceReason.Text.AddAbsenceReason'] }}</span>
+			</span>
+			<span class="add-link" ng-click="route.go.addAbsenceReason(true)">
+				<i class="fa fa-plus"></i>
+				<span>{{ route.strings['Referencedata.AbsenceReason.Text.AddAbsenceReasonBucket'] }}</span>
+			</span>
+		</div>
+	</div>
+	<div>
+		<div class="mian-list" ng-class="{'has-scroll': route.vm.hasScroll}">
+			<cmpt-ui-grid
+				class="hover scrollable-grid"
+				columns="route.vm.columns"
+				dataset="route.vm.dataset"
+				default-sort="name"
+				footer-template="route.vm.footerTemplate"
+				track-by="id"
+				default-row-height="40"
+				is-loading="route.vm.isLoading"
+				use-in-view="false">
+				{{  route.strings['NoRecordsFound'] }}
+			</cmpt-ui-grid>
+		</div>
+		<div class="details">
+			<ui-view></ui-view>
+		</div>
+	</div>
+
+</div>

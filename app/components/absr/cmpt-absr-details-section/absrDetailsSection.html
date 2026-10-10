@@ -1,0 +1,35 @@
+<form name="byVariationForm" novalidate>
+<div class="cmpt-absr-details-section">
+	<div ng-repeat="message in absrState.errors track by $index" class="error-list">
+		{{message}}
+	</div>
+	<cmpt-absr-details-variation
+		ng-repeat="variation in absrState.absrVariations"
+		unique-id="{{'variation' + $index}}"
+		variation-data="variation"
+		all-dates="vm.allDates"
+		detect-conflict="go.detectConflict",
+		detect-vacancy-conflict="go.detectVacancyConflict",
+		edit-mode="route.editMode"
+	>
+		<a class="fl-button add-variation"
+			ng-click="go.addVariation($index)"
+			ng-if="variation.isEditable"
+		>
+			<span class="fl-label"><i class="fa fa-plus pull-left"></i>
+				{{ strings['absrItenerant.Step2.button.text.AddVariations'] }}
+			</span>
+		</a>
+		<a class="fl-button delete-variation"
+			ng-click="go.removeVariation($index)"
+			ng-show="absrState.absrVariations.length > 1"
+			ng-if="variation.isDeletable"
+		>
+			<span class="fl-label">
+				{{ strings['DeleteThisVariation'] }}
+			</span>
+		</a>
+	</cmpt-absr-details-variation>
+	<cmpt-absr-details-notes></cmpt-absr-details-notes>
+</div>
+</form>

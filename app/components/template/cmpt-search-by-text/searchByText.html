@@ -1,0 +1,6 @@
+<div class="cmpt-search-by-text">
+	<ng-transclude></ng-transclude>
+	<div class="fl-search">
+		<i class="fa-search"></i> <input id="searchByText" aria-label="{{strings['SearchByText']}}" class="fl-input" type="text" placeholder="{{:: strings.bind(placeholder) }}" ng-model="filter" ng-model-options="{debounce: 300}">
+ 	</div>
+</div>

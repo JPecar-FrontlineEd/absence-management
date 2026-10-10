@@ -1,0 +1,26 @@
+@import "common-var"
+.dashboard-locked .cmpt-dashboard-bottom-results {
+	.header {
+		position: fixed;
+		top: 165px;
+		width: content-width;
+		z-index: 2;
+		background-color: backGroundColor;
+	}
+
+	.content-panel {
+		border: 4px solid dashboard-bottomResult-header-backGroundColor;
+		border-top-width: 0;
+
+		.grid-header {
+			position: fixed;
+			top: 232px;
+			margin-left: -4px;
+			width: content-width;
+			border-right: 4px solid content-panel-borderColor !important;
+			border-left: 4px solid content-panel-borderColor !important;
+			z-index: 1;
+			box-shadow: 0px 1px 5px 0px boxShadow;
+		}
+	}
+}

@@ -1,0 +1,65 @@
+@import "common-var"
+.cmpt-template-available-sub-call-cell {
+	overflow: visible !important;
+	margin-top: 20px;
+
+	.call-now {
+		overflow: visible !important;
+	}
+}
+
+.call-status{
+	.content{
+		margin: 20px 0;
+		font-size:14px;
+		.status{
+			font-size:20px;
+		}
+		.bold{
+			font-weight:bold;
+		}
+		.data-spinner{
+			margin:0;
+		}
+		.rejected{
+			color:ap-red;
+		}
+		.aborted{
+			color:ap-yellow;
+		}
+		.accepted{
+			color: ap-green;
+		}
+		div{
+			&.-g{
+				padding:10px 0;
+				border-bottom: 1px solid borderColor-medium;
+				&:last-child{
+					border-top: 1px solid borderColor-medium;
+					border-bottom: none;
+				}
+			}
+			&.data{
+				padding:5px 0;
+				border:none;
+			}
+		}
+	}
+	.ngdialog-buttons{
+		&.aborted{
+			.fl-positive{
+				margin-left:5px;
+				display: block;
+			}
+		}
+		.fl-positive{
+			display:none;
+		}
+		&.disabled{
+			a.fl-positive{
+				opacity:0.6;
+				cursor: not-allowed;
+			}
+		}
+	}
+}

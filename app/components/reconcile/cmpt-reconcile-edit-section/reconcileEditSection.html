@@ -1,0 +1,92 @@
+<div class="cmpt-reconcile-edit-section">
+	<div class="form-loader" ng-if="!vm.mainDataReady || !vm.instDependantDataReady">
+		<cmpt-ui-loader cls="loader" is-loading="true"></cmpt-ui-loader>
+	</div>
+	<div ng-show="vm.mainDataReady && vm.instDependantDataReady">
+		<div class="row reasons" ng-if="absrVal.context.showEntitlementType">
+			<label>
+				<span class="text">{{ strings[mnemonic.reasonTitle] }}:</span>
+			</label>
+			<div class="element">
+				<cmpt-ui-dropdown
+					label="strings['SelectAbsenceReason']"
+					options-array="vm.entitlementTypeList"
+					value-selected="absence.entitlementType"
+					read-only="!vm.editable.entitlementType"
+					can-select-hidden-absence-reasons="vm.canSelectHiddenAbsenceReasons"
+				    reconciled-hidden-absence-reason="vm.reconciledHiddenAbsenceReason"
+					enabled="true"
+					error-messages="absence.errors.entitlementType"></cmpt-ui-dropdown>
+			</div>
+		</div>
+		<div class="row budget-codes" ng-if="absrVal.context.showBudgetCode && vm.bugdetCodeList.length > 0">
+			<label>
+				<span class="text">{{ strings['BudgetCode'] }}:</span>
+			</label>
+			<div class="element">
+				<cmpt-ui-dropdown options-array="vm.bugdetCodeList"
+				label="strings['SelectBudgetCode']"
+				value-selected="absence.budgetCode"
+				read-only="!vm.editable.budgetCode"
+				enabled="true"
+				error-messages="[]"></cmpt-ui-dropdown>
+			</div>
+		</div>
+		<div class="row accounting-codes" ng-if="absrVal.context.showAccountingCode">
+			<label>
+				<span class="text">{{ strings['AccountingCode'] }}:</span>
+			</label>
+			<div class="element">
+				<cmpt-ui-dropdown
+					label="strings['SelectAccountingCode']"
+					options-array="vm.accountingCodeList"
+					value-selected="absence.accountingCode"
+					read-only="!vm.editable.accountingCode"
+					enabled="true"
+					error-messages="[]"
+					sort-by="go.sortByNameWithCustomAtBottom"></cmpt-ui-dropdown>
+				<span ng-if="absence.accountingCode.id === 0 && !vm.editable.accountingCode" class="read-only"> - {{absence.customAccountingCode}}</span>
+				<input aria-label="{{strings['EnterCustomAccountingCode']}}" type="text"
+					class="fl-input"
+					placeholder="Enter Custom Acct. Code"
+					ng-model="absence.customAccountingCode"
+					ng-show="absence.accountingCode.id === 0 && vm.editable.accountingCode">
+			</div>
+		</div>
+		<div class="row sub-worked" ng-if="absrVal.context.showHoursSubWorked">
+			<label>
+				<span class="text">{{ strings['HoursSubWorked'] }}:</span>
+			</label>
+			<div class="element">
+				<cmpt-ui-textbox
+				label="strings['EnterSubWorkedHours']"
+				value-text="absence.subHourWorked"
+				error-messages="absence.errors.subHourWorked"
+				read-only="!vm.editable.hoursSubWorked"
+				placeholder="Hours"
+				enabled="true"></cmpt-ui-textbox>
+			</div>
+		</div>
+		<div class="row pay-codes" ng-if="absrVal.context.showPayCode && vm.payCodeList.length > 0">
+			<label>
+				<span class="text">{{ strings['PayCode'] }}:</span>
+			</label>
+			<div class="element">
+				<cmpt-ui-dropdown
+				label="strings['SelectPayCode']"
+				options-array="vm.payCodeList"
+				value-selected="absence.payCode"
+				read-only="!vm.editable.payCode"
+				enabled="true"
+				error-messages="absence.errors.payCode"></cmpt-ui-dropdown>
+			</div>
+		</div>
+		<div class="row action" ng-show="absrVal.context.canEdit">
+			<a class="fl-button-sm" ng-class="{'fl-disabled':!absence.isDirty}" ng-click="go.save()"
+				ng-show="vm.editable.entitlementType || vm.editable.budgetCode || vm.editable.payCode || vm.editable.hoursSubWorked || vm.editable.accountingCode">
+				<i class="fa" ng-class="{'fa-check': !vm.isProcessing, 'fa-spinner fa-spin': vm.isProcessing}"></i>
+				{{strings['Save']}}
+			</a>
+		</div>
+	</div>
+</div>

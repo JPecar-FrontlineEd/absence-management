@@ -1,0 +1,58 @@
+@import "common-var"
+.cmpt-substitute-absence-search-results {
+	position: relative;
+	min-height: 360px;
+
+	&.spinner-bottom {
+		.loader-container {
+			.cmpt-ui-loader {
+				.loading-container {
+					top: initial;
+				 	bottom: 100px;
+			 	}
+		 	}
+	 	}
+	}
+	.cmpt-ui-grid{
+		.grid-header{
+			.grid-header-content:first-child{
+				border-left:0px;
+			}
+		}
+		.grid-row{
+			cursor: pointer;
+			.grid-cell{
+				user-select: none;
+				font-size:12px;
+				border-left:0;
+				padding:0;
+				.selected{
+					background: grid-row-selected-color;
+				}
+				div{
+					padding: 13px 10px;
+				}
+			}
+			.name-cell {
+				font-weight: bold;
+				.input-radio{
+					margin-right:10px;
+					margin-left:1px;
+				}
+			}
+		}
+		.no-data{
+			line-height: 225px;
+		    font-size: 20px;
+		    font-weight: bold;
+		}
+	}
+	.below-grid {
+		text-align: center;
+		border-top: 1px solid borderColor-medium;
+
+		button.fl-button {
+			margin: 10px;
+		}
+	}
+}

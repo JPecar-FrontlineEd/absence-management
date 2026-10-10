@@ -1,0 +1,119 @@
+@import 'common-var'
+
+.cmpt-reports-absence-summary-panel {
+
+	height: 100%;
+
+	.chart-wrap {
+		border-bottom-left-radius: 5px;
+		height: 100%;
+
+		.graph-content {
+			padding: 15px;
+			height: 100%;
+
+			.no-Chart {
+				padding-top: 70px;
+				text-align: center;
+				font-weight: bold;
+				color: subTitle-color-light;
+			}
+
+			.cmpt-ui-bar-chart{
+				// canvas{
+				// 	width: 420px !important;
+    		// 	height: 175px !important;
+				// }
+			}
+
+		}
+	}
+
+	.legend{
+		margin:15px;
+		width:250px;
+		.legend-header{
+			font-size: 15px;
+	    font-weight: 700;
+	    line-height: 22px;
+			margin-bottom: 5px;
+		}
+		.legend-item{
+			width: 50%;
+	    margin-bottom: 10px;
+	    white-space: nowrap;
+	    display: inline-block;
+	    line-height: 30px;
+			.box{
+				display: inline-block;
+		    width: 30px;
+		    height: 30px;
+		    vertical-align: middle;
+				&.green{
+					background-color: fl-green;
+				}
+				&.yellow{
+					background-color: fl-yellow;
+				}
+				&.grey{
+					background-color: fl-darkgray-1;
+				}
+			}
+			label{
+				display: inline-block;
+		    vertical-align: middle;
+		    margin: 0 5px;
+		    font-size: 11px;
+		    width: 80%;
+		    white-space: nowrap;
+		    overflow: hidden;
+		    -o-text-overflow: ellipsis;
+		    text-overflow: ellipsis;
+			}
+		}
+	}
+
+
+	.graph-summary {
+		background-color: report-filter-panel-summary-chart-backGroundColor;
+		border-right: 1px solid report-filter-panel-blueBorderColor;
+		border-bottom-left-radius: 5px;
+
+		div {
+			margin: 10px 0;
+			box-sizing:content-box;
+		}
+
+		.graph-summary-content {
+			padding: 20px 10px 20px 38px;
+			border-left: 1px solid report-filter-panel-greyBorderColor;
+
+			div {
+				line-height: 14px;
+				label {
+					margin-right: 5px;
+				}
+			}
+
+			.header {
+				font-size: 18px;
+				font-weight: bold;
+				line-height: 18px;
+			}
+
+			label {
+				font-weight: bold;
+			}
+
+			span {
+				font-size: 25px;
+				font-weight: bold;
+				line-height: 25px;
+			}
+
+			.fill-rate span {
+				color: ap-green;
+			}
+		}
+	}
+}

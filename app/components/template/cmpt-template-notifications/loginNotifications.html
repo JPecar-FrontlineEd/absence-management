@@ -1,0 +1,14 @@
+<div class="dialog-popup login-notifications-popup">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content">
+			<cmpt-template-notifications show-full-list="ngDialogData.showFullList" refresh="false"></cmpt-template-notifications>
+		</div>
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)" ng-repeat="button in ngDialogData.buttons" >
+			<i class="fa {{ button.icon }}"></i>
+			{{ button.title }}
+		</a>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+<div class="cmpt-step-progress">
+	<div ng-repeat="step in steps"
+		ng-class="{active: $index === vm.currentStep, complete: $index < vm.currentStep}">
+		<span>{{ strings[step.title] }}</span>
+	</div>
+</div>

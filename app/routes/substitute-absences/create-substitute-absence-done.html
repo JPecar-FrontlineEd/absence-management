@@ -1,0 +1,90 @@
+<div class="fixed-width route-substitute-absences-create-substitute-absence-done" ng-controller="CreateSubstituteAbsenceDoneCtrl as route">
+	<div class="title"><h3>{{ route.strings['Substitute.Absence'] }}: {{ route.strings['SubstituteAbsence.Create.Text'] }}</h3></div>
+	<cmpt-step-progress steps="route.vm.steps" current-step="3"></cmpt-step-progress>
+
+	<div class="top-banner">
+		<span class="success"><i class="fa fa-check-circle"></i></span>
+	    <div class="message">
+	        {{ route.strings['Absence.Create.Text.Your'] }} {{ route.strings['Absence'] }} {{ route.strings['Absence.Create.Text.HasBeenScheduled'] }}.
+	        <div class="sub-message">
+	            {{ route.strings['Absence.Create.Text.YourConfirmationNumberIs'] }}
+	            <cmpt-template-substitute-absence-confirmation substitute-absence-id="{{ route.substituteAbsenceVal.id }}" ></cmpt-template-substitute-absence-confirmation>.
+	        </div>
+	    </div>
+	</div>
+	<div class="content-panel">
+		<div class="top action-bar">
+			{{ route.strings['Absence.Create.Text.AbsenceSummaryFor'] }}
+			<span class="bold">{{ route.substituteAbsenceVal.substitute.lastName }}, {{ route.substituteAbsenceVal.substitute.firstName }}</span>
+			<a class="fl-button btn-print" href="javascript:window.print()">
+				<div class="fl-label">
+					{{ route.strings['Absence.Create.Text.PrintThisPage'] }}
+				</div>
+			</a>
+		</div>
+		<div class="-g">
+			<!-- left summary section -->
+			<div class="-u-14-24 absence-summary">
+				<div class="-g">
+					<div class="-u-19-24">
+						<table>
+							<tbody>
+								<tr class="header">
+									<th colspan="2">
+										{{ route.go.parseTime(route.substituteAbsenceVal.date) | date: 'MMMM d' }}
+									</th>
+								</tr>
+								<tr class="row">
+									<td class="label">{{ route.strings['School'] }}</td>
+									<td>{{ route.substituteAbsenceVal.institution.name }}</td>
+								</tr>
+								<tr class="row">
+									<td class="label">{{ route.strings['AbsenceReason'] }}</td>
+									<td>{{ route.substituteAbsenceVal.entitlementType.name }}</td>
+								</tr>
+								<tr class="row">
+									<td class="label">
+										{{ route.strings['Absence.Reciept.Text.Start/End Times'] }}
+									</td>
+									<td>
+									{{ route.go.parseTime(route.substituteAbsenceVal.startTime) | date : 'shortTime' }}-{{ route.go.parseTime(route.substituteAbsenceVal.endTime) | date : 'shortTime'  }}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="-u-5-24 pointer">
+						<i class="fa fa-chevron-right"></i>
+					</div>
+				</div>
+			</div>
+			<!-- right action panel -->
+			<div class="-u-10-24 next-steps">
+				<div>{{ route.strings['Absence.Reciept.Text.NextSteps'] }}</div>
+				<div class="button-section">
+					<a class="fl-button" ng-click="route.go.view()">{{ route.strings['Absence.Create.ViewAbsence'] }}</a>
+				</div>
+				<div class="view-profile link">
+					<cmpt-template-substitute-link substitute-id="{{ route.substituteAbsenceVal.substitute.id }}" substitute-name="{{ route.substituteAbsenceVal.substitute.lastName }}, {{ route.substituteAbsenceVal.substitute.firstName }}">
+						{{ route.strings['Absence.Reciept.Text.ViewProfileFor'] }}&nbsp;
+					</cmpt-template-substitute-link>
+				</div>
+				<div class="create-absence link">
+					<a href="" ng-click="route.go.createAbsence()">{{ route.strings['Absence.Reciept.Text.CreateAnotherAbsence'] }}</a>
+				</div>
+				<div class="log-out link">
+					<a href="" ng-click="route.go.logOut()">{{ route.strings['Absence.Reciept.Text.LogoutOfAesop'] }}</a>
+				</div>
+			</div>
+		</div>
+		<div class="bottom action-bar">
+			<a class="fl-button fl-negative"
+				ng-if="$root.havePermission('SUBABS.DELETE')"
+				ng-click="route.go.delete()">
+				<div class="fl-label">
+					<i class="fa-times pull-left"></i>{{ route.strings['Absence.Create.Text.DeleteThis'] }} {{ route.strings['Absence'] }}
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

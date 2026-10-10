@@ -1,0 +1,169 @@
+@import "common-var"
+.cmpt-substitute-absence-detail {
+	&.cannot-edit{
+		.save, .edit{
+			display: none;
+		}
+		.edit-mode{
+			.details{
+				.row{
+					&.report-times{
+						.field{
+							width: 65px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.view-mode{
+		.details{
+			.row{
+				&.accountingCode{
+					.cmpt-ui-dropdown-v2{
+						display:inline-block;
+						.input{
+							display:inline-block;
+							.cmpt-ui-dropdown{
+								div{
+									display:inline-block;
+								}
+							}
+						}
+					}
+					.cmpt-ui-textbox-v2{
+						display:inline-block;
+						.input{
+							display:inline-block;
+							.cmpt-ui-textbox{
+								div{
+									display: inline-block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.loading-state{
+		.fl-button{
+			display: none;
+		}
+	}
+	.form-loader {
+		position: relative;
+		.bar {
+			background-color: backGroundColor;
+			animation-name: height-change-blue;
+		}
+	}
+
+
+	.section-header {
+		background: gradient-greenBar-backGroundColor;
+		background-image: gradient-greenBar;
+		border-bottom: 1px solid gradient-greenBar-borderColor;
+		zoom: 1;
+		color: gradient-greenBar-color;
+		font-weight: bold;
+		padding: 9px 10px;
+		padding-right: 55px;
+		position: relative;
+		font-size: 14px;
+		width: 100%;
+	}
+	.content{
+		position: relative;
+		&.view-mode{
+			.details{
+				min-height: 245px;
+				.row{
+					&.report-times{
+						.field{
+							width: 65px;
+						}
+					}
+				}
+			}
+		}
+		.details {
+			margin:auto;
+			width:515px;
+			min-height: 275px;
+			.row{
+				border-bottom: 1px solid borderColor-medium;
+				padding: 10px 0;
+				label{
+					display: inline-block;
+					font-size: 13px;
+					font-weight: bold;
+					vertical-align: top;
+					margin-bottom:5px;
+					width:245px;
+					.caption{
+						color: subTitle-color-light;
+						display: block;
+						font-size: 11px;
+						font-weight: normal;
+						line-height: 135%;
+					}
+					.required-field{
+						color:ap-red
+						padding-left:3px;
+					}
+				}
+				.element{
+					font-size: 14px;
+					width: 265px;
+					display: inline-block;
+					vertical-align: top;
+					hyphenate();
+					select{
+						white-space: nowrap;
+					}
+					.cmpt-ui-date-selector{
+						label{
+							display:none;
+						}
+					}
+				}
+
+				&.date{
+					.element{
+						width:155px;
+					}
+				}
+				&.accountingCode{
+					.element{
+						.cmpt-ui-dropdown{
+							select{
+								//height: 30px;
+							    padding: 6px 10px;
+							    border: 1px solid borderColor-medium;
+							    -webkit-border-radius: 2px;
+							    border-radius: 2px;
+							    font-size: 14px;
+							}
+						}
+						.cmpt-ui-textbox-v2{
+							margin-top:10px;
+						}
+					}
+				}
+				&:last-child{
+					border-bottom:0;
+				}
+				&.report-times{
+					.field{
+						width: 120px;
+						display: inline-block;
+					}
+					.text{
+						width:50px;
+					}
+				}
+			}
+		}
+	}
+}

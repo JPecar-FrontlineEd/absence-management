@@ -1,0 +1,121 @@
+@import "common-var"
+.route-webtime-webtime-approvers {
+	.heading {
+		display: inline-block;
+		font-size: 18px;
+		width: 58%;
+		margin-top: 4px;
+
+		.school-name {
+			font-weight: bold;
+		}
+	}
+	.school-selector {
+		float: right;
+		display: inline-block;
+		padding: 8px 10px;
+		background: report-switcher-backGroundColor;
+		line-height: 1;
+
+		.label {
+			font-size: 0.8rem;
+			font-weight: bold;
+			margin-right: 10px;
+		}
+
+		.cmpt-ui-dropdown {
+			display: inline-block;
+		}
+	}
+	.content {
+		padding: 0px;
+		margin-top: 20px;
+		background: none repeat scroll 0 0 backGroundColor;
+		border: 5px solid content-panel-borderColor;
+		min-height: 157px;
+		position: relative;
+
+		.cmpt-ui-sortable-grid {
+			.grid-rows {
+				font-size: 13px;
+				.grid-cell {
+					background-color: backGroundColor;
+					line-height: 1.5;
+					.cmpt-ui-textbox {
+						padding-right: 5px;
+						.fl-input {
+							font-size: 13px;
+						}
+						div {
+							white-space: normal;
+							word-wrap: break-word;
+							font-size: 13px;
+						}
+					}
+					.cmpt-ui-date-selector {
+						.fl-input {
+							font-size: 13px;
+						}
+					}
+				}
+				.actions-cell {
+					.fl-button {
+						margin-right: 10px;
+					}
+				}
+			}
+			& .edit-mode {
+				.grid-cell {
+					background-color: grid-row-selected-color;
+				}
+			}
+			.no-data {
+				font-weight: bold;
+				padding-top: 20px;
+				height: 50px;
+			}
+
+			//Removing the X displayed in input fields by IE
+			.fl-input::-ms-clear {
+    			display: none;
+			}
+		}
+
+		.green-color {
+			color: ap-green;
+		}
+
+		.red-color {
+			color: ap-red;
+		}
+
+		.content-header {
+			background: gradient-blueBar-backGroundColor;
+			background: gradient-blueBar;
+			border-bottom: 1px solid gradient-blueBar-borderColor;
+			color: gradient-blueBar-color;
+			padding: 10px;
+			width: 100%;
+		}
+
+		.actions-footer {
+			background: greyBar-backGroundColor;
+			border-top: 1px solid borderColor-medium;
+			padding: 10px;
+			position: relative;
+			height: 50px;
+		}
+	}
+
+	.action-button {
+		padding: 0 10px;
+	}
+
+	.edit-button {
+		padding: 0 7px 0 10px;
+	}
+
+	.save-button {
+		padding: 0 8px 0 9px;
+	}
+}

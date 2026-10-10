@@ -1,0 +1,11 @@
+<div class="cmpt-search-by-letter">
+	<div class="letter-header">{{:: strings.bind('Absence.Create.Select.SearchByLetter') }}</div>
+	<div class="letter-table">
+		<div ng-repeat="character in ::vm.characters" ng-click="go.setLetter(character)">
+			<span class="blackFont">{{ character }}</span>
+		</div>
+		<div ng-click="go.setLetter('')">
+			<span class="blackFont">{{:: strings.bind('All') }}</span>
+		</div>
+	</div>
+</div>

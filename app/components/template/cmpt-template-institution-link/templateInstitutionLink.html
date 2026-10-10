@@ -1,0 +1,5 @@
+<div class="cmpt-template-institution-link">
+	<a ng-context-menu="School" ng-class="{'wrap-words' : wrapTextInLine, 'dailyReportHyperlink' : isDailyReport, deletedAbsrTextColor : isAbsrDeleted}" ng-if="vm.isValid && (showNameAsLink && (vm.link != ''))" href="{{ vm.link }}" title="{{ instName }}">{{ instName }}</a>
+	<span ng-if="vm.isValid && (!showNameAsLink || (vm.link == ''))" ng-class="{'inst-name' : showNameInBold, 'wrap-words' : wrapTextInLine}">{{instName}}</span>
+	<span ng-if="!vm.isValid">{{invalidText}}</span>
+</div>

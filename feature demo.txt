@@ -1,0 +1,9 @@
+Feature Demo:
+
+1. Feature Flag is turned off for Org (not displayed in Org misc or School General Info)
+2. Turn on flag for Org and demostrate the feature flag working (new drop down will be shown for Org and School)
+3. Add excluded and included subs with and without comments to both schools
+4. Turn on Excluded Comments feature for Org
+5. Demo moved and defaulted excluded comments in Campus User
+6. Turn off default on second schools
+7. Demo in Campus User for both schools showing default and override working

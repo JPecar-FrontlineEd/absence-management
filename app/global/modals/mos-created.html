@@ -1,0 +1,40 @@
+<div class="dialog-popup dialogMain">
+	<div class="ngdialog-message">
+
+        <div class="mosCreatedHeader">
+          <div class="success">Success</div>
+        </div>
+
+        <div class="uppercontainer">
+            <div class="notification">
+                Your substitute accounts have been merged into one new Multiple District phone access PIN.
+            </div>
+
+            <div class="separator"></div>
+            <div class="mosInfo">
+                <table>
+                    <tr><td><span class="titleText">Multi-District Phone Number</span></td><td><span class="infoText">{{ngDialogData.mosPhone}}</span></td></tr>
+                    <tr><td><span class="titleText">Multi-District PIN</span></td><td><span class="infoText">{{ngDialogData.mosPin}}</td></tr>
+                </table>
+                <div class="changePinInfo">
+                    To change your PIN, switch to your multi-district view role, then go to Preferences=>Change Pin.
+                </div>                
+            </div>
+            <div class="separator2"></div>
+            <div class="disclaimer">
+                NOTE: this is not your password to sign into the website; this will only allow you to access the phone system.
+            </div>
+        </div>
+        
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="{{ button.cls }}"
+			ng-click="button.action()"
+			ng-repeat="button in ngDialogData.buttons"
+		>
+			<i class="fa fa-spinner fa-spin"
+				ng-if="!!button.loading"
+			></i>{{ button.title }}
+		</a>
+	</div>
+</div>

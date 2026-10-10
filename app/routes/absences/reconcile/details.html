@@ -1,0 +1,80 @@
+<div class="fixed-width route-absences-reconcile-details" ng-controller="ReconcileDetailsCtrl as route">
+	<div class="header">
+		<h3>{{route.strings['ReconciliationDetails.Header.Text.ReconciliationDetailFor']}} <b>{{route.vm.dateText}}</b></h3>
+		<div class="day-stepper">
+			<button aria-label="{{route.strings['SelectPreviousDay']}}" class="fl-button previous" ng-class="{'fl-disabled': !route.vm.canGoToPreviousDay }" ng-click="route.vm.canGoToPreviousDay && route.go.prev()">
+				<i class="fa fa-chevron-left"></i>
+			</button>
+			<button aria-label="{{route.strings['SelectNextDay']}}" class="fl-button next" ng-class="{'fl-disabled': !route.vm.canGoToNextDay }"  ng-click="route.vm.canGoToNextDay && route.go.next()">
+				<i class="fa fa-chevron-right"></i>
+			</button>
+		</div>
+		<div class="prev-button">
+			<button type="button" ng-click="route.go.backToSummary()" class="fl-button">
+				<span class="fl-label">{{ route.strings['Reconciliation.Page.Header.Title'] }}</span>
+			</button>
+		</div>
+	</div>
+	<div class="report-standards">
+		<cmpt-reconcile-detail-filter-panel
+			filters="route.vm.filters"
+			is-data-rendered ="route.vm.isDataRendered"
+		></cmpt-reconcile-detail-filter-panel>
+	</div>
+
+	<div class="bottom-results">
+		<div class="loader-container" ng-show="route.vm.isLoading">
+		   <cmpt-ui-loader
+		   		fill
+		   		is-loading=route.vm.isLoading>
+		   	</cmpt-ui-loader>
+		</div>
+
+		<div class="result-header section-heading">
+			<div class="title-item-count" ng-show="!route.vm.isLoading && route.vm.totalRecords > 0">
+				<div class="count">{{((currentPage)*itemsPerPage)+1}} - {{(currentPage+1)*itemsPerPage > route.vm.totalRecords ? route.vm.totalRecords : (currentPage+1)*itemsPerPage}} of {{ route.vm.totalRecords }}</div> Item<span ng-if="route.vm.totalRecords > 1">s</span>
+			</div>
+			<div class="btn-reconcile-all" ng-show="route.vm.canReconcile && route.vm.canReconcileAll && route.vm.totalRecords > 1" ng-if="havePermission('ABSR.RECONCILEALL')">
+				<button ng-class= "{'disabled': !route.vm.isDataRendered }" ng-disabled = "!route.vm.isDataRendered" class="fl-button" ng-click="route.go.reconcileAll()">
+					<span ng-if="route.vm.notReconcileState">{{ route.strings['Reconcile.Button.Text.ReconcileAll'] }} <strong>{{ route.vm.totalRecords }}</strong></span>
+					<span ng-if="!route.vm.notReconcileState">{{ route.strings['Reconcile.Button.Text.UnreconcileAll'] }} <strong>{{ route.vm.totalRecords }}</strong></span>
+				</button>
+			</div>
+		</div>
+		<div ng-show="route.vm.dataSet.length > 0" ng-repeat="absrVal in pagedItems[currentPage]">
+			<cmpt-reconcile-absence-details
+				absr-val="absrVal"
+				dismiss-action="route.go.dismissAction"
+				filters="route.vm.filters"
+				ng-show="!absrVal.hidden"
+				save="route.go.save",
+				re-count-records="route.go.reCountAbsrs">
+			</cmpt-reconcile-absence-details>
+		</div>
+
+		<div class="section-heading pagination" ng-show="route.vm.totalRecords > 0 && route.vm.dataSet.length > 0 && route.vm.dataLoaded && !route.vm.isLoading">
+			<span ng-class="{disabled: currentPage == 0}">
+				<a class="paginationNavButton" href ng-click="prevPage()">&#60;</a>
+			</span>
+			<span ng-if="totalPages < maximumPages" ng-repeat="n in range(pageStart, totalPages)" ng-class="{active: n == currentPage}" ng-click="setPage()">
+				<a class="paginationButtons" ng-class="{btnLastPage : totalPages == 1 || n == totalPages-1}" href ng-bind="n+1">1</a>
+			</span>
+			<a ng-if="totalPages > maximumPages" class="paginationButtons btnFirstPage" ng-class="{active: currentPage == 0}" ng-click="setPage(0)" href >1</a>
+			<a ng-if="pageStart >= maximumPages-3" class="paginationButtons dots">...</a>
+			<span ng-if="totalPages > maximumPages">	
+				<span ng-if="n < totalPages" ng-repeat="n in range(pageStart, totalPages-1)" ng-class="{active: n == currentPage}" ng-click="setPage()">
+					<a ng-if="n < (maximumPages+pageStart) && n != 0 && n != totalPages-1" ng-class="{active: n == currentPage, prevDotElement : n == maximumPages+pageStart-1}" class="paginationButtons" href ng-bind="n+1">1</a>
+				</span>
+				<a ng-if="currentPage < totalPages-3" class="paginationButtons dots">...</a>
+				<a class="paginationButtons btnLastPage" ng-class="{active: currentPage == totalPages-1}" href ng-click="setPage(totalPages-1)" >{{totalPages}}</a>
+			</span>
+			<span ng-class="{disabled: currentPage == totalPages}">
+				<a class="paginationNavButton" href ng-click="nextPage()">&#62;</a>
+			</span>
+		</div>
+
+		<div class="no-data" ng-show="(route.vm.dataSet.length === 0 || route.vm.count === 0) && route.vm.dataLoaded && !route.vm.isLoading && totalPages == 0">
+			<span>{{ route.strings['NoResultsFound'] }}</span>
+		</div>
+	</div>
+</div>

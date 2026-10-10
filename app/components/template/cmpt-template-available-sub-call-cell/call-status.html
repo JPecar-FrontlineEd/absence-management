@@ -1,0 +1,36 @@
+<div class="dialog-popup call-status">
+	<div class="ngdialog-message">
+		<div class="header">{{ ngDialogData.header }}</div>
+		<div class="content">
+			<div class="-g status">
+				<div class="-u-11-24 bold">{{ ngDialogData.strings['AvailableSub.Templ.text.CallStatus'] }}:</div>
+				<div class="-u-13-24">
+					<span class="data-spinner" ng-show="ngDialogData.status.statusId === 0"></span>
+					<span class="{{ ngDialogData.status.cssClass }}">{{ ngDialogData.status.statusText }}</span>
+				</div>
+			</div>
+			<div class="-g" ng-show="ngDialogData.status.statusId === 9 || ngDialogData.status.statusId === 7">
+				<div ng-show="ngDialogData.status.statusId === 9">{{ ngDialogData.strings['AvailableSub.Templ.text.AbortedCaption'] }}</div>
+				<div ng-show="ngDialogData.status.statusId === 7" class="rejected">{{ ngDialogData.strings['AvailableSub.Templ.text.RejectedCaption'] }}</div>
+			</div>
+			<div class="-g data">
+				<div class="-u-11-24">{{ ngDialogData.strings['AvailableSub.Templ.text.SubstituteName'] }}:</div>
+				<div class="-u-13-24 bold">{{ ngDialogData.substituteName }}</div>
+			</div>
+			<div class="-g data">
+				<div class="-u-11-24">{{ ngDialogData.strings['AvailableSub.Templ.text.CallRequestedTime'] }}:</div>
+				<div class="-u-13-24">{{ ngDialogData.status.callRequestedTime }}</div>
+			</div>
+			<div class="-g">
+				<div class="-u-11-24">{{ ngDialogData.strings['AvailableSub.Templ.text.Confirmation'] }} #</div>
+				<div class="-u-13-24">{{ ngDialogData.absrId }}</div>
+			</div>
+		</div>
+	</div>
+	<div class="ngdialog-buttons" ng-class="{'aborted' : ngDialogData.status.statusId === 9 }">
+		<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons">
+		<i class="fa {{ button.icon }}"></i>
+		{{ button.title }}
+		</a>
+	</div>
+</div>

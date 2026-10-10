@@ -1,0 +1,17 @@
+<div class="cmpt-feedback-feedback-rating">
+	<ap-rate-it
+  		readonly="!editMode"
+ 		ng-model="vm.starRating"
+ 		min="0"
+ 		max="5"
+ 		step="1"
+ 		size="'large'"
+ 		color="vm.starColor"
+ 		resetable="false"
+ 		over="go.updateStars"
+ 		rated="go.rated"
+ 	></ap-rate-it>
+ 	<div class="label">
+ 		{{vm.ratingText}}
+ 	</div>
+</div>

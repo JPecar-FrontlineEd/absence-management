@@ -1,0 +1,20 @@
+<div class="fixed-width route-absences-create-vacancy-details" ng-controller="CreateVacancyDetailsCtrl as route">
+	<div class="title"><h3>{{ strings['Vacancy'] }}: {{ strings['Absence.Create.Text.CreateVacancy'] }}</h3></div>
+	<cmpt-step-progress steps="vm.steps" current-step="1"></cmpt-step-progress>
+	<div class="content-panel">
+		<cmpt-current-step enable-next="true" steps="vm.steps" current-step="1" class="top">{{ strings['Absence.Create.Text.Step'] }} 2: {{ strings['Absence.Create.Text.FillOut'] }} {{ strings['Vacancy'] }} {{ strings['Absence.Create.Text.DetailsFor'] }} 
+			<!--<span class="bold">&nbsp;{{ absrState.worker.name }}</span>-->
+			&nbsp;<cmpt-template-worker-link worker-id="{{ absrState.worker.id }}" worker-name="{{ absrState.worker.name }}" show-name-as-link="true" is-vacancy="true"></cmpt-template-worker-link>
+		</cmpt-current-step>
+		<cmpt-absr-error-banner ng-if= "selectedView == 'btnDay' && absrState.hasError" error-message = "vm.errorMessage"></cmpt-absr-error-banner>
+		<div class="-g">
+			<cmpt-absr-create-new-by-day-section ng-class="{hide: selectedView == 'btnVariation'}" class="-u-18-24"></cmpt-absr-create-new-by-day-section>
+
+			<cmpt-absr-details-section ng-class="{hide: selectedView == 'btnDay'}" class="-u-18-24"></cmpt-absr-details-section>
+			<cmpt-absr-details-summary-section class="-u-6-24" review-mode="false"></cmpt-absr-details-summary-section>
+		</div>
+
+
+		<cmpt-current-step enable-next="true" steps="vm.steps" current-step="1" class="bottom"></cmpt-current-step>
+	</div>
+</div>

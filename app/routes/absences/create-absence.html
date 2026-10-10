@@ -1,0 +1,18 @@
+<div class="fixed-width route-create-absence" ng-controller="CreateAbsenceCtrl as route">
+	<div class="title"><h3>{{ strings['Absence'] }}: {{ strings['Absence.Create.Text.CreateAbsence'] }}</h3></div>
+	<cmpt-absr-switch-to-old-version></cmpt-absr-switch-to-old-version>
+	<cmpt-step-progress steps="vm.steps" current-step="0"></cmpt-step-progress>
+	<div class="content-panel">
+		<cmpt-current-step enable-next="!!absrState.worker" steps="vm.steps" current-step="0" class="top">{{ strings['Absence.Create.Text.Step'] }} 1: {{ strings['Absence.Create.Text.SelectEmployee'] }}</cmpt-current-step>
+		<cmpt-search-by-text filter="vm.filter" placeholder="Absecne.Create.Select.LastName"><label for="searchByText">{{ strings['Search'] }}:</label></cmpt-search-by-text>
+		<div class="-g body-section">
+			<div class="-u-6-24 search-by-letter">
+				<cmpt-search-by-letter filter="vm.filter"></cmpt-search-by-letter>
+			</div>
+			<div class="-u-18-24 search-results">
+				<cmpt-absr-worker-search-results filter="vm.filter" is-vacancy="vm.isVacancy"></cmpt-absr-worker-search-results>
+			</div>
+		</div>
+		<cmpt-current-step enable-next="!!absrState.worker" steps="vm.steps" current-step="0" class="bottom"></cmpt-current-step>
+	</div>
+</div>

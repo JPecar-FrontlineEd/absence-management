@@ -1,0 +1,143 @@
+@import "common-var"
+.route-substitute-absences-create-substitute-absence-done {
+	.title {
+		float:left;
+		h5 {
+			line-height: 30px;
+			font-weight: bold;
+		}
+	}
+	.top-banner{
+		width: 100%;
+		display: inline-block;
+		padding: 15px 40px;
+		margin-bottom: 10px;
+		border: 2px solid ap-dark-green;
+		background: ap-light-green;
+
+		.success {
+			display: block;
+			font-size: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+
+		.message {
+			font-size: 1.5rem;
+			display: block;
+			text-align: center;
+			width: 100%;
+			font-weight: 600;
+
+			.sub-message {
+				font-size: 1rem;
+				font-weight: normal;
+				margin-top: 0.4rem;
+				.cmpt-template-substitute-absence-confirmation{
+					display: inline-block;
+					margin-left:5px;
+				}
+			}
+		}
+	}
+
+	.action-bar{
+		padding: 10px;
+		width:100%;
+		font-size: 13px;
+		line-height: 30px;
+		.bold{
+			font-weight: bold;
+		}
+		&.top{
+			background: gradient-blueBar-backGroundColor;
+			background: gradient-blueBar;
+			border-bottom: 1px solid gradient-blueBar-borderColor;
+			color: gradient-blueBar-color;
+		}
+		&.bottom{
+			background: greyBar-backGroundColor;
+			color: subTitle-color-darkest;
+			border-top: 1px solid borderColor-medium;
+			height:51px;
+		}
+		.btn-print {
+			margin-left: 1rem;
+		}
+	}
+
+	.absence-summary{
+		padding: 20px
+		margin-top: 1rem;
+		table{
+			width:100%;
+			tr.header{
+				padding: 5px 10px;
+				font-size: 14px;
+				font-weight: bold;
+				color: backGroundColor;
+				background: absence-doneStep-tableHeader-backGroundColor;
+				border-color: absence-doneStep-tableHeader-borderColor;
+				text-align:left;
+				th{
+					padding: 5px 10px;
+				}
+			}
+			tr.row{
+				&:after{content:none;}
+				&:before{content:none;}
+				td{
+					border:1px solid absence-doneStep-tableRow-borderColor;
+					padding:5px 10px;
+					background:absence-doneStep-tableRow-label-backGroundColor;
+					font-size:12px;
+					&.label{
+						background: absence-doneStep-tableRow-backGroundColor;
+						width: 170px;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		.pointer{
+			display: inline-block;
+			vertical-align: middle;
+			margin: auto 0;
+			i{
+				font-size: 80px;
+				color: ap-light-grey-1;
+				text-align: center;
+				width: 100%;
+				display: inline-block;
+			}
+		}
+	}
+	.next-steps{
+		background: absence-summarySection-backGroundColor;
+		border-left: 1px solid gradient-lightBlueBar-borderColor;
+		padding: 10px;
+		.button-section {
+			margin-top: 0.6rem;
+			margin-bottom: 0.7rem;
+		}
+
+		.link {
+			font-size: 14px;
+		}
+
+		.cmpt-template-substitute-link{
+			display: inline-block;
+		}
+
+		.log-out{
+			border-top:1px solid borderColor-medium
+			margin-top: 0.6rem;
+			padding-top: 0.5rem;
+
+			a {
+				font-weight: bold;
+			}
+		}
+	}
+
+}

@@ -1,0 +1,88 @@
+@import "common-var"
+.cmpt-ui-multiselect-v2 {
+	position: relative;
+	.cmpt-ui-multiselect{
+		.ui-multiselect{
+			line-height:32px;
+		}
+		.label{
+			display: none;
+		}
+		.selector{
+			width: 100%;
+			float: none;
+		}
+	}
+
+	.counter{
+		position: absolute;
+    right: 35px;
+    border: 1px solid borderColor-medium;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 25px;
+    text-align: center;
+    top: 6px;
+    background: backGroundColor;
+	}
+
+
+&.not-multiSelect-and-required,&.multiSelect-and-required{
+	.cmpt-ui-textbox-v2{
+		.input{
+		 input{
+			display: none;
+		 }
+		 .validation-messages{
+			 &::after{
+				 left: inherit;
+				 right: 6px;
+			 }
+		 }
+		 i.fa-exclamation{
+			 display: none;
+		 }
+		}
+	}
+}
+
+&.not-multiSelect-and-required,&.not-multiSelect-and-not-required{
+	.counter{
+		display: none;
+	}
+}
+
+&.not-multiSelect-and-required {
+	.cmpt-ui-multiselect{
+		.label{
+			display: block;
+			line-height: 36px;
+		}
+		.selector{
+			width: 40%;
+			float: right;
+		}
+	}
+	.label-csv{
+		display: none;
+	}
+	.counter{
+		right: 23px;
+	}
+
+	.cmpt-ui-textbox-v2{
+		.validation-messages{
+		 top:36px;
+		}
+	}
+}
+
+.label-csv{
+	font-size: 12px;
+	color: subTitle-color-darkest;
+	padding-top:5px;
+}
+
+
+
+}

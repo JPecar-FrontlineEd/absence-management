@@ -1,0 +1,27 @@
+<div class="cmpt-absr-buttons" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+	<span ng-if="absrState.absr.isLocked">
+		{{ strings['LockWarning'] }}
+	</span>
+	<span ng-repeat="button in vm.buttons">
+		<button ng-click="button.action()" class="fl-button {{button.cls}}"
+			ng-if="button.isVisible() && button.type == 'button' && (!absrState.absr.isDeleted || button.id == 'btnDay' || button.id == 'btnVariation')" 
+			ng-class="{activeSwitchButton: (selectedView == button.id), deletedAbsrButton : absrState.absr.isDeleted}"
+			tabindex="0"
+			ng-keyup="$event.keyCode == 13 ? button.action() : null">
+			<div class="fl-label {{ button.loading ? 'fl-disabled': '' }}">
+				<i
+					class="fa pull-left {{button.loading ? 'fa-spinner fa-spin' : button.icon}}"></i>{{ strings.bind(button.title) }}
+			</div>
+		</button>
+		<button class="fl-button {{button.cls}} fl-disabled"
+			ng-class="{deletedAbsrButton : absrState.absr.isDeleted}"
+			ng-if="button.isVisible() && button.type == 'button' 
+					&& (absrState.absr.isDeleted && button.id != 'btnDay' && button.id != 'btnVariation')"
+			disabled = "disabled"
+			>
+			<div class="fl-label"> {{ strings.bind(button.title) }} </div>
+		</button>
+
+		<label ng-if="button.isVisible() && button.type == 'label'" class='labelViewBy'>{{ strings['ViewBy'] }} </label>
+	</span>
+</div>

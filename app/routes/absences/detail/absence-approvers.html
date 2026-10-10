@@ -1,0 +1,21 @@
+<div class="route-absences-detail-absence-approvers" ng-controller="AbsenceApproversCtrl as route">
+	<div ng-if="absrState.absr.requiresApproval">
+		<div class="approvers-header">
+	        <h3>{{route.strings['Approvers']}}</h3>
+	        <p class="description" ng-if="route.vm.count > 0">
+	        	{{route.strings['Approver.Text.UpTo']}} {{route.vm.count}} {{route.vm.count > 1 ? route.strings['level_plural'] : route.strings['level']}} {{route.strings['Approver.Text.OfApprovalRequired']}}
+	        </p>
+	    </div>
+	    <div class="results-section">
+	    	<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<cmpt-ui-grouped-grid
+				columns="route.vm.resultCols"
+				dataset="route.vm.results"
+				group-by="'group'"
+				progressive="true"></cmpt-ui-grouped-grid>
+		</div>
+	</div>
+	<div class="no-approval-required" ng-if="!absrState.absr.requiresApproval">
+		{{route.strings['NoApprovalRequired']}}
+	</div>
+</div>

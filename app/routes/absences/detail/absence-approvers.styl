@@ -1,0 +1,75 @@
+@import "common-var"
+.route-absences-detail-absence-approvers {
+	.approvers-header {
+		padding: 10px;
+		font-weight: bold;
+		background: gradient-blueBar-backGroundColor;
+		background-image: gradient-blueBar;
+		border-bottom: 1px solid gradient-blueBar-borderColor;
+		color: gradient-blueBar-color;
+		padding: 20px;
+
+		h3 {
+			font-size: 18px;
+			font-weight: bold;
+			margin: 0;
+			padding: 0;
+		}
+		.description {
+			font-size: 12px;
+			line-height: 1.5em;
+			border-top: 1px solid approversTab-blueHeader-description-borderColor;
+			color: approversTab-blueHeader-description-color;
+			font-weight: bold;
+			padding: 10px 0 0;
+			margin: 10px 0 0;
+		}
+	}
+
+	.results-section {
+		position: relative;
+		min-height: 100px;
+		.cmpt-ui-grouped-grid {
+			.grid-row {
+				.group-row {
+					background: gradient-greenBar-backGroundColor;
+					background-image: gradient-greenBar;
+					border: 1px solid gradient-greenBar-borderColor;
+					color: gradient-greenBar-color;
+					font-weight: normal;
+				}
+				.grid-cell {
+					padding: 5px 12px;
+					border-right: 1px solid grid-borderColor;
+
+					i.fa-check,
+					i.fa-times,
+					a.fa-envelope-o {
+						font-size:20px;
+					}
+					.fa-check {
+						color:ap-green;
+					}
+					.fa-times {
+						color:ap-dark-red;
+					}
+					&:last-child {
+						border-right:none;
+					}
+				}
+				.grid-cell.cell-0 {
+					padding: 12px;
+				}
+			}
+		}
+	}
+
+	.no-approval-required {
+		text-align: center;
+		font-weight: bold;
+		font-size: 24px;
+		padding: 50px;
+		color: subTitle-color-lightest;
+		height: 150px;
+	}
+}

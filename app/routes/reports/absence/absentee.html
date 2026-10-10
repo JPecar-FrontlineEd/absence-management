@@ -1,0 +1,84 @@
+<div class="fixed-width report-standards route-reports-absence-absentee" ng-controller="AbsenteeCtrl as route">
+	<cmpt-reports-switcher section="Absence"></cmpt-reports-switcher>
+
+	<h3>{{route.strings['Reports.Title.Absentee']}}</h3>
+
+	<div class="panel">
+		<cmpt-reports-filter-panel
+			filters="route.vm.filters"
+			extra-validators="route.vm.validation"
+			action="route.go.callToServer"
+			download-url="route.go.downloadUrl">
+		</cmpt-reports-filter-panel>
+		<div class="summary-panel" ng-show="route.vm.dataLoaded" ng-class="{expanded: route.vm.expanded}">
+			<div class="bar -g">
+				<div class="title -u-23-24">{{route.strings['Summary']}}</div>
+				<div class="collapsable -u-1-24" ng-click="route.go.toggleCollapse()">
+					<i class="fa fa-angle-right"></i>
+				</div>
+			</div>
+
+			<div class="summary-content"  ng-show="route.vm.expanded">
+				<cmpt-reports-absence-summary-panel
+					no-need-sub="route.vm.summary.noNeedSub",
+					unfilled="route.vm.summary.unfilled",
+					filled="route.vm.summary.filled"
+				>
+		            <div class="graph-summary-content">
+	                    <div class="header">{{route.strings['DR.Summary.Label.Totals']}}</div>
+	                    <div class="total-absences">
+	                        <label>{{route.strings['DR.Summary.Label.Total']}}:</label>
+	                        <span>{{route.vm.summary.unfilled + route.vm.summary.filled + route.vm.summary.noNeedSub}}</span>
+	                    </div>
+	                    <div class="fill-rate needsub">
+	                        <label>{{route.strings['DR.Summary.Label.NeedSub']}}: </label>
+	                        <span>{{route.vm.summary.unfilled + route.vm.summary.filled}}</span>
+	                    </div>
+	                    <div class="fill-rate notneedsub">
+	                        <label>{{route.strings['DR.Summary.Label.NoSubNeeded']}}: </label>
+	                        <span>{{route.vm.summary.noNeedSub}}</span>
+	                    </div>
+	                </div>
+				</cmpt-reports-absence-summary-panel>
+			</div>
+		</div>
+	</div>
+
+	<div id="report-lock-header" class="lock-header-fill"></div>
+
+	<div class="header">
+		<div class="header-content">
+			<div class="count" ng-class="{loaded: route.vm.dataLoaded}">{{route.vm.dataSet.length}}</div>
+			<div class="label" ng-class="{loaded: route.vm.dataLoaded}">{{route.strings['Reports.Title.Absentee']}}</div>
+			<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<cmpt-ui-print-button></cmpt-ui-print-button>
+			<a class="fl-button print-pdf" ng-click="route.go.downloadPdf()">
+				<div class="fl-label">
+					<i class="fa fa-file-pdf-o"></i>
+					<span>
+						{{ route.strings['Button.text.PrintPDF'] }}
+					</span>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<div class="content-panel" ng-class="{loaded: route.vm.dataLoaded, 'page-breaks': route.vm.filters.printPageBreaks}">
+		<cmpt-ui-grid
+			columns="route.vm.columns"
+			dataset="route.vm.dataSet"
+			track-by="id"
+			default-sort="{{ route.vm.sortGroupBy }}"
+			group-by="route.vm.filters.orderBy"
+			group-title-template="'{{ row[parent.route.vm.filters.orderByTitle] }}'"
+			footer-template="route.vm.footerTemplate"
+			summary-data-handler="route.vm.processSummary"
+			default-row-height="66"
+		>
+			{{route.vm.dataLoaded ? route.strings['NoRecordsFound'] : route.strings['Reports.Results.Label.InitialInstructions']}}.
+		</cmpt-ui-grid>
+	</div>
+
+
+
+</div>

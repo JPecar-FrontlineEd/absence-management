@@ -1,0 +1,18 @@
+<div class="cmpt-ui-date-selector-v2">
+	<div class="input">
+		<i class="icon fa fa-exclamation"
+			ng-show="formValue.$invalid && formValue.$touched"></i>
+		<input 
+			name="{{ name }}"
+			placeholder='{{ placeholder }}'
+			type="text"
+			ng-model="vm.dummyVal"
+			class="fl-input"
+			ng-blur="go.blur()"
+			ng-required="required"
+		    ng-maxlength="{{ maxLength }}">
+		<div ng-messages="formValue.$touched && formValue.$error" class="validation-messages">
+			<ng-transclude></ng-transclude>
+		</div>
+	</div>
+</div>

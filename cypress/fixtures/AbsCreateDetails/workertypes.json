@@ -1,0 +1,53 @@
+{
+  "data": [
+    {
+      "id": 1357,
+      "title": "Teacher",
+      "DeductBreakFromAbsenceDuration": null,
+      "BalanceTrackingType": 1
+    },
+    {
+      "id": 1358,
+      "title": "Staff",
+      "DeductBreakFromAbsenceDuration": null,
+      "BalanceTrackingType": 1
+    },
+    {
+      "id": 1359,
+      "title": "Admin",
+      "DeductBreakFromAbsenceDuration": null,
+      "BalanceTrackingType": 1
+    },
+    {
+      "id": 1360,
+      "title": "Nurse",
+      "DeductBreakFromAbsenceDuration": null,
+      "BalanceTrackingType": 1
+    },
+    {
+      "id": 107186,
+      "title": "Transportation",
+      "DeductBreakFromAbsenceDuration": null,
+      "BalanceTrackingType": 1
+    },
+    {
+      "id": 107187,
+      "title": "Tester",
+      "DeductBreakFromAbsenceDuration": null,
+      "BalanceTrackingType": 1
+    },
+    {
+      "id": 107188,
+      "title": "Food Service",
+      "DeductBreakFromAbsenceDuration": null,
+      "BalanceTrackingType": 1
+    }
+  ],
+  "messages": [
+    
+  ],
+  "success": true,
+  "modelState": {
+    
+  }
+}

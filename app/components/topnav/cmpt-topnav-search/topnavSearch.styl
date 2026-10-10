@@ -1,0 +1,84 @@
+@import "common-var"
+.cmpt-topnav-search {
+	.search {
+		border: none;
+		outline: none;
+		display: inline-block;
+		height: 38px;
+		background: topbar-searchBox-backGroundColor;
+		width: 0px;
+		position: relative;
+		z-index: 1;
+		padding-left: 17px;
+		padding-right: 0;
+		color: topbar-text;
+		font-size: 14px;
+		font-weight: 400;
+		z-index: 1;
+		border-radius: 5px;
+		opacity: 0;
+		cursor: pointer;
+		transition: width 250ms, opacity 250ms;
+
+		// Hack to remove Chrome's yellow autofill
+		// http://stackoverflow.com/questions/2920306/google-chrome-form-autofill-and-its-yellow-background
+		-webkit-box-shadow: 0 0 0 1000px topbar-searchBox-backGroundColor inset;
+
+		&::-webkit-input-placeholder {
+			color: topbar-searchBox-placeholderColor;
+		}
+
+		&:-moz-placeholder { /* Firefox 18- */
+			color: topbar-searchBox-placeholderColor;
+		}
+
+		&::-moz-placeholder { /* Firefox 19+ */
+			color: topbar-searchBox-placeholderColor;
+		}
+
+		&:-ms-input-placeholder {
+			color: topbar-searchBox-placeholderColor;
+		}
+
+	}
+
+	.search-icon {
+		position: absolute;
+		top: 0;
+		left: 17px;
+		color: topbar-text;
+	}
+	.clear-search{
+		color: topbar-text;
+	}
+
+	&.search-selected {
+		&:hover { background: transparent; }
+
+		.search-icon {
+			left: 28px;
+		}
+		.search {
+			width: 330px;
+			padding-left: 40px;
+			padding-right: 37px;
+			opacity: 1;
+			cursor: text;
+			display: inline-block;
+			&::-ms-clear {
+    			display: none;
+			}
+		}
+		.clear-search {
+			display: block;
+			position: absolute;
+			right: 30px;
+			top: 1px;
+		}
+	}
+
+
+	.clear-search {
+		display: none;
+	}
+}

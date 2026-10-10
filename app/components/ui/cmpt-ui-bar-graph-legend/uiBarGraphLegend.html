@@ -1,0 +1,20 @@
+<div class="cmpt-ui-bar-graph-legend">
+	<div class="fl-hint">
+		<label class="title" ng-show="vm.showLegendTitle">
+			<ng-transclude></ng-transclude>
+		</label>
+		<div class="legend-item {{ item.title }}"
+			ng-repeat="item in vm.items"
+			ng-mouseenter="props.titleHovered = item.title"
+			ng-mouseleave="props.titleHovered = ''"
+			ng-style="{'width': vm.items.length >= 24 ? ((12 / vm.items.length) * 100) + '%' : null }"
+		>
+			<span
+				ng-class="{'stripes-overlay': props.titleHovered === item.title}"
+				ng-style="{'background-color': props.colors[item.title]}"
+				ng-show="!!props.colors[item.title]"
+			></span>
+			<label title="{{item.label}}">{{ item.label }}</label>
+		</div>
+	</div>
+</div>

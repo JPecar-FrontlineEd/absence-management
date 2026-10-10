@@ -1,0 +1,286 @@
+<form name="validationForm">
+<div class="cmpt-absr-details-variation">
+	<div class="-g">
+		<cmpt-absr-variation-header class="-u-1" variation-data="variationData" dates-only="false">
+			<div class="variation-toggler"  tabindex="0"  ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}"
+				ng-keyup="$event.keyCode == 13 ? variationData.expanded = !variationData.expanded : null"
+				aria-label="variationData.expanded ? strings['Expanded'] : strings['Collapsed']"
+				ng-click="variationData.expanded = !variationData.expanded">
+				<span>
+					<i class="fa fa-angle-double-{{variationData.expanded ? 'up' : 'down'}}"></i>
+				</span>
+			</div>
+		</cmpt-absr-variation-header>
+	</div>
+	<div class="-g variation" ap-show-slide="variationData.expanded">
+		<cmpt-absr-date-picker class="-u-8-24"
+			start-date="variationData.startDate"
+			end-date="variationData.endDate"
+			date-value="variationData.dates"
+			other-dates="vm.highlightDates"
+			min-date="vm.earliestAbsenceDate"
+			drag-selectdow="absrState.context.dragSelectDOW"
+			selectabledow="absrState.context.selectableDOW"
+			enabled="vm.editable.date"
+			is-deletable="variationData.isDeletable"
+			unique-id="vm.uniqueId"
+			error-messages="variationData.errors"
+			selected-location = "selectedInstId"></cmpt-absr-date-picker>
+		<div class="-u-16-24 column-details">
+			<div class="row school" ng-if="absrState.context.showInstitution && vm.institutionList.length > 1">
+				<label for="{{ strings['Report.Label.SelectSchool']}}">
+					<span class="text">{{ strings['School'] }}</span>
+				</label>
+				<div class="element">
+					<cmpt-ui-dropdown
+						options-array="vm.institutionList"
+						value-selected="variationData.institution"
+						read-only="!vm.editable.institution"
+						error-messages="variationData.errors.institution"
+						enabled="true"
+						label="strings['Report.Label.SelectSchool']"></cmpt-ui-dropdown>
+				</div>
+				<i ng-if="variationData.institution != null" class="fa fa-info-circle schoolDefaultInfo"
+					qtip my="left center"
+					at="right center"
+					qtip-class="notes-content schoolDefaultInfo-content"
+					content="
+					<div>{{strings[mnemonic.defaultStartTime]}}: {{ variationData.institution.data.startTime | time:'h:mm T'}} </div>
+					<div>{{strings[mnemonic.defaultEndTime]}}: {{ variationData.institution.data.endTime | time:'h:mm T'}} </div>
+					<div>{{strings[mnemonic.hoursInADay]}}: {{ variationData.institution.data.HoursPerDay }} {{strings[mnemonic.hours]}} </div>
+					<div>{{strings[mnemonic.minAbsLength]}}: {{ variationData.institution.data.MinAbsenceDuration }} {{strings[mnemonic.hours]}}</div>
+					<div>{{strings[mnemonic.maxAbsLength]}}: {{ variationData.institution.data.MaxAbsenceDuration }} {{strings[mnemonic.hours]}}</div>
+					">
+				</i>
+			</div>
+			<div class="no-school" ng-if="variationData.institution == null" once-text="strings['MissingInstitution']"></div>
+			<div class="form-loader" ng-if="variationData.institution && (!vm.mainDataReady || !vm.instDependantDataReady)">
+				<cmpt-ui-loader cls="loader" is-loading="true"></cmpt-ui-loader>
+			</div>
+			<div class="form" ng-show="variationData.institution && vm.mainDataReady && vm.instDependantDataReady">
+				<div class="row reasons"
+					 ng-if="(absrState.context.showEntitlementType && !vm.isVacancy) || (absrState.context.showEntitlementType && vm.isVacancy && vm.entitlementTypeList != undefined && vm.entitlementTypeList.length > 0)"
+					 ng-class="{disabled: !variationData.institution}"
+					 >
+					<label for="{{ strings[mnemonic.reasonLabel]}}">
+						<span class="text">{{ strings[mnemonic.reasonTitle] }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-dropdown 
+										  options-array="vm.entitlementTypeList"
+										  value-selected="variationData.entitlementType"
+										  read-only="!vm.editable.entitlementType"
+										  enabled="variationData.institution"
+										  can-select-hidden-absence-reasons="vm.canSelectHiddenAbsenceReasons"
+										  error-messages="variationData.errors.entitlementType"
+										  label="strings[mnemonic.reasonLabel]"></cmpt-ui-dropdown>
+					</div>
+				</div>
+				<div class="row time" ng-class="{'both': absrState.context.showVacancyTimes,'noBottomBorder': canViewOrEditBreakTime}">
+					<span ng-class="{'one-option': absrState.context.absenceShiftTypes[0].id === 4}">
+						<cmpt-absr-time-field
+							read-only="!vm.editable.absenceTime"
+							enabled="variationData.institution != null"
+							inst-settings="vm.instSettings"
+							shift-type-list="absrState.context.absenceShiftTypes"
+							shift-type="variationData.absenceShiftType"
+							start-time="variationData.absenceStartTime"
+							end-time="variationData.absenceEndTime"
+							start-time-errors="variationData.errors.absenceStartTime"
+							end-time-errors="variationData.errors.absenceEndTime"
+							class="field"
+							shift-type-id="strings['SelectShiftType']"
+							shift-from-time="strings['EnterShiftFromTime']"
+							shift-to-time="strings['EnterShiftToTime']">
+							<label for="{{strings['SelectShiftType']}}">
+								<span class="text">{{ strings['Time'] }}</span>
+								<span class="caption" ng-if="vm.editable.absenceTime">{{ strings['EnterValidAMPMTime'] }}</span>
+							</label>
+						</cmpt-absr-time-field>
+					</span>
+					<span ng-if="canViewAbsenceDuration" class="absenceDuration" 
+						ng-class="{absenceDurationMarginsWithSubReportTime: vm.shouldShowSubTimeFields, absenceDurationMarginsWithoutSubReportTime: !vm.shouldShowSubTimeFields}">
+						<span>{{vm.absenceDuration}} hr</span>
+					</span>
+					<span ng-show="vm.shouldShowSubTimeFields">
+						<span class="link">
+							<cmpt-ui-linking
+								enabled="variationData.institution != null && vm.editable.vacancyTime"
+								linked="variationData.timeIsLinked"
+							></cmpt-ui-linking>
+						</span>
+						<span ng-class="{'one-option': absrState.context.vacancyShiftTypes.length === 1}">
+							<cmpt-absr-time-field
+								read-only="!vm.editable.vacancyTime"
+								enabled="!variationData.timeIsLinked" is-sub-time="true"
+								inst-settings="vm.instSettings"
+								shift-type-list="absrState.context.vacancyShiftTypes" shift-type="variationData.vacancyShiftType"
+								start-time="variationData.vacancyStartTime"
+								end-time="variationData.vacancyEndTime"
+								start-time-errors="variationData.errors.vacancyStartTime"
+								end-time-errors="variationData.errors.vacancyEndTime"
+								class="field sub-report-time"
+								shift-type-id="strings['SelectSubShiftType']"
+								shift-sub-from-time="strings['EnterSubShiftFromTime']"
+								shift-sub-to-time="strings['EnterSubShiftToTime']">
+								<label for="{{strings['SelectSubShiftType']}}">
+									<span class="text">{{ strings['SubstituteReportTime'] }}</span>
+									<span class="caption" ng-if="vm.editable.vacancyTime">{{ strings['EnterValidAMPMTime'] }}</span>
+								</label>
+							</cmpt-absr-time-field>
+						</span>
+					</span>
+				</div>
+				<div ng-class="{'noTopPadding': canViewOrEditBreakTime}"  class="row time both" ng-if="(isViewingAbsence && variationData.absences[0].DeductBreakFromAbsenceDuration && canViewOrEditBreakTime) 
+					|| (!isViewingAbsence && canViewOrEditBreakTime)">
+					<label ng-if = "!vm.shouldShowSubTimeFields" >&nbsp;</label>
+					<div class = "element">
+						<cmpt-absr-time-field
+							remove-shift-type-dropdown = "true"
+							read-only="(!absrState.context.CanEditBreakTime && absrState.context.CanViewBreakTime) 
+										|| !variationData.deductCustomBreakTime
+										|| !variationData.doesBreakTimeOverlapAbsenceTimes
+										|| !absrState.editMode"
+							enabled="variationData.institution != null"
+							inst-settings="vm.instSettings"
+							shift-type-list="absrState.context.absenceShiftTypes"
+							shift-type="variationData.absenceShiftType"
+							start-time="variationData.breakStartTime"
+							end-time="variationData.breakEndTime"
+							start-time-errors="variationData.errors.absenceStartTime"
+							end-time-errors="variationData.errors.absenceEndTime"
+							class="field"
+							shift-type-id="strings['SelectShiftType']"
+							shift-from-time="strings['EnterShiftFromTime']"
+							shift-to-time="strings['EnterShiftToTime']">
+							<label for="{{strings['SelectShiftType']}}">
+								<input type="checkbox" ng-if="!isViewingAbsence"
+									ng-checked='variationData.doesBreakTimeOverlapAbsenceTimes && variationData.deductCustomBreakTime' 
+									ng-disabled='!variationData.doesBreakTimeOverlapAbsenceTimes || !absrState.context.CanEditBreakTime' 
+									ng-click="go.enableDisableCustomBreakTime()">
+								<span class="text">{{ strings['DeductBreak'] }}</span>
+								<div class="normalFont">{{ customBreakType }}</div>
+							</label>
+							<span ng-if="showResetIcon && absrState.context.CanEditBreakTime" class="resetBreakTime">
+								<a ng-click="go.resetBreakTime()">
+								   <i class="fa-rotate-left"></i> 
+								</a>
+							</span>
+						</cmpt-absr-time-field>
+					</div>
+				</div>
+				<div class="row non-pay" ng-if="absrState.context.showNonPayTime">
+					<label for="{{ strings['EnterNonPayTime']}}">
+						<span class="text">{{ strings['NonPayTime'] }}</span>
+						<span class="caption" ng-if="vm.editable.nonPayTime">{{ strings['EnterValidHHMMDurationInMinuteIncrements'].replace('{0}', 15) }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-textbox
+							value-text="variationData.nonPayTime"
+							error-messages="variationData.errors.nonPayTime"
+							read-only="!vm.editable.nonPayTime"
+							enabled="true"
+							filter="time HH:mm 15"
+							label="strings['EnterNonPayTime']"></cmpt-ui-textbox>
+					</div>
+				</div>
+				<div class="row time-absent" ng-if="absrState.context.showAbsenceTime">
+					<label for="{{ strings['EnterAbsentTime']}}">
+						<span class="text">{{ strings['TimeAbsent'] }}</span>
+						<span class="caption" ng-if="vm.editable.userSpecifiedAbsenceDuration">{{ strings['EnterValidHHMMDuration'] }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-textbox
+							value-text="variationData.timeAbsent"
+							error-messages="variationData.errors.timeAbsent"
+							read-only="!vm.editable.userSpecifiedAbsenceDuration"
+							enabled="true"
+							filter="time HH:mm"
+							label="strings['EnterAbsentTime']"
+						></cmpt-ui-textbox>
+					</div>
+				</div>
+				<div class="row sub-worked" ng-if="absrState.context.showHoursSubWorked">
+					<label for="{{ strings['EnterSubWorkedHours']}}">
+						<span class="text">{{ strings['HoursSubWorked'] }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-textbox
+						value-text="variationData.subHourWorked"
+						error-messages="variationData.errors.subHourWorked"
+						read-only="!vm.editable.hoursSubWorked"
+						enabled="true" 
+						label="strings['EnterSubWorkedHours']"></cmpt-ui-textbox>
+					</div>
+				</div>
+				<div class="row budget-codes" ng-if="absrState.context.showBudgetCode && vm.bugdetCodeList.length > 0">
+					<label for="{{ strings['SelectBudgetCode']}}">
+						<span class="text">{{ strings['BudgetCode'] }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-dropdown options-array="vm.bugdetCodeList"
+						value-selected="variationData.budgetCode"
+						read-only="!vm.editable.budgetCode"
+						enabled="true"
+						error-messages="[]"
+						label="strings['SelectBudgetCode']"></cmpt-ui-dropdown>
+					</div>
+				</div>
+				<div class="row accounting-codes" ng-class="{disabled: !variationData.institution}" ng-if="absrState.context.showAccountingCode">
+					<label for="{{ strings['SelectAccountingCode']}}">
+						<span class="text">{{ strings['AccountingCode'] }}</span>
+					</label>
+					<div class="element" ng-if="vm.editable.accountingCode">
+						<cmpt-ui-dropdown
+							options-array="vm.accountingCodeList"
+							value-selected="variationData.accountingCode"
+							read-only="!vm.editable.accountingCode"
+							enabled="variationData.institution"
+							error-messages="absrState.errorMessages"
+							sort-by="go.sortByNameWithCustomAtBottom"
+							label="strings['SelectAccountingCode']"></cmpt-ui-dropdown>
+						<input aria-label="{{strings['EnterCustomAccountingCode']}}"" type="text" maxlength="50"
+							placeholder="None"
+							ng-model="variationData.customAccountingCode"
+							ng-show="variationData.accountingCode.id === 0"/>
+					</div>
+					<div class="element" ng-if="!vm.editable.accountingCode">
+						<span ng-if="variationData.accountingCode === null">{{strings['NoneSelected']}}</span>
+						{{ variationData.accountingCode.value }}
+						<span ng-if="variationData.accountingCode.id === 0">- {{ variationData.customAccountingCode }}</span>
+					</div>
+				</div>
+				<div class="row pay-codes" ng-if="absrState.context.showPayCode && vm.payCodeList.length > 0">
+					<label for="{{ strings['SelectPayCode']}}">
+						<span class="text">{{ strings['PayCode'] }}</span>
+					</label>
+					<div class="element">
+						<cmpt-ui-dropdown
+						options-array="vm.payCodeList"
+						value-selected="variationData.payCode"
+						read-only="!vm.editable.payCode"
+						enabled="true"
+						error-messages="variationData.errors.payCode"
+						label="strings['SelectPayCode']"></cmpt-ui-dropdown>
+					</div>
+				</div>
+				<div class="row extensions" ng-if="absrState.context.showExtensions && !absrState.absr.isVacancy && (absrState.substitute !== null) && variationData.extensions.length > 0">
+					<label>
+						<span class="text">{{ strings['ConfirmationNumberPound'] }}</span>
+						<span class="info-qtip extensions" qtip content="<cmpt-template-variation-extensions-tooltip extension-list='variationData.extensions'></cmpt-template-variation-extensions-tooltip>">
+							<i class="fa fa-li-ellipsis"></i>
+						</span>
+					</label>
+					<div class="element">
+						<cmpt-template-variation-extensions extension-list="variationData.extensions"></cmpt-template-variation-extensions>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="variation-footer" ng-if="absrState.editMode && (variationData.isEditable || variationData.isDeletable)">
+			<ng-transclude></ng-transclude>
+		</div>
+	</div>
+
+</div>
+</form>

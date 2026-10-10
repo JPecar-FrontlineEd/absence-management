@@ -1,0 +1,85 @@
+<div class="cmpt-ui-grid" ng-class="{'not-ready-for-print': !vm.printing}">
+	<div class="grid-header -g">
+		<div class="grid-header-content {{ vm.colClasses[col.key] + ' ' + col.key + '-th' + ' ' + col.cls }}"
+			ng-repeat="col in columns"
+			ng-click="go.sortByColumnIdx($index)"
+			ng-style="vm.colStyles[col.key]"
+			ng-class="{sortable: col.sortable, sorted: vm.sortBy === col.key}"
+		>
+			<span ap-bind-html="col.headerTemplate"></span>
+			<i class="fa sort-icon" ng-class="go.getSortClass(col.key)" ng-show="col.sortable"></i>
+		</div>
+	</div>
+	<!-- <div class="loading" ng-show="isLoading"></div> -->
+	<cmpt-ui-loader class="loading" is-loading="isLoading"></cmpt-ui-loader>
+	<div class="summary-header"
+		ng-if="!vm.isGrouped && headerTemplate"
+		ap-bind-html="headerTemplate"
+	></div>
+	<ul class="grid-rows">
+		<!-- <cmpt-ui-loader is-loading="isLoading"></cmpt-ui-loader> -->
+		<li ng-if="!setInView && row.hidden !== true" class="row-container row-{{ $index }}"
+			ng-repeat="row in vm.rowData track by  $id(row)"
+			ng-style="{'min-height': (vm.printing ? 0 : row.$height || vm.avgRowHeight || 50) + 'px'}"
+			ng-init="row.$index = $index"
+		 >
+		 <div class="row-content">
+			<div class="group-title"
+				ng-if="go.showGroupHeader($index) && groupTitleTemplate"
+				ng-init="summaryData = vm.summaryData[row[groupBy]]"
+				ap-bind-html="go.getGroupTitleTemplate($index)"
+			></div>
+			<div class="summary-header"
+				ng-if="go.showGroupHeader($index) && headerTemplate"
+				ng-init="summaryData = vm.summaryData[row[groupBy]]"
+				ap-bind-html="headerTemplate"
+			></div>
+			<div class="-g grid-row {{ row.cls }}"
+					ng-if="!setInview || vm.printing"
+				ap-bind-html ="vm.rowTemplate"
+			></div>
+			<div class="summary-footer"
+				ng-if="go.showGroupFooter($index) && footerTemplate"
+				ng-init="summaryData = vm.summaryData[row[groupBy]]"
+				ap-bind-html="footerTemplate"
+			></div>
+		</div>
+		</li>
+		<li  ng-if ="setInView && row.hidden !== true" class="row-container row-{{ $index }}"
+			ng-repeat="row in vm.rowData track by  $id(row)"
+			ng-style= "{'min-height': (vm.printing ? 0 : row.$height || vm.avgRowHeight || 50) + 'px'}"
+			in-view= " !useInView || ((row.$isInView = $inview) && !row.$height && go.rowInView(row))"
+			in-view-options="{offsetTop: -300, offsetBottom: 200}"
+			ng-init="row.$index = $index"
+		 >
+			<div class="row-content">
+				<div class="group-title"
+					ng-if="go.showGroupHeader($index) && groupTitleTemplate"
+					ng-init="summaryData = vm.summaryData[row[groupBy]]"
+					ap-bind-html="go.getGroupTitleTemplate($index)"
+				></div>
+				<div class="summary-header"
+					ng-if="go.showGroupHeader($index) && headerTemplate"
+					ng-init="summaryData = vm.summaryData[row[groupBy]]"
+					ap-bind-html="headerTemplate"
+				></div>
+				<div class="-g grid-row {{ row.cls }}"
+				    ng-if="!useInView || row.$isInView || vm.printing"
+					ap-bind-html ="vm.rowTemplate"
+				></div>
+				<div class="summary-footer"
+					ng-if="go.showGroupFooter($index) && footerTemplate || !useInView"
+					ng-init="summaryData = vm.summaryData[row[groupBy]]"
+					ap-bind-html="footerTemplate"
+				></div>
+			</div>
+		</li>
+	</ul>
+	<div class="summary-footer"
+		ng-if="!vm.isGrouped && footerTemplate"
+		ap-bind-html="footerTemplate"
+	></div>
+	<div class="no-data" ng-show="vm.showNoData && !isLoading">
+		<ng-transclude></ng-transclude>
+	</div>
+</div>

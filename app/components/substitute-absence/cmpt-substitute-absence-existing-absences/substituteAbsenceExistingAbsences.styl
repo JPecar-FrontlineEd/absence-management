@@ -1,0 +1,38 @@
+@import "common-var"
+.cmpt-substitute-absence-existing-absences {
+	.box{
+		position: absolute;
+		top: 10px;
+	    right: 10px;
+	    width: 221px;
+	    font-size: 12px;
+	    border-radius: 5px;
+	    padding: 7px;
+	    &.is-loading{
+	    	background: absence-summarySection-backGroundColor;
+	    	border: 1px dashed borderColor-medium;
+	    }
+	    &.no-record{
+			background: absence-summarySection-backGroundColor;
+	    	border: 1px dashed borderColor-medium;
+	    }
+	    &.absences{
+	    	background: absence-summarySection-backGroundColor;
+	    	border: 1px dashed borderColor-medium;
+	    	.title{
+	    		font-weight:bold;
+	    		color: ap-red;
+	    	}
+	    	.absence-list{
+	    		font-size:11px;
+	    		.times{
+	    			margin:0 10px 0 0;
+	    		}
+		    	.cmpt-template-substitute-absence-confirmation{
+		    		margin:0 0 0 10px;
+		    		display: inline-block;
+		    	}
+	    	}
+	    }
+	}
+}

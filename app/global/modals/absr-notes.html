@@ -1,0 +1,25 @@
+<div class="dialog-popup notes-popup">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}
+			<div ng-if="ngDialogData.subHeader != ''">
+				<span class="subHeader">({{ngDialogData.subHeader}})</span>
+			</div>
+		</div>
+		
+		<div class="content">
+			<div ng-if="ngDialogData.notes.length > 0">
+				<p class="notes">{{ ngDialogData.notes }}</p>
+			</div>
+			<div  ng-if="ngDialogData.notesToAdmin.length > 0">
+				<p class="notes">{{ ngDialogData.notesToAdmin }}</p>
+			</div>
+			<div ng-if="ngDialogData.notesToAdminOnly.length > 0">
+				<p class="notes">{{ ngDialogData.notesToAdminOnly }}</p>
+			</div>
+		</div>
+	</div>
+	<div class="ngdialog-buttons" ng-class="{'disabled': ngDialogData.state.isProcessing}">
+		<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons" ><i class="fa {{ button.icon }}"></i>
+		{{ button.title }}</a>
+	</div>
+</div>

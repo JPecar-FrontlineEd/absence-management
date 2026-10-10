@@ -1,0 +1,4 @@
+<div class="route-absences-detail-callhistory-log" ng-controller="CallhistoryLogCtrl as route">
+	<cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader>
+	<cmpt-ui-sortable-grid class="log-grid" columns="route.vm.cols" dataset="route.vm.data" is-loading="route.vm.isLoading">{{route.strings['CallhistoryLog.text.NoRecordFound']}}</cmpt-ui-sortable-grid>
+</div>

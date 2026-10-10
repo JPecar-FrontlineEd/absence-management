@@ -1,0 +1,129 @@
+@import "common-var"
+.route-reference-data-absence-reasons {
+	.top-banner{
+		.actions{
+			.add-link{
+				&:first-child{
+					margin-right: 30px;
+				}
+			}
+		}
+	}
+
+	.cmpt-ui-multiselect {
+		.selector{
+			.trigger-button{
+				.dropdown{
+					&.active{
+						right:0px;
+					}
+				}
+			}
+		}
+	}
+
+
+	.cmpt-ui-grid{
+		.grid-header{
+			.grid-header-content{
+				line-height:1.5;
+			}
+			.isPublic-th,
+			.needApproval-th,
+			.holdUntilApproved-th,
+			.enforceBalances-th,
+			.requireNotes-th{
+				line-height:15px;
+				font-size:11px
+				font-weight: normal;
+				padding: 5px 3px;
+				text-align: center;
+			}
+		}
+		.grid-rows{
+			.row-container{
+				.group-title{
+					display:none;
+				}
+				.row-content{
+					.grid-row{
+						.grid-cell{
+							&.name-cell{
+								padding:0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.footer-template{
+		padding: 10px 0px;
+		background: referenceData-grid-nested-backGroundColor;
+		border-top: 1px solid referenceData-grid-nested-borderColor;
+		.grid-cell{
+			background: referenceData-backGroundColor;
+			padding: 10px 5px 8px 10px;
+			border-left:0px;
+			border-bottom:1px solid referenceData-grid-borderColor;
+			height:40px;
+		}
+		.left-border-cell{
+			background: referenceData-grid-nested-backGroundColor;
+			& > div{
+				background: referenceData-backGroundColor;
+				margin-left: 40px;
+			}
+			.view-only{
+				line-height:20px !important;
+				padding:0;
+				span{
+					margin-left:0 !important;
+				}
+			}
+
+		}
+		.right-border-cell{
+			background: referenceData-grid-nested-backGroundColor;
+			//width:26%;
+			div{
+				background: referenceData-backGroundColor;
+				margin-right: 40px;
+			}
+		}
+		.middle-cell{
+			width:8.3333%;
+		}
+		.add-link{
+			padding-top: 5px;
+			margin-bottom: 0;
+			margin-left: 40px;
+			font-size: 10px;
+			span{
+				font-size: 10px;
+			}
+		}
+	}
+	&.shrink{
+		.footer-template{
+			.middle-cell,.right-border-cell{
+				display:none;
+			}
+			.left-border-cell{
+				font-size:14px;
+				width:95%;
+			}
+		}
+	}
+	.detail-cell{
+		text-align:center;
+		.fa-check{
+			color: ap-green;
+		}
+		.fa-times{
+			color: subTitle-color-lightest;
+		}
+	}
+
+
+}

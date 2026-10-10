@@ -1,0 +1,21 @@
+@import "common-var"
+.cmpt-topnav-notifications {
+	.circle {
+		border-radius: 3px;
+		background-color: topbar-notification-circle-backGroundColor;
+		border: 2px solid topbar-notification-circle-borderColor;
+		position: absolute;
+		left: 27px;
+		top: 13px;
+		font-size: 10px;
+		line-height: 1;
+		color: backGroundColor;
+		padding: 2px 4px 2px 3px;
+		font-weight: 600;
+		z-index: 2;
+	}
+
+	&:hover .circle {
+		border-color: darken(topbar-notification-circle-borderColor, 5%);
+	}
+}

@@ -1,0 +1,61 @@
+@import "common-var"
+.cmpt-reports-report-writer-fields {
+	.field-collapse {
+		width: 100%;
+		border-top: 1px solid borderColor-medium;
+		border-bottom-color: borderColor-medium;
+		background: greyBar-backGroundColor;
+		background-image: gradientBar;
+		font-size: 13px;
+		color: subTitle-color-darkest;
+		text-shadow: 0 1px 0 textShadow;
+		text-align: left;
+		position: relative;
+		padding: 6px;
+		.count {
+			display: inline-block;
+			background: header-count-background;
+			border: 1px solid borderColor-medium;
+			border-radius: 20px;
+			font-size: 14px;
+			font-weight: bold;
+			min-width: 22px;
+			text-align: center;
+			margin-right: 5px;
+		}
+		.group-label {
+			font-weight: bold;
+		}
+		.fields-toggler {
+			position: absolute;
+			top: 0px;
+			right: 1px;
+			bottom: 0px;
+			width: 45px;
+			font-size: 24px;
+			z-index: 1;
+			line-height: 36px;
+			text-align: center;
+			border-left: 1px solid borderColor-medium;
+			cursor:pointer;
+			padding-left: 2px;
+		}
+	}
+	.field-list {
+		display: none;
+		border-top: 1px solid borderColor-medium;
+		.fields {
+			display: inline-block;
+			background: report-filter-panel-element-backGroundColor;
+			font-size: 12px;
+			padding: 8px 10px;
+			margin: 5px 0 5px 5px;
+			border-radius: 5px;
+			vertical-align: bottom;
+		}
+		.format-switcher {
+			text-align: right;
+			padding: 10px 10px 5px 0;
+		}
+	}
+}

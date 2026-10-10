@@ -1,0 +1,44 @@
+<div class="cmpt-template-approve-action" ng-class="{deletedAbsrNextPanelBackground : absr.isDeleted}">
+	<div class="ngdialog-message">
+		<div class="header">{{ strings['Approval.Dialog.Title.Text'] }} # {{ absr.id }}</div>
+		<div class="content">
+			<div class="approval-status">
+				<label>{{ strings['Approval.Label.Text.ApprovalStatus'] }}:</label>
+				<span>
+					<cmpt-template-approval
+					requires-approval="absr.requiresApproval"
+					is-approved="absr.isApproved"
+					is-denied="absr.isDenied"
+					is-partially-approved="absr.isPartiallyApproved"
+					is-deleted="absr.isDeleted"
+					>
+					</cmpt-template-approval>
+				</span>
+			</div>
+			<div class="approval-recieved">
+				<label>{{ strings['Approval.Label.Text.ApprovalRecieved'] }}:</label>
+				<span>
+				    {{ absr.numApproved }}/<i class="fa fa-spinner" ng-show="vm.approverLevel === null"></i><span ng-show="vm.approverLevel !== null">{{ vm.approverLevel }}</span>
+				</span>
+			</div>
+			<div class="approval-action">
+				<label>{{ strings['Approval.Label.Text.LastApprovalAction'] }}:</label>
+				<span>{{ vm.lastApprovalAction }}</span>
+			</div>
+			<div class="previous-comments" ng-if="absr.approverComments != null">
+				<label>{{ strings['Approval.Label.Text.PreviousComments'] }}:</label>
+				<div class="comments" ng-repeat="comment in absr.approverComments">
+					<cmpt-approval-comment-log comment="comment"></cmpt-approval-comment-log>			
+				</div>
+			</div>
+			<div class="approval-comments" ng-if="absr.canApprove || absr.canDeny">
+				<label for="{{ strings['EnterComment'] }}">{{ strings['Approval.Lablel.Text.Comments'] }}:</label>
+				<cmpt-ui-textarea labeltext="strings['EnterComment']" is-on-absence-view = true
+				characters="255" text-model="cmptScope.comment"  read-only="false" error-messages="[]"></cmpt-ui-textarea>
+			</div>
+		</div>
+		<div class="button-section">
+			<ng-transclude></ng-transclude>
+		</div>
+	</div>
+</div>

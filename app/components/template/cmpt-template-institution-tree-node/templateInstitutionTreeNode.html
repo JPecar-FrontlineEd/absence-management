@@ -1,0 +1,12 @@
+<div class="cmpt-template-institution-tree-node">
+	<div ng-class="{'inst-children': inst.availableChildrenCnt > 0, 'inst-root': inst.parent === null}">
+		<span ng-if="inst.children && inst.children.length" class="fields-toggler" ng-click="vm.expanded = !vm.expanded" ng-class="{expanded: vm.expanded}">
+			<i class="fa fa-angle-{{vm.expanded ? 'down' : 'right'}}"></i>
+		</span>
+		
+		<a ng-if="inst.isAvailable" href="{{vm.link}}">{{inst.name}}</a>
+		<span ng-if="!inst.isAvailable">{{inst.name}}</span>
+
+		<span class="count" ng-if="inst.availableChildrenCnt > 0">{{inst.availableChildrenCnt}}</span>
+	</div>
+</div>

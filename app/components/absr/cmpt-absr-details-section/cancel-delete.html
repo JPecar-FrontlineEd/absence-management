@@ -1,0 +1,9 @@
+<div class="dialog-popup">
+	<div class="ngdialog-message">
+		<div class="header">{{ngDialogData.header}}</div>
+		<div class="content">{{ngDialogData.title}}</div class="content">
+	</div>
+	<div class="ngdialog-buttons">
+		<a class="{{ button.cls }}" ng-click="button.action()"  ng-repeat="button in ngDialogData.buttons">{{ button.title }}</a>
+	</div>
+</div>

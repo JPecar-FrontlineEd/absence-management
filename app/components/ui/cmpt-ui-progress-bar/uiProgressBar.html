@@ -1,0 +1,10 @@
+<div class="cmpt-ui-progress-bar">
+	<div class="progress-bar-container" ng-show="preloader.loading">
+		<span class="progress-bar">
+			<span class="progress" ng-style="preloader.style"></span>
+		</span>
+		<div class="text">
+			<span>{{preloader.loaded}}</span> out of <span>{{preloader.total}}</span> {{preloader.loadingText}}
+		</div>
+	</div>
+</div>

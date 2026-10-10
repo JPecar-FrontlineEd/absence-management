@@ -1,0 +1,74 @@
+@import "common-var"
+
+
+.grid-header {
+	user-select: none;
+
+	.grid-header-content {
+		color: grid-heading-color;
+		background: backGroundColor;
+		background-image: gradientBar;
+		font-size: 13px;
+		font-weight: bold;
+		height: 42px;
+		text-shadow: 0 1px 0 textShadow;
+		text-align: left;
+		border-left: 1px solid grid-borderColor ;
+		border-bottom: 1px solid grid-borderColor ;
+		border-bottom-color: grid-borderColor;
+		padding: 10px;
+
+		&.center {
+			text-align: center;
+			padding: 10px 5px;  // fixes actual centering issues
+		}
+	}
+
+	.sorted {
+		background: ap-light-grey-2;
+	}
+
+	.sort-icon {
+		float: right;
+		margin-top: 1px;
+
+		&.fa-sort-down { margin-top: -2px; }
+		&.fa-sort-up { margin-top: 3px; }
+	}
+}
+
+.row-container {
+	&.hidden {
+		display: none;
+	}
+	&:nth-child(odd) {
+		background-color: grid-row-odd-color;
+	}
+
+	&:nth-child(even) {
+		background-color: grid-row-even-color;
+	}
+
+	&:last-child{
+		border-bottom:0;
+	}
+}
+
+.grid-cell {
+	padding:10px 5px 10px 10px;
+	line-height: 14px;
+	border-left: 1px solid grid-borderColor;
+	border-bottom: 1px solid grid-borderColor;
+
+	* {
+		overflow: ellipsis;
+	}
+
+	&.center {
+		text-align: center;
+	}
+
+	// a {
+	// 	line-height: 18px;
+	// }
+}

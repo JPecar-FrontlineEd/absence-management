@@ -1,0 +1,45 @@
+<div class="fixed-width report-standards route-reports-substitute-sub-sign-in" ng-controller="SubSignInCtrl as route">
+	<cmpt-reports-switcher></cmpt-reports-switcher>
+
+	<h3>{{route.strings['Reports.Title.SubSignIn']}}</h3>
+
+	<div class="panel">
+		<cmpt-reports-filter-panel 
+		filters="route.vm.filters" 
+		extraValidators="route.vm.validation" 
+		action="route.go.callToServer"
+		download-url="route.go.downloadUrl"
+		>
+		</cmpt-reports-filter-panel>
+	</div>
+
+	<div id="report-lock-header" class="lock-header-fill"></div>
+	<div class="header">
+		<div class="header-content">
+			<div class="count" ng-class="{loaded: route.vm.dataLoaded}">{{route.vm.dataSet.length}}</div>
+			<div class="label" ng-class="{loaded: route.vm.dataLoaded}">{{route.strings['Reports.Title.SubSignIn']}}</div>
+			<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<cmpt-ui-print-button></cmpt-ui-print-button>
+			<a class="fl-button print-pdf" ng-click="route.go.downloadPdf()">
+				<div class="fl-label">
+					<i class="fa fa-file-pdf-o"></i>
+					<span>
+						{{ route.strings['Button.text.PrintPDF'] }}
+					</span>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div class="content-panel" ng-class="{loaded: route.vm.dataLoaded}">
+		<cmpt-ui-grouped-grid
+		  columns="route.vm.columns"
+		  dataset="route.vm.dataSet"
+		  group-by="route.vm.filters.orderBy"
+          group-title="route.vm.filters.orderByTitle"
+		  is-loaded="route.vm.dataLoaded"
+		  print-with-breaks="route.vm.filters.printPageBreaks"
+		  >
+		  	{{route.vm.dataLoaded ? route.strings['NoRecordsFound'] : route.strings['Reports.Results.Label.InitialInstructions']}}.
+		 </cmpt-ui-grouped-grid>
+	</div>
+</div>

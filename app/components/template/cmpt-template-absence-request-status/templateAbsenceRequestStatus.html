@@ -1,0 +1,34 @@
+<div class="cmpt-template-absence-request-status">
+	<div ng-if="absrState.absr.isDeleted">
+		<span ng-if="absrState.absr.isClosed">
+			{{ strings['Closed'] }} ({{strings['FilledBy']}}&nbsp;<cmpt-template-substitute-link show-name-as-link="true" substitute-id="{{ vm.substituteId }}" substitute-name="{{ vm.substituteName }}"></cmpt-template-substitute-link>
+			<span class="sub-email" ng-if="absrState.substitute.email.length > 0">
+				<i class='fa-envelope'></i>
+			</span>)
+		</span>
+		<span ng-if="!absrState.absr.isClosed">
+			{{strings['Cancelled']}}
+		</span>
+	</div>
+	<div ng-if="!absrState.absr.isDeleted">
+		<div ng-if="vm.isFilled">
+			{{strings['FilledBy']}}&nbsp;<cmpt-template-substitute-link show-name-as-link="true" substitute-id="{{ vm.substituteId }}" substitute-name="{{ vm.substituteName }}"></cmpt-template-substitute-link>
+			<span class="sub-email" ng-if="absrState.substitute.email.length > 0">
+				<a aria-label="{{strings['SendEmailToSubstitute']}}"SendEmailToSubstitute href='mailto:{{absrState.substitute.email}}'><i class='fa-envelope'></i></a>
+			</span>
+		</div>
+		<div ng-if="!vm.isFilled">
+			<div ng-if="!absrState.needSub">
+				{{strings['NoSubstituteRequired']}}
+			</div>
+			<div ng-if="absrState.needSub">
+				<span ng-if="absrState.absr.isHeld">
+					{{ strings['Unfilled'] }} / {{strings['HeldUntil']}} : {{ vm.heldUntilDate }}
+				</span>
+				<span ng-if="!absrState.absr.isHeld">
+					{{ strings['Unfilled'] }}
+				</span>
+		    </div>
+		</div>
+	</div>
+</div>

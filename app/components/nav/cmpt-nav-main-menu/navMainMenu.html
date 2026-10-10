@@ -1,0 +1,58 @@
+<nav class="cmpt-nav-main-menu hide-print">
+	<div class="back-drop">
+		<i class="fa fa-arrow-circle-{{ ($root.navExpanded) ? 'left' : 'right' }}" ng-click="go.toggleExpand()"></i>
+	</div>
+	<div class="content-dimmer dim-transition" ng-show="go.IsNavActive()" ng-click="go.deactivateNav()">
+ 		<div class="toggle-buffer"
+			ng-mouseleave="go.enableOpacityTransition()"
+			ng-mouseenter="go.disableOpacityTransition()"
+			ng-style="{left: vm.currentBufferLeft, width:vm.collapseBufferPx}"
+			ng-mousemove="go.trackPosition($event.pageX);go.calcBufferOpacity();"
+			ng-init="go.trackPosition(0)">
+			<div class="toggle-close" ng-mouseover="go.bufferedClose()"></div>
+		</div>
+	</div>
+	<div class="nav-title" ng-show="$root.navExpanded">Navigation</div>
+	<div class="top-section">
+		<ul ng-mouseleave="go.recalcCloseBufferZone()" ng-class="">
+			<li class="main-menu-item menu-item-{{$index}}"
+				ng-repeat="menu in vm.menuData"
+				ng-class="{highlight: vm.highlightedMenu === $index, 'submenu-active': vm.activeMenu === $index}"
+				ng-mouseenter="go.changeActiveMenu($index)"
+				ng-mouseleave="go.recalcCloseBufferZone()"
+			>
+				<div class="main-menu-item-container {{menu.children.length ? 'menu-no-action' : 'menu-action'}}"
+				ng-click="go.menuClick(menu, $index, $event)"
+				>
+					<i class="nav-icon fa {{menu.icon}}"
+					 		ng-if="menu.icon"
+							ng-class="{'fa-times': vm.activeMenu === $index && menu.children.length}"
+							ng-click="go.closeMenu()"
+							>
+					 </i>
+					<span class="main-menu-title" ng-show="$root.navExpanded">
+						<span once-id="menu.id" once-text="menu.title" once-title="menu.title"></span>
+					</span>
+					<i class="more-items fa fa-angle-right"></i>
+					<div class="hover-elem"></div>
+				</div>
+				<div class="sub-menu-{{$index}}" ng-if="menu.children.length" ng-show="vm.activeMenu === $index">
+					<cmpt-nav-sub-menu ng-mouseleave="go.recalcCloseBufferZone()" menu-items="menu.children" ></cmpt-nav-sub-menu>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="bottom-section">
+		<div class="frontline-branding">
+			<div class="logo-container full-logo ng-cloak" ng-show="$root.navExpanded">
+				<a class="fa fa-logo-frontline frontline-logo" target="_blank" href="http://frontlinek12.com"></a>
+				<span class="copyright-info">&copy; {{ vm.todaysDate.getFullYear() }} | All rights reserved</span>
+			</div>
+			<div class="logo-container small-logo ng-cloak" ng-hide="$root.navExpanded">
+				<a class="fa fa-logo-frontline-small frontline-logo" target="_blank" href="http://frontlinek12.com"></a>
+				<span class="copyright-info">&copy; {{ vm.todaysDate.getFullYear() }}</span>
+			</div>
+		</div>
+		<div class="background-elem"></div>
+	</div>
+</nav>

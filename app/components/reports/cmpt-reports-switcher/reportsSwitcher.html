@@ -1,0 +1,20 @@
+<div class="cmpt-reports-switcher hide-print">
+	<div class="header">
+		<span ng-if="!fromDailyReport">{{menuStrings['ReportGroup.'+vm.sectionName+'.Title']}}</span>
+		<span ng-if="fromDailyReport">
+			<cmpt-daily-report-switch-to-old-version></cmpt-daily-report-switch-to-old-version>
+		</span>	
+	</div>
+	<span class="filter" ng-show="vm.reportMenuVisible.length >= 1">
+		<span class="label">{{menuStrings['Report.Label.SelectReport']}}</span>
+		<cmpt-ui-dropdown
+			options-array="vm.reportMenuVisible"
+			value-selected="vm.defaultReport"
+			enabled="true"
+			default-text="vm.defaultText"
+			allow-blank="true"
+			sort-by="vm.sortBy"
+			label="menuStrings['Report.Label.SelectReport']"
+		></cmpt-ui-dropdown>
+	</span>
+</div>

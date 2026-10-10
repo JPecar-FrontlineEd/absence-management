@@ -1,0 +1,94 @@
+@import "common-var"
+
+.cmpt-step-progress {
+	display: inline-block;
+	float: right;
+	padding: 0px;
+	position: relative;
+	font-weight: bold;
+	margin-top: 1.3125rem;
+	margin-bottom:1.3125rem;
+
+	div {
+		position: relative;
+		display: block;
+		width: auto;
+		height: 30px;
+		margin-right: 20px;
+		padding: 0px 5px 0 7px;
+		float: left;
+		font-size: 11px;
+		line-height: 30px;
+		color: fl-inactive-color;
+		background: fl-inactive;
+
+		span {
+			display: inline-table;
+		}
+		&:before{
+			width: 0px;
+			height: 0px;
+			border-top: 15px solid fl-inactive;
+			border-bottom: 15px solid fl-inactive;
+			border-left: 15px solid transparent;
+			position: absolute;
+			content: "";
+			top: 0px;
+			left: -15px;
+		}
+		&:after{
+			width: 0;
+			height: 0;
+			border-top: 15px solid transparent;
+			border-bottom: 15px solid transparent;
+			border-left: 15px solid fl-inactive;
+			position: absolute;
+			content: "";
+			top: 0px;
+			right: -15px;
+		}
+		&:first-child{
+			padding-left: 10px;
+			border-radius: 5px 0 0 5px;
+			&:before{
+				border-top: none;
+				border-bottom: none;
+				border-left: none;
+				left: 0;
+			}
+		}
+		&:last-child{
+			padding-right: 10px;
+			border-radius: 0 5px 5px 0;
+			margin-right: 0;
+			&:after{
+				border-top: none;
+				border-bottom: none;
+				border-left: none;
+				right: 0;
+			}
+		}
+	}
+	div.active{
+		color: fl-selected-color;
+		background: fl-selected;
+		&:before{
+			 border-top: 15px solid fl-selected;
+			 border-bottom: 15px solid fl-selected;
+		}
+		&:after{
+			border-left: 15px solid fl-selected;
+		}
+	}
+	div.complete{
+		color: fl-completed-color;
+		background:fl-completed;
+		&:before{
+			border-top: 15px solid fl-completed;
+			border-bottom: 15px solid fl-completed;
+		}
+		&:after{
+			border-left: 15px solid fl-completed;
+		}
+	}
+}

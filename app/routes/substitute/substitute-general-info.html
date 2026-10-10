@@ -1,0 +1,63 @@
+<div class="fixed-width route-substitute-substitute-general-info" ng-controller="SubstituteGeneralInfoCtrl as route">
+	<div class="deleted-sub" ng-if="route.vm.subIsDeleted">
+		{{route.vm.subDeletedText}}
+	</div>
+	<div ng-if="!route.vm.subIsDeleted">
+		<h3><span class="label">{{route.strings['SubProfile.Title.SubstituteProfile']}}:</span> {{route.vm.substitute.fullName}}</h3>
+		<div class="content">
+			<!-- <cmpt-ui-loader fill is-loading="route.vm.isLoading"></cmpt-ui-loader> -->
+			<div class="header">
+				{{route.strings['SubProfile.label.SubProfileInformation']}}
+				<div class="active-status">
+					{{route.strings['SubProfile.label.Status']}}: {{route.vm.substitute.isActive ? route.strings['SubProfile.text.Active'] : route.strings['SubProfile.text.Inactive']}}
+				</div>
+			</div>
+			<div class="info-section">
+				<div class="personal-info">
+					<div class="avatar" ng-if="route.vm.showSubPhoto">
+						<div ng-if="route.vm.substitute.hasPhoto">
+							<img ng-if="route.vm.substitute.photo.downloadLink != null" src="{{route.vm.substitute.photo.downloadLink}}" />
+						</div>
+						<div ng-if="!route.vm.substitute.hasPhoto">
+							<i class="fa fa-user"></i>
+						</div>
+					</div>
+					<div class="info">
+						<div class="sub-name">{{route.vm.substitute.fullName}}</div>
+						<div ng-if="route.vm.canViewPhone">
+							<span class="label">{{route.strings['SubProfile.label.Phone']}}:</span> {{route.vm.substitute.phone | phoneFormat}}
+						</div>
+		        		<div>
+		        			<span class="label">{{route.strings['SubProfile.label.Email']}}:</span>
+		        			{{route.vm.substitute.email ? route.vm.substitute.email : route.strings['SubProfile.text.NotApplicable']}}
+		        		</div>
+	        		</div>
+				</div>
+				<div class="files" ng-if="route.vm.showSubResume">
+					<div class="label">{{route.strings['SubProfile.label.ResumeOnFile']}}</div>
+					<div class="resume" ng-if="route.vm.substitute.hasResume">
+						<i class="fa fa-paperclip"></i>
+						<a target="_blank" class="fa {{ route.vm.substitute.resume.icon }}-after" href="{{route.vm.substitute.resume.downloadLink}}">
+							{{route.vm.substitute.resume.fileName}}
+						</a>
+					</div>
+					<div class="no-resume" ng-if="!route.vm.substitute.hasResume">
+						{{route.strings['SubProfile.text.NoResume']}}
+					</div>
+				</div>
+			</div>
+			<div class="skills">
+				<div class="skill-header">
+					{{route.strings['SubProfile.Table.Header.SkillSet']}}
+				</div>
+				<cmpt-ui-sortable-grid
+					columns="route.vm.columns"
+					dataset="route.vm.dataSet"
+				>
+					<div class="image"></div>
+					<div class="caption">{{route.strings['SubProfile.text.NoSkills']}}</div>
+				</cmpt-ui-sortable-grid>
+			</div>
+		</div>
+	</div>
+</div>

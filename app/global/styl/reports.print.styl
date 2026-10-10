@@ -1,0 +1,213 @@
+@import "common-var"
+/* Reports Specific Print Stylesheet */
+
+.no-screen {
+	display: none !important;
+}
+
+@media print {
+	
+	.hide-print {
+		display: none !important;
+	}
+
+	.no-screen {
+		display: block !important;
+	}
+
+	body, html {
+		background: none !important;
+	}
+
+	.report-standards .panel {
+		box-shadow: none;
+		border: 1px solid borderColor-medium;
+  	padding: 15px;
+	}
+
+	header.v-nav-top {
+		position: static;
+		background: none;
+		color: subTitle-color-lightest;
+		display: none;
+
+		.left-content .cmpt-topnav-app-switcher, .right-content {
+			display: none;
+		}
+	}
+
+	header.v-nav-top .left-content .logo i {
+		font-size: 200px;
+		margin-left: 0;
+	}
+
+	.v-nav-left {
+		display: none;
+	}
+
+	.main-content .fixed-width {
+		padding-left: 0;
+		// width: 100%;
+	}
+
+	.report-locked {
+		.lock-header-fill {
+			height: 0;
+		}
+	}
+
+	.report-locked {
+		.report-standards {
+			> .header {
+				background-color: backGroundColor;
+				width: inherit;
+				position: static;
+				.header-content {
+					.cmpt-ui-print-button {
+						display: none;
+					}
+				}
+			}
+			> .content-panel {
+				div.grid-header {
+					position: static;
+					width: inherit;
+					border: 0;
+					margin-left: 0;
+				}
+			}
+
+		}
+		.route-reports-absence-interactive #report-lock-header{
+				height:0px !important;
+		}
+	}
+
+	.header .header-content {
+		background: none !important;
+		padding: 0 !important;
+		border: 1px solid borderColor-medium !important;
+		width: 100% !important;
+
+		.count {
+			background: none !important;
+
+		}
+
+		.label {
+			color: subTitle-color-darkest !important;
+		}
+	}
+
+	.header .label.loaded {
+		/* top: 10px !important;*/
+		font-size: 16px !important;
+		font-weight: 600 !important;
+	}
+
+	.name-cell .cmpt-template-worker-link a {
+	    font-size: 13px !important;
+	    font-weight: 600 !important;
+    }
+
+    .header .count {
+    	position: relative;
+    	top: 5px;
+    	padding-left: 5px !important;
+    }
+
+    .route-reports-absence-monthly-summary .header .header-content .count, .report-standards.route-reports-dow-absence-analysis .header .count {
+    	display: none;
+    }
+
+    .route-reports-employee-staff-list .header .label.loaded {
+    	top: 37% !important;
+    }
+
+	.filter-section {
+		background: none !important;
+		border: 1px solid borderColor-medium !important;
+		box-shadow: none !important;
+	}
+
+
+	.filter-section .action-section {
+		display: none !important;
+	}
+
+	.content-panel {
+		border: none !important;
+	}
+
+	.summary-panel {
+		display: none;
+	}
+
+	.grid-header {
+		background-color: backGroundColor;
+	}
+
+	.grid-header div {
+		border-top: none !important;
+		border-bottom: 1px solid borderColor-medium !important;
+		background: none !important;
+		height: 55px !important;
+	}
+
+	.grid-header div:last-child {
+		border-right: 1px solid borderColor-medium !important;
+	}
+
+	.grid-row .grid-cell:last-child {
+		border-right: 1px solid borderColor-medium !important;
+	}
+
+
+	.footer-heading {
+		background: backGroundColor !important;
+	}
+
+	.footer {
+		border: 1px solid borderColor-medium !important;
+		border-top: none;
+	}
+
+	.duration-cell {
+		text-align: center !important;
+		padding-left: 0 !important;
+	}
+
+	.group-row{
+		border: 1px solid borderColor-medium;
+		font-size: 16px !important;;
+	}
+	.grid-row .group-title, .group-heading {
+		background: backGroundColor-dark !important;
+		color: subTitle-color-darkest !important;
+		border: 1px solid borderColor-medium !important;
+		border-top: none !important;
+	}
+	.grid-cell{
+		font-size:14px !important;
+	}
+
+	a {
+		color: subTitle-color-darkest !important;
+		opacity: 1;
+	}
+
+	.fa {
+		color: subTitle-color-darkest !important;
+	}
+
+	.page-breaks .cmpt-ui-grid {
+		.row-container .group-title {
+			display: block;
+			page-break-before: always;
+		}
+		.row-container.row-0 .group-title {
+			page-break-before: avoid;
+		}
+	}
+
+}

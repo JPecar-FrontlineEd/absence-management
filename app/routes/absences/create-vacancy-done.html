@@ -1,0 +1,19 @@
+<div class="fixed-width route-absences-create-vacancy-done" ng-controller="CreateVacancyDoneCtrl as route">
+	<div class="title"><h3>{{ strings['Vacancy'] }}: {{ strings['Absence.Create.Text.CreateVacancy'] }}</h3></div>
+		<cmpt-step-progress steps="vm.steps" current-step="3"></cmpt-step-progress>
+		<cmpt-absr-done-banner>
+			{{ strings['Absence.Create.Text.Your'] }} {{ strings['Vacancy'] }} {{ strings['Absence.Create.Text.HasBeenScheduled'] }}.
+		</cmpt-absr-done-banner>
+		<cmpt-absr-top-section-summary></cmpt-absr-top-section-summary>
+		<div class="content-panel">
+			<cmpt-absr-done-top-bar>
+				{{ strings['Absence.Create.Text.VacancySummaryFor'] }}<span class="bold">&nbsp;<cmpt-template-worker-link worker-id="{{ absrState.worker.id }}" worker-name="{{ absrState.worker.name }}"  show-name-as-link="true" is-vacancy="true"></cmpt-template-worker-link></span>
+			</cmpt-absr-done-top-bar>
+			<div class="-g">
+				<cmpt-absr-done-summary class="-u-14-24"></cmpt-absr-done-summary>
+				<cmpt-absr-done-next-steps class="-u-10-24">
+				</cmpt-absr-done-next-steps>
+			</div>
+			<cmpt-absr-done-bottom-bar></cmpt-absr-done-bottom-bar>
+	</div>
+</div>

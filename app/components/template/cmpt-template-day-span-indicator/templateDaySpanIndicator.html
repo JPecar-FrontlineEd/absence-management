@@ -1,0 +1,14 @@
+<div class="cmpt-template-day-span-indicator">
+	<div class="day-indicator dailyreportView">
+		<i ng-if="hasDaysInPast" class="fa fa-calendar-o"></i>
+		<i ng-if="hasDaysInPast" class="fa fa-long-arrow-left left-arrow" title="{{ strings['Dashboard.Icon.HaveDaysInPast.Title'] }}"></i>
+		<i ng-if="hasDaysInFuture" class="fa fa-calendar-o future-calendar"></i>
+		<i ng-if="hasDaysInFuture" class="fa fa-long-arrow-right right-arrow" title="{{ strings['Dashboard.Icon.HaveDaysInFuture.Title'] }}"></i>
+	</div>
+
+	<div class="day-indicator dashboardView">
+		<i ng-if="hasDaysInPast" class="fa fa-long-arrow-left left-arrow" title="{{ strings['Dashboard.Icon.HaveDaysInPast.Title'] }}"></i>
+		<i ng-if="hasDaysInFuture || hasDaysInPast" class="fa fa-calendar-o"></i>
+		<i ng-if="hasDaysInFuture" class="fa fa-long-arrow-right right-arrow" title="{{ strings['Dashboard.Icon.HaveDaysInFuture.Title'] }}"></i>
+	</div>
+</div>

@@ -1,0 +1,4 @@
+<div class="cmpt-ui-date-selector-with-input">
+    <input type="text" id="txtDateInput" ng-model="vm.dateModel" ng-keyup="$event.keyCode == 13 ? go.search() : null"/>
+    <div id="datepicker" class="fl-input" ng-blur="go.blur()" ng-class="{'error': gotError}" ng-jquery-plugin='vm.jqInputPlugins'></div>
+</div>

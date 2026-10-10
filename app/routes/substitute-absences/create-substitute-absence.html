@@ -1,0 +1,21 @@
+<div class="fixed-width route-substitute-absences-create-substitute-absence" ng-controller="CreateSubstituteAbsenceCtrl as route">
+	<div class="title"><h3>{{ route.strings['Substitute.Absence'] }}: {{ route.strings['SubstituteAbsence.Create.Text'] }}</h3></div>
+	<cmpt-step-progress steps="route.vm.steps" current-step="0"></cmpt-step-progress>
+	<div class="content-panel">
+		<cmpt-ui-overlay-blocked ng-if="!route.vm.canProceed">
+			Currently no cancellation reasons are available to your locations.
+		</cmpt-ui-overlay-blocked>
+
+		<cmpt-current-step  enable-next="!!route.substituteAbsenceVal.substitute && route.vm.canProceed" steps="route.vm.steps" current-step="0" class="top">{{ route.strings['SubstituteAbsence.Create.Text.Step'] }} 1: {{ route.strings['SubstituteAbsence.Create.Text.SelectSubstitute'] }}</cmpt-current-step>
+		<cmpt-search-by-text filter="route.vm.filter" placeholder="Absecne.Create.Select.LastName">{{ route.strings['Search'] }}:</cmpt-search-by-text>
+		<div class="-g body-section">
+			<div class="-u-6-24 search-by-letter">
+				<cmpt-search-by-letter filter="route.vm.filter"></cmpt-search-by-letter>
+			</div>
+			<div class="-u-18-24 search-results">
+				<cmpt-substitute-absence-search-results filter="route.vm.filter"></cmpt-substitute-absence-search-results>
+			</div>
+		</div>
+		<cmpt-current-step  enable-next="!!route.substituteAbsenceVal.substitute && route.vm.canProceed " steps="route.vm.steps" current-step="0" class="bottom"></cmpt-current-step>
+	</div>
+</div>

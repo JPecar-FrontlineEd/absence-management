@@ -1,0 +1,11 @@
+<div class="cmpt-ui-dropdown">
+    <select unique-id="{{ vm.uniqueId }}" aria-label="{{label}}" name="{{ name }}" class="{{ vm.uniqueMarkerClass }}" ng-show="!readOnly" ng-disabled="!enabled || !optionsArray.length || reconciledHiddenAbsenceReason" ng-options="item.id as item.value disable when (item.isHiddenReason && !canSelectHiddenAbsenceReasons) for item in optionsArray" ng-model="vm.selectedId" ng-class="{'error': errorMessages.length > 0}" ng-style="vm.fieldStyles" ng-required="required">
+        <option value="" ng-if="allowBlank || !optionsArray.length">
+            {{optionsArray.length ? vm.defaultValue : vm.noneAvailable}}
+        </option>
+    </select>
+    <div ng-show="readOnly" class="readonly">{{ vm.selectedValueTitle || labelText  || 'None Selected' }}</div>
+    <div class="error-message" ng-repeat="value in errorMessages">
+        {{ value }}
+    </div>
+</div>

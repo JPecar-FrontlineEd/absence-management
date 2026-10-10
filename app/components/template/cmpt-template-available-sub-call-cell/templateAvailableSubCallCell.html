@@ -1,0 +1,7 @@
+<div class="cmpt-template-available-sub-call-cell">
+	<div class="call-now">
+		<a class="fl-button" ng-class="{'fl-disabled': absrState.absr.isLocked }" title="{{vm.reasons}}" ng-click="go.callNow()" ng-class="{'fl-disabled': !vm.canCall || !enabled()  }">
+			<i class="fa" ng-class="{'fa-phone': !vm.isProcessing, 'fa-spinner fa-spin': vm.isProcessing, 'fl-disabled': vm.onAbsence}"></i>
+		</a>
+	</div>
+</div>

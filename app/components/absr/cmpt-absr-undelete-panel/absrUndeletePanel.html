@@ -1,0 +1,22 @@
+<div class="cmpt-absr-undelete-panel -u-24-24">
+	<div class="-u-3-24" >
+       <label class="LabelWhite">{{strings['Status']}}: <b>{{strings['Deleted']}}</b></label>
+    </div>
+    
+    <div class = "MarginLeft1Pc -u-3-24">
+     <a ng-click= " vm.isLoading || go.undeleteAbsenceRequest()"
+      ng-class = "vm.empConflictCount>0 ? 'fl-button fl-disabled' : 'fl-button fl-primary'">
+     <i ng-class = "{'fa-spinner fa-spin': vm.isLoading}"></i>{{strings['ts.label.undelete']}}</a>
+  </div>
+  
+  <div  ng-if = "vm.empConflictCount>0" class=" -u-15-24 Link"> 
+    <i class = "fa fa-info-circle MarginLeft3Pc"></i>{{strings['EmpConflictReasonMessage']}}
+    <a class="LabelWhite UnderLine" 
+      ng-if = "vm.empConflictCount>0 && vm.closedDayConflictCount == 0 && vm.subConflictCount == 0" 
+      ng-click= "go.showConflictPopup()">{{strings['DateConflictLinkText']}}</a>
+
+    <a class="LabelWhite UnderLine"
+     ng-click= "go.showConflictPopup()"
+     ng-if = "vm.empConflictCount>0 && (vm.closedDayConflictCount >0 || vm.subConflictCount > 0)">{{strings['MultipleConflictsLinkText']}}</a>
+  </div>
+</div>

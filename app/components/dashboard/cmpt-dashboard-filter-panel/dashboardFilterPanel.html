@@ -1,0 +1,97 @@
+<div class="cmpt-dashboard-filter-panel">
+	<div class="row">
+		<cmpt-ui-date-selector class="filter no-bg-color" date-model="dash.filterDate">{{:: strings.bind('Dashboard.Header.SummaryFor.Label') }}: </cmpt-ui-date-selector>
+		<cmpt-ui-date-navigation class="filter no-bg-color" date-model="dash.filterDate"></cmpt-ui-date-navigation>
+		<div ng-show="havePermission('ABSR.VACANCY')" class="filter absence-vacancy">
+			<label>
+				<input type="checkbox" value="0" ng-model="dash.fTypeAbsence" />{{:: strings.bind('Absences') }}
+			</label>
+			<label>
+				<input type="checkbox" value="1" ng-model="dash.fTypeVacancy" />{{:: strings.bind('Vacancies') }}
+			</label>
+		</div>
+		<div ng-show="havePermission('ABSR.VACANCY')" class="mini-absence-vacancy">
+			<select ng-model="vm.absenceVacancySelected">
+				<option value="absences">{{:: strings.bind('Absences') }}</option>
+				<option value="vacancies">{{:: strings.bind('Vacancies') }}</option>
+				<option value="both">{{:: strings.bind('Both') }}</option>
+			</select>
+		</div>
+	</div>
+	<div class="row school-Employee-Filter">
+		<div class="left-align filter schools" ng-if="vm.instList.length > 0">
+			<cmpt-ui-multiselect
+				type="Schools"
+				width="100%"
+				label-all="Dashboard.Filter.Schools.AllSchools"
+				items="vm.instList"
+				name="schoolFilter"
+				selected="dash.institution"
+			></cmpt-ui-multiselect>
+		</div>
+
+		<div class="right-align filter employee-types" ng-if="vm.workerTypeList.length > 0">
+			<cmpt-ui-multiselect
+				type="EmployeeTypes"
+				width="100%"
+				label-all="Dashboard.WorkerTypes.Label.AllTypes"
+				items="vm.workerTypeList"
+				name="workerType"
+				multiple="true"
+				selected="dash.workerType"
+			></cmpt-ui-multiselect>
+		</div>
+	</div>
+	<div class="row data-gauge">
+		<div class="data">
+			<div class="circle total-Absences" ng-click="go.dailyreport()">
+				<div class="content">
+					<div class="label">{{:: strings.bind('Dashboard.Header.Total.Label') }}</div>
+					<div class="count">{{ dash.totalCount }}</div>
+				</div>
+			</div>
+			<div class="circle unfilled-Absences"
+				ng-class="{active: go.checkIfActive('unfilled')}"
+				ng-click="go.activate('unfilled')"
+			>
+				<cmpt-ui-rad-gauge percent="dash.percents.unfilled">
+					<div class="content">
+						<div class="label">{{:: strings.bind('Dashboard.Header.Unfilled.Label') }}</div>
+						<div class="count">{{ dash.counts.unfilled }}</div>
+						<div class="percent">{{ dash.percents.unfilled }}</div>
+					</div>
+				</cmpt-ui-rad-gauge>
+			</div>
+
+			<div class="circle filled-Absences"
+				ng-class="{active: go.checkIfActive('filled')}"
+				ng-click="go.activate('filled')"
+			>
+				<cmpt-ui-rad-gauge percent="dash.percents.filled" start-percent="dash.percents.unfilled">
+					<div class="content">
+						<div class="label">{{:: strings.bind('Dashboard.Header.Filled.Label') }}</div>
+						<div class="count">{{ dash.counts.filled }}</div>
+						<div class="percent">{{ dash.percents.filled }}</div>
+					</div>
+				</cmpt-ui-rad-gauge>
+			</div>
+			<div class="circle noSub-Absences"
+				ng-class="{active: go.checkIfActive('nosub')}"
+				ng-click="go.activate('nosub')"
+			>
+				<div class="content">
+					<div class="label">{{:: strings.bind('Dashboard.Header.NoSubRequired') }}</div>
+					<div class="count">{{ dash.counts.nosub }}</div>
+				</div>
+			</div>
+
+			<cmpt-ui-calendar-button
+				date-model="dash.filterDate"
+				base-link="/v1/reports/absence/daily-report"
+				ng-show="havePermission('RPTABS.AbsDaily')"
+			>{{:: strings.bind('Dashboard.MiniControl.Button.DailyReport') }}</cmpt-ui-calendar-button>
+
+		</div>
+	</div>
+	<div class="section-arrow" ng-style="{left: vm.arrowLeft}"></div>
+</div>

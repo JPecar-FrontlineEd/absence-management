@@ -1,0 +1,357 @@
+@import "common-var"
+.route-webtime-time-sheet {
+	.section-heading {
+		height: 60px;
+	}
+
+	.grid-header {
+		.grid-header-content {
+			font-size: 12px;
+		}
+	}
+
+	.cmpt-template-substitute-link {
+		display: inline-block;
+	}
+
+	.timesheet-header {
+		min-height: 70px;
+		margin-bottom: 1rem;
+
+		.period-heading {
+			font-weight: 600;
+			margin-left: 1rem;
+		}
+
+		.return-links {
+			margin-top: 0.5rem;
+		}
+	}
+
+	.timesheet-period-title, .loading {
+		min-height: 32px;
+	}
+
+	.grid-rows{
+		font-size: 12px;
+		margin-bottom: 25px;
+	}
+
+	.grid-cell {
+		line-height: 1.5;
+	}
+
+	.grid-cell * {
+		white-space: normal;
+	}
+
+	.approved-val, .no-val, .rejected-val, .not-assigned-val, .paper-val {
+		background-repeat: no-repeat;
+		margin: 0 auto;
+	}
+
+	.approved-val {
+	  background-image: url('../images/webtime-sprite.png');
+	  width: 22px;
+	  height: 20px;
+	  background-position: 0 -90px;
+	  margin-top:10px;
+	}
+
+	.no-val {
+		background-image: url('../images/webtime-sprite.png');
+		width: 24px;
+		height: 16px;
+		background-position: 0px -31px;
+
+		.paper-button {
+			margin-top:5px;
+		}
+	}
+
+	.rejected-val{
+		background-image: url('../images/webtime-sprite.png');
+  		width: 23px;
+  		height: 30px;
+  		background-position: 0 -54px;
+  		display: inline-block;
+	}
+
+	.not-assigned-val{
+		background-image: url('../images/webtime-sprite.png');
+  		width: 20px;
+  		height: 30px;
+  		background-position: 0 7px;
+	}
+
+	.paper-val {
+		background-image: url('../images/webtime-sprite.png');
+		width: 18px;
+		height: 24px;
+		background-position: 0 -113px;
+	}
+
+	.paper-button {
+		.fl-button-sm {
+			font-size: 11px;
+			height: 40px;
+			padding: 2px 6px;
+			line-height: 1.2;
+			width: 63px;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			margin-bottom: 8px;
+			margin-top: 8px;
+		}
+	}
+
+	.rejected-count {
+		line-height: 30px;
+  		color: ap-dark-red;
+  		display: inline-block;
+	}
+
+	.status-cell {
+		position: relative;
+		padding: 0px;
+	}
+
+	.employee-cell {
+		span {
+			white-space: normal;
+		}
+	}
+
+	.schdStart-th, .schdEnd-th {
+		line-height: 16px;
+		padding-top: 5px;
+
+		.top-heading {
+			font-weight: normal;
+			font-style: italic;
+			color: subTitle-color-dark;
+		}
+	}
+
+	.status-inner-cell {
+		padding:10px 5px 10px 5px;
+
+		.no-val-paper {
+			margin-top:5px;
+		}
+
+		.no-val {
+			margin-top: 7px;
+		}
+
+		&.approved {
+			background-color: selected-item;
+			position:absolute;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+		}
+
+		&.no-val-back {
+			background-color: selected-item;
+			position:absolute;
+			top:0;
+			bottom:0;
+			left:0;
+			right:0;
+		}
+
+		&.rej {
+			background-color: ap-light-red;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+	}
+
+	.date-cell {
+		text-align: center;
+		padding: 10px 5px;
+
+		span {
+			white-space: normal;
+		}
+	}
+
+	.schdStart-cell, .schdEnd-cell {
+		.scheduled {
+			font-style: italic;
+		  	color: subTitle-color-dark;
+		}
+	}
+
+	.break-cell {
+		.break-titles {
+			font-style: italic;
+		  	color: subTitle-color-light;
+
+			.left {
+				float: left;
+				width:50%
+			}
+
+		}
+	}
+
+	.na {
+		color: subTitle-color-light;
+	}
+
+	.school-select {
+		max-width: 270px;
+		border: 1px solid content-panel-borderColor;
+		background: backGroundColor;
+  	border: 1px solid borderColor-medium;
+	}
+
+	.breakhours-th, .totalhours-th {
+		line-height: 12px;
+	}
+
+	.timesheet-table-footer {
+		position:relative;
+		min-height: 245px;
+		padding-left: 11px;
+		padding-right: 15px;
+		font-size: 13px;
+		line-height: 125%;
+
+		.left {
+			float:left;
+			width:450px;
+
+			li {
+				margin-bottom:15px;
+
+				div {
+					float:left;
+					clear:both;
+				}
+			}
+		}
+
+		.right {
+			float:right;
+			width:430px;
+			text-align:right;
+		}
+
+		.timesheet-comments-container{
+			font-size:12px;
+			text-align:left;
+
+			.left, .right {
+				width:auto;
+			}
+
+			.timesheet-comment-header {
+				clear:both;
+				height: 30px;
+				border-bottom: 1px solid borderColor-medium;
+			}
+
+			.timesheet-comments {
+				clear:both;
+
+				li {
+					clear:both;
+					border-bottom: 1px solid borderColor-medium;
+					margin-bottom: 10px;
+					min-height: 53px;
+					padding-top: 10px;
+					padding-bottom: 10px;
+					padding-left: 10px;
+					padding-right: 10px;
+
+					.left:nth-child(2) {
+						margin-left: 20px;
+					}
+				}
+			}
+
+			.comment-content, .comment-date {
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			.comment-date {
+				width: 24%;
+			}
+
+			.comment-content {
+				width: 74%;
+
+				.message {
+					word-wrap: break-word;
+				}
+			}
+
+			.title {
+				font-weight: bold;
+				font-size:13px;
+			}
+		}
+
+		.approved-val {
+			display: block;
+			height: 30px;
+			margin-right: 10px;
+			width: 18px;
+			margin-top:0px;
+		}
+
+		.no-val {
+			margin-right:5px;
+		}
+
+		.container-rejected {
+			width: 28px;
+ 			height: 60px;
+		}
+
+		.rejected-val {
+			width: 18px;
+  			height: 35px;
+  			margin-right: 10px;
+		}
+
+		.container-not-assigned {
+			width: 28px;
+  			height: 60px;
+		}
+
+		.not-assigned-val {
+			width: 18px;
+			height: 35px;
+			margin-right: 10px;
+			display: block;
+		}
+
+		.paper-val {
+			width: 18px;
+  			height: 35px;
+  			background-position: 0px -120px;
+  			margin-right: 10px;
+  			display: block;
+		}
+	}
+
+	.timesheet-footer {
+		clear: both;
+		background: greyBar-backGroundColor;
+	  	border-top: 1px solid borderColor-medium;
+	  	padding: 10px;
+	  	position: relative;
+	  	height: 33px;
+	}
+}

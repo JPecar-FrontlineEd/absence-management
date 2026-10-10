@@ -1,0 +1,45 @@
+<div class="dialog-popup download-details">
+	<div class="ngdialog-message">
+
+		<div class="header"><span>{{ reportDialogData.header }}</span></div>
+		<div class="content" ng-show="reportDialogData.dataLoaded" ng-class="{'disabled': !fieldsEnabled()}">
+            <div class="date" ng-bind-html="reportDialogData.date"></div>
+            <div class="template-selection" ng-show="canAccessReportWriter">
+    			<div class="main-instructions">{{reportDialogData.mainInstructions}}:</div>
+    			<div class="radio-options">
+                    <label>
+                        <input class="rdbtn-default" type="radio" name="downloadGroup" value="1"  ng-model="reportDialogData.defaultTemplate" ng-disabled="fieldsEnabled() === false"/>
+                        <span>{{reportDialogData.defaultText}}</span>
+                    </label>
+                </div>
+                <div class="radio-options" ng-if="canAccessReportWriter">
+                    <label>
+                        <input class="rdbtn-configList" type="radio" name="downloadGroup" ng-model="reportDialogData.defaultTemplate" ng-disabled="fieldsEnabled() === false" value="2"/>
+                    </label>
+                    <select ng-options="item.id as item.name for item in reportDialogData.configOptions" value="0" ng-model="reportDialogData.selected" ng-disabled="templateSelectEnabled() === false" ng-class="{'disabled': !templateSelectEnabled()}"></select>
+                    <span class="validation" ng-if="!isTemplateSelected">{{strings['AbsenceInteractive.DownloadDialog.Validation.SelectTemplate']}}</span>
+                </div>
+            </div>
+            <div class="email-option">
+                <div class="email-instructions">
+                    {{reportDialogData.emailInstructions}}:
+                </div>
+                <div class="email-input">
+                    <input type="text" class="input fl-input txtEmail" placeholder="{{reportDialogData.enterEmail}}" ng-model="reportDialogData.email" ng-class="{'error': !isEmailValid}" ng-disabled="fieldsEnabled() === false"/>
+                    <span class="validation" ng-if="!isEmailValid">{{strings['AbsenceInteractive.DownloadDialog.Validation.EmailInvalid']}}</span>
+                </div>
+            </div>
+
+		</div>
+		<div class="report-loader" ng-show="ngDialogData.routeVm.isLoading">
+			<cmpt-ui-loader is-loading="ngDialogData.routeVm.isLoading"></cmpt-ui-loader>
+		</div>
+    </div>
+
+	<div class="ngdialog-buttons" ng-show="reportDialogData.dataLoaded" >
+		<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)" ng-show="showButtonOptions[button.name]"  ng-repeat="button in reportDialogData.buttons">
+		<i class="fa {{ button.icon }}"></i>
+		{{ button.title }}
+		</a>
+	</div>
+</div>

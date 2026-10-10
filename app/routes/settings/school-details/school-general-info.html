@@ -1,0 +1,65 @@
+<div class="route-settings-school-details-school-general-info" ng-controller="SchoolGeneralInfoCtrl as route">
+	<div class="section-heading">{{route.strings['GeneralInformation']}}</div>
+	
+	<div class="container">
+		<div class="content" ng-show="route.vm.institution.id != null">
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['SchoolName']}}:</span>
+					<span>{{route.vm.institution.name}}</span>
+				</div>
+				<div>
+					<span class="label">{{route.strings['ExternalNumber']}}:</span>
+					<span>{{route.vm.institution.externalNumber}}</span>
+				</div>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['Address']}} 1:</span>
+					<span>{{route.vm.institution.address1}}</span>
+				</div>
+				<div>
+					<span class="label">{{route.strings['Address']}} 2:</span>
+					<span>{{route.vm.institution.address2}}</span>
+				</div>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['Address']}} 3:</span>
+					<span>{{route.vm.institution.address3}}</span>
+				</div>
+				<div>
+					<span class="label">{{route.strings['Address']}} 4:</span>
+					<span>{{route.vm.institution.address4}}</span>
+				</div>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['City']}}:</span>
+					<span>{{route.vm.institution.city}}</span>
+				</div>
+				<div>
+					<span class="label">{{route.strings['Phone']}}:</span>
+					<span>{{route.vm.institution.phone}}</span>
+				</div>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['State']}}:</span>
+					<span>{{route.vm.institution.state}}</span>
+					<span class="label">{{route.strings['Zip']}}:</span>
+					<span>{{route.vm.institution.zip}}</span>
+				</div>
+				<div>
+					<span class="label">{{route.strings['Fax']}}:</span>
+					<span>{{route.vm.institution.fax}}</span>
+				</div>
+			</div>
+			<div class="info-row get-directions-container">
+				<a ng-if="route.vm.mapLink.length > 0" href="{{route.vm.mapLink}}" target="_blank" class="fl-button get-directions">
+					<i class="fa fa-map-marker"></i> {{ route.strings['GetDirections'] }}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+@import "common-var"
+.route-reports-substitute-sub-availability {
+
+	.content-panel {
+		.cmpt-ui-sortable-grid {
+			.grid-rows {
+				.excluded-cell {
+					.cmpt-template-boolean {
+						color: ap-red;
+					}
+				}
+				.preferred-cell {
+					.cmpt-template-boolean.not-preferred {
+						color: ap-red;
+					}
+				}
+
+				.email-cell {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+
+	.skill {
+		line-height: 15px;
+	}
+	.skill {
+		.active {
+			font-weight: bold;
+		}
+		.expired {
+			color: ap-red;
+		}
+	}
+	.skills-cell.grid-cell * {
+		white-space: normal !important;
+	}
+	.email-cell.grid-cell * {
+	 	word-break: break-all;
+		white-space: normal;
+	}
+}

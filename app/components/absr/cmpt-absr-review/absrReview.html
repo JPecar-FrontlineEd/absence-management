@@ -1,0 +1,56 @@
+<div class="cmpt-absr-review">
+	<div>
+		<cmpt-absr-variation-header variation-data="variation">
+		</cmpt-absr-variation-header>
+	</div>
+	<div class="-g" ng-If= "selectedView != 'btnDay'">
+		<div class="element" ng-if="absrState.context.showEntitlementType">
+			<label>{{strings[mnemonic.reasonTitle]}}</label>
+			<span>{{ variation.entitlementType.value }}</span>
+		</div>
+		<div class="element">
+			<label>{{strings['Time']}}</label>
+			<span>
+				<span>{{ variation.absenceShiftType.value }}</span> ({{ variation.absenceStartTime }}-{{ variation.absenceEndTime }})
+			</span>
+		</div>
+		<div class="element" ng-if="absrState.needSub && absrState.context.needSub > 0 && absrState.context.showVacancyTimes">
+			<label>{{strings['SubstituteReportTime']}}</label>
+			<span>
+				{{ variation.vacancyShiftType.value }} ({{ variation.vacancyStartTime }}-{{ variation.vacancyEndTime }})
+			</span>
+		</div>
+		<div class="element" ng-if="absrState.context.showNonPayTime">
+			<label>{{strings['NonPayTime']}}</label>
+			<span>{{ variation.nonPayTime }}</span>
+		</div>
+		<div class="element" ng-if="absrState.context.showAbsenceTime">
+			<label>{{strings['TimeAbsent']}}</label>
+			<span>{{ variation.timeAbsent }}</span>
+		</div>
+		<div class="element" ng-if="absrState.context.showBudgetCode">
+			<label>{{strings['BudgetCode']}}</label>
+			<span ng-if="variation.budgetCode === null">{{strings['NoneSelected']}}</span>
+			<span ng-if="variation.budgetCode != null">{{ variation.budgetCode.value }}</span>
+		</div>
+		<div class="element" ng-if="absrState.context.showAccountingCode">
+			<label>{{strings['AccountingCode']}}</label>
+			<span ng-if="variation.accountingCode === null">{{strings['NoneSelected']}}</span>
+			<span ng-if="variation.accountingCode != null">
+				{{ variation.accountingCode.value }}
+				<span ng-if="variation.accountingCode.id === 0">-
+				{{ variation.customAccountingCode }}</span>
+			</span>
+		</div>
+		<div class="element" 
+			ng-if="variation.absenceShiftType.id == 4 
+				&& ((variation.deductCustomBreakTime 
+				&& variation.doesBreakTimeOverlapAbsenceTimes) || (absrState.context.CanViewBreakTime && !absrState.context.CanEditBreakTime))
+				&& showCustomBreakTime
+				&& canDeductCustomBreakTime">
+			<label>{{strings['DeductBreak']}}</label>
+			<span >{{variation.breakStartTime}} to {{variation.breakEndTime}}</span>
+			</span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,127 @@
+@import "common-var"
+.cmpt-absr-buttons {
+	button{
+		margin:0 5px;
+		&.right{
+			float:right;
+		}
+		&.positionRelative{
+			position:relative;
+		}
+		&.right29pc{
+			right:29%;
+		}
+		&.left34pc{
+			left:34%;
+		}
+		&.green-color{
+			color: ap-green;
+		}
+		&:first-child{
+			margin-left:0;
+		}
+		&:last-child{
+			margin-right:0;
+		}
+		&.marginLeftRight5{
+			margin-left: 5px !important;
+			margin-right: 5px !important;
+		}
+		&.switchButtonMargins{
+			margin-right: 148px !important;
+			margin-left: -1px !important;
+		}
+		&.capitalizeFirstLetter{
+			text-transform: capitalize;
+		}
+		&.activeSwitchButton{
+			background-color: #2E7AB8;
+			background-image: none;
+			color: #ffffff;
+			border-color: #2E7AB8;
+			background-color: #2E7AB8;
+			background-repeat: repeat-x;
+		}
+	}
+	label{
+		&.fontBold{
+			font-weight: 600;
+		}
+		&.labelViewBy{
+			float: right;
+			font-family: inherit;
+			font-size: 12px;
+			margin-right: 5px;
+			margin-top: 5px;
+			position:relative;
+			right:40%;
+		}
+	}
+}
+
+.route-absences-detail-view-edit .right-side.deletedAbsrNextPanelBackground{
+	background: #f5f5f5;
+}
+
+.route-absences-detail-view-edit div.top.deletedAbsrBackground, .cmpt-absr-variation-header div.section-header.deletedAbsrBackground, 
+	.cmpt-absr-variation-header .section-header .variation-toggler.expanded.deletedAbsrBackground,
+	.cmpt-absr-details-notes .section-header.deletedAbsrBackground,
+	.cmpt-absr-details-notes .section-header .notes-toggler.expanded.deletedAbsrBackground,
+	.cmpt-absr-next-steps .section-header.deletedAbsrBackground,
+	.cmpt-absr-next-steps .section-header .toggle-summary.expanded.deletedAbsrBackground,
+	.cmpt-absr-details-summary-section .section-header.deletedAbsrBackground,
+	.cmpt-absr-details-summary-section .section-header .toggle-summary.expanded.deletedAbsrBackground{
+		background: -webkit-linear-gradient(270deg, #f5f5f5 0, #d2d2d2 100%);
+		background: -moz-linear-gradient(270deg, #f5f5f5 0, #d2d2d2 100%);
+		background: -o-linear-gradient(270deg, #f5f5f5 0, #d2d2d2 100%);
+		background: -ms-linear-gradient(270deg, #f5f5f5 0, #d2d2d2 100%);
+		border-bottom: .25px solid #f5f5f5;
+}
+	
+.cmpt-absr-buttons button.activeSwitchButton.deletedAbsrButton, .cmpt-absr-next-steps .deletedAbsrNextPanelBackground .deletedAbsrButton, 
+	.fl-positive.fl-disabled.deletedAbsrButton, .fl-button-sm.fl-negative.deletedAbsrButton,
+	.deletedAbsrBackground.fl-button.fl-positive.fl-disabled.auto-reconcile.deletedAbsrButton, .deletedAbsrBackground.auto-unreconcile.deletedAbsrButton, 
+	.fl-button.auto-edit-reconcile.marginLeftRight5.fl-disabled.deletedAbsrButton, .fl-button.auto-edit-unreconcile.marginLeftRight5.fl-disabled.deletedAbsrButton{
+		background-color: #757575;
+		border: 1px solid #757575;
+		background-image:none;
+		color: #FFFFFF;
+}
+
+.confirm-delete-popup {
+	.cancelReasons {
+		font-size: 12px;
+		div {
+			border-bottom: 1px solid borderColor-medium;
+		}
+		span {
+			display: inline-block;
+			padding: 10px 10px;
+			select, textarea {
+				width: 100%;
+			}
+		}
+		.cancel-reasons-label {
+			width: 40%;
+			font-weight: bold;
+		}
+		.cancel-reasons-value {
+			width: 55%;
+		}
+		.cancel-reasons-value div {
+			border: none;
+		}
+		.cancel-reasons-value select {
+			border: 1px solid rgb(118, 118, 118);
+		}
+	}
+	.removeSubstituteLabel {
+		margin: 0 0 0 2rem;
+		font-size : 0.8 rem;
+		font-weight: 600;
+	}
+	.removeSubstituteLabel input{
+		margin: 0.4rem;
+	}
+}
+

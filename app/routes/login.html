@@ -1,0 +1,8 @@
+<div class="fixed-width route-login" ng-controller="LoginCtrl as route">
+	<form ng-submit="route.go.login()">
+		<h3>Login</h3>
+		<input class="fl-input" type="text" placeholder="Username" ng-model="route.vm.user" />
+		<input class="fl-input" type="password" placeholder="Pin" ng-model="route.vm.pin" />
+		<button class="fl-button" type="submit">Login</button>
+	</form>
+</div>

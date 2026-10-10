@@ -1,0 +1,59 @@
+<div class="route-user-change-pin" ng-controller="ChangePinCtrl as route">
+	<div class="pin-content">
+		<div class="pin-header">
+			<h3>{{route.strings['ChangeyourPin']}}</h3>
+		</div>
+		<div class="pin-settings">
+			<form name="changePin" ng-submit="changePin.$pristine || route.go.changePin()">
+				<div>
+					<span class="label">{{route.strings['OldPin']}}:</span>
+					<span class="input-container">
+						<input name="oldPin" type="password" ng-model="route.vm.pinObj.oldPassword" maxlength="5"
+							ng-class="{error: route.vm.oldPinInvalid}" ng-required="!changePin.$pristine"
+							ng-minlength="4" ng-maxlength="5" ng-pattern="/^\d{4,5}/"
+							title="{{route.strings['PinFormat']}}" class="fl-input" />
+					</span>
+				</div>
+				<div class="pin-instructions">
+					<span class="title">{{route.strings['ChangePin.Label.RequirementsHeader']}}:</span>
+		            <span class="input-container">
+			            <ul>
+			            	<li>{{route.strings['PinFormat']}}</li>
+			            	<li>{{route.strings['ChangePin.Label.NotSameAsOld']}}</li>
+			            	<li>{{route.strings['ChangePin.Label.NotInSequence']}}</li>
+			            	<li>{{route.strings['ChangePin.Label.RepeatedCharacterLimit']}}</li>
+			            </ul>
+		            </span>
+				</div>
+				<div>
+					<span class="label">{{route.strings['NewPin']}}:</span>
+					<span class="input-container">
+						<input name="newPin" type="password" ng-model="route.vm.pinObj.newPassword" maxlength="5"
+							ng-class="{error: route.vm.newPinInvalid}" ng-required="!changePin.$pristine"
+							ng-minlength="4" ng-maxlength="5" ng-pattern="/^\d{4,5}/"
+							title="{{route.strings['PinFormat']}}" class="fl-input" />
+					</span>
+				</div>
+				<div>
+					<span class="label">{{route.strings['ConfirmNewPin']}}:</span>
+					<span class="input-container">
+						<input name="confirmNewPin" type="password" ng-model="route.vm.pinObj.confirmNewPassword" maxlength="5"
+							ng-class="{error: route.vm.confirmNewPinInvalid}" ng-required="!changePin.$pristine"
+							ng-minlength="4" ng-maxlength="5" ng-pattern="/^\d{4,5}/"
+							title="{{route.strings['PinFormat']}}" class="fl-input" />
+					</span>
+				</div>
+
+				<div class="pin-actions">
+					<button type="submit" class="fl-button fl-positive"
+						ng-class="{'fl-disabled': changePin.$pristine}">
+						<i class="fa {{route.vm.loading ? 'fa-spinner fa-spin' : 'fa-check'}}"></i> {{ route.strings['SaveChanges'] }}
+					</button>
+					<button type="button" ng-click="route.go.clearForm()" class="fl-button">
+						<span class="fl-label">{{ route.strings['ClearForm'] }}</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

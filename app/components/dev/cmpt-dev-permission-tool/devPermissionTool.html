@@ -1,0 +1,21 @@
+<div class="cmpt-dev-permission-tool hide-print" ng-if="$root.env.notProd && $root.env.showPermissionTool">
+	<h1>Permissions <input type="text" ng-model="vm.searchText" placeholder="search"></h1>
+	<ul>
+		<li class="category"
+			ng-repeat="cat in vm.categories"
+			ng-class="{expanded: vm.expanded[cat]}"
+			ng-show="filtered.length"
+		>
+			<span ng-click="go.toggleCategory(cat)" title="{{cat}}">{{allPermissions[cat].title}}</span>
+			<ul>
+				<li ng-repeat="perm in filtered = (vm.permissionKeys[cat] | filter:vm.searchText)"
+					ng-class="{'have-it': vm.permissions[cat][perm]}"
+					ng-click="go.togglePermission(cat, perm)"
+					title="{{perm}}"
+				>
+					{{allPermissions[cat].items[perm]}}
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

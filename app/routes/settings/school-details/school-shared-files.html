@@ -1,0 +1,46 @@
+<div class="route-settings-school-details-school-shared-files" ng-controller="SchoolSharedFilesCtrl as route">
+	<div class="section-heading">
+		{{route.strings['AbsenceFiles']}}
+	</div>
+
+	<div class="actions-header">
+		<div class="-g">
+			<div class="-u-5-24">
+				{{ route.strings['NumberOfFiles'] }}:<span class="count" ng-show="!route.vm.isLoading">{{ route.vm.data.length }}</span><span class="count" ng-show="route.vm.isLoading"><i class="fa fa-spinner fa-spin"></i></span>
+			</div>
+
+			<div class="-u-13-24" ng-if="havePermission('UPLOAD.ABSR')">
+				<div class="title">{{ route.strings['UploadFile'] }}</div>
+				<div class="description">
+				{{ route.strings['Filesmustbein'] }} .doc,.docx,.pdf,.xls.xlsx,<br />
+                .ppt,.pptx {{ route.strings['andlessthan'] }} 2mb
+                </div>
+			</div>
+
+			<div class="-u-6-24" ng-if="havePermission('UPLOAD.ABSR')">
+				<cmpt-ui-file-upload files="route.vm.data" enabled="true"></cmpt-ui-file-upload>
+			</div>
+		</div>
+	</div>
+
+	<div class="data-section">
+		<div class="loader-container" ng-show="!route.vm.dataLoaded">
+		   <cmpt-ui-loader
+		   		fill
+		   		is-loading=!route.vm.dataLoaded>
+		   	</cmpt-ui-loader>
+		</div>
+
+		<cmpt-ui-sortable-grid columns="route.vm.cols" dataset="route.vm.data" actions="route.go">
+			<div class="image"></div>
+			<div class="caption">{{route.strings['Absence.Files.Instruction.NoFiles']}}</div>
+		</cmpt-ui-sortable-grid>
+	</div>
+
+	<div class="action" ng-if="havePermission('UPLOAD.ABSR')">
+		<a class="fl-button fl-positive" ng-click="route.go.save()">
+			<i class="fa" ng-class="{'fa-check': !route.vm.isProcessing, 'fa-spinner fa-spin': route.vm.isProcessing}"></i>
+			<span>{{ route.strings['SaveChanges'] }}</span>
+		</a>
+	</div>
+</div>

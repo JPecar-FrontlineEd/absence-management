@@ -1,0 +1,10 @@
+<div class="cmpt-ui-rad-gauge">
+	<div class="rad-container" ng-style="vm.containerStyles">
+		<div class="half left" ng-style="vm.halfStyles1"></div>
+		<div class="mask left"></div>
+		<div class="show-hide" ng-style="vm.showHideStyles" ng-class="{'show': vm.showSecondHalf}">
+			<div class="half right" ng-style="vm.halfStyles2"></div>
+		</div>
+	</div>
+	<div class="display"><span><ng-transclude></ng-transclude></span></div>
+</div>

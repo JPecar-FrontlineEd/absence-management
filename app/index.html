@@ -1,0 +1,305 @@
+<!doctype html>
+<!--[if lt IE 9]>      <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Aesop</title>
+	<link rel="icon" type="image/png" href="/images/favicon.png"/>
+	<!-- critical:css -->
+	<!-- critical:js -->
+	<!-- build:css -->
+	<link rel="stylesheet" href="/assets/css/vendor.css">
+	<link rel="stylesheet" href="/assets/css/app.css">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" type="text/css">
+	<base href="/">
+	<script>
+		if (navigator.userAgent.match('MSIE 10.0;')) { document.querySelector('html').className += " no-flexbox";	}
+	</script>
+</head>
+<body id="aesop-frontend"
+			ng-app="aesop"
+			ng-controller="ApplicationCtrl"
+			ng-keydown="go.captureKeyEvent($event)"
+			ng-class="{'nav-expanded': navExpanded && !vm.sidekickEnabled}"
+			>
+	<div id="pre-loader">
+		<div class="pre-loader-content">
+			<div class="pre-loader-badge"></div>
+			<div class="loading-container">
+				<div class="logo-spinner">
+					<span class="bar bar-1"></span>
+					<span class="bar bar-2"></span>
+					<span class="bar bar-3"></span>
+					<span class="bar bar-4"></span>
+					<span class="bar bar-5"></span>
+					<span class="bar bar-6"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		if(/\/token\/.*\/navigator\/impersonate*./.test(location.pathname)){
+
+		}
+	  	else if(/.*\/token\/.*\/*./.test(location.pathname)) {
+	  		document.getElementById('pre-loader').style.display = 'none';
+	  	}
+  </script>
+	<!--[if lt IE 9]>
+	<div class="ie-8">
+		<div class="aesop-logo"><img src="/assets/images/logo-aesop.png" /></div>
+		<div class="frontline-logo"><img src="/assets/images/logo-frontline.png" /></div>
+		<div class="content">
+			<div class="message">
+				<span class="tag">Oh no!</span><br />
+				Your browser version does not support this site.
+			</div>
+
+			<div class="sub-message">
+				Please upgrade to <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome</a>, <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, or least <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">Internet Explorer 9</a>.
+			</div>
+
+			<div class="buttons">
+				<a class="fl-button-lg fl-primary update-button" href="http://outdatedbrowser.com/en">Update your browser</a>
+				<span class="or">or</span>
+				<a class="browser-support-link" href="http://help1.frontlinek12.com/customer/portal/articles/1579288-choosing-and-updating-a-web-browser?b_id=3397">View our browser support policy</a>
+			</div>
+		</div>
+
+		<div class="mountains"></div>
+	</div>
+	<![endif]-->
+
+	<!--[if gt IE 8]><!-->
+	<header ng-if="!vm.sidekickEnabled" class="v-nav-top" ng-class="{'isloading' : $root.loader.loading && !$root.preloader.loading}">
+		<div class="state-loader">
+			<div class="center-content">
+				<cmpt-ui-loader is-loading="$root.loader.loading && !$root.preloader.loading"></cmpt-ui-loader>
+			</div>
+		</div>
+		<div class="content">
+			<div class="left-content">
+				<cmpt-topnav-app-switcher></cmpt-topnav-app-switcher>
+			</div>
+			<div class="right-content">
+				<cmpt-topnav-user></cmpt-topnav-user>
+				<cmpt-topnav-help></cmpt-topnav-help>
+				<cmpt-topnav-notifications></cmpt-topnav-notifications>
+				<cmpt-topnav-search></cmpt-topnav-search>
+			</div>
+		</div>
+	</header>
+
+	<cmpt-nav-main-menu ng-if="!vm.sidekickEnabled"></cmpt-nav-main-menu>
+
+	<div class="main-content" ng-class="{'no-sidekick': !vm.sidekickEnabled}">
+		<!-- <div class="first-loader" ng-show="$root.preloader.loading">
+			<div class="logo-spinner">
+				<span class="progress-bar">
+					<span class="progress" ng-style="$root.preloader.style"></span>
+				</span>
+				<span class="loading">loading</span>
+			</div>
+		</div> -->
+		<div class="ng-cloak" ng-class="{'fill-screen': $root.fillScreen}">
+			<ui-view></ui-view>
+			<cmpt-context-menu id="contextMenu" class="contextMenu" ></cmpt-context-menu>
+		</div>
+	</div>
+	<cmpt-dev-permission-tool></cmpt-dev-permission-tool>
+	<!--<![endif]-->
+
+	<script>window.siteConfig = {
+		apiEndpoint: '#{api_endpoint}',
+		learningCenter: '#{learning_center}',
+		campusUserLearningCenter: '#{learning_center_campus_user}',
+		environment: '#{environment}',
+		logout: '#{logout}',
+		morpheusLogout: '#{morpheusLogout}',
+		logoutNavigator: '#{logoutNavigator}',
+		topLevelDomain: '#{top_level_domain}',
+		platformSubDomain: '#{platform_sub_domain}',
+		navigatorPath: '#{navigator_path}',
+		navigatorLogoutMsg: '#{navigator_logout_msg}',
+		navigatorExpiredMsg: '#{navigator_expired_msg}',
+		cors: {
+			'#{cors_api_endpoint}':'#{cors_proxy_html}'
+		},
+		analytics: {
+			'scriptpath':'#{analytics_scriptpath}',
+			'scriptfile':'#{analytics_scriptfile}',
+			'googleAppId':'#{analytics_google_app_id}',
+			'segments':'#{analytics_segments}'
+		},
+		useAlwaysOnDb: "#{useAlwaysOnDb}",
+		idm: {
+			enabled: "#{idm_enabled}",
+			identityGatewayBaseUri: "#{idm_identityGatewayBaseUri}",
+	    	clientId: "#{idm_clientId}",
+	    	productId: "#{idm_productId}",
+	    	baseUri: "#{idm_baseUri}",
+			clockSkewSeconds: "#{idm_clockSkewSeconds}",
+			isMorpheusEnvironment: "#{isMorpheusEnvironment}"
+		},
+		sidekickDomain: "#{domain_sidekick}",
+		loggedInUserCookie: "#{loggedInUserCookie}",
+		timeAndAttendanceUrl: "#{timeAndAttendanceUrl}",
+		notificationCountCookieName: "#{notificationCountCookieName}",
+		userVoiceUrl: "#{userVoiceUrl}",
+		mopInUseCookie: "#{mopInUseCookie}",
+		mobileOptOutCookie: "#{mobileOptOutCookie}",
+		isImpersonatingCookie: "#{isImpersonatingCookieName}",
+		flidImpersonationCookieName: "#{flidImpersonationCookieName}",
+		navigatorBaseUrl: "#{navigator_base_url}",
+		flidCookieName: "#{flidCookieName}",
+		frontlineInstituteLink: "#{frontlineInstituteLink}",
+		zendeskUrl: "#{zendeskUrl}",
+		zendeskDestinationUrl: "#{zendeskDestinationUrl}",
+		zendeskTokenAdapterServiceBaseUrl: "#{zendeskTokenAdapterServiceBaseUrl}",
+		zendeskBrandId: "#{zendeskBrandId}",
+		zendeskUseFlauth: "#{zendeskUseFlauth}",
+		zendeskAuthUrl: "#{zendeskAuthUrl}",
+		salesForceLearningCenterDestinationUrl: "#{salesForceLearningCenterDestinationUrl}",
+		salesForceLearningCenterTokenAdapterServiceBaseUrl: "#{salesForceLearningCenterTokenAdapterServiceBaseUrl}",
+		GlobalDirectoryLink : "#{GlobalDirectoryLink}",
+		ExtractHelpDocumentLink : "#{ExtractHelpDocumentLink}",
+		SuperSuitDomain : "#{SuperSuitDomain}",
+		fiveLabAccessLink: "#{fiveLabAccessLink}",
+		legacyDomainUrl: "#{legacyDomainUrl}",
+		pendoKey: "#{pendoKey}"
+
+	};</script>
+	<script>// jshint ignore:start</script>
+
+
+	<!-- Modernizr v2.8.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<script>window.Modernizr||document.write('<script src="/assets/js/modernizr.js"><\/script>')</script>
+	<!--<![endif]-->
+
+	<!-- jQuery v2.1.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>window.jQuery||document.write('<script src="/assets/js/jquery.js"><\/script>')</script>
+	<!--<![endif]-->
+
+	<!-- Added to emulate CORS in IE9. Remove when we stop supporting IE9. -->
+	<script>
+		if (!jQuery.support.cors) {
+			document.write('<script src="/assets/js/xdomain.js"><\/script>')
+			$(document).ready(function() {
+			    if (window.xdomain) {
+					xdomain.slaves(window.siteConfig.cors);
+				}
+			});
+		}
+	</script>
+	<!-- END IE9 CORS FIX -->
+
+	<!-- jQuery UI v1.11.2 -->
+	<!--[if gt IE 8]><!-->
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script> -->
+	<!-- <script>window.jQuery.ui||document.write('<script src="/assets/js/jquery-ui.js"><\/script>')</script> -->
+	<!--<![endif]-->
+
+	<script src="/assets/js/jquery-ui.js"></script>
+
+	<!-- Angular v1.5.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
+	<script>window.angular||document.write('<script src="/assets/js/angular.js"><\/script>')</script>
+	<!--<![endif]-->
+
+	<!-- UI-Router v0.2.13 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+	<script>try{angular.module('ui.router')}catch(e){document.write('<script src="/assets/js/angular-ui-router.js"><\/script>')}</script>
+	<!--<![endif]-->
+
+	<!-- Angular Touch v1.5.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-touch.min.js"></script>
+	<script>try{angular.module('ngTouch')}catch(e){document.write('<script src="/assets/js/angular-touch.js"><\/script>')}</script>
+	<!--<![endif]-->
+
+
+	<!-- don't use ngAnimate. Causes performance issues with complex ng-repeats with nested logic. And we're not using it in our code. -->
+	<!-- Angular Animate v1.5.3 -->
+	<!--[if gt IE 8]><!-->
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-animate.min.js"></script> -->
+	<!-- <script>try{angular.module('ngAnimate')}catch(e){document.write('<script src="/assets/js/angular-animate.js"><\/script>')}</script> -->
+	<!--<![endif]-->
+
+	<!-- Angular Resource v1.5.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-resource.min.js"></script>
+	<script>try{angular.module('ngResource')}catch(e){document.write('<script src="/assets/js/angular-resource.js"><\/script>')}</script>
+	<!--<![endif]-->
+
+	<!-- Angular Sanitize v1.5.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-sanitize.min.js"></script>
+	<script>try{angular.module('ngSanitize')}catch(e){document.write('<script src="/assets/js/angular-sanitize.js"><\/script>')}</script>
+	<!--<![endif]-->
+
+	<!-- Angular Messages v1.5.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-messages.min.js"></script>
+	<script>try{angular.module('ngMessages')}catch(e){document.write('<script src="/assets/js/angular-messages.js"><\/script>')}</script>
+	<!--<![endif]-->
+
+	<!-- Angular Cookies v1.5.3 -->
+	<!--[if gt IE 8]><!-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-cookies.min.js"></script>
+	<script>try{angular.module('ngCookies')}catch(e){document.write('<script src="/assets/js/angular-cookies.js"><\/script>')}</script>
+	<!--<![endif]-->
+
+	<!-- don't use browser-polyfill, we are now getting this functionality through the flAuth library -->
+	<!-- babel core browser-polyfill v5.8.25 -->
+	<!--[if gt IE 8]><!-->
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser-polyfill.min.js"></script>
+	<script>window._babelPolyfill || document.write('<script src="/assets/polyfills/browser-polyfill.js"><\/script>')</script> -->
+	<!--<![endif]-->
+
+	<!-- Analytics -->
+	<script>
+	(function() {
+		if (window.sessionStorage.getItem('automation-no-analytics') === 'true') { return; }
+
+		try {
+
+			var scriptspath = window.siteConfig.analytics.scriptpath;
+			if (scriptspath.substr(-1) != '/') scriptspath += '/';
+			var scriptfile_path = scriptspath + window.siteConfig.analytics.scriptfile;
+			document.write('<script src="' + scriptfile_path + '"><\/script>');
+
+			$(document).ready(function() {
+				try {
+					sampler.init(scriptspath, window.siteConfig.analytics.segments, { webPropertyId: window.siteConfig.analytics.googleAppId });
+				} catch(e) {}
+			});
+		} catch(e) {}
+	})();
+	</script>
+
+	<!-- Sidekick -->
+	<script>
+		document.write('<script src="' + window.siteConfig.sidekickDomain + 'v1.5.0/sidekick.js"><\/script>');
+		document.write('<link rel="stylesheet" type="text/css" href="'+ window.siteConfig.sidekickDomain + 'v1.5.0/sidekick.css" />')
+	</script>
+
+
+	<!--[if gt IE 8]><!-->
+	<!-- build:js -->
+	<!--<![endif]-->
+
+
+	<!-- Live Chat Global variable. -->
+	<script>var __lc = {};</script>
+
+</body>
+</html>

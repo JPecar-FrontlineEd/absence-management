@@ -1,0 +1,25 @@
+<div class="fixed-width route-create-absence-done" ng-controller="CreateAbsenceDoneCtrl as route">
+	<div class="title"><h3>{{ strings['Absence'] }}: {{ strings['Absence.Create.Text.CreateAbsence'] }}</h3></div>
+	<cmpt-step-progress steps="vm.steps" current-step="3"></cmpt-step-progress>
+	<cmpt-absr-done-banner>
+		{{ strings['Absence.Create.Text.Your'] }} {{ strings['Absence'] }} {{ strings['Absence.Create.Text.HasBeenScheduled'] }}.
+	</cmpt-absr-done-banner>
+	<cmpt-absr-top-section-summary></cmpt-absr-top-section-summary>
+	<div class="content-panel">
+		<cmpt-absr-done-top-bar>
+			{{ strings['Absence.Create.Text.AbsenceSummaryFor'] }}<span class="bold">&nbsp;<cmpt-template-worker-link worker-id="{{ absrState.worker.id }}" worker-name="{{ absrState.worker.name }}"  show-name-as-link="true"></cmpt-template-worker-link></span>
+		</cmpt-absr-done-top-bar>
+		<div class="view-edit-processing" ng-show="vm.loading">
+			<div class="processing">
+			</div>
+			<div class="text">{{ vm.message }}</div>
+			<cmpt-ui-loader cls="loader" is-loading="true"></cmpt-ui-loader>
+		</div>
+		<div class="-g">
+			<cmpt-absr-done-summary class="-u-14-24"></cmpt-absr-done-summary>
+			<cmpt-absr-done-next-steps is-loading="vm.loading" message="vm.message" class="-u-10-24">
+			</cmpt-absr-done-next-steps>
+		</div>
+		<cmpt-absr-done-bottom-bar></cmpt-absr-done-bottom-bar>
+	</div>
+</div>

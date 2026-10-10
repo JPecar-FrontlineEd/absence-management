@@ -1,0 +1,10 @@
+<div class="cmpt-template-substitute-link">
+	<ng-transclude></ng-transclude>
+	<span ng-if="(showNameAsLink || fromDailyReports) && (link != '')">
+		<span ng-if="showLinkFollowingName">
+			<span ng-class="{'wrap-words' : wrapTextInLine}">{{:: substituteName }}</span>&nbsp;<a ng-href="{{ link }}" title="{{:: substituteName }}">view</a>		
+		</span>
+		<a ng-context-menu="Substitute" ng-class="{'wrap-words' : wrapTextInLine, 'dailyReportHyperlink' : isDailyReport, deletedAbsrTextColor : isAbsrDeleted}" ng-if="!showLinkFollowingName" ng-href="{{ link }}" title="{{:: substituteName }}">{{ substituteName }}</a>
+	</span>
+	<span ng-class="{'wrap-words' : wrapTextInLine}" ng-if="(!showNameAsLink && !fromDailyReports)|| (link == '')">{{:: substituteName }}</span>
+</div>

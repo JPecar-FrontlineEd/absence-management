@@ -1,0 +1,18 @@
+<div class="cmpt-template-notifications">
+	<div class="notifications">
+		<cmpt-ui-loader fill is-loading='vm.isLoading'></cmpt-ui-loader>
+		<div ng-repeat="n in vm.notifications" ng-show="showFullList || n.show">
+			<div class="notification-header">
+				<span class="pill {{n.severityString}}">{{n.severityString}}</span> {{n.instName}}
+				<div class="posted-date">
+					{{ strings['SchoolSettings.text.Active'] }}: {{n.startDate | date:'MM/dd/yyyy'}}
+					<span ng-if="n.startDate !== n.endDate"> - {{n.endDate | date:'MM/dd/yyyy'}}</span>
+				</div>
+			</div>
+			<div class="message" ap-bind-html="n.description"></div>
+		</div>
+		<div class="no-data" ng-if="vm.notifications.length === 0 && !vm.isLoading">
+			There are currently no notifications
+		</div>
+	</div>
+</div>

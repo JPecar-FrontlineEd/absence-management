@@ -1,0 +1,91 @@
+@import "common-var"
+.cmpt-absr-next-steps {
+	background: absence-summarySection-backGroundColor;
+
+	.section-header{
+		background: gradient-lightBlueBar-backGroundColor;
+		background-image: gradient-lightBlueBar;
+		zoom: 1;
+		border-bottom: 1px solid gradient-lightBlueBar-borderColor;
+		color: gradient-lightBlueBar-color;
+		font-size: 12px;
+		padding: 0;
+		text-shadow: 1px 1px textShadow;
+		font-weight: bold;
+		padding: 11px 10px 10px 10px;
+		position:relative;
+		text-transform: uppercase;
+
+		div {
+			border-left: 1px solid gradient-lightBlueBar-borderColor;
+			position: absolute;
+			top: 0;
+			right: 0px;
+			bottom: 0;
+			width: 45px;
+			z-index: 1;
+			text-align:center;
+			font-size:21px;
+		}
+
+		.toggle-summary {
+			cursor: pointer;
+			span{
+				vertical-align: middle;
+			}
+			&.expanded {
+				background: gradient-lightBlueBar-backGroundColor;
+				background-image: gradient-lightBlueBar-reverse;
+			}
+		}
+	}
+
+	.next-steps {
+		padding: 10px 8px;
+		border-bottom: 1px solid borderColor-medium;
+
+		.status {
+			font-size:12px;
+			label {
+				vertical-align:top;
+			}
+			span {
+				font-weight:bold;
+			}
+		}
+
+		.feedback {
+			margin-top: 15px;
+			font-size: 14px;
+			font-weight: bold;
+			border-top: 1px solid borderColor-medium;
+			padding-top: 5px;
+			a {
+				font-size: 13px;
+				cursor: pointer;
+			}
+		}
+
+		.create-another-absence-link {
+			margin-top: 15px;
+			font-size: 14px;
+			font-weight: bold;
+			border-top: 1px solid borderColor-medium;
+			padding-top: 5px;
+			a {
+				font-size: 13px;
+				cursor: pointer;
+			}
+		}
+	}
+	.deletedAbsrNextPanelBackground{
+		background: #f5f5f5;
+	}
+	.cmpt-template-approve-action {
+		textarea {
+			height: 50px;
+			min-height: 50px;
+			max-height: 190px;
+		}
+	}
+}

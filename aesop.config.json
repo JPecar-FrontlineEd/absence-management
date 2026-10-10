@@ -1,0 +1,11 @@
+{
+	"app": "app",
+	"build": "build",
+	"temp": ".tmp",
+	"mockApi": false,
+	"apiProxyHost": "localhost",
+	"apiProxyPort": 9000,
+	"apiProxyHostQa": "FLRDS1",
+	"apiProxyPortQa": 9000,
+	"flAuthDir": "./node_modules/util-idm-authjs/dist"
+}

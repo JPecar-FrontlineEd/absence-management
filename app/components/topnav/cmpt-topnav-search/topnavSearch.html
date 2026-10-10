@@ -1,0 +1,8 @@
+<div class="cmpt-topnav-search nav-node search-node search-selected"
+	ng-class="{'shake': vm.searchErrors.length > 0}"
+	ng-click="go.toggleSearchSelected()">
+	<i class="fa search-icon" ng-class="{'fa-search': !vm.isSearching, 'fa-spinner fa-spin' : vm.isSearching}"></i>
+	<input type="text" ap-focus-bind="vm.searchFocused" ng-model="vm.searchText" name="search" class="search" maxlength="18" placeholder="{{strings['AdminWeb.TobBar.SearchHere']}}" autocomplete="off" ng-keyup="$event.keyCode == 13 ? go.search() : null">
+	<i class="fa fa-times clear-search" ng-mousedown="go.clearSearch($event)"></i>
+	<!-- <span ng-hide="vm.searchFocused || vm.searchText.length" once-title="strings['Navigation.Top.MenuItem.Search']" once-text="strings['Navigation.Top.MenuItem.Search']"></span> -->
+</div>

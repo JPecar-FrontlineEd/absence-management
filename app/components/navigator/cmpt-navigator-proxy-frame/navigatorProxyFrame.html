@@ -1,0 +1,10 @@
+<div class="cmpt-navigator-proxy-frame">
+	<div class="navigator-container">
+		<!-- <cmpt-ui-loader fill status-text="'Loading'" is-loading="vm.frameIsLoading"></cmpt-ui-loader> -->
+		<div class="temporary-bar" ng-show="vm.frameIsLoading"></div>
+		<iframe id="iframe" ng-src="{{vm.src}}"
+			frameborder="0"
+			ng-hide="vm.lostFrameControl"
+		></iframe>
+	</div>
+</div>

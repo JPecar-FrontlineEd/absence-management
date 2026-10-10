@@ -1,0 +1,93 @@
+<form name="byDayForm" novalidate>
+<div class="cmpt-absr-details-section-by-day">
+    <div class="-g" ng-show="absrState.originalPlusRelatedAbsences.length > 0">
+        <div class="cmpt-absr-variation-header width100pc">
+            <div class="section-header height100pc" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+                <span class="fontBold">
+                    {{strings['ViewingByDay']}}
+                </span>
+                <a ng-if="absrState.context.addDates" ng-click="go.showAddDaysDialog()" ng-class="{hide:  !isEditing}" class="fl-button leftMargin10">
+                    <span class="fl-label font15 fontWeightNormal">{{ strings['AddDay'] }}</span>
+                </a>
+                <div class="variation-toggler" ng-class="{expanded: isExpanded, deletedAbsrBackground : absrState.absr.isDeleted}" ng-click="isExpanded = !isExpanded"  tabindex="0" 
+                    aria-label="isExpanded ? strings['Expanded'] : strings['Collapsed']"
+                    ng-keyup="$event.keyCode == 13 ? isExpanded = !isExpanded : null" >
+                    <span>
+                        <i class="fa fa-angle-double-{{isExpanded ? 'up' : 'down'}}"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="!isEditing">
+        <div ng-if="!absrState.isInServiceAbsence">
+            <div ng-repeat="absence in normalDayAbsences" >
+                <cmpt-absr-details-by-day apshowslide="isExpanded" absence="absence"></cmpt-absr-details-by-day>
+            </div>
+            <div ng-if="inServiceDayAbsences.length > 0">
+                <div class="-u-24-24 inServiceDayHeader daysFont">
+                    <span class="fontBold">{{strings['InServiceDays']}}</span>
+                    <span>{{strings['AbsenceRequestHeaderWithInServiceDay']}}</span>
+                </div>
+                <div ng-repeat="absence in inServiceDayAbsences">
+                    <cmpt-absr-details-by-day apshowslide="isExpanded" absence="absence"></cmpt-absr-details-by-day>
+                </div>
+            </div>
+            <div ng-if="closedDayAbsences.length > 0">
+                <div class="-u-24-24 closeDayHeader daysFont">
+                    <span class="fontBold">{{strings['ClosedDays']}}</span>
+                    <span>{{strings['AbsenceRequestHeaderWithClosedDays']}}</span>
+                </div>
+                <div ng-repeat="absence in closedDayAbsences">
+                    <cmpt-absr-details-by-day apshowslide="isExpanded" absence="absence"></cmpt-absr-details-by-day>
+                </div>
+            </div>
+        </div>  
+        <div ng-if="absrState.isInServiceAbsence">
+            <cmpt-absr-details-by-day apshowslide="isExpanded" absence="absence" ng-repeat="absence in absrState.absr.absences"></cmpt-absr-details-by-day>
+        </div>
+    </div>
+    <div ng-if="isEditing">
+        <div ng-if="!absrState.isInServiceAbsence">
+            <div ng-repeat="absence in absrState.absr.absences" ng-if="absence.closedDay == null">
+                <cmpt-absr-edit-by-day absence-data="absence" detect-conflict="go.detectConflict" check-Last-Absence="go.checkLastAbsence">
+                </cmpt-absr-edit-by-day>
+            </div>
+            <div ng-if="inServiceDayAbsences.length > 0">
+                <div class="-u-24-24 inServiceDayHeader daysFont">
+                    <span class="fontBold">{{strings['InServiceDays']}}</span>
+                    <span>{{strings['AbsenceRequestHeaderWithInServiceDay']}}</span>
+                </div>
+                <div ng-repeat="absence in absrState.relatedAbsences" ng-if="absence.closedDay !=null && absence.closedDay.closedDayType ==2">
+                    <cmpt-absr-details-by-day apshowslide="isExpanded" absence="absence"></cmpt-absr-details-by-day>
+                </div>
+            </div>
+            <div ng-if="closedDayAbsences.length > 0">
+                <div class="-u-24-24 closeDayHeader daysFont">
+                    <span class="fontBold">{{strings['ClosedDays']}}</span>
+                    <span>{{strings['AbsenceRequestHeaderWithClosedDays']}}</span>
+                </div>
+                <div ng-repeat="absence in absrState.absr.absences" ng-if="absence.closedDay !=null && absence.closedDay.closedDayType ==1">
+                    <cmpt-absr-edit-by-day absence-data="absence" detect-conflict="go.detectConflict" check-Last-Absence="go.checkLastAbsence">
+                    </cmpt-absr-edit-by-day>
+                </div>
+            </div>
+        </div>
+        <div ng-if="absrState.isInServiceAbsence">
+            <cmpt-absr-edit-by-day apshowslide="isExpanded" ng-repeat="absence in absrState.absr.absences"
+                                   absence-data="absence" detect-conflict="go.detectConflict" check-Last-Absence="go.checkLastAbsence">
+            </cmpt-absr-edit-by-day>
+        </div>
+    </div>     
+        <div class="bottompanel" ng-class="{hide: !isExpanded}">
+            <a type="button" ng-click="go.showAddDaysDialog()" class="fl-button leftMargin10 margintop8">
+                <span class="fl-label font15 fontWeightNormal">{{ strings['AddDay'] }}</span>
+            </a>
+        </div>
+    </div>
+    <div class="cmpt-absr-details-section">
+        <cmpt-absr-details-notes></cmpt-absr-details-notes>
+    </div>
+</div> 
+</form>

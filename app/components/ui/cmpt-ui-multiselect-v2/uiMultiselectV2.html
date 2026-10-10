@@ -1,0 +1,25 @@
+<div class="cmpt-ui-multiselect-v2 {{ vm.stylingClass }}">
+	<cmpt-ui-multiselect
+		type="{{ type }}"
+		width="{{ width }}"
+		label-all="{{ labelAll }}"
+		items="items"
+		name="{{ name }}"
+		multiple="{{ multiple }}"
+		selected="selected"
+		enable="enable"
+	></cmpt-ui-multiselect>
+	<div class="counter">{{ (vm.selectedItems.length > 0) ? vm.selectedItems.length : readOnlyPlaceholder }}</div>
+	<div class="label-csv">{{ (vm.selectedItems.length > 0) ? vm.selectedItems.join(', ') : readOnlyPlaceholder }}</div>
+
+	<cmpt-ui-textbox-v2
+		ng-if="required"
+		name="{{ name }}"
+		value-text="selected.join()"
+		form-value="formValue"
+		required="required"
+		>
+		<ng-transclude></ng-transclude>
+	</cmpt-ui-textbox-v2>
+
+</div>

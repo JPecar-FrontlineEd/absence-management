@@ -1,0 +1,107 @@
+<div class="cmpt-absr-details-summary-section">
+	<div class="-g section-header" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">
+		<span>{{ strings[mnemonic.summaryHeader] }}</span>
+		<div class="toggle-summary"
+			ng-class="{expanded: vm.expanded, deletedAbsrBackground : absrState.absr.isDeleted}"
+			ng-click="vm.expanded = !vm.expanded"
+		>
+			<span><i class="fa fa-angle-{{vm.expanded ? 'up' : 'down'}}"></i></span>
+		</div>
+	</div>
+	<div class="summary" ap-show-slide="vm.expanded">
+		<div class="summary-details">
+			<div class="need-sub">
+				<label for="{{strings['SelectSubstituteRequired']}}">{{ strings['Substitute'] }} {{ strings['Required'] }}</label>
+				<div class="label" ng-if="(absrState.id == 0 ? absrState.context.needSub !== 0 : absrState.needSub) && !vm.editable.needSub">{{ strings['Yes'] }}</div>
+				<div class="label" ng-if="(absrState.id == 0 ? absrState.context.needSub === 0 : !absrState.needSub) && !vm.editable.needSub">{{ strings['No'] }}</div>
+				<div ng-if="vm.editable.needSub">
+					<select 
+						id="{{strings['SelectSubstituteRequired']}}"
+					    class="date-select"
+						ng-show="!(reviewMode && !absrState.editMode)"
+						ng-options='opt.value as opt.label for opt in vm.needSubOptions'
+						ng-model="absrState.needSub">
+					</select>
+					<span
+						ng-show="(reviewMode && !absrState.editMode)"
+						class="label">
+						{{ (absrState.needSub) ? strings['Yes']: strings['No'] }}
+					</span>
+				</div>
+			</div>
+			<div class="mark-long-term" ng-if="vm.IsMarkAsLongTermEnabled && vm.canViewLongTermSelection">
+				<label for="{{strings['DR.Summary.Label.MarkAsLongTerm']}}">{{strings['DR.Summary.Label.MarkAsLongTerm']}}</label>
+				<div>
+					<select 
+						id="{{strings['DR.Summary.Label.MarkAsLongTerm']}}"
+					    class="date-select"
+						ng-show="!(reviewMode && !absrState.editMode) && vm.canEditLongTermSelection"
+						ng-options='opt.value as opt.label for opt in vm.markAsLongTermOptions'
+						ng-model="absrState.isLongTerm">
+					</select>
+					<span ng-show="(reviewMode && !absrState.editMode) || (absrState.editMode && !vm.canEditLongTermSelection)" class="label">
+						{{ (absrState.isLongTerm) ? strings['Yes']: strings['No'] }}
+					</span>
+				</div>
+			</div>
+			<div class="gross-payout" ng-if="absrState.context.showGrossPayAmount">
+				<label>{{ strings['Absene.Summary.Text.TotalGrossPayout'] }}</label>
+				<div class="label">{{ absrState.grossPayout | currency : '$':2 }}</div>
+			</div>
+			<div class="hold-until" ng-if="absrState.context.canHold && absrState.editMode">
+				<label for="{{strings['SelectHoldDuration']}}">{{ strings['Absence.HoldOption.Text.HoldUntil'] }}</label>
+				<cmpt-ui-dropdown
+				    label="strings['SelectHoldDuration']"
+					options-array="absrState.context.holdOptions"
+					value-selected="absrState.holdOption"
+					read-only="false"
+					allow-blank="false"
+					enabled="vm.editable.hold"
+					sort-by="'!'"
+					error-messages="[]"></cmpt-ui-dropdown>
+			</div>
+			<div ng-if="absrState.worker.isVacancy && absrState.id === 0">
+				<label for="{{strings['SelectNumberOfVacancies']}}">{{ strings['Absence.Review.Text.NumberOfVacancies'] }}</label>
+				<div>
+					<select id="{{strings['SelectNumberOfVacancies']}}" ng-model="absrState.numVacancies" ng-options="num for num in vm.numVacancies">{{ num }}</select>
+		    </div>
+			</div>
+		</div>
+		<div class="summary-footer"></div>
+		<div class="variations-summary" ng-class="{deletedAbsrNextPanelBackground : absrState.absr.isDeleted}" >
+
+			<div class="item idx-{{ $index }}" ng-repeat="variation in absrState.absrVariations">
+				<h4 class="summary-header" ng-show="absrState.absrVariations.length > 1">{{ strings['Variation'] }} # {{ $index + 1}}</h4>
+				<div class="absence-dates none" ng-if="variation.dates.length <= 0">{{ strings['absrItenerant.Summary.text.NoDatesSelected'] }}</div>
+				<div ng-if="variation.absences.length > 0" ng-repeat="absence in variation.absences track by $index">
+					<span ng-if="!absence.isReconciled" class="unreconciled-symbol" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">U</span>
+					<span ng-if="absence.isReconciled" class="reconciled-symbol" ng-class="{deletedAbsrBackground : absrState.absr.isDeleted}">R</span>
+					<span class="absence-dates">{{ absence.date | parseDate:'fullDate' }}</span>
+				</div>
+				<div class="hr"></div>
+				<div class="school-name">
+					{{ variation.institution.value || strings['NoSchoolSelected'] }}
+					<i ng-if="variation.institution" class="fa fa-info-circle"
+						qtip my="left center"
+						at="right center"
+						qtip-class="notes-content schoolDefaultInfo-content"
+						content="
+						<div>{{strings[mnemonic.defaultStartTime]}}: {{ variation.institution.data.startTime | time:'h:mm T'}} </div>
+						<div>{{strings[mnemonic.defaultEndTime]}}: {{ variation.institution.data.endTime | time:'h:mm T'}} </div>
+						<div>{{strings[mnemonic.hoursInADay]}}: {{ variation.institution.data.HoursPerDay }} {{strings[mnemonic.hours]}} </div>
+						<div>{{strings[mnemonic.minAbsLength]}}: {{ variation.institution.data.MinAbsenceDuration }} {{strings[mnemonic.hours]}}</div>
+						<div>{{strings[mnemonic.maxAbsLength]}}: {{ variation.institution.data.MaxAbsenceDuration }} {{strings[mnemonic.hours]}}</div>
+						">
+					</i>
+				</div>
+
+
+				<div class="absence-time" ng-if="variation.institution">{{ variation.absenceStartTime | time:'h:mm T' }} - {{ variation.absenceEndTime | time:'h:mm T' }}</div>
+				<div class="absence-reason" ng-if="variation.entitlementType">{{ variation.entitlementType.value }}</div>
+				<div class="absence-reason none" ng-if="!variation.entitlementType">{{ strings['NoReasonSelected'] }}</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>

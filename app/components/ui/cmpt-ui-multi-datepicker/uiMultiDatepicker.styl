@@ -1,0 +1,246 @@
+@import "common-var"
+.cmpt-ui-multi-datepicker {
+	.ui-datepicker{
+		width:100%;
+		padding:0;
+		box-shadow:none;
+		.ui-datepicker-header {
+			background: backGroundColor-dark;
+			background: gradientBar;
+			zoom: 1;
+			border-bottom: 1px solid borderColor-medium;
+			border-radius: 0;
+			.ui-datepicker-prev,.ui-datepicker-next{
+				top: 1px;
+				cursor: pointer
+			}
+			.ui-datepicker-title {
+				padding: 3px 7px;
+				font-size: 12px;
+			}
+		}
+		.ui-datepicker-calendar {
+			border-bottom: 1px solid borderColor-medium;
+			background: #f3f3f3;
+			margin:0;
+			tbody{
+				height: 204px;
+			}
+			thead{
+				th{
+					font-size: 11px;
+					color: subTitle-color-dark;
+					background: #f3f3f3;
+					filter: none;
+					font-weight: normal;
+					padding: 0px;
+					padding-bottom: 3px;
+					text-transform: uppercase;
+					&.weeknames{
+						width: 35px;
+					}
+				}
+				tr.tableheader{
+					float:left;
+				}
+			}
+			td{
+				padding: 0px 1px 1px 0px;
+				a,span{
+					width: 32px;
+					font-size: 12px;
+					padding: 2px 0px 16px 0px;
+    				margin-top: 3px;
+					background: #ffffff;
+					text-align: center;
+				}
+				.ie_dot
+				{
+					width:auto;
+				}
+				.dotcontainer
+				{
+					all: unset;
+					position: absolute;
+					display: inline-flex;
+
+					.legendParent{
+						margin: -16px 0px 0px 8px;
+					}
+					.marginLeft50P{
+						margin-left: 1px;
+					}
+					.marginLeft0P{
+						margin-left: 0.031rem;
+					}
+				}
+				.ie_dotcontainer
+				{
+					position: relative;
+					top: -24px;
+					display: flex;
+					justify-content: center;
+				}
+				&.tablemargin{
+					padding: 0px 1px 1px 0px;
+					margin-right:2px;
+				}
+				&.ie_tablemargin
+				{
+					padding: 0px 1px 1px 0px;
+					display:table;
+					width:34.14px;
+					height:30.34px;
+					margin-right:1px;
+				}
+			}
+
+			tr{
+				&.tablerow
+				{
+					flex-flow: row;
+					display: inline-flex;
+					height: 40px;
+				}
+				&.ie_tablerow
+				{
+					display: flex;
+					flex-flow: row;
+					justify-content: center;
+					line-height: 0px;
+					height:32px;
+				}
+			}
+			.ui-state-highlight{
+				border: none;
+			}
+
+		}
+	}
+	.error-message{
+		background: none;
+		color: ap-dark-red;
+		font-size: 11px;
+		text-align: right;
+		line-height: 135%;
+	}
+	&.error{
+		border:1px solid ap-red;
+	}
+	a.ui-state-hover,
+	.ui-menu .ui-menu-item a.ui-state-focus {
+		border: 1px solid borderColor-medium;
+		background: #2E7AB8 !important;
+		color: white !important;
+	}
+
+	.ui-datepicker {
+		.ui-datepicker-calendar {
+
+			.ui-state-active a,
+			.otherAbsenceDays.ui-state-active a.ui-state-active {
+				background: #2E7AB8;
+				color: white;
+				opacity: 1.0 ;
+			}
+			.otherAbsenceDays {
+				a, a.ui-state-active {
+					background: multidatePicker-otherDays;
+					opacity: 1.0;
+				}
+			}
+			.ui-datepicker-week-end a.ui-state-active {
+				background: #2E7AB8;
+				color: white;
+			}
+		}
+	}
+	.small-date-picker {
+		.ui-selecting-date {
+			a, &.ui-state-active a {
+				background: multidatePicker-selecting !important;
+				opacity: 1.0;
+			}
+		}
+
+		.ui-deselecting-date {
+			a, &.ui-state-active a {
+				background: multidatePicker-deselecting !important;
+				opacity: 1.0;
+			}
+		}
+	}
+
+	.ui-datepicker-no-select a {
+		cursor: default;
+	}
+
+	.dotlabel{
+		text-align: left;
+    	font-size: 12px;
+    	padding-top: 9px;
+    	padding-left: 3px;
+    	padding-bottom: 5px;
+    	font-weight: 600;
+	}
+
+	.dot{
+		margin-left: 5%;
+		margin-top: 5%;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	
+	.absencedot{
+		width: 15px !important;
+		height: 15px;
+		font-weight: 700;
+		font-size:9px !important;
+		background: #B8E1FF !important;
+		border-radius: 50%;
+		color: #205586;
+		padding: 0px !important;
+	}
+
+	
+	.inservicedot{
+		width: 15px !important;
+		height: 15px;
+		font-weight: 700;
+		font-size:9px !important;
+		background: #F6DC6B !important;
+		border-radius: 50%;
+		color: #593900;
+		padding: 0px !important;
+	}
+
+	.closeddot{
+		width: 15px !important;
+		height: 15px;
+		font-weight: 700;
+		font-size:9px !important;
+		background: #FAAFB1 !important;
+		border-radius: 50%;
+		color: #991525;
+		padding: 0px !important;
+	}
+
+	.dotTextContainer{
+		display:flex;
+	}
+	.vacancyLegendsMargin{
+		margin: 4% 1% 0% 10%;
+	}
+
+	.ie_tableheight
+	{
+		height:178.95px;
+	}
+	ui-state-default ui-state-highlight ui-state-active{
+		height:32px;
+	}
+	.ui-datepicker .ui-datepicker-week-end .ui-state-default{
+		background: #f3f3f3;
+	}
+}

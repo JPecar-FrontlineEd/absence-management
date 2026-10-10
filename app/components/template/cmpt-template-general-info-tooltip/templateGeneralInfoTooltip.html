@@ -1,0 +1,20 @@
+<div class="cmpt-template-general-info-tooltip">
+	<div class="top-section -g">
+		<div class="-u-12-24">{{ vm.qtipData.type }}</div>
+		<div class="-u-12-24">{{ vm.qtipData.identifier }}</div>
+	</div>
+	<div class="name">
+		<a ng-if="vm.nameLink != ''" href="{{ vm.nameLink }}" title="{{:: vm.qtipData.name }}">{{ vm.qtipData.name }}</a>
+		<span ng-if="vm.nameLink == ''">{{ vm.qtipData.name }}</span>
+	</div>
+	<div class="data-list">
+		<div class="-g {{ item.cls }}"
+				ng-repeat="item in vm.qtipData.data"
+				ng-if="item.val.length"
+				ng-click="go.click(item)">
+		    <div ng-if="!!item.icon" class="-u-2-24"><i class="fa {{ item.icon }}"></i></div>
+		    <div ng-if="!!item.icon" class="-u-22-24" ap-bind-html="item.val"></div>
+		    <div ng-if="!item.icon" class="-u-24-24 value-without-icon" ap-bind-html="item.val"></div>
+		</div>
+	</div>
+</div>

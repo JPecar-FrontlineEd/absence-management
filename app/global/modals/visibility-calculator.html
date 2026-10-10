@@ -1,0 +1,10 @@
+<div class="dialog-popup visibility-calculator-popup">
+	<div class="ngdialog-message">
+		<div class="header">{{ ngDialogData.header }}</div>
+		<cmpt-template-visibility-calculator></cmpt-template-visibility-calculator>
+	</div>
+	<div class="ngdialog-buttons" ng-class="{'disabled': ngDialogData.state.isProcessing}">
+		<a class="fl-button {{ button.cls }}" ng-click="button.action(ngDialogData.selectedId)"  ng-repeat="button in ngDialogData.buttons" ><i class="fa {{ button.icon }}"></i>
+		{{ button.title }}</a>
+	</div>
+</div>

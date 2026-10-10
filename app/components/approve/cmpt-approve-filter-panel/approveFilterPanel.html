@@ -1,0 +1,52 @@
+<div class="cmpt-approve-filter-panel">
+	<div class="error-message-area" ng-cloak ng-show="vm.errorMessages!=''">
+	    <div class="fl-system-message error">
+	        <div class="message"><i class="icon-warning-sign"></i><strong>{{strings['Error']}}!</strong>
+	        	<span>{{vm.errorMessages}}</span>
+	        </div>
+	        <span class="dismiss"><i class="icon-remove"></i><a ng-click="vm.removeMessages()">{{strings['Dismiss']}}</a></span>
+	    </div>
+	</div>
+	<div class="action-panel panel">
+		<cmpt-ui-date-selector class="item date-picker" date-model="vm.startDate" got-error="vm.startDateError" label="strings['SelectFromDate']">
+		{{ strings['ApprovalList.Label.Text.StartDate'] }}:</cmpt-ui-date-selector>
+		<cmpt-ui-date-selector class="item date-picker" date-model="vm.endDate" got-error="vm.endDateError" label="strings['SelectToDate']">{{ strings['ApprovalList.Label.Text.EndDate'] }}:</cmpt-ui-date-selector>
+
+		<div class="item filter report-filter">
+			<label class="header">{{ strings['Status'] }}:</label>
+			<label>
+				<input type="checkbox" value="0" ng-model="vm.filter.unapproved" />{{ strings['Unapproved'] }}
+			</label>
+			<label>
+				<input type="checkbox" value="1" ng-model="vm.filter.partiallyApproved" />{{ strings['PartiallyApproved'] }}
+			</label>
+			<label>
+				<input type="checkbox" value="1" ng-model="vm.filter.approved" />{{ strings['Approved'] }}
+			</label>
+			<label>
+				<input type="checkbox" value="1" ng-model="vm.filter.denied" />{{ strings['Denied'] }}
+			</label>
+		</div>
+		<div class="item filter report-filter" ng-show="$root.havePermission('ABSR.DTLSACCD')">
+			<label for="{{strings['SelectAccountingCode']}}" class="header">{{ strings['AccountingCode'] }}:</label>
+			<select id="{{strings['SelectAccountingCode']}}" ng-options="code.value for code in vm.accountingCodeList track by code.id" ng-model="vm.filter.accountingCode">
+				<option value="">{{ strings['Option.Text.AllAccountingCodes'] }}</option>
+			</select>
+		</div>
+		<div class="item filter report-filter" ng-show="$root.havePermission('ABSR.DTLSBDCD')">
+			<label for="{{strings['SelectBudgetCode']}}" class="header">{{ strings['BudgetCode'] }}:</label>
+			<select id="{{strings['SelectBudgetCode']}}" ng-options="code.value for code in vm.budgetCodeList track by code.id" ng-model="vm.filter.budgetCode">
+				<option value="">{{ strings['Option.Text.AllBudgetCodes'] }}</option>
+			</select>
+		</div>
+
+		<div class="action-section">
+			<a class="item fl-button fl-primary search" ng-click="go.search()">
+				<i class="fa fa-search"></i>
+				<span class="fl-label">
+					{{ strings['Search'] }}
+				</span>
+			</a>
+		</div>
+	</div>
+</div>

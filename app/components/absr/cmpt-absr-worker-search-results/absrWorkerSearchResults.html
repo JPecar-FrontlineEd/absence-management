@@ -1,0 +1,20 @@
+<div class="cmpt-absr-worker-search-results" ng-class="{'spinner-bottom': vm.nextPage}">
+	<div class="loader-container" ng-show="vm.loading">
+	   <cmpt-ui-loader
+	   		fill
+	   		is-loading="vm.loading">
+	   	</cmpt-ui-loader>
+	</div>
+
+	<cmpt-ui-grouped-grid
+		columns="vm.columns"
+		dataset="vm.results"
+		selected="vm.selectedWorker"
+		group-by="'group'"
+		dblclick="go.selectWorker">
+		<div ng-show="!vm.results.length && !vm.loading">{{strings['Absence.Create.Select.Text.NoRecordFound']}}</div>
+	</cmpt-ui-grouped-grid>
+	<div class="below-grid" ng-show="vm.moreRowsAvailable">
+		<button class="fl-button" ng-click="go.fetchData()">{{strings['Absence.Create.Select.LoadMore']}}</button>
+	</div>
+</div>

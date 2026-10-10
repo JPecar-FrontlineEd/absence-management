@@ -1,0 +1,78 @@
+@import "common-var"
+.cmpt-template-available-sub-remove-options {
+	width: 491px;
+    background: #f0f0f0;
+	.container {
+		.separator-bottom {
+			margin: .5rem -1rem;
+		}
+ 		.row {
+			padding: .25rem;
+
+			.name {
+				font-size: 18px;
+				font-weight: 600;
+			}
+
+			.phone {
+				font-size: 12px;
+				font-style: italic;
+			}
+
+			.assigned {
+				font-size: 14px;
+				text-align: right;
+			}
+
+			& input[type=checkbox] {
+				margin-left: -1.25rem;
+				margin-right: .25rem;
+				display: inline-block;
+			}
+
+			select {
+				width: 100%;
+				font-size: 14px;
+			}
+
+			& label {
+				font-size: 0.8rem;
+				line-height: 1.5;
+				userSelect(none);
+				display: inline-block;
+				padding: .5em 0 0 0;
+
+
+			}
+			& label.multi-line-indent {
+				margin:0 0 0 2rem;
+			}
+
+			&.requested-by, &.cancellation-reasons {
+				label {
+					font-weight: bold;
+					padding-right: 5px;
+					text-align: right;
+					width: 100%;
+					font-size: .8rem;
+					line-height:  .8rem;
+				}
+			}
+
+			&.action {
+				background: backGroundColor;
+				text-align: right;
+			}
+
+			&.ngdialog-buttons{
+				border: none;
+			}
+
+			&.ngdialog-buttons{
+				margin: 0;
+				padding: 1rem 0;
+			}
+		}
+	}
+}
+

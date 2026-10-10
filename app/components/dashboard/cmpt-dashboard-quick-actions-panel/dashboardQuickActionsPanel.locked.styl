@@ -1,0 +1,97 @@
+@import "common-var"
+.dashboard-locked .cmpt-dashboard-quick-actions-panel {
+	padding-top: 5px;
+
+	.title{
+		display: none;
+	}
+
+	.quick-action-dropdown {
+		display: inline-block;
+		user-select: none;
+		position: relative;
+		z-index: 5;
+		top: 8px;
+
+		.ui-icon {
+			position: absolute;
+			top: 7px;
+			right: 10px;
+		}
+		.fl-button {
+			text-align: left;
+			width: 170px;
+			padding-left: 10px;
+		}
+		.dropdown {
+			font-size: 14px;
+			padding: 3px 0;
+			display: none;
+			position: absolute;
+			background-color: backGroundColor;
+			left: 0;
+			width: 100%;
+			z-index: 5;
+			box-shadow: 0px 2px 5px boxShadow;
+			border-radius: 5px;
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
+
+			&.active {
+				display: block;
+			}
+
+			li {
+				a {
+					display: block;
+					padding: 5px 12px;
+				}
+			}
+		}
+	}
+
+	.search-panel {
+		margin-bottom: 0;
+		border-bottom: none;
+		padding: 0;
+		position: relative;
+
+		.fl-search {
+			i {
+				display: none;
+			}
+
+			input {
+				width: 175px;
+				padding-left: 10px;
+			}
+		}
+
+		.fl-button.full {
+			display: none;
+		}
+
+		.fl-button.fixed {
+			display: inline-block;
+			position: relative;
+			width: 30px;
+			padding-left: 10px;
+			padding-right: 10px;
+			margin-left: -4px;
+			// content: '';
+
+			&:before {
+				font-family: 'FL-Icons';
+				// content: '\f002';
+				position: absolute;
+				left: 9px;
+				top: -1px;
+			}
+		}
+	}
+
+	.quick-button{
+		display: none;
+	}
+
+}

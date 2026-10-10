@@ -1,0 +1,27 @@
+@import "common-var"
+.modal-absr-warning {
+	&.dialog-popup .ngdialog-message {
+		.header {
+			background-color: ap-yellow;
+			color: backGroundColor;
+
+			&:before {
+				margin-right: 12px;
+			}
+		}
+		.content {
+			.bold {
+				font-weight: bold;
+			}
+			.message {
+				padding-bottom: 10px;
+				&:last-child {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+	.fl-button {
+		margin-left: 4px;
+	}
+}

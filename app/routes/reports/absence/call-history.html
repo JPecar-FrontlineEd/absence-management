@@ -1,0 +1,33 @@
+<div class="fixed-width report-standards route-reports-absences-call-history" ng-controller="CallHistoryCtrl as route">
+	<cmpt-reports-switcher section="absence"></cmpt-reports-switcher>
+
+	<h3>{{route.strings['Reports.Title.AbsenceCallHistory']}}</h3>
+	<div class="panel">
+		<cmpt-reports-filter-panel filters="route.vm.filters" action="route.go.search"></cmpt-reports-filter-panel>
+	</div>
+
+	<div id="report-lock-header" class="lock-header-fill"></div>
+	<div class="header">
+		<div class="header-content">
+			<div class="count" ng-class="{loaded: route.vm.dataLoaded}">{{route.vm.dataSet.length}}</div>
+			<div class="label" ng-class="{loaded: route.vm.dataLoaded}">{{route.strings['Reports.Title.AbsenceCallHistory']}}</div>
+			<cmpt-ui-loader cls="report-loader" is-loading="route.vm.isLoading"></cmpt-ui-loader>
+			<cmpt-ui-print-button></cmpt-ui-print-button>
+		</div>
+	</div>
+	<div class="content-panel" ng-class="{loaded: route.vm.dataLoaded}">
+		<cmpt-ui-grouped-grid
+		  columns="route.vm.columns"
+		  summary-row="route.vm.summaryRow"
+		  dataset="route.vm.dataSet"
+		  is-loaded="route.vm.dataLoaded"
+		  group-by="AbsrId"
+		>
+		  	{{route.vm.dataLoaded ? route.strings['NoRecordsFound'] : route.strings['Reports.Results.Label.InitialInstructions']}}.
+		</cmpt-ui-grouped-grid>
+		<div class="totals" ng-if="route.vm.dataLoaded && route.vm.dataSet.length > 0">
+			<div class="-u-4-24">{{route.strings['Reports.GroupSummary.Label.TotalCalls']}}:</div>
+			<div class="-u-20-24">{{route.vm.dataSet.length}}</div>
+		</div>
+	</div>
+</div>

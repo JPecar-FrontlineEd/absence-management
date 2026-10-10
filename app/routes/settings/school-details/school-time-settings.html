@@ -1,0 +1,101 @@
+<div class="route-settings-school-details-school-time-settings" ng-controller="SchoolTimeSettingsCtrl as route">
+	<div class="section-heading">{{route.strings['SchoolSettings.text.SchoolSettings']}}</div>
+	
+	<div class="container">
+		<div class="content" ng-show="route.vm.institution.id != null">
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['SchoolSettings.text.Active']}}:</span>
+					<input type="checkbox" ng-model="route.vm.institution.active" ng-disabled="true" />
+				</div>
+				<div>
+					<span class="label">{{route.strings['SchoolSettings.text.TimeZone']}}:</span>
+					<span>{{route.vm.institution.timeZoneDescription}}</span>
+				</div>
+			</div>
+			<div class="info-header">
+				<span>{{route.strings['SchoolSettings.text.AbsenceTimes']}}</span>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['SchoolSettings.text.StartTime']}}:</span>
+					<span>{{route.vm.institution.startTime | time}}</span>
+				</div>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['SchoolSettings.text.HalfDayAMEndTime']}}:</span>
+					<span>{{route.vm.institution.halfDayAMEndTime | time}}</span>
+				</div>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['SchoolSettings.text.HalfDayPMStartTime']}}:</span>
+					<span>{{route.vm.institution.halfDayPMStartTime | time}}</span>
+				</div>
+			</div>
+			<div class="info-row">
+				<div>
+					<span class="label">{{route.strings['SchoolSettings.text.EndTime']}}:</span>
+					<span>{{route.vm.institution.endTime | time}}</span>
+				</div>
+			</div>
+
+			<div ng-if="route.vm.subReportTimesEnabled">
+				<div class="info-header">
+					<span>{{route.strings['SchoolSettings.text.SubstituteReportTimes']}}</span>
+				</div>
+				<div class="info-row">
+					<div>
+						<span class="label">{{route.strings['SchoolSettings.text.StartTime']}}:</span>
+						<span>{{route.vm.institution.subStartTime | time}}</span>
+					</div>
+				</div>
+				<div class="info-row">
+					<div>
+						<span class="label">{{route.strings['SchoolSettings.text.HalfDayAMEndTime']}}:</span>
+						<span>{{route.vm.institution.subHalfDayAMEndTime | time}}</span>
+					</div>
+				</div>
+				<div class="info-row">
+					<div>
+						<span class="label">{{route.strings['SchoolSettings.text.HalfDayPMStartTime']}}:</span>
+						<span>{{route.vm.institution.subHalfDayPMStartTime | time}}</span>
+					</div>
+				</div>
+				<div class="info-row">
+					<div>
+						<span class="label">{{route.strings['SchoolSettings.text.EndTime']}}:</span>
+						<span>{{route.vm.institution.subEndTime | time}}</span>
+					</div>
+				</div>
+
+				<div class="info-header">
+					<span>{{route.strings['SchoolSettings.text.SubstituteRelativeStartEnd']}}</span>
+				</div>
+				<div class="info-row">
+					<div>
+						<span class="label">{{route.strings['SchoolSettings.text.RelativeStart']}}:</span>
+						<span>
+							{{route.vm.subRelativeStartAbs}}
+							{{route.vm.institution.subRelativeStartTimeMinutes > 0 ?
+								route.strings['SchoolSettings.text.minsAfter'] :
+								route.strings['SchoolSettings.text.minsBefore'] }}
+						</span>
+					</div>
+				</div>
+				<div class="info-row">
+					<div>
+						<span class="label">{{route.strings['SchoolSettings.text.RelativeEnd']}}:</span>
+						<span>
+							{{route.vm.subRelativeEndAbs}}
+							{{route.vm.institution.subRelativeEndTimeMins >= 0 ?
+								route.strings['SchoolSettings.text.minsAfter'] :
+								route.strings['SchoolSettings.text.minsBefore'] }}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

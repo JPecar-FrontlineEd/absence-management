@@ -1,0 +1,10 @@
+<div class="fixed-width route-detail" ng-controller="DetailCtrl as route">
+	<div ng-hide="route.vm.is403">
+		<cmpt-absr-top-section-summary>{{ strings[mnemonic.pageLabel] }}</cmpt-absr-top-section-summary>
+	  <cmpt-ui-tabs tabs="route.vm.tabs"></cmpt-ui-tabs>
+	  <div class="content-panel">
+	    <ui-view></ui-view>
+		</div>
+	</div>
+  <div ng-show="route.vm.is403" ng-bind-html="route.vm.template403"></div>
+</div>
