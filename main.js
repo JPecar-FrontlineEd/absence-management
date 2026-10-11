@@ -104806,7 +104806,7 @@ angular.module("/global/modals/webtime-approvers-confirm-action.html", []).run([
   app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, routerConfigSvcProvider) {
     var routeResolver = routerConfigSvcProvider;
     $locationProvider.html5Mode(true);
-
+    console.log("### Setting up the router ###");
     //DE13938 - Error found in TC7832: NAV - User Access - Invites - Override the default role with an invalid entry
     window.onerror = function (e) {
       if (/.*URIError: malformed.*URI|URI.*malformed|URI.*error|URI.*decoded.*not.*valid/.test(e) && /\/access/.test(window.location.pathname)) {
@@ -104815,46 +104815,40 @@ angular.module("/global/modals/webtime-approvers-confirm-action.html", []).run([
     };
 
     // For any unmatched url, send to /
-    // $urlRouterProvider
-    // 	.when('/token/{token}{redirect:(?:/?.*)}', function (tokenSvc, $match, $location, navigatorUrlHelp) {
-    // 		$location.path(navigatorUrlHelp.getTokenRedirectUrl($match.redirect) || '/').replace();
-    // 	})
-    // 	.when('/auth_callback?', function (flAuthService, $window, $q) {
-    // 		return flAuthService.authenticateCallback()
-    // 			.then(function (callbackResponse) {
-    // 				if (callbackResponse !== undefined && callbackResponse.indexOf('/undefined') === -1) {
-    // 					$window.location.replace(callbackResponse);
-    // 				} else {
-    // 					$window.location.replace('/access');
-    // 				}
-    // 			}).catch(function (error) {
-    // 				//if IDM tells us there was an error, see if they sent us a URL they'd like us to redirect to.
-    // 				//more info: https://github.com/FrontlineEducation/Util-IDM-AuthJS/releases/tag/v3.0.25
-    // 				if (error.errorUrl) {
-    // 					// An errorUrl property may be provided during an auth callback failure. Redirect to this url.
-    // 					$window.location.replace(error.errorUrl);
-    // 				} else {
-    // 					//TODO in the future we should redirect to a friendly error page instead of leaving them
-    // 					//on the loading screen which may not adequately communicate an error state
-    // 					return $q.reject(error);
-    // 				}
-    // 			});
-    // 	})
-    // 	.when('/signout?{state}', function (flAuthService, $match, $window) {
-    // 		if ($match.state !== undefined) {
-    // 			return flAuthService.signoutCallback().then(function (callbackResponse) {
-    // 				$window.location.replace(callbackResponse);
-    // 			});
-    // 		} else {
-    // 			$window.location.replace('/access');
-    // 		}
-    // 	})
-    // 	.otherwise('/');
-
+    $urlRouterProvider.when('/token/{token}{redirect:(?:/?.*)}', function (tokenSvc, $match, $location, navigatorUrlHelp) {
+      $location.path(navigatorUrlHelp.getTokenRedirectUrl($match.redirect) || '/').replace();
+    }).when('/auth_callback?', function (flAuthService, $window, $q) {
+      return flAuthService.authenticateCallback().then(function (callbackResponse) {
+        if (callbackResponse !== undefined && callbackResponse.indexOf('/undefined') === -1) {
+          $window.location.replace(callbackResponse);
+        } else {
+          $window.location.replace('/access');
+        }
+      })["catch"](function (error) {
+        //if IDM tells us there was an error, see if they sent us a URL they'd like us to redirect to.
+        //more info: https://github.com/FrontlineEducation/Util-IDM-AuthJS/releases/tag/v3.0.25
+        if (error.errorUrl) {
+          // An errorUrl property may be provided during an auth callback failure. Redirect to this url.
+          $window.location.replace(error.errorUrl);
+        } else {
+          //TODO in the future we should redirect to a friendly error page instead of leaving them
+          //on the loading screen which may not adequately communicate an error state
+          return $q.reject(error);
+        }
+      });
+    }).when('/signout?{state}', function (flAuthService, $match, $window) {
+      if ($match.state !== undefined) {
+        return flAuthService.signoutCallback().then(function (callbackResponse) {
+          $window.location.replace(callbackResponse);
+        });
+      } else {
+        $window.location.replace('/access');
+      }
+    }).otherwise('/');
     $stateProvider.state('base', {
-      url: '',
       template: '<ui-view></ui-view>',
       "abstract": true,
+      url: '/abs-mgt',
       resolve: {
         tokenCheck: function tokenCheck(tokenSvc) {
           return tokenSvc.ready;
@@ -105287,7 +105281,7 @@ angular.module("/global/modals/webtime-approvers-confirm-action.html", []).run([
       },
       templateUrl: '/routes/reference-data/absence-reasons/absence-reason-view.html'
     }).state('base.refDataabsenceReason.view', {
-      url: '/:refid',
+      url: '/abs-mgt/:refid',
       params: {
         isBucket: null,
         doDirtyCheck: true
