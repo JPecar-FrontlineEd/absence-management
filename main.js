@@ -105281,7 +105281,7 @@ angular.module("/global/modals/webtime-approvers-confirm-action.html", []).run([
       },
       templateUrl: '/routes/reference-data/absence-reasons/absence-reason-view.html'
     }).state('base.refDataabsenceReason.view', {
-      url: '/abs-mgt/:refid',
+      url: '/:refid',
       params: {
         isBucket: null,
         doDirtyCheck: true
